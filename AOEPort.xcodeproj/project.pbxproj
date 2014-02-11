@@ -1,0 +1,699 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73218A6B14E0006AD27 /* JSTileMap.m */; };
+		C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */; };
+		C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C84CA73518A6B14E0006AD27 /* LICENSE.txt */; };
+		C84CA74418A6B14E0006AD27 /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73818A6B14E0006AD27 /* SKAction+SKTExtras.m */; };
+		C84CA74518A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73A18A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m */; };
+		C84CA74618A6B14E0006AD27 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73C18A6B14E0006AD27 /* SKNode+SKTExtras.m */; };
+		C84CA74718A6B14E0006AD27 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73E18A6B14E0006AD27 /* SKTAudio.m */; };
+		C84CA74818A6B14E0006AD27 /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = C84CA74018A6B14E0006AD27 /* SKTUtils.mm */; };
+		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
+		C84CA75F18A6C97B0006AD27 /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */; };
+		C84CA76318A6CB900006AD27 /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA76218A6CB900006AD27 /* TileMapLayer.m */; };
+		C88370EC18AAD63600A5F47F /* building.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DB18AAD63600A5F47F /* building.atlas */; };
+		C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DC18AAD63600A5F47F /* tiles.atlas */; };
+		C88370EE18AAD63600A5F47F /* tiles32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DD18AAD63600A5F47F /* tiles32.atlas */; };
+		C88370EF18AAD63600A5F47F /* map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C88370DF18AAD63600A5F47F /* map.tmx */; };
+		C88370F018AAD63600A5F47F /* map32.png in Resources */ = {isa = PBXBuildFile; fileRef = C88370E018AAD63600A5F47F /* map32.png */; };
+		C88370F118AAD63600A5F47F /* map32.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C88370E118AAD63600A5F47F /* map32.tmx */; };
+		C88370F218AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E418AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m */; };
+		C88370F318AAD63600A5F47F /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E618AAD63600A5F47F /* SSKMultiLineLabelNode.m */; };
+		C88370F418AAD63600A5F47F /* SSKStretchableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E918AAD63600A5F47F /* SSKStretchableNode.m */; };
+		C88370F518AAD63600A5F47F /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370EB18AAD63600A5F47F /* SSKTileableNode.m */; };
+		C88370F918AAD67000A5F47F /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370F818AAD67000A5F47F /* Building.m */; };
+		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
+		C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFC18A1597500116A26 /* CoreGraphics.framework */; };
+		C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
+		C8933B0118A1597500116A26 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933B0018A1597500116A26 /* SpriteKit.framework */; };
+		C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B0518A1597500116A26 /* InfoPlist.strings */; };
+		C8933B0918A1597500116A26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0818A1597500116A26 /* main.m */; };
+		C8933B0D18A1597500116A26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0C18A1597500116A26 /* AppDelegate.m */; };
+		C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */; };
+		C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8933B1118A1597500116A26 /* Main_iPad.storyboard */; };
+		C8933B1618A1597500116A26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1518A1597500116A26 /* ViewController.m */; };
+		C8933B1918A1597500116A26 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1818A1597500116A26 /* MyScene.m */; };
+		C8933B1D18A1597500116A26 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8933B1C18A1597500116A26 /* Images.xcassets */; };
+		C8933B2418A1597500116A26 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933B2318A1597500116A26 /* XCTest.framework */; };
+		C8933B2518A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
+		C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
+		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
+		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C8933B2718A1597500116A26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8933AEF18A1597500116A26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8933AF618A1597500116A26;
+			remoteInfo = "Age of Empires Port";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C84CA73118A6B14E0006AD27 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		C84CA73218A6B14E0006AD27 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
+		C84CA73318A6B14E0006AD27 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
+		C84CA73518A6B14E0006AD27 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		C84CA73718A6B14E0006AD27 /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
+		C84CA73818A6B14E0006AD27 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
+		C84CA73918A6B14E0006AD27 /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		C84CA73A18A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
+		C84CA73B18A6B14E0006AD27 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
+		C84CA73C18A6B14E0006AD27 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
+		C84CA73D18A6B14E0006AD27 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		C84CA73E18A6B14E0006AD27 /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
+		C84CA73F18A6B14E0006AD27 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		C84CA74018A6B14E0006AD27 /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
+		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
+		C84CA76018A6CAFD0006AD27 /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
+		C84CA76118A6CB480006AD27 /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
+		C84CA76218A6CB900006AD27 /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
+		C88370DB18AAD63600A5F47F /* building.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = building.atlas; sourceTree = "<group>"; };
+		C88370DC18AAD63600A5F47F /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
+		C88370DD18AAD63600A5F47F /* tiles32.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles32.atlas; sourceTree = "<group>"; };
+		C88370DF18AAD63600A5F47F /* map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.tmx; sourceTree = "<group>"; };
+		C88370E018AAD63600A5F47F /* map32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map32.png; sourceTree = "<group>"; };
+		C88370E118AAD63600A5F47F /* map32.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map32.tmx; sourceTree = "<group>"; };
+		C88370E318AAD63600A5F47F /* SKSpriteNode+SSKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+SSKAnimation.h"; sourceTree = "<group>"; };
+		C88370E418AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
+		C88370E518AAD63600A5F47F /* SSKMultiLineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiLineLabelNode.h; sourceTree = "<group>"; };
+		C88370E618AAD63600A5F47F /* SSKMultiLineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKMultiLineLabelNode.m; sourceTree = "<group>"; };
+		C88370E718AAD63600A5F47F /* SSKMultiplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiplatform.h; sourceTree = "<group>"; };
+		C88370E818AAD63600A5F47F /* SSKStretchableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKStretchableNode.h; sourceTree = "<group>"; };
+		C88370E918AAD63600A5F47F /* SSKStretchableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKStretchableNode.m; sourceTree = "<group>"; };
+		C88370EA18AAD63600A5F47F /* SSKTileableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKTileableNode.h; sourceTree = "<group>"; };
+		C88370EB18AAD63600A5F47F /* SSKTileableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKTileableNode.m; sourceTree = "<group>"; };
+		C88370F718AAD67000A5F47F /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Building.h; path = Model/Building.h; sourceTree = "<group>"; };
+		C88370F818AAD67000A5F47F /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Building.m; path = Model/Building.m; sourceTree = "<group>"; };
+		C8933AF718A1597500116A26 /* AOEPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOEPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8933AFA18A1597500116A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C8933AFC18A1597500116A26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C8933AFE18A1597500116A26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C8933B0018A1597500116A26 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		C8933B0418A1597500116A26 /* AOEPort-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPort-Info.plist"; sourceTree = "<group>"; };
+		C8933B0618A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C8933B0818A1597500116A26 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C8933B0A18A1597500116A26 /* Age of Empires Port-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Age of Empires Port-Prefix.pch"; sourceTree = "<group>"; };
+		C8933B0B18A1597500116A26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C8933B0C18A1597500116A26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C8933B0F18A1597500116A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		C8933B1218A1597500116A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		C8933B1418A1597500116A26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C8933B1518A1597500116A26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C8933B1718A1597500116A26 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
+		C8933B1818A1597500116A26 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		C8933B1C18A1597500116A26 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C8933B2218A1597500116A26 /* AOEPortTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOEPortTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8933B2318A1597500116A26 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPortTests-Info.plist"; sourceTree = "<group>"; };
+		C8933B2D18A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Age_of_Empires_PortTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C8933AF418A1597500116A26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */,
+				C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */,
+				C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */,
+				C8933B0118A1597500116A26 /* SpriteKit.framework in Frameworks */,
+				C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8933B1F18A1597500116A26 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8933B2418A1597500116A26 /* XCTest.framework in Frameworks */,
+				C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */,
+				C8933B2518A1597500116A26 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C84CA73018A6B14E0006AD27 /* JSTileMap */ = {
+			isa = PBXGroup;
+			children = (
+				C84CA73118A6B14E0006AD27 /* JSTileMap.h */,
+				C84CA73218A6B14E0006AD27 /* JSTileMap.m */,
+				C84CA73318A6B14E0006AD27 /* LFCGzipUtility.h */,
+				C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */,
+				C84CA73518A6B14E0006AD27 /* LICENSE.txt */,
+			);
+			name = JSTileMap;
+			path = "../../../../../FourthYearProj/Tutorials/iOS Games By Tutorials/Chapter 15 - Imported Tile Maps/JSTileMap";
+			sourceTree = "<group>";
+		};
+		C84CA73618A6B14E0006AD27 /* SKTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				C84CA73718A6B14E0006AD27 /* SKAction+SKTExtras.h */,
+				C84CA73818A6B14E0006AD27 /* SKAction+SKTExtras.m */,
+				C84CA73918A6B14E0006AD27 /* SKEmitterNode+SKTExtras.h */,
+				C84CA73A18A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m */,
+				C84CA73B18A6B14E0006AD27 /* SKNode+SKTExtras.h */,
+				C84CA73C18A6B14E0006AD27 /* SKNode+SKTExtras.m */,
+				C84CA73D18A6B14E0006AD27 /* SKTAudio.h */,
+				C84CA73E18A6B14E0006AD27 /* SKTAudio.m */,
+				C84CA73F18A6B14E0006AD27 /* SKTUtils.h */,
+				C84CA74018A6B14E0006AD27 /* SKTUtils.mm */,
+			);
+			name = SKTUtils;
+			path = "../../../../../FourthYearProj/Tutorials/iOS Games By Tutorials/Chapter 15 - Imported Tile Maps/PestControl-Starter/PestControl/SKTUtils";
+			sourceTree = "<group>";
+		};
+		C88370D818AAD62600A5F47F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C88370D918AAD63600A5F47F /* Art */,
+				C88370DE18AAD63600A5F47F /* Levels */,
+				C88370E218AAD63600A5F47F /* SSKExtensionCode */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C88370D918AAD63600A5F47F /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				C88370DA18AAD63600A5F47F /* Images */,
+			);
+			name = Art;
+			path = Resources/Art;
+			sourceTree = "<group>";
+		};
+		C88370DA18AAD63600A5F47F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C88370DB18AAD63600A5F47F /* building.atlas */,
+				C88370DC18AAD63600A5F47F /* tiles.atlas */,
+				C88370DD18AAD63600A5F47F /* tiles32.atlas */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C88370DE18AAD63600A5F47F /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				C88370DF18AAD63600A5F47F /* map.tmx */,
+				C88370E018AAD63600A5F47F /* map32.png */,
+				C88370E118AAD63600A5F47F /* map32.tmx */,
+			);
+			name = Levels;
+			path = Resources/Levels;
+			sourceTree = "<group>";
+		};
+		C88370E218AAD63600A5F47F /* SSKExtensionCode */ = {
+			isa = PBXGroup;
+			children = (
+				C88370E318AAD63600A5F47F /* SKSpriteNode+SSKAnimation.h */,
+				C88370E418AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m */,
+				C88370E518AAD63600A5F47F /* SSKMultiLineLabelNode.h */,
+				C88370E618AAD63600A5F47F /* SSKMultiLineLabelNode.m */,
+				C88370E718AAD63600A5F47F /* SSKMultiplatform.h */,
+				C88370E818AAD63600A5F47F /* SSKStretchableNode.h */,
+				C88370E918AAD63600A5F47F /* SSKStretchableNode.m */,
+				C88370EA18AAD63600A5F47F /* SSKTileableNode.h */,
+				C88370EB18AAD63600A5F47F /* SSKTileableNode.m */,
+			);
+			name = SSKExtensionCode;
+			path = Resources/SSKExtensionCode;
+			sourceTree = "<group>";
+		};
+		C88370F618AAD66600A5F47F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C88370F718AAD67000A5F47F /* Building.h */,
+				C88370F818AAD67000A5F47F /* Building.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C8933AEE18A1597500116A26 = {
+			isa = PBXGroup;
+			children = (
+				C8933B0218A1597500116A26 /* AOEPort */,
+				C8933B2918A1597500116A26 /* AOEPortTests */,
+				C8933AF918A1597500116A26 /* Frameworks */,
+				C8933AF818A1597500116A26 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C8933AF818A1597500116A26 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8933AF718A1597500116A26 /* AOEPort.app */,
+				C8933B2218A1597500116A26 /* AOEPortTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C8933AF918A1597500116A26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C84CA74918A6B7940006AD27 /* libz.dylib */,
+				C8933AFA18A1597500116A26 /* Foundation.framework */,
+				C8933AFC18A1597500116A26 /* CoreGraphics.framework */,
+				C8933AFE18A1597500116A26 /* UIKit.framework */,
+				C8933B0018A1597500116A26 /* SpriteKit.framework */,
+				C8933B2318A1597500116A26 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C8933B0218A1597500116A26 /* AOEPort */ = {
+			isa = PBXGroup;
+			children = (
+				C88370D818AAD62600A5F47F /* Resources */,
+				C88370F618AAD66600A5F47F /* Model */,
+				C8933B0B18A1597500116A26 /* AppDelegate.h */,
+				C8933B0C18A1597500116A26 /* AppDelegate.m */,
+				C8933B1118A1597500116A26 /* Main_iPad.storyboard */,
+				C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */,
+				C8933B1718A1597500116A26 /* MyScene.h */,
+				C8933B1818A1597500116A26 /* MyScene.m */,
+				C84CA76018A6CAFD0006AD27 /* TileMapLayer.h */,
+				C84CA76218A6CB900006AD27 /* TileMapLayer.m */,
+				C84CA76118A6CB480006AD27 /* TmxTileMapLayer.h */,
+				C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */,
+				C8933B1418A1597500116A26 /* ViewController.h */,
+				C8933B1518A1597500116A26 /* ViewController.m */,
+				C8933B1C18A1597500116A26 /* Images.xcassets */,
+				C84CA73018A6B14E0006AD27 /* JSTileMap */,
+				C8933B0318A1597500116A26 /* Supporting Files */,
+				C84CA73618A6B14E0006AD27 /* SKTUtils */,
+			);
+			path = AOEPort;
+			sourceTree = "<group>";
+		};
+		C8933B0318A1597500116A26 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8933B0418A1597500116A26 /* AOEPort-Info.plist */,
+				C8933B0518A1597500116A26 /* InfoPlist.strings */,
+				C8933B0818A1597500116A26 /* main.m */,
+				C8933B0A18A1597500116A26 /* Age of Empires Port-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C8933B2918A1597500116A26 /* AOEPortTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */,
+				C8933B2A18A1597500116A26 /* Supporting Files */,
+			);
+			path = AOEPortTests;
+			sourceTree = "<group>";
+		};
+		C8933B2A18A1597500116A26 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */,
+				C8933B2C18A1597500116A26 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C8933AF618A1597500116A26 /* AOEPort */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8933B3318A1597500116A26 /* Build configuration list for PBXNativeTarget "AOEPort" */;
+			buildPhases = (
+				C8933AF318A1597500116A26 /* Sources */,
+				C8933AF418A1597500116A26 /* Frameworks */,
+				C8933AF518A1597500116A26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AOEPort;
+			productName = "Age of Empires Port";
+			productReference = C8933AF718A1597500116A26 /* AOEPort.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C8933B2118A1597500116A26 /* AOEPortTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8933B3618A1597500116A26 /* Build configuration list for PBXNativeTarget "AOEPortTests" */;
+			buildPhases = (
+				C8933B1E18A1597500116A26 /* Sources */,
+				C8933B1F18A1597500116A26 /* Frameworks */,
+				C8933B2018A1597500116A26 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8933B2818A1597500116A26 /* PBXTargetDependency */,
+			);
+			name = AOEPortTests;
+			productName = "Age of Empires PortTests";
+			productReference = C8933B2218A1597500116A26 /* AOEPortTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8933AEF18A1597500116A26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Dan Malone";
+				TargetAttributes = {
+					C8933B2118A1597500116A26 = {
+						TestTargetID = C8933AF618A1597500116A26;
+					};
+				};
+			};
+			buildConfigurationList = C8933AF218A1597500116A26 /* Build configuration list for PBXProject "AOEPort" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C8933AEE18A1597500116A26;
+			productRefGroup = C8933AF818A1597500116A26 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C8933AF618A1597500116A26 /* AOEPort */,
+				C8933B2118A1597500116A26 /* AOEPortTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C8933AF518A1597500116A26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */,
+				C8933B1D18A1597500116A26 /* Images.xcassets in Resources */,
+				C88370EE18AAD63600A5F47F /* tiles32.atlas in Resources */,
+				C88370F018AAD63600A5F47F /* map32.png in Resources */,
+				C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */,
+				C88370EF18AAD63600A5F47F /* map.tmx in Resources */,
+				C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */,
+				C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */,
+				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
+				C88370EC18AAD63600A5F47F /* building.atlas in Resources */,
+				C88370F118AAD63600A5F47F /* map32.tmx in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8933B2018A1597500116A26 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C8933AF318A1597500116A26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C84CA74718A6B14E0006AD27 /* SKTAudio.m in Sources */,
+				C8933B1918A1597500116A26 /* MyScene.m in Sources */,
+				C8933B1618A1597500116A26 /* ViewController.m in Sources */,
+				C84CA76318A6CB900006AD27 /* TileMapLayer.m in Sources */,
+				C88370F518AAD63600A5F47F /* SSKTileableNode.m in Sources */,
+				C84CA74418A6B14E0006AD27 /* SKAction+SKTExtras.m in Sources */,
+				C88370F218AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m in Sources */,
+				C84CA74818A6B14E0006AD27 /* SKTUtils.mm in Sources */,
+				C88370F418AAD63600A5F47F /* SSKStretchableNode.m in Sources */,
+				C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */,
+				C8933B0D18A1597500116A26 /* AppDelegate.m in Sources */,
+				C88370F918AAD67000A5F47F /* Building.m in Sources */,
+				C8933B0918A1597500116A26 /* main.m in Sources */,
+				C84CA74618A6B14E0006AD27 /* SKNode+SKTExtras.m in Sources */,
+				C84CA75F18A6C97B0006AD27 /* TmxTileMapLayer.m in Sources */,
+				C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */,
+				C84CA74518A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m in Sources */,
+				C88370F318AAD63600A5F47F /* SSKMultiLineLabelNode.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8933B1E18A1597500116A26 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C8933B2818A1597500116A26 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8933AF618A1597500116A26 /* AOEPort */;
+			targetProxy = C8933B2718A1597500116A26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C8933B0518A1597500116A26 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8933B0618A1597500116A26 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8933B0F18A1597500116A26 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C8933B1118A1597500116A26 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8933B1218A1597500116A26 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C8933B2C18A1597500116A26 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8933B2D18A1597500116A26 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C8933B3118A1597500116A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Hoffmann (DY7RL3XN43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Hoffmann (DY7RL3XN43)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C8933B3218A1597500116A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Maximilian Hoffmann (DY7RL3XN43)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Maximilian Hoffmann (DY7RL3XN43)";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C8933B3418A1597500116A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOEPort/AOEPort-Prefix.pch";
+				INFOPLIST_FILE = "AOEPort/AOEPort-Info.plist";
+				PRODUCT_NAME = AOEPort;
+				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C8933B3518A1597500116A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOEPort/AOEPort-Prefix.pch";
+				INFOPLIST_FILE = "AOEPort/AOEPort-Info.plist";
+				PRODUCT_NAME = AOEPort;
+				PROVISIONING_PROFILE = "";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C8933B3718A1597500116A26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AOEPort.app/AOEPort";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOEPort/AOEPort-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AOEPortTests/AOEPortTests-Info.plist";
+				PRODUCT_NAME = AOEPortTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C8933B3818A1597500116A26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AOEPort.app/AOEPort";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AOEPort/AOEPort-Prefix.pch";
+				INFOPLIST_FILE = "AOEPortTests/AOEPortTests-Info.plist";
+				PRODUCT_NAME = AOEPortTests;
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C8933AF218A1597500116A26 /* Build configuration list for PBXProject "AOEPort" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8933B3118A1597500116A26 /* Debug */,
+				C8933B3218A1597500116A26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8933B3318A1597500116A26 /* Build configuration list for PBXNativeTarget "AOEPort" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8933B3418A1597500116A26 /* Debug */,
+				C8933B3518A1597500116A26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8933B3618A1597500116A26 /* Build configuration list for PBXNativeTarget "AOEPortTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8933B3718A1597500116A26 /* Debug */,
+				C8933B3818A1597500116A26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8933AEF18A1597500116A26 /* Project object */;
+}
