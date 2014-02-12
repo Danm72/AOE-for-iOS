@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="buildings256.1" tilewidth="256" tileheight="256">
+  <image source="buildings256.atlasc/buildings256.1.png" width="1536" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="Wall" value="1"/>
+    <property name="impassable" value="true"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7" name="tiles" tilewidth="32" tileheight="32">
+  <image source="tiles32/sprites.png" width="128" height="256"/>
+  <tile id="1">
+   <properties>
+    <property name="impassable" value="true"/>
+    <property name="snow" value="1"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tiles" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt2cEJxDAMAEE/r4Hg/ju9Ag4CIYSsffOYv9D+pDnGmJs5AjOgR5UeLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06HHN54bde9zZzZM7PZt15x6r0WM9erTo0aJHix4terTo0aJHix4terTo0aJHix6/nrrx7t7jjXu7/8d/0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvTo0KJFjxY9WvRo0aNFjx5NWvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNl5R5f9n98CQ==
+  </data>
+ </layer>
+ <objectgroup name="Buildings" width="100" height="100">
+  <object name="Wall1" type="Wall" gid="1" x="295" y="420"/>
+  <object name="Wall2" type="Wall" gid="1" x="223" y="2962"/>
+  <object name="Wall3" type="Wall" gid="1" x="2454" y="2985"/>
+  <object name="Wall4" type="Wall" gid="1" x="2569" y="469"/>
+  <object name="Church1" type="Building" gid="5" x="2134" y="1843"/>
+  <object name="TownCentre" type="Building" gid="2" x="510" y="2174"/>
+  <object name="TownCentre2" type="Building" gid="2" x="1662" y="1662"/>
+ </objectgroup>
+</map>

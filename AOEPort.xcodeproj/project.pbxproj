@@ -18,17 +18,13 @@
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
 		C84CA75F18A6C97B0006AD27 /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */; };
 		C84CA76318A6CB900006AD27 /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA76218A6CB900006AD27 /* TileMapLayer.m */; };
-		C88370EC18AAD63600A5F47F /* building.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DB18AAD63600A5F47F /* building.atlas */; };
 		C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DC18AAD63600A5F47F /* tiles.atlas */; };
-		C88370EE18AAD63600A5F47F /* tiles32.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DD18AAD63600A5F47F /* tiles32.atlas */; };
-		C88370EF18AAD63600A5F47F /* map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C88370DF18AAD63600A5F47F /* map.tmx */; };
-		C88370F018AAD63600A5F47F /* map32.png in Resources */ = {isa = PBXBuildFile; fileRef = C88370E018AAD63600A5F47F /* map32.png */; };
-		C88370F118AAD63600A5F47F /* map32.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C88370E118AAD63600A5F47F /* map32.tmx */; };
 		C88370F218AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E418AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m */; };
 		C88370F318AAD63600A5F47F /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E618AAD63600A5F47F /* SSKMultiLineLabelNode.m */; };
 		C88370F418AAD63600A5F47F /* SSKStretchableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370E918AAD63600A5F47F /* SSKStretchableNode.m */; };
 		C88370F518AAD63600A5F47F /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370EB18AAD63600A5F47F /* SSKTileableNode.m */; };
 		C88370F918AAD67000A5F47F /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = C88370F818AAD67000A5F47F /* Building.m */; };
+		C88370FB18AAF5CB00A5F47F /* buildings.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370FA18AAF5CB00A5F47F /* buildings.atlas */; };
 		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
 		C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFC18A1597500116A26 /* CoreGraphics.framework */; };
 		C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
@@ -46,6 +42,10 @@
 		C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
 		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
 		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
+		C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */; };
+		C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */; };
+		C8DEDC6E18ABB65700E3548B /* buildings256.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */; };
+		C8DEDC7018ABB7D100E3548B /* tiles32 in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6F18ABB7D100E3548B /* tiles32 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,12 +79,7 @@
 		C84CA76018A6CAFD0006AD27 /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
 		C84CA76118A6CB480006AD27 /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
 		C84CA76218A6CB900006AD27 /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
-		C88370DB18AAD63600A5F47F /* building.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = building.atlas; sourceTree = "<group>"; };
 		C88370DC18AAD63600A5F47F /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
-		C88370DD18AAD63600A5F47F /* tiles32.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles32.atlas; sourceTree = "<group>"; };
-		C88370DF18AAD63600A5F47F /* map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.tmx; sourceTree = "<group>"; };
-		C88370E018AAD63600A5F47F /* map32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map32.png; sourceTree = "<group>"; };
-		C88370E118AAD63600A5F47F /* map32.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map32.tmx; sourceTree = "<group>"; };
 		C88370E318AAD63600A5F47F /* SKSpriteNode+SSKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+SSKAnimation.h"; sourceTree = "<group>"; };
 		C88370E418AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
 		C88370E518AAD63600A5F47F /* SSKMultiLineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiLineLabelNode.h; sourceTree = "<group>"; };
@@ -96,6 +91,7 @@
 		C88370EB18AAD63600A5F47F /* SSKTileableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKTileableNode.m; sourceTree = "<group>"; };
 		C88370F718AAD67000A5F47F /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Building.h; path = Model/Building.h; sourceTree = "<group>"; };
 		C88370F818AAD67000A5F47F /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Building.m; path = Model/Building.m; sourceTree = "<group>"; };
+		C88370FA18AAF5CB00A5F47F /* buildings.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buildings.atlas; sourceTree = "<group>"; };
 		C8933AF718A1597500116A26 /* AOEPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOEPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8933AFA18A1597500116A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8933AFC18A1597500116A26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +115,10 @@
 		C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPortTests-Info.plist"; sourceTree = "<group>"; };
 		C8933B2D18A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Age_of_Empires_PortTests.m; sourceTree = "<group>"; };
+		C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
+		C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tile32_256build.tmx; sourceTree = "<group>"; };
+		C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buildings256.atlasc; sourceTree = "<group>"; };
+		C8DEDC6F18ABB7D100E3548B /* tiles32 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tiles32; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,9 +200,10 @@
 		C88370DA18AAD63600A5F47F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C88370DB18AAD63600A5F47F /* building.atlas */,
+				C8DEDC6F18ABB7D100E3548B /* tiles32 */,
+				C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */,
+				C88370FA18AAF5CB00A5F47F /* buildings.atlas */,
 				C88370DC18AAD63600A5F47F /* tiles.atlas */,
-				C88370DD18AAD63600A5F47F /* tiles32.atlas */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -210,9 +211,8 @@
 		C88370DE18AAD63600A5F47F /* Levels */ = {
 			isa = PBXGroup;
 			children = (
-				C88370DF18AAD63600A5F47F /* map.tmx */,
-				C88370E018AAD63600A5F47F /* map32.png */,
-				C88370E118AAD63600A5F47F /* map32.tmx */,
+				C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */,
+				C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */,
 			);
 			name = Levels;
 			path = Resources/Levels;
@@ -408,15 +408,15 @@
 			files = (
 				C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */,
 				C8933B1D18A1597500116A26 /* Images.xcassets in Resources */,
-				C88370EE18AAD63600A5F47F /* tiles32.atlas in Resources */,
-				C88370F018AAD63600A5F47F /* map32.png in Resources */,
+				C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */,
+				C8DEDC7018ABB7D100E3548B /* tiles32 in Resources */,
 				C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */,
-				C88370EF18AAD63600A5F47F /* map.tmx in Resources */,
+				C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */,
 				C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */,
+				C88370FB18AAF5CB00A5F47F /* buildings.atlas in Resources */,
 				C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
-				C88370EC18AAD63600A5F47F /* building.atlas in Resources */,
-				C88370F118AAD63600A5F47F /* map32.tmx in Resources */,
+				C8DEDC6E18ABB65700E3548B /* buildings256.atlasc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

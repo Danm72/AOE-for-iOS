@@ -48,30 +48,33 @@
 - (void)createNodesFromLayer:(TMXLayer *)layer
 {
   SKTextureAtlas *atlas =
-    [SKTextureAtlas atlasNamed:@"tiles32"];
+    [SKTextureAtlas atlasNamed:@"tiles"];
   
   JSTileMap *map = layer.map;
     
     
   //1
-//  for (int w = 0 ; w < self.gridSize.width; ++w) {
-//    for(int h = 0; h < self.gridSize.height; ++h) {
-    for (int w = 0 ; w < 100; ++w) {
-        for(int h = 0; h < 100; ++h) {
-
+  for (int w = 0 ; w < self.gridSize.width; ++w) {
+    for(int h = 0; h < self.gridSize.height; ++h) {
 
       CGPoint coord = CGPointMake(w, h);
       //2
       NSInteger tileGid = 
         [layer.layerInfo tileGidAtCoord:coord];
+            
+           // NSLog(@"TileGID is: %d", tileGid);
+
+        SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:[atlas textureNamed:@"dirt1"] size:CGSizeMake(32, 32)];
+        [self addChild:tile];
+        
       if(!tileGid)
         continue;
       //3
-//        if([map propertiesForGid:tileGid][@"g_fm2_00_COLOR"]) {
-//            SKSpriteNode *tile = [layer tileAtCoord:coord];
-//            [self addChild:tile];
-//
-//        }
+        if([map propertiesForGid:tileGid][@"dirt1"]) {
+            SKSpriteNode *tile = [layer tileAtCoord:coord];
+            [self addChild:tile];
+
+        }
         
     
         

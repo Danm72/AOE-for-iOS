@@ -8,6 +8,9 @@
 
 #import "MyScene.h"
 #import "TileMapLayer.h"
+#import "SSKTileableNode.h"
+#import "SSKStretchableNode.h"
+
 //#import "Player.h"
 //#import "Bug.h"
 //#import "Breakable.h"
@@ -47,8 +50,6 @@
     CGPoint f = [touch locationInNode:_worldNode];
     NSLog(@"Location of touch X: %f, Y : %f", f.x, f.y);
 
-
-
 }
 //
 
@@ -58,16 +59,21 @@
     
     @try{
         _bgLayer = [self createScenery];
+//        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"tile32_256build"];
+//        CGRect screenRect = [[UIScreen mainScreen] bounds];
+//        CGFloat screenWidth = screenRect.size.width;
+//        CGFloat screenHeight = screenRect.size.height;
+//        
+//        background.size = CGSizeMake(screenHeight,screenWidth);
         
-        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"map32"];
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        CGFloat screenHeight = screenRect.size.height;
-        
-        background.size = CGSizeMake(screenHeight,screenWidth);
-        
-        [self addChild:background];
+      //  UIEdgeInsets insets = { .left = -screenWidth, .right = screenWidth, .top = -screenHeight, .bottom = -1000 };
+//        
+//        SSKStretchableNode *background = [SSKStretchableNode stretchableNodeWithSize:CGSizeMake(screenHeight,screenWidth)
+//                                                                          imageNamed:@"map32" capInsets:insets];
+//        
+       // [self addChild:background];
 
+        
     }
     @catch (NSException *e) {
             NSLog(@"Exception: %@", e);
@@ -86,6 +92,7 @@
     _worldNode.position =
     CGPointMake(-_bgLayer.layerSize.width / 2,
                 -_bgLayer.layerSize.height / 2);
+    
     
     //self.physicsWorld.gravity = CGVectorMake(0, 0);
     
@@ -143,9 +150,9 @@
 {
     //  return [TileMapLayerLoader tileMapLayerFromFileNamed:
     //          @"level-1-bg.txt"];
-    _tileMap = [JSTileMap mapNamed:@"map32.tmx"];
+    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
     return [[TmxTileMapLayer alloc]
-            initWithTmxLayer:[_tileMap layerNamed:@"Background"]];
+            initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
 }
 
 //- (void)didSimulatePhysics
