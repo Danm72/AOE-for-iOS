@@ -23,7 +23,7 @@
 @implementation MyScene {
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
-//    Player *_player;
+    //    Player *_player;
     TileMapLayer *_bugLayer;
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
@@ -31,25 +31,24 @@
 
 - (id)initWithSize:(CGSize)size
 {
-
+    
     if (self = [super initWithSize:size]) {
         [self createWorld];
         [self createCharacters];
-//        [self centerViewOn:_player.position];
-        //
-    }
+        //        [self centerViewOn:_player.position];
+            }
     return self;
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
-   // [_player moveToward:[touch locationInNode:_worldNode]];
+    // [_player moveToward:[touch locationInNode:_worldNode]];
     [self centerViewOn:[touch locationInNode:_worldNode]];
     
     CGPoint f = [touch locationInNode:_worldNode];
     NSLog(@"Location of touch X: %f, Y : %f", f.x, f.y);
-
+    
 }
 //
 
@@ -59,24 +58,24 @@
     
     @try{
         _bgLayer = [self createScenery];
-//        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"tile32_256build"];
-//        CGRect screenRect = [[UIScreen mainScreen] bounds];
-//        CGFloat screenWidth = screenRect.size.width;
-//        CGFloat screenHeight = screenRect.size.height;
-//        
-//        background.size = CGSizeMake(screenHeight,screenWidth);
+        //        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"tile32_256build"];
+        //        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        //        CGFloat screenWidth = screenRect.size.width;
+        //        CGFloat screenHeight = screenRect.size.height;
+        //
+        //        background.size = CGSizeMake(screenHeight,screenWidth);
         
-      //  UIEdgeInsets insets = { .left = -screenWidth, .right = screenWidth, .top = -screenHeight, .bottom = -1000 };
-//        
-//        SSKStretchableNode *background = [SSKStretchableNode stretchableNodeWithSize:CGSizeMake(screenHeight,screenWidth)
-//                                                                          imageNamed:@"map32" capInsets:insets];
-//        
-       // [self addChild:background];
-
+        //  UIEdgeInsets insets = { .left = -screenWidth, .right = screenWidth, .top = -screenHeight, .bottom = -1000 };
+        //
+        //        SSKStretchableNode *background = [SSKStretchableNode stretchableNodeWithSize:CGSizeMake(screenHeight,screenWidth)
+        //                                                                          imageNamed:@"map32" capInsets:insets];
+        //
+        // [self addChild:background];
+        
         
     }
     @catch (NSException *e) {
-            NSLog(@"Exception: %@", e);
+        NSLog(@"Exception: %@", e);
     }
     
     _worldNode = [SKNode node];
@@ -86,7 +85,7 @@
     [_worldNode addChild:_bgLayer];
     [self addChild:_worldNode];
     
-
+    
     
     self.anchorPoint = CGPointMake(0.5, 0.5);
     _worldNode.position =
@@ -96,26 +95,26 @@
     
     //self.physicsWorld.gravity = CGVectorMake(0, 0);
     
-//    SKNode *bounds = [SKNode node];
-//    bounds.physicsBody =
-//    [SKPhysicsBody bodyWithEdgeLoopFromRect:
-//     CGRectMake(0, 0,
-//                _bgLayer.layerSize.width,
-//                _bgLayer.layerSize.height)];
-//    bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
-//    bounds.physicsBody.friction = 0;
-//    [_worldNode addChild:bounds];
-//    
-//    self.physicsWorld.contactDelegate = self;
+    //    SKNode *bounds = [SKNode node];
+    //    bounds.physicsBody =
+    //    [SKPhysicsBody bodyWithEdgeLoopFromRect:
+    //     CGRectMake(0, 0,
+    //                _bgLayer.layerSize.width,
+    //                _bgLayer.layerSize.height)];
+    //    bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
+    //    bounds.physicsBody.friction = 0;
+    //    [_worldNode addChild:bounds];
+    //
+    //    self.physicsWorld.contactDelegate = self;
     
-//    _breakableLayer = [self createBreakables];
-//    if (_breakableLayer) {
-//        [_worldNode addChild:_breakableLayer];
-//    }
+    //    _breakableLayer = [self createBreakables];
+    //    if (_breakableLayer) {
+    //        [_worldNode addChild:_breakableLayer];
+    //    }
     
-//    if (_tileMap) {
-//        [self createCollisionAreas];
-//    }
+    //    if (_tileMap) {
+    //        [self createCollisionAreas];
+    //    }
 }
 
 - (void)centerViewOn:(CGPoint)centerOn
@@ -125,25 +124,25 @@
 
 - (void)createCharacters
 {
-//    //  _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
-//    //                 @"level-2-bugs.txt"];
+    //    //  _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
+    //    //                 @"level-2-bugs.txt"];
     _bugLayer = [[TmxTileMapLayer alloc]
                  initWithTmxObjectGroup:[_tileMap
-                                         groupNamed:@"buildings"]
+                                         groupNamed:@"Buildings"]
                  tileSize:_tileMap.tileSize
                  gridSize:_bgLayer.gridSize];
-//
+    //
     [_worldNode addChild:_bugLayer];
-//    
-//    _player = (Player *)[_bugLayer childNodeWithName:@"player"];
-//    [_player removeFromParent];
-//    [_worldNode addChild:_player];
-//    
-//    [_bugLayer enumerateChildNodesWithName:@"bug"
-//                                usingBlock:
-//     ^(SKNode *node, BOOL *stop){
-//         [(Bug*)node start];
-//     }];
+    //
+    //    _player = (Player *)[_bugLayer childNodeWithName:@"player"];
+    //    [_player removeFromParent];
+    //    [_worldNode addChild:_player];
+    //
+    //    [_bugLayer enumerateChildNodesWithName:@"bug"
+    //                                usingBlock:
+    //     ^(SKNode *node, BOOL *stop){
+    //         [(Bug*)node start];
+    //     }];
 }
 
 - (TileMapLayer *)createScenery
@@ -158,11 +157,11 @@
 //- (void)didSimulatePhysics
 //{
 //    CGPoint target = [self pointToCenterViewOn:_player.position];
-//    
+//
 //    CGPoint newPosition = _worldNode.position;
 //    newPosition.x += (target.x - _worldNode.position.x) * 0.1f;
 //    newPosition.y += (target.y - _worldNode.position.y) * 0.1f;
-//    
+//
 //    _worldNode.position = newPosition;
 //}
 //
@@ -184,7 +183,7 @@
 //    SKPhysicsBody *other =
 //    (contact.bodyA.categoryBitMask == PCPlayerCategory ?
 //     contact.bodyB : contact.bodyA);
-//    
+//
 //    if (other.categoryBitMask == PCBugCategory) {
 //        [other.node removeFromParent];
 //    }
@@ -218,7 +217,7 @@
 //    SKPhysicsBody *other =
 //    (contact.bodyA.categoryBitMask == PCPlayerCategory ?
 //     contact.bodyB : contact.bodyA);
-//    
+//
 //    // 2
 //    if (other.categoryBitMask &
 //        _player.physicsBody.collisionBitMask) {
@@ -244,23 +243,23 @@
 //{
 //    TMXObjectGroup *group =
 //    [_tileMap groupNamed:@"CollisionAreas"];
-//    
+//
 //    NSArray *waterObjects = [group objectsNamed:@"water"];
 //    for (NSDictionary *waterObj in waterObjects) {
 //        CGFloat x = [waterObj[@"x"] floatValue];
 //        CGFloat y = [waterObj[@"y"] floatValue];
 //        CGFloat w = [waterObj[@"width"] floatValue];
 //        CGFloat h = [waterObj[@"height"] floatValue];
-//        
+//
 //        SKSpriteNode* water =
 //        [SKSpriteNode spriteNodeWithColor:[SKColor redColor]
 //                                     size:CGSizeMake(w, h)];
 //        water.name = @"water";
 //        water.position = CGPointMake(x + w/2, y + h/2);
-//        
+//
 //        water.physicsBody =
 //        [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(w, h)];
-//        
+//
 //        water.physicsBody.categoryBitMask =  PCWaterCategory;
 //        water.physicsBody.dynamic = NO;
 //        water.hidden = YES;

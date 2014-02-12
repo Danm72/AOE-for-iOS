@@ -90,12 +90,12 @@
 - (instancetype)init
 {
     SKTextureAtlas *atlas =
-    [SKTextureAtlas atlasNamed: @"building"];
-    SKTexture *texture = [atlas textureNamed:@"sprites"];
+    [SKTextureAtlas atlasNamed: @"buildings"];
+    SKTexture *texture = [atlas textureNamed:@"wall"];
     texture.filteringMode = SKTextureFilteringNearest;
 
     if (self = [super initWithTexture:texture]) {
-        self.name = @"bug";
+        self.name = @"building";
         CGFloat minDiam = MIN(self.size.width, self.size.height);
         minDiam = MAX(minDiam-8, 8);
         self.physicsBody =
