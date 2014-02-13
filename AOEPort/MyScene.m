@@ -7,7 +7,7 @@
 //
 
 #import "MyScene.h"
-#import "TileMapLayer.h"
+#import "Layers/TileMapLayer.h"
 #import "SSKTileableNode.h"
 #import "SSKStretchableNode.h"
 
@@ -15,16 +15,22 @@
 //#import "Bug.h"
 //#import "Breakable.h"
 //#import "FireBug.h"
-#import "TmxTileMapLayer.h"
+#import "Layers/TmxTileMapLayer.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
+
+@property (nonatomic) NSArray *hudAvatars;              // keep track of the various nodes for the HUD
+@property (nonatomic) NSArray *hudLabels;               // - there are always 'kNumPlayers' instances in each array
+@property (nonatomic) NSArray *hudScores;
+@property (nonatomic) NSArray *hudLifeHeartArrays;      // an array of NSArrays of life hearts
+
 @end
 
 @implementation MyScene {
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
     //    Player *_player;
-    TileMapLayer *_bugLayer;
+    TileMapLayer *_buildingLayer;
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
 }
@@ -46,12 +52,50 @@
     // [_player moveToward:[touch locationInNode:_worldNode]];
     [self centerViewOn:[touch locationInNode:_worldNode]];
     
-    CGPoint f = [touch locationInNode:_worldNode];
-    NSLog(@"Location of touch X: %f, Y : %f", f.x, f.y);
+    CGPoint positionInScene = [touch locationInNode:_worldNode];
+    NSLog(@"Location of touch X: %f, Y : %f", positionInScene.x, positionInScene.y);
+    
+    [self selectNodeForTouch:positionInScene];
+
     
 }
-//
 
+
+- (void)selectNodeForTouch:(CGPoint)touchLocation {
+    //1
+//    [_buildingLayer enumerateChildNodesWithName:@"building"
+//                                     usingBlock:
+//     ^(SKNode *node, BOOL *stop){
+//         //[(Building*)node start];
+//         NSLog(@"Exception: %@", node.name);
+//        SKSpriteNode *touchedNode =[ _buildingLayer nodeAtPoint:touchLocation];
+//         
+//     }];
+    SKSpriteNode *touchedNode =(SKSpriteNode *)[ _buildingLayer nodeAtPoint:touchLocation];
+
+    
+    //SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:touchLocation];
+    
+    //2
+	if(![_selectedNode isEqual:touchedNode]) {
+		[_selectedNode removeAllActions];
+		[_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
+        
+		_selectedNode = touchedNode;
+		//3
+		if([[touchedNode name] isEqualToString:kAnimalNodeName]) {
+			SKAction *sequence = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
+													  [SKAction rotateByAngle:0.0 duration:0.1],
+													  [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
+			[_selectedNode runAction:[SKAction repeatActionForever:sequence]];
+		}
+	}
+    
+}
+
+float degToRad(float degree) {
+	return degree / 180.0f * M_PI;
+}
 
 - (void)createWorld
 {
@@ -126,13 +170,13 @@
 {
     //    //  _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
     //    //                 @"level-2-bugs.txt"];
-    _bugLayer = [[TmxTileMapLayer alloc]
+    _buildingLayer = [[TmxTileMapLayer alloc]
                  initWithTmxObjectGroup:[_tileMap
                                          groupNamed:@"Buildings"]
                  tileSize:_tileMap.tileSize
                  gridSize:_bgLayer.gridSize];
     //
-    [_worldNode addChild:_bugLayer];
+    [_worldNode addChild:_buildingLayer];
     //
     //    _player = (Player *)[_bugLayer childNodeWithName:@"player"];
     //    [_player removeFromParent];
@@ -143,6 +187,14 @@
     //     ^(SKNode *node, BOOL *stop){
     //         [(Bug*)node start];
     //     }];
+    
+//        [_buildingLayer enumerateChildNodesWithName:@"building"
+//                                    usingBlock:
+//         ^(SKNode *node, BOOL *stop){
+//             [(Building*)node];
+//             NSLog(@"Building: %@", node.);
+//
+//         }];
 }
 
 - (TileMapLayer *)createScenery
@@ -266,6 +318,121 @@
 //        water.physicsBody.friction = 0;
 //        
 //        [_bgLayer addChild:water];
+//    }
+//}
+
++ (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)handler {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        // Load the shared assets in the background.
+        [self loadSceneAssets];
+        
+        if (!handler) {
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Call the completion handler back on the main queue.
+            handler();
+        });
+    });
+}
+
++(void)loadSceneAssets{
+    //[self createWorld];
+    //[self createCharacters];
+}
+
+
+- (void)buildHUD {
+    NSString *iconNames[] = { @"iconWarrior_blue", @"iconWarrior_green", @"iconWarrior_pink", @"iconWarrior_red" };
+    NSArray *colors = @[ [SKColor greenColor], [SKColor blueColor], [SKColor yellowColor], [SKColor redColor] ];
+    CGFloat hudX = 30;
+    CGFloat hudY = self.frame.size.height - 30;
+    CGFloat hudD = self.frame.size.width / kNumPlayers;
+    
+    _hudAvatars = [NSMutableArray arrayWithCapacity:kNumPlayers];
+    _hudLabels = [NSMutableArray arrayWithCapacity:kNumPlayers];
+    _hudScores = [NSMutableArray arrayWithCapacity:kNumPlayers];
+    _hudLifeHeartArrays = [NSMutableArray arrayWithCapacity:kNumPlayers];
+    SKNode *hud = [[SKNode alloc] init];
+    
+    for (int i = 0; i < kNumPlayers; i++) {
+        SKSpriteNode *avatar = [SKSpriteNode spriteNodeWithImageNamed:iconNames[i]];
+        avatar.scale = 0.5;
+        avatar.alpha = 0.5;
+        avatar.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 0.5), self.frame.size.height - avatar.size.height * 0.5 - 8 );
+        [(NSMutableArray *)_hudAvatars addObject:avatar];
+        [hud addChild:avatar];
+        
+        SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Copperplate"];
+        label.text = @"NO PLAYER";
+        label.fontColor = colors[i];
+        label.fontSize = 16;
+        label.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        label.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 1.0), hudY + 10 );
+        [(NSMutableArray *)_hudLabels addObject:label];
+        [hud addChild:label];
+        
+        SKLabelNode *score = [SKLabelNode labelNodeWithFontNamed:@"Copperplate"];
+        score.text = @"SCORE: 0";
+        score.fontColor = colors[i];
+        score.fontSize = 16;
+        score.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
+        score.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 1.0), hudY - 40 );
+        [(NSMutableArray *)_hudScores addObject:score];
+        [hud addChild:score];
+        
+//        [(NSMutableArray *)_hudLifeHeartArrays addObject:[NSMutableArray arrayWithCapacity:kStartLives]];
+//        for (int j = 0; j < kStartLives; j++) {
+//            SKSpriteNode *heart = [SKSpriteNode spriteNodeWithImageNamed:@"lives.png"];
+//            heart.scale = 0.4;
+//            heart.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 1.0) + 18 + ((heart.size.width + 5) * j), hudY - 10);
+//            heart.alpha = 0.1;
+//            [_hudLifeHeartArrays[i] addObject:heart];
+//            [hud addChild:heart];
+//        }
+    }
+    
+    [self addChild:hud];
+}
+
+//- (void)updateHUDForPlayer:(APAPlayer *)player forState:(APAHUDState)state withMessage:(NSString *)message {
+//    NSUInteger playerIndex = [self.players indexOfObject:player];
+//    
+//    SKSpriteNode *avatar = self.hudAvatars[playerIndex];
+//    [avatar runAction:[SKAction sequence: @[[SKAction fadeAlphaTo:1.0 duration:1.0], [SKAction fadeAlphaTo:0.2 duration:1.0], [SKAction fadeAlphaTo:1.0 duration:1.0]]]];
+//    
+//    SKLabelNode *label = self.hudLabels[playerIndex];
+//    CGFloat heartAlpha = 1.0;
+//    switch (state) {
+//        case APAHUDStateLocal:;
+//            label.text = @"ME";
+//            break;
+//        case APAHUDStateConnecting:
+//            heartAlpha = 0.25;
+//            if (message) {
+//                label.text = message;
+//            } else {
+//                label.text = @"AVAILABLE";
+//            }
+//            break;
+//        case APAHUDStateDisconnected:
+//            avatar.alpha = 0.5;
+//            heartAlpha = 0.1;
+//            label.text = @"NO PLAYER";
+//            break;
+//        case APAHUDStateConnected:
+//            if (message) {
+//                label.text = message;
+//            } else {
+//                label.text = @"CONNECTED";
+//            }
+//            break;
+//    }
+//    
+//    for (int i = 0; i < player.livesLeft; i++) {
+//        SKSpriteNode *heart = self.hudLifeHeartArrays[playerIndex][i];
+//        heart.alpha = heartAlpha;
 //    }
 //}
 

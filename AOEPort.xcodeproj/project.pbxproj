@@ -16,8 +16,6 @@
 		C84CA74718A6B14E0006AD27 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73E18A6B14E0006AD27 /* SKTAudio.m */; };
 		C84CA74818A6B14E0006AD27 /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = C84CA74018A6B14E0006AD27 /* SKTUtils.mm */; };
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
-		C84CA75F18A6C97B0006AD27 /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */; };
-		C84CA76318A6CB900006AD27 /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA76218A6CB900006AD27 /* TileMapLayer.m */; };
 		C860896318ABF5BD00810C1A /* icon in Resources */ = {isa = PBXBuildFile; fileRef = C860896218ABF5BD00810C1A /* icon */; };
 		C860896918ABF6D100810C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860896818ABF6D100810C1A /* Images.xcassets */; };
 		C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C88370DC18AAD63600A5F47F /* tiles.atlas */; };
@@ -43,6 +41,10 @@
 		C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
 		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
 		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
+		C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786218AC3B9500866DEF /* TileMapLayer.m */; };
+		C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */; };
+		C8D1786818AC3C5100866DEF /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */; };
+		C8D1786B18AC3D1400866DEF /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D1786A18AC3D1400866DEF /* logo.png */; };
 		C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */; };
 		C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */; };
 		C8DEDC6E18ABB65700E3548B /* buildings256.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */; };
@@ -76,10 +78,6 @@
 		C84CA73F18A6B14E0006AD27 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 		C84CA74018A6B14E0006AD27 /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
-		C84CA76018A6CAFD0006AD27 /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
-		C84CA76118A6CB480006AD27 /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
-		C84CA76218A6CB900006AD27 /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 		C860896218ABF5BD00810C1A /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		C860896818ABF6D100810C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C88370DC18AAD63600A5F47F /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
@@ -117,6 +115,12 @@
 		C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPortTests-Info.plist"; sourceTree = "<group>"; };
 		C8933B2D18A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Age_of_Empires_PortTests.m; sourceTree = "<group>"; };
+		C8D1786118AC3B9500866DEF /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
+		C8D1786218AC3B9500866DEF /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
+		C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
+		C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
+		C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		C8D1786A18AC3D1400866DEF /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
 		C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tile32_256build.tmx; sourceTree = "<group>"; };
 		C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buildings256.atlasc; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 		C88370DA18AAD63600A5F47F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C8D1786918AC3D1400866DEF /* UI */,
 				C860896218ABF5BD00810C1A /* icon */,
 				C8DEDC6F18ABB7D100E3548B /* tiles32 */,
 				C8DEDC6D18ABB65700E3548B /* buildings256.atlasc */,
@@ -283,18 +288,16 @@
 		C8933B0218A1597500116A26 /* AOEPort */ = {
 			isa = PBXGroup;
 			children = (
+				C8D1786018AC3B9500866DEF /* Layers */,
 				C88370D818AAD62600A5F47F /* Resources */,
 				C88370F618AAD66600A5F47F /* Model */,
 				C8933B0B18A1597500116A26 /* AppDelegate.h */,
 				C8933B0C18A1597500116A26 /* AppDelegate.m */,
 				C8933B1118A1597500116A26 /* Main_iPad.storyboard */,
 				C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */,
+				C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */,
 				C8933B1718A1597500116A26 /* MyScene.h */,
 				C8933B1818A1597500116A26 /* MyScene.m */,
-				C84CA76018A6CAFD0006AD27 /* TileMapLayer.h */,
-				C84CA76218A6CB900006AD27 /* TileMapLayer.m */,
-				C84CA76118A6CB480006AD27 /* TmxTileMapLayer.h */,
-				C84CA75E18A6C97B0006AD27 /* TmxTileMapLayer.m */,
 				C8933B1418A1597500116A26 /* ViewController.h */,
 				C8933B1518A1597500116A26 /* ViewController.m */,
 				C84CA73018A6B14E0006AD27 /* JSTileMap */,
@@ -331,6 +334,25 @@
 				C8933B2C18A1597500116A26 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C8D1786018AC3B9500866DEF /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				C8D1786118AC3B9500866DEF /* TileMapLayer.h */,
+				C8D1786218AC3B9500866DEF /* TileMapLayer.m */,
+				C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */,
+				C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */,
+			);
+			path = Layers;
+			sourceTree = "<group>";
+		};
+		C8D1786918AC3D1400866DEF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C8D1786A18AC3D1400866DEF /* logo.png */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,12 +438,14 @@
 				C860896318ABF5BD00810C1A /* icon in Resources */,
 				C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */,
 				C8DEDC7018ABB7D100E3548B /* tiles32 in Resources */,
+				C8D1786B18AC3D1400866DEF /* logo.png in Resources */,
 				C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */,
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
 				C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */,
 				C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */,
 				C88370FB18AAF5CB00A5F47F /* buildings.atlas in Resources */,
 				C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */,
+				C8D1786818AC3C5100866DEF /* iPhoneStoryboard.storyboard in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
 				C8DEDC6E18ABB65700E3548B /* buildings256.atlasc in Resources */,
 			);
@@ -445,9 +469,10 @@
 				C84CA74718A6B14E0006AD27 /* SKTAudio.m in Sources */,
 				C8933B1918A1597500116A26 /* MyScene.m in Sources */,
 				C8933B1618A1597500116A26 /* ViewController.m in Sources */,
-				C84CA76318A6CB900006AD27 /* TileMapLayer.m in Sources */,
 				C88370F518AAD63600A5F47F /* SSKTileableNode.m in Sources */,
 				C84CA74418A6B14E0006AD27 /* SKAction+SKTExtras.m in Sources */,
+				C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */,
+				C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */,
 				C88370F218AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m in Sources */,
 				C84CA74818A6B14E0006AD27 /* SKTUtils.mm in Sources */,
 				C88370F418AAD63600A5F47F /* SSKStretchableNode.m in Sources */,
@@ -456,7 +481,6 @@
 				C88370F918AAD67000A5F47F /* Building.m in Sources */,
 				C8933B0918A1597500116A26 /* main.m in Sources */,
 				C84CA74618A6B14E0006AD27 /* SKNode+SKTExtras.m in Sources */,
-				C84CA75F18A6C97B0006AD27 /* TmxTileMapLayer.m in Sources */,
 				C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */,
 				C84CA74518A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m in Sources */,
 				C88370F318AAD63600A5F47F /* SSKMultiLineLabelNode.m in Sources */,

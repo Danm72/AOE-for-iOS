@@ -8,7 +8,7 @@
 
 #import "TmxTileMapLayer.h"
 #import "MyScene.h"
-#import "Model/Building.h"
+#import "Building.h"
 //#import "Breakable.h"
 //#import "Player.h"
 //#import "Bug.h"

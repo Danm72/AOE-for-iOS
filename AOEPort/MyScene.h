@@ -18,10 +18,18 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
     PCBreakableCategory = 1 << 5,
     PCFireBugCategory = 1 << 6,
 };
+#define kNumPlayers 4
+typedef void (^AssetLoadCompletionHandler)(void);
+
+static NSString * const kAnimalNodeName = @"movable";
 
 @interface MyScene : SKScene
 
 - (BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props;
 - (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
+@property (nonatomic, strong) SKSpriteNode *selectedNode;
+
++ (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
+
 
 @end
