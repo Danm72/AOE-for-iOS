@@ -8,13 +8,58 @@
     <property name="impassable" value="true"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="TownCenter" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Barracks" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="Church" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="7" name="tiles" tilewidth="32" tileheight="32">
   <image source="tiles32/sprites.png" width="128" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
   <tile id="1">
    <properties>
     <property name="impassable" value="true"/>
     <property name="snow" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="grass" value="1"/>
    </properties>
   </tile>
   <tile id="14">
@@ -27,19 +72,40 @@
     <property name="grass" value="1"/>
    </properties>
   </tile>
+  <tile id="20">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Tiles" width="100" height="100">
   <data encoding="base64" compression="zlib">
-   eJzt2cEJxDAMAEE/r4Hg/ju9Ag4CIYSsffOYv9D+pDnGmJs5AjOgR5UeLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06NGiR4seLXq06HHN54bde9zZzZM7PZt15x6r0WM9erTo0aJHix4terTo0aJHix4terTo0aJHix6/nrrx7t7jjXu7/8d/0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvTo0KJFjxY9WvRo0aNFjx5NWvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNFjxY9WvRo0aNl5R5f9n98CQ==
+   eJzt1ktqw0AUBVEvQpCBh97/HjOVjGX503Ld97oaLsZkEKhDd7JcLpel6f4Kjm6mhx7Jo5vpoUfy6GZ66JE8upkeeiSPbqaHHsmjm+mhR/LoZnrokTy6mR56JI9upoceyaOb6aFH8uhmeuiRPLqZHnokj26mhx7Jo5vpoUfy6GZ66JE8upke83hUtKE7aTKvRwUXuo0meiSb0E1G7NrIhW45wuJbjyQXuucIi7XJ/Wc1E7rpCIc9k1F35arHRxaj3i3yvtB9v/HY+/kZv/dX94Xu+67FM5uR79WrNvffZ/LYM/rkrUp92+ieHadH3o6633Z29P9Kwui2o0xuBxZ6/M5kOXDQ4/fr4tHFpJNHB5NuHtVNOnpUNunqUdWlu0c1kxk8KpnM4lHFZCaPCiazeaSbzOiR7DKzxzOTRx2W1eer7c4Y3ezMvdNh7UCa0M1SPFJM6GZJHut3izKhm6V5PDLRg/fw70eOB3Ev9Mg0oZsle3g/9KCb6aFH8uhmeuiRPLqZHnokj26mhx7Jo5vpoUfy6GZ66JE8upkeeiSPbqaHHsmjm+mhR/LoZnrokTy6mR56JI9upoceyaObnbmKh26mx/bQzfTYHrqZHttDN9Nje/4BBt+/RQ==
   </data>
  </layer>
- <objectgroup name="Buildings" width="100" height="100">
-  <object name="Wall" type="Wall" gid="1" x="295" y="420"/>
-  <object name="Wall" type="Wall" gid="1" x="223" y="2962"/>
-  <object name="Wall" type="Wall" gid="1" x="2454" y="2985"/>
-  <object name="Wall" type="Wall" gid="1" x="2569" y="469"/>
-  <object name="Church1" type="Building" gid="5" x="2134" y="1843"/>
-  <object name="TownCentre" type="Building" gid="2" x="510" y="2174"/>
-  <object name="TownCentre" type="Building" gid="2" x="1662" y="1662"/>
- </objectgroup>
+ <layer name="Buildings" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1VEKgCAQQMGKuv+Vgz6DaI1NV5j5FpF9qMsCAAAAAAAAAAAAAAAAAADMbh19AC73DrqMYe41RDvo9a+v89UlV2SeW9I+PPtrfrq06TUvXfJE3qcoXWrSpa/ondLlXeb7FKVLvoyOutSkSz97w1pd4nr+M7rUpEsNOozR8rfAzI7RBwAAAAAAAAAAAAAAAAAAAACmcAK9zQAy
+  </data>
+ </layer>
 </map>

@@ -10,32 +10,33 @@
 #import "MyScene.h"
 
 @interface ViewController()
-@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
-@property (nonatomic) IBOutlet UIImageView *gameLogo;
-@property (nonatomic) IBOutlet SKView *skView;
-@property (nonatomic) IBOutlet UIButton *enterButton;
-@property (nonatomic) IBOutlet UIButton *exitButton;
-@property (nonatomic) MyScene *scene;
+//@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
+//@property (nonatomic) IBOutlet UIImageView *gameLogo;
+////@property (nonatomic) IBOutlet SKView *skView;
+//@property (nonatomic) IBOutlet UIButton *enterButton;
+//@property (nonatomic) IBOutlet UIButton *exitButton;
+////@property (nonatomic) MyScene *scene;
 @end
 
 @implementation ViewController
 
 //- (void) viewWillAppear:(BOOL)animated{
 //    [self.loadingProgressIndicator startAnimating];
-//    SKView * skView = (SKView *)self.view;
 //    
-//    [MyScene loadSceneAssetsWithCompletionHandler:^{
+//    SKView * skView = (SKView *)self.view;
+//    // CGSize viewSize = self.view.bounds.size;
+//    
+//    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+//    scene.scaleMode = SKSceneScaleModeResizeFill;
+//
+//    [scene loadSceneAssetsWithCompletionHandler:^{
+//        
+//        //MyScene *scene  = [[MyScene alloc] initWithSize:skView.bounds.size];
+//        
 //        //CGSize viewSize = self.view.bounds.size;
-//        
-//        SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
-//        scene.scaleMode = SKSceneScaleModeResizeFill;
-//        
-//        
 //        [self.loadingProgressIndicator stopAnimating];
 //        [self.loadingProgressIndicator setHidden:YES];
-//        
 //        [skView presentScene:scene];
-//        
 //        [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
 //            self.enterButton.alpha = 1.0f;
 //            self.exitButton.alpha = 1.0f;
@@ -82,30 +83,32 @@
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
-
-#pragma mark - UI Display and Actions
-- (void)hideUIElements:(BOOL)shouldHide animated:(BOOL)shouldAnimate {
-    CGFloat alpha = shouldHide ? 0.0f : 1.0f;
-    
-    if (shouldAnimate) {
-        [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-            self.gameLogo.alpha = alpha;
-            self.enterButton.alpha = alpha;
-            self.exitButton.alpha = alpha;
-        } completion:NULL];
-    } else {
-        [self.gameLogo setAlpha:alpha];
-        [self.enterButton setAlpha:alpha];
-        [self.exitButton setAlpha:alpha];
-    }
-}
-
-- (IBAction)chooseEnter:(id)sender {
-   // [self startGameWithHeroType:APAHeroTypeArcher];
-}
-
-- (IBAction)chooseExit:(id)sender {
-    //[self startGameWithHeroType:APAHeroTypeWarrior];
-}
+//
+//#pragma mark - UI Display and Actions
+//- (void)hideUIElements:(BOOL)shouldHide animated:(BOOL)shouldAnimate {
+//    CGFloat alpha = shouldHide ? 0.0f : 1.0f;
+//    
+//    if (shouldAnimate) {
+//        [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//            self.gameLogo.alpha = alpha;
+//            self.enterButton.alpha = alpha;
+//            self.exitButton.alpha = alpha;
+//        } completion:NULL];
+//    } else {
+//        [self.gameLogo setAlpha:alpha];
+//        [self.enterButton setAlpha:alpha];
+//        [self.exitButton setAlpha:alpha];
+//    }
+//}
+//
+//- (IBAction)chooseEnter:(id)sender {
+//    // [self startGameWithHeroType:APAHeroTypeArcher];
+//    [self hideUIElements:YES animated:YES];
+//    
+//}
+//
+//- (IBAction)chooseExit:(id)sender {
+//    //[self startGameWithHeroType:APAHeroTypeWarrior];
+//}
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C811EF2518AFB8060020F64D /* Church.m in Sources */ = {isa = PBXBuildFile; fileRef = C811EF2418AFB8060020F64D /* Church.m */; };
 		C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73218A6B14E0006AD27 /* JSTileMap.m */; };
 		C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */; };
 		C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C84CA73518A6B14E0006AD27 /* LICENSE.txt */; };
@@ -32,8 +33,6 @@
 		C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B0518A1597500116A26 /* InfoPlist.strings */; };
 		C8933B0918A1597500116A26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0818A1597500116A26 /* main.m */; };
 		C8933B0D18A1597500116A26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0C18A1597500116A26 /* AppDelegate.m */; };
-		C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */; };
-		C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8933B1118A1597500116A26 /* Main_iPad.storyboard */; };
 		C8933B1618A1597500116A26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1518A1597500116A26 /* ViewController.m */; };
 		C8933B1918A1597500116A26 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1818A1597500116A26 /* MyScene.m */; };
 		C8933B2418A1597500116A26 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933B2318A1597500116A26 /* XCTest.framework */; };
@@ -41,9 +40,19 @@
 		C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
 		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
 		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
+		C8C3EB4018AE4AD400893AE0 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB3F18AE4AD400893AE0 /* Tile.m */; };
+		C8C3EB4718AE4B7200893AE0 /* Barracks.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB4618AE4B7200893AE0 /* Barracks.m */; };
+		C8C3EB4B18AE4CD500893AE0 /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB4A18AE4CD500893AE0 /* SnowTile.m */; };
+		C8C3EB4E18AE4CE400893AE0 /* GrassTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB4D18AE4CE400893AE0 /* GrassTile.m */; };
+		C8C3EB5118AE4CF300893AE0 /* DirtTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB5018AE4CF300893AE0 /* DirtTile.m */; };
+		C8C3EB5418AE4D0600893AE0 /* TownCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB5318AE4D0600893AE0 /* TownCenter.m */; };
+		C8C3EB5C18AE4D9000893AE0 /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C3EB5618AE4D9000893AE0 /* iPhoneStoryboard.storyboard */; };
+		C8C3EB5D18AE4D9000893AE0 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C3EB5818AE4D9000893AE0 /* Main_iPad.storyboard */; };
+		C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */; };
+		C8C3EB6118AE54AF00893AE0 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB6018AE54AF00893AE0 /* Wall.m */; };
+		C8C3EB6418AE82CA00893AE0 /* TileMapLayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = C8C3EB6318AE82CA00893AE0 /* TileMapLayerLoader.m */; };
 		C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786218AC3B9500866DEF /* TileMapLayer.m */; };
 		C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */; };
-		C8D1786818AC3C5100866DEF /* iPhoneStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */; };
 		C8D1786B18AC3D1400866DEF /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C8D1786A18AC3D1400866DEF /* logo.png */; };
 		C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */; };
 		C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */; };
@@ -62,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C811EF2318AFB8060020F64D /* Church.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Church.h; sourceTree = "<group>"; };
+		C811EF2418AFB8060020F64D /* Church.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Church.m; sourceTree = "<group>"; };
 		C84CA73118A6B14E0006AD27 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		C84CA73218A6B14E0006AD27 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		C84CA73318A6B14E0006AD27 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
@@ -104,8 +115,6 @@
 		C8933B0A18A1597500116A26 /* Age of Empires Port-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Age of Empires Port-Prefix.pch"; sourceTree = "<group>"; };
 		C8933B0B18A1597500116A26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8933B0C18A1597500116A26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C8933B0F18A1597500116A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		C8933B1218A1597500116A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		C8933B1418A1597500116A26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C8933B1518A1597500116A26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C8933B1718A1597500116A26 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
@@ -115,11 +124,29 @@
 		C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPortTests-Info.plist"; sourceTree = "<group>"; };
 		C8933B2D18A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Age_of_Empires_PortTests.m; sourceTree = "<group>"; };
+		C8C3EB3E18AE4AD400893AE0 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tile.h; path = Model/Tile.h; sourceTree = "<group>"; };
+		C8C3EB3F18AE4AD400893AE0 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tile.m; path = Model/Tile.m; sourceTree = "<group>"; };
+		C8C3EB4518AE4B7200893AE0 /* Barracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barracks.h; sourceTree = "<group>"; };
+		C8C3EB4618AE4B7200893AE0 /* Barracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barracks.m; sourceTree = "<group>"; };
+		C8C3EB4918AE4CD500893AE0 /* SnowTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTile.h; sourceTree = "<group>"; };
+		C8C3EB4A18AE4CD500893AE0 /* SnowTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTile.m; sourceTree = "<group>"; };
+		C8C3EB4C18AE4CE400893AE0 /* GrassTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile.h; sourceTree = "<group>"; };
+		C8C3EB4D18AE4CE400893AE0 /* GrassTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile.m; sourceTree = "<group>"; };
+		C8C3EB4F18AE4CF300893AE0 /* DirtTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtTile.h; sourceTree = "<group>"; };
+		C8C3EB5018AE4CF300893AE0 /* DirtTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtTile.m; sourceTree = "<group>"; };
+		C8C3EB5218AE4D0600893AE0 /* TownCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TownCenter.h; sourceTree = "<group>"; };
+		C8C3EB5318AE4D0600893AE0 /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
+		C8C3EB5718AE4D9000893AE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
+		C8C3EB5918AE4D9000893AE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		C8C3EB5B18AE4D9000893AE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		C8C3EB5F18AE54AF00893AE0 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		C8C3EB6018AE54AF00893AE0 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		C8C3EB6218AE82CA00893AE0 /* TileMapLayerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayerLoader.h; sourceTree = "<group>"; };
+		C8C3EB6318AE82CA00893AE0 /* TileMapLayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayerLoader.m; sourceTree = "<group>"; };
 		C8D1786118AC3B9500866DEF /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786218AC3B9500866DEF /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 		C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
-		C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhoneStoryboard.storyboard; sourceTree = "<group>"; };
 		C8D1786A18AC3D1400866DEF /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		C8DEDC6918ABB2FB00E3548B /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
 		C8DEDC6A18ABB2FB00E3548B /* tile32_256build.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tile32_256build.tmx; sourceTree = "<group>"; };
@@ -246,8 +273,12 @@
 		C88370F618AAD66600A5F47F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C8C3EB4818AE4B7800893AE0 /* Tiles */,
+				C8C3EB4418AE4B7200893AE0 /* Buildings */,
 				C88370F718AAD67000A5F47F /* Building.h */,
 				C88370F818AAD67000A5F47F /* Building.m */,
+				C8C3EB3E18AE4AD400893AE0 /* Tile.h */,
+				C8C3EB3F18AE4AD400893AE0 /* Tile.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -288,14 +319,12 @@
 		C8933B0218A1597500116A26 /* AOEPort */ = {
 			isa = PBXGroup;
 			children = (
+				C8C3EB5518AE4D9000893AE0 /* Base.lproj */,
 				C8D1786018AC3B9500866DEF /* Layers */,
 				C88370D818AAD62600A5F47F /* Resources */,
 				C88370F618AAD66600A5F47F /* Model */,
 				C8933B0B18A1597500116A26 /* AppDelegate.h */,
 				C8933B0C18A1597500116A26 /* AppDelegate.m */,
-				C8933B1118A1597500116A26 /* Main_iPad.storyboard */,
-				C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */,
-				C8D1786718AC3C5100866DEF /* iPhoneStoryboard.storyboard */,
 				C8933B1718A1597500116A26 /* MyScene.h */,
 				C8933B1818A1597500116A26 /* MyScene.m */,
 				C8933B1418A1597500116A26 /* ViewController.h */,
@@ -336,12 +365,54 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C8C3EB4418AE4B7200893AE0 /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				C8C3EB4518AE4B7200893AE0 /* Barracks.h */,
+				C8C3EB4618AE4B7200893AE0 /* Barracks.m */,
+				C8C3EB5218AE4D0600893AE0 /* TownCenter.h */,
+				C8C3EB5318AE4D0600893AE0 /* TownCenter.m */,
+				C8C3EB5F18AE54AF00893AE0 /* Wall.h */,
+				C8C3EB6018AE54AF00893AE0 /* Wall.m */,
+				C811EF2318AFB8060020F64D /* Church.h */,
+				C811EF2418AFB8060020F64D /* Church.m */,
+			);
+			name = Buildings;
+			path = Model/Buildings;
+			sourceTree = "<group>";
+		};
+		C8C3EB4818AE4B7800893AE0 /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				C8C3EB4918AE4CD500893AE0 /* SnowTile.h */,
+				C8C3EB4A18AE4CD500893AE0 /* SnowTile.m */,
+				C8C3EB4C18AE4CE400893AE0 /* GrassTile.h */,
+				C8C3EB4D18AE4CE400893AE0 /* GrassTile.m */,
+				C8C3EB4F18AE4CF300893AE0 /* DirtTile.h */,
+				C8C3EB5018AE4CF300893AE0 /* DirtTile.m */,
+			);
+			name = Tiles;
+			path = Model/Tiles;
+			sourceTree = "<group>";
+		};
+		C8C3EB5518AE4D9000893AE0 /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				C8C3EB5618AE4D9000893AE0 /* iPhoneStoryboard.storyboard */,
+				C8C3EB5818AE4D9000893AE0 /* Main_iPad.storyboard */,
+				C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
 		C8D1786018AC3B9500866DEF /* Layers */ = {
 			isa = PBXGroup;
 			children = (
 				C8D1786118AC3B9500866DEF /* TileMapLayer.h */,
 				C8D1786218AC3B9500866DEF /* TileMapLayer.m */,
 				C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */,
+				C8C3EB6218AE82CA00893AE0 /* TileMapLayerLoader.h */,
+				C8C3EB6318AE82CA00893AE0 /* TileMapLayerLoader.m */,
 				C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */,
 			);
 			path = Layers;
@@ -436,16 +507,16 @@
 			files = (
 				C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */,
 				C860896318ABF5BD00810C1A /* icon in Resources */,
+				C8C3EB5C18AE4D9000893AE0 /* iPhoneStoryboard.storyboard in Resources */,
 				C8DEDC6C18ABB2FB00E3548B /* tile32_256build.tmx in Resources */,
 				C8DEDC7018ABB7D100E3548B /* tiles32 in Resources */,
 				C8D1786B18AC3D1400866DEF /* logo.png in Resources */,
-				C8933B1318A1597500116A26 /* Main_iPad.storyboard in Resources */,
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
 				C8DEDC6B18ABB2FB00E3548B /* tile32_256build.png in Resources */,
-				C8933B1018A1597500116A26 /* Main_iPhone.storyboard in Resources */,
 				C88370FB18AAF5CB00A5F47F /* buildings.atlas in Resources */,
+				C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */,
 				C88370ED18AAD63600A5F47F /* tiles.atlas in Resources */,
-				C8D1786818AC3C5100866DEF /* iPhoneStoryboard.storyboard in Resources */,
+				C8C3EB5D18AE4D9000893AE0 /* Main_iPad.storyboard in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
 				C8DEDC6E18ABB65700E3548B /* buildings256.atlasc in Resources */,
 			);
@@ -471,8 +542,12 @@
 				C8933B1618A1597500116A26 /* ViewController.m in Sources */,
 				C88370F518AAD63600A5F47F /* SSKTileableNode.m in Sources */,
 				C84CA74418A6B14E0006AD27 /* SKAction+SKTExtras.m in Sources */,
+				C8C3EB4018AE4AD400893AE0 /* Tile.m in Sources */,
+				C8C3EB4E18AE4CE400893AE0 /* GrassTile.m in Sources */,
 				C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */,
+				C8C3EB5418AE4D0600893AE0 /* TownCenter.m in Sources */,
 				C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */,
+				C8C3EB5118AE4CF300893AE0 /* DirtTile.m in Sources */,
 				C88370F218AAD63600A5F47F /* SKSpriteNode+SSKAnimation.m in Sources */,
 				C84CA74818A6B14E0006AD27 /* SKTUtils.mm in Sources */,
 				C88370F418AAD63600A5F47F /* SSKStretchableNode.m in Sources */,
@@ -480,7 +555,12 @@
 				C8933B0D18A1597500116A26 /* AppDelegate.m in Sources */,
 				C88370F918AAD67000A5F47F /* Building.m in Sources */,
 				C8933B0918A1597500116A26 /* main.m in Sources */,
+				C811EF2518AFB8060020F64D /* Church.m in Sources */,
 				C84CA74618A6B14E0006AD27 /* SKNode+SKTExtras.m in Sources */,
+				C8C3EB6418AE82CA00893AE0 /* TileMapLayerLoader.m in Sources */,
+				C8C3EB4718AE4B7200893AE0 /* Barracks.m in Sources */,
+				C8C3EB6118AE54AF00893AE0 /* Wall.m in Sources */,
+				C8C3EB4B18AE4CD500893AE0 /* SnowTile.m in Sources */,
 				C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */,
 				C84CA74518A6B14E0006AD27 /* SKEmitterNode+SKTExtras.m in Sources */,
 				C88370F318AAD63600A5F47F /* SSKMultiLineLabelNode.m in Sources */,
@@ -514,28 +594,36 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C8933B0E18A1597500116A26 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8933B0F18A1597500116A26 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		C8933B1118A1597500116A26 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C8933B1218A1597500116A26 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		C8933B2C18A1597500116A26 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C8933B2D18A1597500116A26 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C8C3EB5618AE4D9000893AE0 /* iPhoneStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C3EB5718AE4D9000893AE0 /* Base */,
+			);
+			name = iPhoneStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		C8C3EB5818AE4D9000893AE0 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C3EB5918AE4D9000893AE0 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8C3EB5B18AE4D9000893AE0 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

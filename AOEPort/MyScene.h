@@ -21,7 +21,7 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 #define kNumPlayers 4
 typedef void (^AssetLoadCompletionHandler)(void);
 
-static NSString * const kAnimalNodeName = @"movable";
+static NSString * const kAnimalNodeName = @"Building";
 
 @interface MyScene : SKScene
 
@@ -29,7 +29,7 @@ static NSString * const kAnimalNodeName = @"movable";
 - (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
 @property (nonatomic, strong) SKSpriteNode *selectedNode;
 
-+ (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
+- (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 
 
 @end

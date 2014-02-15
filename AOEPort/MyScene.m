@@ -10,6 +10,8 @@
 #import "Layers/TileMapLayer.h"
 #import "SSKTileableNode.h"
 #import "SSKStretchableNode.h"
+#import "Building.h"
+#import "TileMapLayerLoader.h"
 
 //#import "Player.h"
 //#import "Bug.h"
@@ -33,6 +35,7 @@
     TileMapLayer *_buildingLayer;
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
+    SKSpriteNode *touchedNode;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -40,9 +43,9 @@
     
     if (self = [super initWithSize:size]) {
         [self createWorld];
-        [self createCharacters];
-        //        [self centerViewOn:_player.position];
-            }
+        //  [self createCharacters];
+        //[self centerViewOn:_player.position];
+    }
     return self;
 }
 
@@ -51,46 +54,161 @@
     UITouch *touch = [touches anyObject];
     // [_player moveToward:[touch locationInNode:_worldNode]];
     [self centerViewOn:[touch locationInNode:_worldNode]];
-    
+
     CGPoint positionInScene = [touch locationInNode:_worldNode];
     NSLog(@"Location of touch X: %f, Y : %f", positionInScene.x, positionInScene.y);
-    
+
     [self selectNodeForTouch:positionInScene];
 
-    
 }
 
 
 - (void)selectNodeForTouch:(CGPoint)touchLocation {
     //1
-//    [_buildingLayer enumerateChildNodesWithName:@"building"
-//                                     usingBlock:
-//     ^(SKNode *node, BOOL *stop){
-//         //[(Building*)node start];
-//         NSLog(@"Exception: %@", node.name);
-//        SKSpriteNode *touchedNode =[ _buildingLayer nodeAtPoint:touchLocation];
-//         
-//     }];
-    SKSpriteNode *touchedNode =(SKSpriteNode *)[ _buildingLayer nodeAtPoint:touchLocation];
-
     
-    //SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:touchLocation];
+    SKSpriteNode *touchedNode = (SKSpriteNode *)[_buildingLayer nodeAtPoint:touchLocation];
     
-    //2
-	if(![_selectedNode isEqual:touchedNode]) {
-		[_selectedNode removeAllActions];
-		[_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
+    SKAction *pulseRed = [SKAction sequence:@[
+                                              [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
+                                              [SKAction waitForDuration:0.1],
+                                              [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
+    
+    if(touchedNode && [touchedNode isKindOfClass:[Building class]]){
         
-		_selectedNode = touchedNode;
-		//3
-		if([[touchedNode name] isEqualToString:kAnimalNodeName]) {
-			SKAction *sequence = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
-													  [SKAction rotateByAngle:0.0 duration:0.1],
-													  [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
-			[_selectedNode runAction:[SKAction repeatActionForever:sequence]];
-		}
-	}
+        Building *touchedNode2 = (Building*) touchedNode;
+        NSString *string = touchedNode2.buildType;
+        NSLog(@"Name: %@", string);
+        
+        //2
+        if(![_selectedNode isEqual:touchedNode]) {
+            [_selectedNode removeAllActions];
+            [_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
+            
+            _selectedNode = touchedNode;
+            
+            [_selectedNode runAction: pulseRed];
+            
+            
+            //3
+            if([[touchedNode name] isEqualToString:kAnimalNodeName]) {
+                SKAction *sequence = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
+                                                          [SKAction rotateByAngle:0.0 duration:0.1],
+                                                          [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
+                [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
+            }
+        }
+    }
     
+}
+
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//	UITouch *touch = [touches anyObject];
+//	CGPoint positionInScene = [touch locationInNode:self];
+//	CGPoint previousPosition = [touch previousLocationInNode:self];
+//
+//	CGPoint translation = CGPointMake(positionInScene.x - previousPosition.x, positionInScene.y - previousPosition.y);
+//
+//	[self panForTranslation:translation];
+//}
+
+
+//- (CGPoint)boundLayerPos:(CGPoint)newPos {
+//    CGSize winSize = self.size;
+//    CGPoint retval = newPos;
+//    retval.x = MIN(retval.x, 0);
+//    retval.x = MAX(retval.x, -_worldNode.scene.size.width+ winSize.width);
+//    retval.y = [_worldNode.scene.size position].y;
+//    return retval;
+//}
+
+
+//- (void)panForTranslation:(CGPoint)translation {
+//    CGPoint position = [_selectedNode position];
+//    if([[_selectedNode name] isEqualToString:kAnimalNodeName]) {
+//        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+//    } else {
+//        CGPoint newPos = CGPointMake(position.x + translation.x, position.y + translation.y);
+//        _worldNode.position = [self centerViewOn:newPos];
+//        //[self centerViewOn:newPos];
+//    }
+//}
+
+//- (void)didMoveToView:(SKView *)view {
+//    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+//    [[self view] addGestureRecognizer:gestureRecognizer];
+//}
+
+-(void) handlePanFrom:(UIPanGestureRecognizer *) recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        CGPoint touchLocation = [recognizer locationInView:recognizer.view];
+
+       //touchLocation = [_tileMap.scene convertPointFromView:touchLocation];
+
+        CGFloat x = Clamp(touchLocation.x, self.size.width / 2,
+                          _bgLayer.layerSize.width - self.size.width / 2);
+        
+        CGFloat y = Clamp(touchLocation.y, self.size.height / 2,
+                          _bgLayer.layerSize.height - self.size.height/2);
+        
+        CGPoint new = CGPointMake(x,y);
+
+        [self centerViewOn:new];
+//        
+//            CGPoint positionInScene = [touch locationInNode:_worldNode];
+//            NSLog(@"Location of touch X: %f, Y : %f", positionInScene.x, positionInScene.y);
+//        
+//            [self selectNodeForTouch:positionInScene];
+    }
+    
+    else if (recognizer.state == UIGestureRecognizerStateChanged){
+        
+    }
+    
+    else if (recognizer.state == UIGestureRecognizerStateEnded) {
+    }
+}
+
+//- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
+//	if (recognizer.state == UIGestureRecognizerStateBegan) {
+//        
+//        CGPoint touchLocation = [recognizer locationInView:recognizer.view];
+//        
+//        touchLocation = [self convertPointFromView:touchLocation];
+//        
+//        [self selectNodeForTouch:touchLocation];
+//        
+//        
+//    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+//        
+//        CGPoint translation = [recognizer translationInView:recognizer.view];
+//        translation = CGPointMake(translation.x, -translation.y);
+//        [self panForTranslation:translation];
+//        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+//        
+//    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+//        
+//        if (![[_selectedNode name] isEqualToString:kAnimalNodeName]) {
+//            float scrollDuration = 0.2;
+//            CGPoint velocity = [recognizer velocityInView:recognizer.view];
+//            CGPoint pos = [_selectedNode position];
+//            CGPoint p = mult(velocity, scrollDuration);
+//            
+//            CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
+//            newPos = [self centerViewOn:newPos];
+//            
+//            [_selectedNode removeAllActions];
+//            
+//            SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
+//            [moveTo setTimingMode:SKActionTimingEaseOut];
+//            [_selectedNode runAction:moveTo];
+//        }
+//        
+//    }
+//}
+
+CGPoint mult(const CGPoint v, const CGFloat s) {
+	return CGPointMake(v.x*s, v.y*s);
 }
 
 float degToRad(float degree) {
@@ -102,21 +220,7 @@ float degToRad(float degree) {
     
     @try{
         _bgLayer = [self createScenery];
-        //        SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"tile32_256build"];
-        //        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        //        CGFloat screenWidth = screenRect.size.width;
-        //        CGFloat screenHeight = screenRect.size.height;
-        //
-        //        background.size = CGSizeMake(screenHeight,screenWidth);
-        
-        //  UIEdgeInsets insets = { .left = -screenWidth, .right = screenWidth, .top = -screenHeight, .bottom = -1000 };
-        //
-        //        SSKStretchableNode *background = [SSKStretchableNode stretchableNodeWithSize:CGSizeMake(screenHeight,screenWidth)
-        //                                                                          imageNamed:@"map32" capInsets:insets];
-        //
-        // [self addChild:background];
-        
-        
+        _buildingLayer = [self createBuildings];
     }
     @catch (NSException *e) {
         NSLog(@"Exception: %@", e);
@@ -126,16 +230,19 @@ float degToRad(float degree) {
     if (_tileMap) {
         [_worldNode addChild:_tileMap];
     }
-    [_worldNode addChild:_bgLayer];
+    //[_worldNode addChild:_bgLayer];
+    [_worldNode addChild:_buildingLayer];
     [self addChild:_worldNode];
     
-    
+    //   _breakableLayer = [self createBreakables];
     
     self.anchorPoint = CGPointMake(0.5, 0.5);
     _worldNode.position =
     CGPointMake(-_bgLayer.layerSize.width / 2,
                 -_bgLayer.layerSize.height / 2);
     
+//    _worldNode.xScale -= 1;
+//    _worldNode.yScale -= 1;
     
     //self.physicsWorld.gravity = CGVectorMake(0, 0);
     
@@ -163,7 +270,9 @@ float degToRad(float degree) {
 
 - (void)centerViewOn:(CGPoint)centerOn
 {
-    _worldNode.position = [self pointToCenterViewOn:centerOn];
+    _worldNode.position =  [self pointToCenterViewOn:centerOn];
+    NSLog(@"Location of touch X: %f, Y : %f", _worldNode.position.x, _worldNode.position.y);
+    
 }
 
 - (void)createCharacters
@@ -171,12 +280,19 @@ float degToRad(float degree) {
     //    //  _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
     //    //                 @"level-2-bugs.txt"];
     _buildingLayer = [[TmxTileMapLayer alloc]
-                 initWithTmxObjectGroup:[_tileMap
-                                         groupNamed:@"Buildings"]
-                 tileSize:_tileMap.tileSize
-                 gridSize:_bgLayer.gridSize];
+                      initWithTmxObjectGroup:[_tileMap
+                                              groupNamed:@"Buildings"]
+                      tileSize:_tileMap.tileSize
+                      gridSize:_bgLayer.gridSize];
+    
     //
-    [_worldNode addChild:_buildingLayer];
+    // [_worldNode removeAllChildren];
+    //    for(SKNode *node in [_buildingLayer children]){
+    //       NSLog(@"Name %@", node.name);
+    //        [node removeFromParent];
+    //        [_worldNode addChild:node];
+    //    }
+    //    [_worldNode addChild:_buildingLayer];
     //
     //    _player = (Player *)[_bugLayer childNodeWithName:@"player"];
     //    [_player removeFromParent];
@@ -188,22 +304,28 @@ float degToRad(float degree) {
     //         [(Bug*)node start];
     //     }];
     
-//        [_buildingLayer enumerateChildNodesWithName:@"building"
-//                                    usingBlock:
-//         ^(SKNode *node, BOOL *stop){
-//             [(Building*)node];
-//             NSLog(@"Building: %@", node.);
-//
-//         }];
+    //        [_buildingLayer enumerateChildNodesWithName:@"building"
+    //                                    usingBlock:
+    //         ^(SKNode *node, BOOL *stop){
+    //             [(Building*)node];
+    //             NSLog(@"Building: %@", node.);
+    //
+    //         }];
 }
 
 - (TileMapLayer *)createScenery
 {
-    //  return [TileMapLayerLoader tileMapLayerFromFileNamed:
-    //          @"level-1-bg.txt"];
     _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
     return [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
+}
+
+- (TileMapLayer *)createBuildings
+{
+    
+    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+    return [[TmxTileMapLayer alloc]
+            initWithTmxLayer:[_tileMap layerNamed:@"Buildings"]];
 }
 
 //- (void)didSimulatePhysics
@@ -228,6 +350,10 @@ float degToRad(float degree) {
                       _bgLayer.layerSize.height - size.height/2);
     
     return CGPointMake(-x, -y);
+}
+
+- (void)update:(NSTimeInterval)currentTime{
+    
 }
 
 //- (void)didBeginContact:(SKPhysicsContact *)contact
@@ -291,6 +417,19 @@ float degToRad(float degree) {
 //                @"level-2-breakables.txt"];
 //}
 
+- (TileMapLayer *)createBreakables {
+    //if (_tileMap) {
+    TMXLayer *buildings = [_tileMap layerNamed:@"Buildings"];
+    return
+    (buildings ?
+     [[TmxTileMapLayer alloc] initWithTmxLayer:buildings] :
+     nil);
+    //  }
+    //    else
+    //        return [TileMapLayerLoader tileMapLayerFromFileNamed:
+    //                @"level-2-breakables.txt"];
+}
+
 //- (void)createCollisionAreas
 //{
 //    TMXObjectGroup *group =
@@ -316,12 +455,12 @@ float degToRad(float degree) {
 //        water.physicsBody.dynamic = NO;
 //        water.hidden = YES;
 //        water.physicsBody.friction = 0;
-//        
+//
 //        [_bgLayer addChild:water];
 //    }
 //}
 
-+ (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)handler {
+- (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)handler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // Load the shared assets in the background.
         [self loadSceneAssets];
@@ -337,9 +476,9 @@ float degToRad(float degree) {
     });
 }
 
-+(void)loadSceneAssets{
-    //[self createWorld];
-    //[self createCharacters];
+-(void)loadSceneAssets{
+    [self createWorld];
+    [self createCharacters];
 }
 
 
@@ -382,15 +521,15 @@ float degToRad(float degree) {
         [(NSMutableArray *)_hudScores addObject:score];
         [hud addChild:score];
         
-//        [(NSMutableArray *)_hudLifeHeartArrays addObject:[NSMutableArray arrayWithCapacity:kStartLives]];
-//        for (int j = 0; j < kStartLives; j++) {
-//            SKSpriteNode *heart = [SKSpriteNode spriteNodeWithImageNamed:@"lives.png"];
-//            heart.scale = 0.4;
-//            heart.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 1.0) + 18 + ((heart.size.width + 5) * j), hudY - 10);
-//            heart.alpha = 0.1;
-//            [_hudLifeHeartArrays[i] addObject:heart];
-//            [hud addChild:heart];
-//        }
+        //        [(NSMutableArray *)_hudLifeHeartArrays addObject:[NSMutableArray arrayWithCapacity:kStartLives]];
+        //        for (int j = 0; j < kStartLives; j++) {
+        //            SKSpriteNode *heart = [SKSpriteNode spriteNodeWithImageNamed:@"lives.png"];
+        //            heart.scale = 0.4;
+        //            heart.position = CGPointMake(hudX + i * hudD + (avatar.size.width * 1.0) + 18 + ((heart.size.width + 5) * j), hudY - 10);
+        //            heart.alpha = 0.1;
+        //            [_hudLifeHeartArrays[i] addObject:heart];
+        //            [hud addChild:heart];
+        //        }
     }
     
     [self addChild:hud];
@@ -398,10 +537,10 @@ float degToRad(float degree) {
 
 //- (void)updateHUDForPlayer:(APAPlayer *)player forState:(APAHUDState)state withMessage:(NSString *)message {
 //    NSUInteger playerIndex = [self.players indexOfObject:player];
-//    
+//
 //    SKSpriteNode *avatar = self.hudAvatars[playerIndex];
 //    [avatar runAction:[SKAction sequence: @[[SKAction fadeAlphaTo:1.0 duration:1.0], [SKAction fadeAlphaTo:0.2 duration:1.0], [SKAction fadeAlphaTo:1.0 duration:1.0]]]];
-//    
+//
 //    SKLabelNode *label = self.hudLabels[playerIndex];
 //    CGFloat heartAlpha = 1.0;
 //    switch (state) {
@@ -429,7 +568,7 @@ float degToRad(float degree) {
 //            }
 //            break;
 //    }
-//    
+//
 //    for (int i = 0; i < player.livesLeft; i++) {
 //        SKSpriteNode *heart = self.hudLifeHeartArrays[playerIndex][i];
 //        heart.alpha = heartAlpha;

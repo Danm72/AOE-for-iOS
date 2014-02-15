@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface Building : SKSpriteNode
-
+@property (nonatomic) NSString *buildType;
 @end

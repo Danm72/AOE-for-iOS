@@ -87,22 +87,20 @@
 //}
 
 
-- (instancetype)init
-{
-    SKTextureAtlas *atlas =
-    [SKTextureAtlas atlasNamed: @"buildings"];
-    SKTexture *texture = [atlas textureNamed:@"wall"];
-    texture.filteringMode = SKTextureFilteringNearest;
-
-    if (self = [super initWithTexture:texture]) {
-        self.name = @"building";
-        CGFloat minDiam = MIN(self.size.width, self.size.height);
-        minDiam = MAX(minDiam-8, 8);
-        self.physicsBody =
-        [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
-        self.physicsBody.categoryBitMask = PCBugCategory;
-        self.physicsBody.collisionBitMask = 0;
-    }
+- (instancetype)init{
+//    SKTexture *texture = [_atlas textureNamed:texName];
+//    texture.filteringMode = SKTextureFilteringNearest;
+//
+//    if (self = [super initWithTexture:texture]) {
+//        self.name = @"building";
+//        _nodeLocation = self.position;
+//        CGFloat minDiam = MIN(self.size.width, self.size.height);
+//        minDiam = MAX(minDiam-8, 8);
+//        self.physicsBody =
+//        [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
+//        self.physicsBody.categoryBitMask = PCBugCategory;
+//        self.physicsBody.collisionBitMask = 0;
+//    }
     return self;
 }
 

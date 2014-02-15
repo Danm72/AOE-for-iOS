@@ -9,6 +9,15 @@
 #import "TmxTileMapLayer.h"
 #import "MyScene.h"
 #import "Building.h"
+#import "Wall.h"
+#import "GrassTile.h"
+#import "DirtTile.h"
+#import "SnowTile.h"
+#import "Tile.h"
+#import "TownCenter.h"
+#import "Church.h"
+#import "Barracks.h"
+
 //#import "Breakable.h"
 //#import "Player.h"
 //#import "Bug.h"
@@ -48,10 +57,9 @@
 - (void)createNodesFromLayer:(TMXLayer *)layer
 {
     SKTextureAtlas *atlas =
-    [SKTextureAtlas atlasNamed:@"tiles.atlas"];
+    [SKTextureAtlas atlasNamed:@"buildings"];
     
     JSTileMap *map = layer.map;
-    
     
     //1
     for (int w = 0 ; w < self.gridSize.width; ++w) {
@@ -60,34 +68,43 @@
             CGPoint coord = CGPointMake(w, h);
             //2
             NSInteger tileGid = [layer.layerInfo tileGidAtCoord:coord];
+            //   [self tileAtCoord:coord];
             
             if(!tileGid)
                 continue;
             //3
             if([map propertiesForGid:tileGid][@"dirt"]) {
+                //  [layer removeTileAtCoord:coord];
                 
-                //   NSLog(@"TileGID is: %s", "dirt1");
+                //     NSLog(@"TileGID is: %s", "dirt1");
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
                 
                 //            SKSpriteNode *tile = [layer tileAtCoord:coord];
                 //            [self addChild:tile];
                 //
+                
+                // [self addChild:tile];
             }
             
-            
-            
             if([map propertiesForGid:tileGid][@"grass"]) {
-                
-                //NSLog(@"TileGID is: %s", "grass");
-                
-                //4
-                //        SKSpriteNode *tile = [layer tileAtCoord:coord];
+                //                [layer removeTileAtCoord:coord];
                 //
-                //        tile.physicsBody =
-                //        [SKPhysicsBody bodyWithRectangleOfSize:tile.size];
-                //        tile.physicsBody.categoryBitMask = PCWallCategory;
-                //        tile.physicsBody.dynamic = NO;
-                //        tile.physicsBody.friction = 0;
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"Grass"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
+                
+                
             } else if([map propertiesForGid:tileGid][@"snow"]) {
+                //  [layer removeTileAtCoord:coord];
+                
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"snow"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
                 //        SKNode *tile =
                 //         [[Breakable alloc]
                 //          initWithWhole:[atlas textureNamed:@"tree"]
@@ -95,6 +112,81 @@
                 //         tile.position = [self pointForCoord:coord];
                 //         [self addChild:tile];
                 //         [layer removeTileAtCoord:coord];
+            }if([map propertiesForGid:tileGid][@"Wall"]) {
+                //  [layer removeTileAtCoord:coord];
+                
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
+                
+                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
+                //            [self addChild:tile];
+                //
+                Building *tile = [[Wall alloc ]initWithTexture:[atlas textureNamed:@"wall"]];
+                tile.position = [self pointForCoord:coord];
+                tile.zPosition = -0.1;
+                [self addChild:tile];
+                
+                // [self addChild:tile];
+            }if([map propertiesForGid:tileGid][@"TownCenter"]) {
+                //  [layer removeTileAtCoord:coord];
+                
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
+                
+                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
+                //            [self addChild:tile];
+                //
+                Building *tile = [[TownCenter alloc ]initWithTexture:[atlas textureNamed:@"towncenter"]];
+                tile.position = [self pointForCoord:coord];
+                [self addChild:tile];
+                
+                // [self addChild:tile];
+            }if([map propertiesForGid:tileGid][@"Barracks"]) {
+                //  [layer removeTileAtCoord:coord];
+                
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
+                
+                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
+                //            [self addChild:tile];
+                //
+                Building *tile = [[Barracks alloc ]initWithTexture:[atlas textureNamed:@"elitebarracks"]];
+                tile.position = [self pointForCoord:coord];
+                [self addChild:tile];
+                
+                // [self addChild:tile];
+            }
+            if([map propertiesForGid:tileGid][@"Church"]) {
+                //  [layer removeTileAtCoord:coord];
+                
+                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
+                //                tile.position = [self pointForCoord:coord];
+                //
+                //                [self addChild:tile];
+                
+                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
+                //            [self addChild:tile];
+                //
+                Building *tile = [[Church alloc ]initWithTexture:[atlas textureNamed:@"barracks"]];
+                tile.position = [self pointForCoord:coord];
+                [self addChild:tile];
+                
+                // [self addChild:tile];
+            }
+            
+            else if(![map propertiesForGid:tileGid][@"snow"] && ![map propertiesForGid:tileGid][@"grass"]&& ![map propertiesForGid:tileGid][@"dirt"]){
+                //                NSLog(@"TileGID is: %s", "What are you?!");
+                //                [layer removeTileAtCoord:coord];
+                
+                //                Building *tile = [[Wall alloc ]initWithTexture:[atlas textureNamed:@"wall"]];
+                //                tile.position = [self pointForCoord:coord];
+                //                [self addChild:tile];
             }
         }
     }
@@ -103,7 +195,7 @@
 - (SKNode*)tileAtPoint:(CGPoint)point
 {
     SKNode *tile = [super tileAtPoint:point];
-    NSLog(@"TileGID is: %f", point.x);
+    NSLog(@"TileGID is: %f, %@", point.x, tile.name);
     
     return tile ? tile : [_layer tileAt:point];
 }
@@ -112,13 +204,32 @@
 {
     //  NSDictionary *playerObj = [group objectNamed:@"player"];
     if([group.groupName isEqualToString:@"Buildings"]){
+        SKTextureAtlas *atlas =
+        [SKTextureAtlas atlasNamed:@"buildings"];
         NSArray *walls = [group objectsNamed:@"Wall"];
-        for (NSDictionary *wallPos in walls) {
-            Building *wall = [Building node];
-            wall.position = CGPointMake([wallPos[@"x"] floatValue],
-                                        [wallPos[@"y"] floatValue]);
-            [self addChild:wall];
+        
+        if(walls){
+            for (NSDictionary *wallPos in walls) {
+                Building *wall = [[Wall alloc] initWithTexture:[atlas textureNamed:@"wall"]];
+                wall.position = CGPointMake([wallPos[@"x"] floatValue],
+                                            [wallPos[@"y"] floatValue]);
+                // wall.position = CGPointMake(2569.000000, -232164.265625);
+                [self addChild:wall];
+            }
         }
+        NSArray *townCentres = [group objectsNamed:@"TownCentre"];
+        if(townCentres){
+            for (NSDictionary *wallPos in walls) {
+                Building *town = [[TownCenter alloc] initWithTexture:[atlas textureNamed:@"towncenter"]];
+                town.position = CGPointMake([wallPos[@"x"] floatValue],
+                                            [wallPos[@"y"] floatValue]);
+                // wall.position = CGPointMake(2569.000000, -232164.265625);
+                
+                [self addChild:town];
+            }
+        }
+        
+        
     }else if([group.groupName isEqualToString:@"Units"])
     {
         //    Player *player = [Player node];
