@@ -142,7 +142,11 @@
                 //
                 Building *tile = [[TownCenter alloc ]initWithTexture:[atlas textureNamed:@"towncenter"]];
                 tile.position = [self pointForCoord:coord];
+
+                NSLog(@"Point is: %f,%f", tile.position.x, tile.position.y);
+
                 [self addChild:tile];
+
                 
                 // [self addChild:tile];
             }if([map propertiesForGid:tileGid][@"Barracks"]) {

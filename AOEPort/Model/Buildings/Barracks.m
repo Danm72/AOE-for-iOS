@@ -8,7 +8,10 @@
 
 #import "Barracks.h"
 
+
+
 @implementation Barracks
+
 - (id)initWithTexture:(SKTexture *)texture
 {
     if(self = [super initWithTexture:texture]){
@@ -20,7 +23,7 @@
             [data setValue:@"Barracks" forKey:@"Type"];
             
             self.userData = data;
-            super.buildType = @"Barracks";
+            _buildType = @"Barracks";
 
         }
     }

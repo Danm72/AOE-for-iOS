@@ -2,7 +2,6 @@
 //  MyScene.h
 //  Age of Empires Port
 //
-
 //  Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
@@ -21,7 +20,7 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 #define kNumPlayers 4
 typedef void (^AssetLoadCompletionHandler)(void);
 
-static NSString * const kAnimalNodeName = @"Building";
+static NSString * const nodeType = @"Building";
 
 @interface MyScene : SKScene
 

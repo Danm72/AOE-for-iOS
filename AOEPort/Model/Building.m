@@ -10,6 +10,7 @@
 #import "MyScene.h"
 
 @implementation Building
+@synthesize buildType;
 
 //- (instancetype)init
 //{
@@ -101,6 +102,7 @@
 //        self.physicsBody.categoryBitMask = PCBugCategory;
 //        self.physicsBody.collisionBitMask = 0;
 //    }
+    _buildType = @"Generic Building";
     return self;
 }
 

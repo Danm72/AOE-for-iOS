@@ -20,7 +20,7 @@
             [data setValue:@"Wall" forKey:@"Type"];
             
             self.userData = data;
-            super.buildType = @"Wall";
+            _buildType = @"Wall";
 
 //            CGFloat minDiam = MIN(self.size.width, self.size.height);
 //            minDiam = MAX(minDiam-8, 8);
