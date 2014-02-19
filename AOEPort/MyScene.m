@@ -8,7 +8,6 @@
 
 #import "MyScene.h"
 #import "Layers/TileMapLayer.h"
-#import "Building.h"
 
 //#import "Player.h"
 //#import "Bug.h"
@@ -64,121 +63,6 @@
     [self createWorld];
     [self createCharacters];
 }
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    // [_player moveToward:[touch locationInNode:_worldNode]];
-    // [self centerViewOn:[touch locationInNode:_worldNode]];
-
-    CGPoint positionInScene = [touch locationInNode:_worldNode];
-    NSLog(@"Location of UItouch X: %f, Y : %f", positionInScene.x, positionInScene.y);
-
-    //  [self selectNodeForTouch:positionInScene];
-}
-
-- (void)selectNodeForTouch:(CGPoint)touchLocation {
-    //1
-
-    SKSpriteNode *touchedNode = (SKSpriteNode *) [_buildingLayer nodeAtPoint:touchLocation];
-
-    SKAction *pulseRed = [SKAction sequence:@[
-            [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
-            [SKAction waitForDuration:0.1],
-            [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
-
-    if (touchedNode && [touchedNode isKindOfClass:[Building class]]) {
-
-        Building *touchedNode2 = (Building *) touchedNode;
-        NSString *string = touchedNode2.buildType;
-        NSLog(@"Name: %@", string);
-
-        //2
-        if (![_selectedNode isEqual:touchedNode]) {
-            [_selectedNode removeAllActions];
-            [_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
-
-            _selectedNode = touchedNode;
-
-            [_selectedNode runAction:pulseRed];
-
-
-            //3
-            if ([[touchedNode name] isEqualToString:nodeType]) {
-                SKAction *sequence = [SKAction sequence:@[[SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
-                        [SKAction rotateByAngle:0.0 duration:0.1],
-                        [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
-                [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
-            }
-        }
-    }
-
-}
-
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
-    CGPoint previousPosition = [touch previousLocationInNode:self];
-
-    CGPoint translation = CGPointMake(positionInScene.x - previousPosition.x, positionInScene.y - previousPosition.y);
-    NSLog(@"Location of touch_touch X: %f, Y : %f", positionInScene.x, positionInScene.y);
-
-    //[self panForTranslation:translation];
-}
-
-
-/*- (CGPoint)boundLayerPos:(CGPoint)newPos {
-    CGSize winSize = self.size;
-    CGPoint retval = newPos;
-    retval.x = MIN(retval.x, 0);
-    retval.x = MAX(retval.x, -_worldNode.scene.size.width+ winSize.width);
-    retval.y = [_worldNode.scene.size position].y;
-    return retval;
-}*/
-
-/*- (void)panForTranslation:(CGPoint)translation {
-    CGPoint position = [_selectedNode position];
-    if([[_selectedNode name] isEqualToString:kAnimalNodeName]) {
-        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
-    } else {
-        CGPoint newPos = CGPointMake(position.x + translation.x, position.y + translation.y);
-        _worldNode.position = [self centerViewOn:newPos];
-        //[self centerViewOn:newPos];
-    }
-}*/
-
-- (void)didMoveToView:(SKView *)view {
-    UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [[self view] addGestureRecognizer:gestureRecognizer];
-}
-
-/*- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-
-        CGPoint touchLocation = [recognizer locationInView:recognizer.view];
-
-        touchLocation = [self convertPointFromView:touchLocation];
-
-        NSLog(@"Location of touch_Drag - no conv X: %f, Y : %f", touchLocation.x, touchLocation.y);
-
-//      [self selectNodeForTouch:positionInScene];
-        NSInteger x =(int) touchLocation.x;
-        NSInteger y =(int) touchLocation.y;
-
-        touchLocation = [self positionForRow:y col:x];
-
-        NSLog(@"Location of touch_Drag X: %f, Y : %f", touchLocation.x, touchLocation.y);
-
-    }
-
-    else if (recognizer.state == UIGestureRecognizerStateChanged) {
-
-    }
-
-    else if (recognizer.state == UIGestureRecognizerStateEnded) {
-    }
-}*/
-
 
 - (CGPoint)positionForRow:(NSInteger)row col:(NSInteger)col {
     return
@@ -293,7 +177,7 @@
 
 - (TileMapLayer *)createBuildings {
 
-    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+    //   _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
     return [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Buildings"]];
 }
@@ -356,6 +240,55 @@
     return tile.physicsBody.categoryBitMask & props;
 }
 
+- (void)panForTranslation:(CGPoint)translation {
+    CGPoint position = [_selectedNode position];
+    if ([[_selectedNode name] isEqualToString:nodeType]) {
+        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+    } else {
+        CGPoint newPos = CGPointMake(-translation.x, -translation.y);
+
+        newPos = [self convertPoint:newPos toNode:_worldNode];
+
+        //_worldNode.position = [self centerViewOn:newPos];
+
+        [self centerViewOn:newPos];
+    }
+}
+
+- (void)didMoveToView:(SKView *)view {
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+    [[self view] addGestureRecognizer:panGestureRecognizer];
+
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
+    [[self view] addGestureRecognizer:pinchGestureRecognizer];
+
+//    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
+//    [[self view] addGestureRecognizer:rotationGestureRecognizer];
+}
+
+- (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
+//    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+//    recognizer.scale = 1;
+
+    // [_worldNode runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
+    // [_worldNode runAction:[SKAction scaleTo:.75 duration:5.0]];
+
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        self.size = CGSizeMake(self.size.height * recognizer.scale, self.size.width * recognizer.scale);
+        NSLog(@"Scale : %f, Size: %f", recognizer.scale, self.size.width);
+    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        recognizer.scale = 1;
+    }
+}
+
+- (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
+    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
+    recognizer.rotation = 0;
+
+}
+
+
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
 
@@ -363,21 +296,24 @@
         NSLog(@"Touch1 X: %f, Y : %f", touchLocation.x, touchLocation.y);
 
         touchLocation = [self convertPointFromView:touchLocation];
-        CGPoint touchLocation2 = [self convertPoint:touchLocation toNode:_worldNode];
+        touchLocation = [self convertPoint:touchLocation toNode:_worldNode];
 
-        [self centerViewOn:touchLocation2];
-
-        [self selectNodeForTouch:touchLocation2];
-
+        [self selectNodeForTouch:touchLocation];
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
 
         CGPoint translation = [recognizer translationInView:recognizer.view];
+
         translation = CGPointMake(translation.x, -translation.y);
+
+        // translation = [self convertPoint:translation toNode:_worldNode];
 
         NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
 
-        // [self panForTranslation:translation];
+        [self panForTranslation:translation];
+
+        // [self centerViewOn:translation];
+
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
 
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -389,17 +325,57 @@
             CGPoint p = mult(velocity, scrollDuration);
 
             CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
-            //  newPos = [self centerViewOn:newPos];
             NSLog(@"End Position X: %f, Y : %f", newPos.x, newPos.y);
 
             [_selectedNode removeAllActions];
 
             SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
             [moveTo setTimingMode:SKActionTimingEaseOut];
-            [_selectedNode runAction:moveTo];
+            // [_selectedNode runAction:moveTo];
+        } else {
+            [_selectedNode removeAllActions];
         }
 
     }
+}
+
+- (void)selectNodeForTouch:(CGPoint)touchLocation {
+    //1
+
+    SKSpriteNode *touchedNode;
+
+    if ((touchedNode = (SKSpriteNode *) [_buildingLayer nodeAtPoint:touchLocation]).name == nil) {
+        touchedNode = (SKSpriteNode *) [_tileMap nodeAtPoint:touchLocation];
+    }
+
+
+
+    //2
+    if (![_selectedNode isEqual:touchedNode]) {
+        [_selectedNode removeAllActions];
+        [_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
+
+        _selectedNode = touchedNode;
+
+        //3
+        if ([[touchedNode name] isEqualToString:nodeType]) {
+            SKAction *pulseGreen = [SKAction sequence:@[
+                    [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
+                    [SKAction waitForDuration:0.1],
+                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
+
+            SKAction *rotate = [SKAction sequence:@[
+                    [SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
+                    [SKAction rotateByAngle:0.0 duration:0.1],
+                    [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
+
+            SKAction *sequence = [SKAction sequence:@[
+                    rotate, pulseGreen]];
+
+            [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
+        }
+    }
+
 }
 
 CGPoint mult(const CGPoint v, const CGFloat s) {
