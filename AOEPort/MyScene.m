@@ -267,18 +267,34 @@
 }
 
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
+    static CGFloat lastScale = 0;
+    static CGFloat previousScale = 0;
 //    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
 //    recognizer.scale = 1;
 
     // [_worldNode runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
     // [_worldNode runAction:[SKAction scaleTo:.75 duration:5.0]];
 
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        self.size = CGSizeMake(self.size.height * recognizer.scale, self.size.width * recognizer.scale);
-        NSLog(@"Scale : %f, Size: %f", recognizer.scale, self.size.width);
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        recognizer.scale = 1;
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
+        if(previousScale > 0)
+            recognizer.scale = previousScale;
+    }
+    else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        CGFloat scaleDifference = recognizer.scale - lastScale;
+        CGFloat heightDifference = self.size.height * scaleDifference;
+        CGFloat widthDifference = self.size.width * scaleDifference;
+        CGSize potentialSize = CGSizeMake(self.size.width + widthDifference, self.size.height + heightDifference);
+
+        if(potentialSize.width < 3200 && potentialSize.height < 3200){
+            self.size = potentialSize;
+            lastScale = recognizer.scale;
+            NSLog(@"Scale : %f, Size: %f", recognizer.scale, self.size.width);
+        }
+    }
+    else if (recognizer.state == UIGestureRecognizerStateEnded)
+    {
+        previousScale = recognizer.scale;
     }
 }
 

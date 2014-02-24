@@ -8,8 +8,6 @@
 
 #import "Barracks.h"
 
-
-
 @implementation Barracks
 
 - (id)initWithTexture:(SKTexture *)texture
