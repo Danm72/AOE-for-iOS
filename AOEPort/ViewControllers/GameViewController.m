@@ -1,15 +1,15 @@
 //
-//  ViewController.m
+//  GameViewController.m
 //  Age of Empires Port
 //
 //  Created by Dan Malone on 04/02/2014.
 //  Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "GameViewController.h"
 #import "MyScene.h"
 
-@interface ViewController()
+@interface GameViewController ()
 //@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 ////@property (nonatomic) IBOutlet SKView *skView;
@@ -18,7 +18,7 @@
 ////@property (nonatomic) MyScene *scene;
 @end
 
-@implementation ViewController
+@implementation GameViewController
 
 //- (void) viewWillAppear:(BOOL)animated{
 //    [self.loadingProgressIndicator startAnimating];

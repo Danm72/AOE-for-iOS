@@ -12,6 +12,7 @@ platform :ios, '7.0'
 
 # If you're using Xcode 5 with a brand new project
 # (XCTest based instead of OCUnit based) use this instead:
+I18n.enforce_available_locales = false
 target :AOEPortTests, :exclusive => true do
   pod 'Kiwi/XCTest', '~> 2.2.3'
 end

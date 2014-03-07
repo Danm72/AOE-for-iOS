@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B2E7F9358974FDAA3EEA41D /* libPods-AOEPortTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AF7DE555E142DAAD708135 /* libPods-AOEPortTests.a */; };
 		C184B09577EA0972AC7B7A8C /* Church.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B10C0DFB6BF7121E29C7 /* Church.m */; };
 		C184B0D36C59BBEB1D807CF2 /* buildings.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B7F71741E124E9FB5C1B /* buildings.atlas */; };
 		C184B16D62084268170F9712 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B40E9E0F185F7F9981A1 /* logo.png */; };
@@ -14,6 +15,7 @@
 		C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = C184B5D553B80AA330AA081C /* SKTUtils.mm */; };
 		C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BDCA7518565072A49DBF /* tile32_256build.png */; };
 		C184B312B000C31DA2B6F30E /* Barracks.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BDEF5F12B2363C6F7FEC /* Barracks.m */; };
+		C184B343BE7044476E020ABB /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BC4A4F1017CA5F5FCB1F /* GameViewController.m */; };
 		C184B57BA1CCBBF65C7A2567 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BCC57AB13545D81A0F34 /* Building.m */; };
 		C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B1233908517431B7FA2B /* SSKTileableNode.m */; };
 		C184B68241D4E8E2A98FE077 /* tiles32 in Resources */ = {isa = PBXBuildFile; fileRef = C184B8C0284FB7411A4FE876 /* tiles32 */; };
@@ -39,6 +41,8 @@
 		C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C84CA73518A6B14E0006AD27 /* LICENSE.txt */; };
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
 		C860896918ABF6D100810C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860896818ABF6D100810C1A /* Images.xcassets */; };
+		C86B326A18CA21C400468EB9 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B326918CA21C400468EB9 /* MenuViewController.m */; };
+		C86B326D18CA28E700468EB9 /* MenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B326C18CA28E700468EB9 /* MenuItemTableViewCell.m */; };
 		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
 		C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFC18A1597500116A26 /* CoreGraphics.framework */; };
 		C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
@@ -46,7 +50,6 @@
 		C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B0518A1597500116A26 /* InfoPlist.strings */; };
 		C8933B0918A1597500116A26 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0818A1597500116A26 /* main.m */; };
 		C8933B0D18A1597500116A26 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B0C18A1597500116A26 /* AppDelegate.m */; };
-		C8933B1618A1597500116A26 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1518A1597500116A26 /* ViewController.m */; };
 		C8933B1918A1597500116A26 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B1818A1597500116A26 /* MyScene.m */; };
 		C8933B2418A1597500116A26 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933B2318A1597500116A26 /* XCTest.framework */; };
 		C8933B2518A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
@@ -72,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65AF7DE555E142DAAD708135 /* libPods-AOEPortTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AOEPortTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8407EBC5736B4A96BB52C20E /* Pods-AOEPortTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AOEPortTests.xcconfig"; path = "Pods/Pods-AOEPortTests.xcconfig"; sourceTree = "<group>"; };
 		C184B0330AA52BBC75837B5A /* SSKMultiLineLabelNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKMultiLineLabelNode.m; sourceTree = "<group>"; };
 		C184B04EAC9AC160A89639E9 /* SSKMultiLineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiLineLabelNode.h; sourceTree = "<group>"; };
 		C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
@@ -95,6 +100,7 @@
 		C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
 		C184B9F6DA9E17FAE65089C4 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
 		C184BA29796EA527FD31C197 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		C184BA3D5EB4AC8D26CD86D5 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		C184BA507E689B253D61C68C /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
 		C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
 		C184BA8B15EF0C0C68DE9273 /* DirtTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtTile.h; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 		C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
 		C184BB54948FF63E8712E6C0 /* GrassTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile.m; sourceTree = "<group>"; };
 		C184BB5BA8764287546CA6ED /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		C184BC4A4F1017CA5F5FCB1F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		C184BC688238A04D47028002 /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
 		C184BCC57AB13545D81A0F34 /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		C184BD236495CBFC2CF6B8ED /* SnowTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTile.h; sourceTree = "<group>"; };
@@ -125,6 +132,10 @@
 		C84CA73518A6B14E0006AD27 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C860896818ABF6D100810C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C86B326818CA21C400468EB9 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		C86B326918CA21C400468EB9 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		C86B326B18CA28E700468EB9 /* MenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemTableViewCell.h; sourceTree = "<group>"; };
+		C86B326C18CA28E700468EB9 /* MenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTableViewCell.m; sourceTree = "<group>"; };
 		C8933AF718A1597500116A26 /* AOEPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOEPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8933AFA18A1597500116A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8933AFC18A1597500116A26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,8 +147,6 @@
 		C8933B0A18A1597500116A26 /* Age of Empires Port-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Age of Empires Port-Prefix.pch"; sourceTree = "<group>"; };
 		C8933B0B18A1597500116A26 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C8933B0C18A1597500116A26 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C8933B1418A1597500116A26 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C8933B1518A1597500116A26 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C8933B1718A1597500116A26 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		C8933B1818A1597500116A26 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
 		C8933B2218A1597500116A26 /* AOEPortTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOEPortTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,12 +185,26 @@
 				C8933B2418A1597500116A26 /* XCTest.framework in Frameworks */,
 				C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */,
 				C8933B2518A1597500116A26 /* Foundation.framework in Frameworks */,
+				0B2E7F9358974FDAA3EEA41D /* libPods-AOEPortTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C184B105F1D0D4F1C29250AD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C184BA3D5EB4AC8D26CD86D5 /* GameViewController.h */,
+				C184BC4A4F1017CA5F5FCB1F /* GameViewController.m */,
+				C86B326818CA21C400468EB9 /* MenuViewController.h */,
+				C86B326918CA21C400468EB9 /* MenuViewController.m */,
+				C86B326B18CA28E700468EB9 /* MenuItemTableViewCell.h */,
+				C86B326C18CA28E700468EB9 /* MenuItemTableViewCell.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		C184B6FFC2C991D416FC6BB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +358,7 @@
 				C8933B2918A1597500116A26 /* AOEPortTests */,
 				C8933AF918A1597500116A26 /* Frameworks */,
 				C8933AF818A1597500116A26 /* Products */,
+				8407EBC5736B4A96BB52C20E /* Pods-AOEPortTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -356,6 +380,7 @@
 				C8933AFE18A1597500116A26 /* UIKit.framework */,
 				C8933B0018A1597500116A26 /* SpriteKit.framework */,
 				C8933B2318A1597500116A26 /* XCTest.framework */,
+				65AF7DE555E142DAAD708135 /* libPods-AOEPortTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,13 +394,12 @@
 				C8933B0C18A1597500116A26 /* AppDelegate.m */,
 				C8933B1718A1597500116A26 /* MyScene.h */,
 				C8933B1818A1597500116A26 /* MyScene.m */,
-				C8933B1418A1597500116A26 /* ViewController.h */,
-				C8933B1518A1597500116A26 /* ViewController.m */,
 				C84CA73018A6B14E0006AD27 /* JSTileMap */,
 				C8933B0318A1597500116A26 /* Supporting Files */,
 				C184BEE21FFF3B4C40510BBC /* Model */,
 				C184BE9A594F024149429CB5 /* Resources */,
 				C184BC3A64BD12A43CF5AF78 /* SSKExtensionCode */,
+				C184B105F1D0D4F1C29250AD /* ViewControllers */,
 			);
 			path = AOEPort;
 			sourceTree = "<group>";
@@ -456,9 +480,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8933B3618A1597500116A26 /* Build configuration list for PBXNativeTarget "AOEPortTests" */;
 			buildPhases = (
+				498F207D6D74454F8A29CFBB /* Check Pods Manifest.lock */,
 				C8933B1E18A1597500116A26 /* Sources */,
 				C8933B1F18A1597500116A26 /* Frameworks */,
 				C8933B2018A1597500116A26 /* Resources */,
+				B4CF0682913147118E3ECD51 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -539,13 +565,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		498F207D6D74454F8A29CFBB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4CF0682913147118E3ECD51 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-AOEPortTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C8933AF318A1597500116A26 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C8933B1918A1597500116A26 /* MyScene.m in Sources */,
-				C8933B1618A1597500116A26 /* ViewController.m in Sources */,
 				C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */,
 				C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */,
 				C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */,
@@ -556,8 +614,10 @@
 				C184B95E74300135311D4424 /* DirtTile.m in Sources */,
 				C184BD27A79692AB1559C69B /* SnowTile.m in Sources */,
 				C184B8964DBCD82DE5E5A9CF /* GrassTile.m in Sources */,
+				C86B326A18CA21C400468EB9 /* MenuViewController.m in Sources */,
 				C184BDDD4917D05CDD45A824 /* Tile.m in Sources */,
 				C184BBF4A1F36F1BDC5187C6 /* Wall.m in Sources */,
+				C86B326D18CA28E700468EB9 /* MenuItemTableViewCell.m in Sources */,
 				C184B09577EA0972AC7B7A8C /* Church.m in Sources */,
 				C184B312B000C31DA2B6F30E /* Barracks.m in Sources */,
 				C184B76788DC26B897189A57 /* TownCenter.m in Sources */,
@@ -571,6 +631,7 @@
 				C184BCCB4724A3BF3B0F45B4 /* SKNode+SKTExtras.m in Sources */,
 				C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */,
 				C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */,
+				C184B343BE7044476E020ABB /* GameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +808,7 @@
 		};
 		C8933B3718A1597500116A26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8407EBC5736B4A96BB52C20E /* Pods-AOEPortTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AOEPort.app/AOEPort";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -769,6 +831,7 @@
 		};
 		C8933B3818A1597500116A26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8407EBC5736B4A96BB52C20E /* Pods-AOEPortTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AOEPort.app/AOEPort";
 				FRAMEWORK_SEARCH_PATHS = (
