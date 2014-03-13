@@ -1,34 +1,43 @@
-//
-//  Age_of_Empires_PortTests.m
-//  Age of Empires PortTests
-//
-//  Created by Dan Malone on 04/02/2014.
-//  Copyright (c) 2014 Dan Malone. All rights reserved.
-//
+#import "Kiwi.h"
+#import "Building.h"
+#import "Wall.h"
 
-#import <XCTest/XCTest.h>
 
-@interface Age_of_Empires_PortTests : XCTestCase
+SPEC_BEGIN(MathSpec)
 
-@end
+describe(@"Math", ^{
+    it(@"is pretty cool", ^{
+        NSUInteger a = 16;
+        NSUInteger b = 26;
+        [[theValue(a + b) should] equal:theValue(42)];
+        
+        
+    });
+    it(@"is pretty strong", ^{
+        NSUInteger a = 16;
+        NSUInteger b = 26;
+        [[theValue(a + b) should] equal:theValue(42)];
 
-@implementation Age_of_Empires_PortTests
 
-- (void)setUp
-{
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
+    });
+});
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
+SPEC_END
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-}
+SPEC_BEGIN(BuildingSpec)
 
-@end
+describe(@"Buildings", ^{
+    SKTextureAtlas *atlas =
+            [SKTextureAtlas atlasNamed:@"buildings"];
+
+    it(@"should have the name", ^{
+        Wall *wall = [[Wall alloc ]initWithTexture:[atlas textureNamed:@"Wall"]];
+
+        BOOL correctlyMade = [wall.buildType isEqualToString:@"Wall"];
+        
+        [[theValue(correctlyMade) should] equal:theValue(YES)];
+
+    });
+});
+
+SPEC_END

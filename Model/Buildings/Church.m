@@ -19,7 +19,7 @@
             NSMutableDictionary *data =  [[NSMutableDictionary alloc] init];
             [data setValue:@"Church" forKey:@"Type"];
             self.userData = data;
-            _buildType = @"Church";
+            self.buildType = @"Church";
 
         }
     }

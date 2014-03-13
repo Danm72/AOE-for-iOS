@@ -21,7 +21,7 @@
             [data setValue:@"Barracks" forKey:@"Type"];
             
             self.userData = data;
-            _buildType = @"Barracks";
+            self.buildType = @"Barracks";
 
         }
     }

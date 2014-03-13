@@ -102,7 +102,7 @@
 //        self.physicsBody.categoryBitMask = PCBugCategory;
 //        self.physicsBody.collisionBitMask = 0;
 //    }
-    _buildType = @"Generic Building";
+    buildType = @"Generic Building";
     return self;
 }
 

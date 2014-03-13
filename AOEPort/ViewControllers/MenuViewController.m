@@ -28,12 +28,15 @@
     [super viewDidLoad];
 
     [self setupTable];
-    NSString *menuItem1 = @"Launch";
-    NSString *menuItem2 = @"Settings";
+    NSString *menuItem1 = @"Campaign";
+    NSString *menuItem2 = @"Skirmish";
+    NSString *menuItem3 = @"Options";
 
     self.menuItems = [NSMutableArray array];
     [self.menuItems addObject:menuItem1];
     [self.menuItems addObject:menuItem2];
+    [self.menuItems addObject:menuItem3];
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,7 +64,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return self.menuItems.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -72,9 +75,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuItemTableViewCell *cell;
 
-
     cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
 
     cell.titleLabel.text =[self.menuItems objectAtIndex:(NSUInteger)indexPath.row];
 

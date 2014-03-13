@@ -21,7 +21,7 @@
             [data setValue:@"TownCenter" forKey:@"Type"];
             
             self.userData = data;
-            _buildType = @"TownCenter";
+            self.buildType = @"TownCenter";
 
         }
     }

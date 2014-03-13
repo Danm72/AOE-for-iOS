@@ -505,7 +505,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
             endingLineNumber = "197"
-            landmarkName = "-tileAtPoint:"
+            landmarkName = "-createNodesFromLayer:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -651,36 +651,6 @@
             endingLineNumber = "91"
             landmarkName = "-initWithAtlasNamed:tileSize:grid:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TileMapLayer initWithAtlasNamed:tileSize:grid:]"
-                  moduleName = "AOEPort"
-                  urlString = "file:///Users/danmalone/Documents/Programming/2014/IOS/AOEPort/AOEPort/Layers/TileMapLayer.m"
-                  timestampString = "415907012.099063"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "637">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TileMapLayer initWithAtlasNamed:tileSize:grid:]"
-                  moduleName = "AOEPort"
-                  urlString = "file:///Users/danmalone/Documents/Programming/2014/IOS/AOEPort/AOEPort/Layers/TileMapLayer.m"
-                  timestampString = "415907012.099242"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "1104">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -695,8 +665,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
             endingLineNumber = "230"
-            landmarkName = "-createWorld"
-            landmarkType = "5">
+            landmarkName = "@implementation MyScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -718,7 +688,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
@@ -727,7 +697,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "198"
             endingLineNumber = "198"
-            landmarkName = "-tileAtPoint:"
+            landmarkName = "-createNodesFromLayer:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -775,7 +745,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "-createWorld"
+            landmarkName = "-tileAtPoint:hasAnyProps:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -823,7 +793,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "318"
             endingLineNumber = "318"
-            landmarkName = "-createCharacters"
+            landmarkName = "-handlePanFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -903,7 +873,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "-handlePanFrom:"
+            landmarkName = "-createCharacters"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -919,7 +889,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "146"
             endingLineNumber = "146"
-            landmarkName = "-handlePanFrom:"
+            landmarkName = "-createCharacters"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -935,7 +905,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "156"
             endingLineNumber = "156"
-            landmarkName = "-handlePanFrom:"
+            landmarkName = "-createCharacters"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

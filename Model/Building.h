@@ -10,8 +10,7 @@
 
 @interface Building : SKSpriteNode
 {
-    NSString *_buildType;
 }
 
-@property (nonatomic,retain) NSString *buildType;
+@property (readwrite) NSString *buildType;
 @end
