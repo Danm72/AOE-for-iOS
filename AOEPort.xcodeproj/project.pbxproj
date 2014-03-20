@@ -38,6 +38,7 @@
 		C184BD27A79692AB1559C69B /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF0AF6F919F5DF548736 /* SnowTile.m */; };
 		C184BDDD4917D05CDD45A824 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB5BA8764287546CA6ED /* Tile.m */; };
 		C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */; };
+		C184BF3C58242275228657BD /* TouchHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BAEEDDF116C0C137704E /* TouchHandlers.m */; };
 		C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73218A6B14E0006AD27 /* JSTileMap.m */; };
 		C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */; };
 		C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C84CA73518A6B14E0006AD27 /* LICENSE.txt */; };
@@ -87,6 +88,7 @@
 		C184B0A87AE375DD158A013C /* Builder_build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Builder_build; sourceTree = "<group>"; };
 		C184B10C0DFB6BF7121E29C7 /* Church.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Church.m; sourceTree = "<group>"; };
 		C184B1233908517431B7FA2B /* SSKTileableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKTileableNode.m; sourceTree = "<group>"; };
+		C184B213F2E5560342506F70 /* TouchHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchHandlers.h; sourceTree = "<group>"; };
 		C184B2A05F844BCCBE9D2E29 /* SSKStretchableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKStretchableNode.h; sourceTree = "<group>"; };
 		C184B2B628F0862CB8A3C930 /* buildings256.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buildings256.atlasc; sourceTree = "<group>"; };
 		C184B40E9E0F185F7F9981A1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		C184BA8B15EF0C0C68DE9273 /* DirtTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtTile.h; sourceTree = "<group>"; };
 		C184BAA2618560AF881CA62C /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BAD1D5FA56778BBE95FE /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
+		C184BAEEDDF116C0C137704E /* TouchHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchHandlers.m; sourceTree = "<group>"; };
 		C184BB11A13AADE821547E93 /* SSKStretchableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKStretchableNode.m; sourceTree = "<group>"; };
 		C184BB1E4321CB76CF2A0725 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
@@ -278,6 +281,15 @@
 			path = Tiles;
 			sourceTree = "<group>";
 		};
+		C184BB570AD83F807E280C6A /* Touch */ = {
+			isa = PBXGroup;
+			children = (
+				C184BAEEDDF116C0C137704E /* TouchHandlers.m */,
+				C184B213F2E5560342506F70 /* TouchHandlers.h */,
+			);
+			path = Touch;
+			sourceTree = "<group>";
+		};
 		C184BC3A64BD12A43CF5AF78 /* SSKExtensionCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,6 +426,7 @@
 				C184BE9A594F024149429CB5 /* Resources */,
 				C184BC3A64BD12A43CF5AF78 /* SSKExtensionCode */,
 				C184B105F1D0D4F1C29250AD /* ViewControllers */,
+				C184BB570AD83F807E280C6A /* Touch */,
 			);
 			path = AOEPort;
 			sourceTree = "<group>";
@@ -648,6 +661,7 @@
 				C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */,
 				C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */,
 				C184B343BE7044476E020ABB /* GameViewController.m in Sources */,
+				C184BF3C58242275228657BD /* TouchHandlers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

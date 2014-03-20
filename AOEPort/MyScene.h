@@ -6,6 +6,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Layers/TileMapLayer.h"
+
+//#import "Player.h"
+//#import "Bug.h"
+//#import "Breakable.h"
+//#import "FireBug.h"
+#import "Layers/TmxTileMapLayer.h"
+#import "TouchHandlers.h"
 
 typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 {
@@ -20,13 +28,14 @@ typedef NS_OPTIONS(uint32_t, PCPhysicsCategory)
 #define kNumPlayers 4
 typedef void (^AssetLoadCompletionHandler)(void);
 
-static NSString * const nodeType = @"Building";
 
 @interface MyScene : SKScene
 
 - (BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props;
+
+- (void)centerViewOn:(CGPoint)centerOn;
+
 - (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
-@property (nonatomic, strong) SKSpriteNode *selectedNode;
 
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 

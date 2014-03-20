@@ -7,13 +7,11 @@
 //
 
 #import "MyScene.h"
-#import "Layers/TileMapLayer.h"
 
 //#import "Player.h"
 //#import "Bug.h"
 //#import "Breakable.h"
 //#import "FireBug.h"
-#import "Layers/TmxTileMapLayer.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -32,12 +30,14 @@
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
     SKSpriteNode *touchedNode;
+    TouchHandlers *handlers;
 }
 
 - (id)initWithSize:(CGSize)size {
 
     if (self = [super initWithSize:size]) {
         [self createWorld];
+        // [self touchHandlers];
         //  [self createCharacters];
         //[self centerViewOn:_player.position];
     }
@@ -124,9 +124,6 @@
          }*/
 }
 
-- (void)centerViewOn:(CGPoint)centerOn {
-    _worldNode.position = [self pointToCenterViewOn:centerOn];
-}
 
 - (void)createCharacters {
     /* _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
@@ -193,17 +190,7 @@
     _worldNode.position = newPosition;
 }*/
 
-- (CGPoint)pointToCenterViewOn:(CGPoint)centerOn {
-    CGSize size = self.size;
 
-    CGFloat x = Clamp(centerOn.x, size.width / 2,
-            _bgLayer.layerSize.width - size.width / 2);
-
-    CGFloat y = Clamp(centerOn.y, size.height / 2,
-            _bgLayer.layerSize.height - size.height / 2);
-
-    return CGPointMake(-x, -y);
-}
 
 - (void)update:(NSTimeInterval)currentTime {
 
@@ -240,163 +227,6 @@
     return tile.physicsBody.categoryBitMask & props;
 }
 
-- (void)panForTranslation:(CGPoint)translation {
-    CGPoint position = [_selectedNode position];
-    if ([[_selectedNode name] isEqualToString:nodeType]) {
-        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
-    } else {
-        CGPoint newPos = CGPointMake(-translation.x, -translation.y);
-
-        newPos = [self convertPoint:newPos toNode:_worldNode];
-
-        //_worldNode.position = [self centerViewOn:newPos];
-
-        [self centerViewOn:newPos];
-    }
-}
-
-- (void)didMoveToView:(SKView *)view {
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [[self view] addGestureRecognizer:panGestureRecognizer];
-
-    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
-    [[self view] addGestureRecognizer:pinchGestureRecognizer];
-
-//    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
-//    [[self view] addGestureRecognizer:rotationGestureRecognizer];
-}
-
-- (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
-    static CGFloat lastScale = 0;
-    static CGFloat previousScale = 0;
-//    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-//    recognizer.scale = 1;
-
-    // [_worldNode runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
-    // [_worldNode runAction:[SKAction scaleTo:.75 duration:5.0]];
-
-    if (recognizer.state == UIGestureRecognizerStateBegan)
-    {
-        if(previousScale > 0)
-            recognizer.scale = previousScale;
-    }
-    else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        CGFloat scaleDifference = recognizer.scale - lastScale;
-        CGFloat heightDifference = self.size.height * scaleDifference;
-        CGFloat widthDifference = self.size.width * scaleDifference;
-        CGSize potentialSize = CGSizeMake(self.size.width + widthDifference, self.size.height + heightDifference);
-
-        if(potentialSize.width < 3200 && potentialSize.height < 3200){
-            self.size = potentialSize;
-            lastScale = recognizer.scale;
-            NSLog(@"Scale : %f, Size: %f", recognizer.scale, self.size.width);
-        }
-    }
-    else if (recognizer.state == UIGestureRecognizerStateEnded)
-    {
-        previousScale = recognizer.scale;
-    }
-}
-
-- (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
-    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-    recognizer.rotation = 0;
-
-}
-
-
-- (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-
-        CGPoint touchLocation = [recognizer locationInView:(self.view)];
-        NSLog(@"Touch1 X: %f, Y : %f", touchLocation.x, touchLocation.y);
-
-        touchLocation = [self convertPointFromView:touchLocation];
-        touchLocation = [self convertPoint:touchLocation toNode:_worldNode];
-
-        [self selectNodeForTouch:touchLocation];
-
-    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-
-        CGPoint translation = [recognizer translationInView:recognizer.view];
-
-        translation = CGPointMake(translation.x, -translation.y);
-
-        // translation = [self convertPoint:translation toNode:_worldNode];
-
-        NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
-
-        [self panForTranslation:translation];
-
-        // [self centerViewOn:translation];
-
-        [recognizer setTranslation:CGPointZero inView:recognizer.view];
-
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-
-        if (![[_selectedNode name] isEqualToString:nodeType]) {
-            float scrollDuration = 0.2;
-            CGPoint velocity = [recognizer velocityInView:recognizer.view];
-            CGPoint pos = [_selectedNode position];
-            CGPoint p = mult(velocity, scrollDuration);
-
-            CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
-            NSLog(@"End Position X: %f, Y : %f", newPos.x, newPos.y);
-
-            [_selectedNode removeAllActions];
-
-            SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
-            [moveTo setTimingMode:SKActionTimingEaseOut];
-            // [_selectedNode runAction:moveTo];
-        } else {
-            [_selectedNode removeAllActions];
-        }
-
-    }
-}
-
-- (void)selectNodeForTouch:(CGPoint)touchLocation {
-    //1
-
-    SKSpriteNode *touchedNode;
-
-    if ((touchedNode = (SKSpriteNode *) [_buildingLayer nodeAtPoint:touchLocation]).name == nil) {
-        touchedNode = (SKSpriteNode *) [_tileMap nodeAtPoint:touchLocation];
-    }
-
-
-
-    //2
-    if (![_selectedNode isEqual:touchedNode]) {
-        [_selectedNode removeAllActions];
-        [_selectedNode runAction:[SKAction rotateToAngle:0.0f duration:0.1]];
-
-        _selectedNode = touchedNode;
-
-        //3
-        if ([[touchedNode name] isEqualToString:nodeType]) {
-            SKAction *pulseGreen = [SKAction sequence:@[
-                    [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
-                    [SKAction waitForDuration:0.1],
-                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
-
-            SKAction *rotate = [SKAction sequence:@[
-                    [SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
-                    [SKAction rotateByAngle:0.0 duration:0.1],
-                    [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
-
-            SKAction *sequence = [SKAction sequence:@[
-                    rotate, pulseGreen]];
-
-            [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
-        }
-    }
-
-}
-
-CGPoint mult(const CGPoint v, const CGFloat s) {
-    return CGPointMake(v.x * s, v.y * s);
-}
 
 /*- (TileMapLayer *)createBreakables {
     if (_tileMap) {
@@ -470,6 +300,18 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
             handler();
         });
     });
+}
+
+- (void)didMoveToView:(SKView *)view {
+    handlers = [[TouchHandlers alloc] initWithScene:self];
+    [handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_tileMap];
+    [handlers registerTouchEvents];
+
+}
+
+
+- (void)touchHandlers {
+
 }
 
 /*- (void)updateHUDForPlayer:(APAPlayer *)player forState:(APAHUDState)state withMessage:(NSString *)message {
@@ -568,8 +410,6 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 
 
 
-float degToRad(float degree) {
-    return degree / 180.0f * M_PI;
-}
+
 
 @end

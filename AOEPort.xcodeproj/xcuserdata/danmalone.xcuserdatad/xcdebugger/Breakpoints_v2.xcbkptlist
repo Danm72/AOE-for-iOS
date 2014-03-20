@@ -745,8 +745,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "237"
             endingLineNumber = "237"
-            landmarkName = "-tileAtPoint:hasAnyProps:"
-            landmarkType = "5">
+            landmarkName = "@implementation MyScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -778,22 +778,6 @@
             startingLineNumber = "213"
             endingLineNumber = "213"
             landmarkName = "-createNodesFromGroup:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AOEPort/MyScene.m"
-            timestampString = "414356807.310846"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "-handlePanFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -857,8 +841,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"
             endingLineNumber = "66"
-            landmarkName = "@implementation MyScene"
-            landmarkType = "3">
+            landmarkName = "-positionForRow:col:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
