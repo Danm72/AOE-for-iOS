@@ -11,7 +11,7 @@
 
 @interface MenuViewController ()
 @property NSIndexPath *selectedCellPath;
-
+@property(nonatomic, strong) NSArray *menuItems;
 @end
 
 @implementation MenuViewController
@@ -28,25 +28,16 @@
     [super viewDidLoad];
 
     [self setupTable];
-    NSString *menuItem1 = @"Campaign";
-    NSString *menuItem2 = @"Skirmish";
-    NSString *menuItem3 = @"Options";
 
     self.menuItems = [NSMutableArray array];
-    [self.menuItems addObject:menuItem1];
-    [self.menuItems addObject:menuItem2];
-    [self.menuItems addObject:menuItem3];
 
+    _menuItems = [NSArray arrayWithObjects:@"Campaign", @"Skirmish", @"Options", nil];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (BOOL) shouldAutorotate {
-    return YES;
 }
 
 - (void)setupTable {
@@ -74,11 +65,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuItemTableViewCell *cell;
+    static NSString *simpleTableIdentifier = @"Cell";
 
-    cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
 
-    cell.titleLabel.text =[self.menuItems objectAtIndex:(NSUInteger)indexPath.row];
+    if (cell == nil) {
+        cell = [[MenuItemTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    }
 
+    cell.textLabel.text = [_menuItems objectAtIndex:(NSUInteger) indexPath.row];
 
     return cell;
 }
@@ -104,6 +99,8 @@
         [self.tableView endUpdates];
     }
 }
+
+
 
 
 /*

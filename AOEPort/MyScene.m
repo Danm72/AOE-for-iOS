@@ -7,11 +7,9 @@
 //
 
 #import "MyScene.h"
+#import "Builder.h"
+#import "Constants.h"
 
-//#import "Player.h"
-//#import "Bug.h"
-//#import "Breakable.h"
-//#import "FireBug.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -31,6 +29,10 @@
     JSTileMap *_tileMap;
     SKSpriteNode *touchedNode;
     TouchHandlers *handlers;
+
+    SKTextureAtlas *atlas;
+    SKSpriteNode *node;
+
 }
 
 - (id)initWithSize:(CGSize)size {
@@ -38,7 +40,7 @@
     if (self = [super initWithSize:size]) {
         [self createWorld];
         // [self touchHandlers];
-        //  [self createCharacters];
+        [self createCharacters];
         //[self centerViewOn:_player.position];
     }
     return self;
@@ -86,7 +88,7 @@
     if (_tileMap) {
         [_worldNode addChild:_tileMap];
     }
-    //[_worldNode addChild:_bgLayer];
+    //[_worldNode_firstLayer addChild:_bgLayer];
     [_worldNode addChild:_buildingLayer];
     [self addChild:_worldNode];
 
@@ -97,8 +99,8 @@
             CGPointMake(-_bgLayer.layerSize.width / 2,
                     -_bgLayer.layerSize.height / 2);
 
-//    _worldNode.xScale -= 1;
-//    _worldNode.yScale -= 1;
+//    _worldNode_firstLayer.xScale -= 1;
+//    _worldNode_firstLayer.yScale -= 1;
 
     /* self.physicsWorld.gravity = CGVectorMake(0, 0);
 
@@ -110,16 +112,16 @@
                      _bgLayer.layerSize.height)];
          bounds.physicsBody.categoryBitMask = PCBoundaryCategory;
          bounds.physicsBody.friction = 0;
-         [_worldNode addChild:bounds];
+         [_worldNode_firstLayer addChild:bounds];
 
          self.physicsWorld.contactDelegate = self;
 
          _breakableLayer = [self createBreakables];
          if (_breakableLayer) {
-             [_worldNode addChild:_breakableLayer];
+             [_worldNode_firstLayer addChild:_breakableLayer];
          }
 
-         if (_tileMap) {
+         if (_tileMap_thirdLayer) {
              [self createCollisionAreas];
          }*/
 }
@@ -128,26 +130,39 @@
 - (void)createCharacters {
     /* _bugLayer = [TileMapLayerLoader tileMapLayerFromFileNamed:
                  @"level-2-bugs.txt"];
-     */
 
-    _buildingLayer = [[TmxTileMapLayer alloc]
-            initWithTmxObjectGroup:[_tileMap
-                    groupNamed:@"Buildings"]
-                          tileSize:_tileMap.tileSize
-                          gridSize:_bgLayer.gridSize];
+     */
+    atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+
+    Builder *builder = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
+    builder.position = CGPointMake(2000, 2000);
+    //node.zPosition = 5000;
+    [_worldNode addChild:builder];
+    //[builder animateWalk:atlas :NORTH];
+
+    // _builderWalkingAnimation = [SKAction animateWithTextures:atlas timePerFrame:0.1];
+//// 5
+//    [node runAction:
+//            [SKAction repeatActionForever:_builderWalkingAnimation]];
+
+//    _buildingLayer_secondLayer = [[TmxTileMapLayer alloc]
+//            initWithTmxObjectGroup:[_tileMap_thirdLayer
+//                    groupNamed:@"Buildings"]
+//                          tileSize:_tileMap_thirdLayer.tileSize
+//                          gridSize:_bgLayer.gridSize];
 
     /*
-     [_worldNode removeAllChildren];
-        for(SKNode *node in [_buildingLayer children]){
+     [_worldNode_firstLayer removeAllChildren];
+        for(SKNode *node in [_buildingLayer_secondLayer children]){
            NSLog(@"Name %@", node.name);
             [node removeFromParent];
-            [_worldNode addChild:node];
+            [_worldNode_firstLayer addChild:node];
         }
-        [_worldNode addChild:_buildingLayer];
+        [_worldNode_firstLayer addChild:_buildingLayer_secondLayer];
 
         _player = (Player *)[_bugLayer childNodeWithName:@"player"];
         [_player removeFromParent];
-        [_worldNode addChild:_player];
+        [_worldNode_firstLayer addChild:_player];
 
         [_bugLayer enumerateChildNodesWithName:@"bug"
                                     usingBlock:
@@ -155,7 +170,7 @@
              [(Bug*)node start];
          }];
 
-            [_buildingLayer enumerateChildNodesWithName:@"building"
+            [_buildingLayer_secondLayer enumerateChildNodesWithName:@"building"
                                         usingBlock:
              ^(SKNode *node, BOOL *stop){
                  [(Building*)node];
@@ -174,7 +189,7 @@
 
 - (TileMapLayer *)createBuildings {
 
-    //   _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+    //   _tileMap_thirdLayer = [JSTileMap mapNamed:@"tile32_256build.tmx"];
     return [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Buildings"]];
 }
@@ -183,11 +198,11 @@
 {
     CGPoint target = [self pointToCenterViewOn:_player.position];
 
-    CGPoint newPosition = _worldNode.position;
-    newPosition.x += (target.x - _worldNode.position.x) * 0.1f;
-    newPosition.y += (target.y - _worldNode.position.y) * 0.1f;
+    CGPoint newPosition = _worldNode_firstLayer.position;
+    newPosition.x += (target.x - _worldNode_firstLayer.position.x) * 0.1f;
+    newPosition.y += (target.y - _worldNode_firstLayer.position.y) * 0.1f;
 
-    _worldNode.position = newPosition;
+    _worldNode_firstLayer.position = newPosition;
 }*/
 
 
@@ -229,8 +244,8 @@
 
 
 /*- (TileMapLayer *)createBreakables {
-    if (_tileMap) {
-        TMXLayer *breakables = [_tileMap layerNamed:@"Breakables"];
+    if (_tileMap_thirdLayer) {
+        TMXLayer *breakables = [_tileMap_thirdLayer layerNamed:@"Breakables"];
         return
         (breakables ?
          [[TmxTileMapLayer alloc] initWithTmxLayer:breakables] :
@@ -242,7 +257,7 @@
 }*/
 
 - (TileMapLayer *)createBreakables {
-    //if (_tileMap) {
+    //if (_tileMap_thirdLayer) {
     TMXLayer *buildings = [_tileMap layerNamed:@"Buildings"];
     return
             (buildings ?
@@ -259,7 +274,7 @@
 /*- (void)createCollisionAreas
 {
     TMXObjectGroup *group =
-    [_tileMap groupNamed:@"CollisionAreas"];
+    [_tileMap_thirdLayer groupNamed:@"CollisionAreas"];
 
     NSArray *waterObjects = [group objectsNamed:@"water"];
     for (NSDictionary *waterObj in waterObjects) {
@@ -306,11 +321,6 @@
     handlers = [[TouchHandlers alloc] initWithScene:self];
     [handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_tileMap];
     [handlers registerTouchEvents];
-
-}
-
-
-- (void)touchHandlers {
 
 }
 

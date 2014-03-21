@@ -140,6 +140,8 @@
                 tile.position = [self pointForCoord:coord];
 
                 tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+                //NSLog(@"Name is : %@",self.name);
+               // NSLog(@"Position x : %f , Position y : %f , Position y : %f",tile.position.x, tile.position.x,tile.zPosition);
 
                 [self addChild:tile];
 

@@ -33,8 +33,6 @@ typedef void (^AssetLoadCompletionHandler)(void);
 
 - (BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props;
 
-- (void)centerViewOn:(CGPoint)centerOn;
-
 - (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
 
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;

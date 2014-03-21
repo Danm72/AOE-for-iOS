@@ -4,14 +4,32 @@
 //
 
 #import "TouchHandlers.h"
-
+#import <AudioToolbox/AudioServices.h>
+#import "Builder.h"
+#import "Constants.h"
 
 @implementation TouchHandlers {
-    SKNode *_worldNode;
+
+    SKNode *_worldNode_firstLayer;
     TileMapLayer *_bgLayer;
-    TileMapLayer *_buildingLayer;
-    JSTileMap *_tileMap;
+    TileMapLayer *_buildingLayer_secondLayer;
+    JSTileMap *_tileMap_thirdLayer;
+    BOOL unitNode;
+    BOOL buildingNode;
 }
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    return YES;
+}
+
 
 - (instancetype)initWithScene:(SKScene *)scene1 {
     self = [super init];
@@ -27,14 +45,13 @@
 }
 
 - (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer :(JSTileMap *)tileMap {
-    _worldNode = worldNode;
+    _worldNode_firstLayer = worldNode;
     _bgLayer = bgLayer;
-    _buildingLayer = buildingLayer;
-    _tileMap = tileMap;
+    _buildingLayer_secondLayer = buildingLayer;
+    _tileMap_thirdLayer = tileMap;
 }
 
 - (void)didMoveToView {
-
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
     [[scene view] addGestureRecognizer:panGestureRecognizer];
 
@@ -45,10 +62,14 @@
 //    [[self view] addGestureRecognizer:rotationGestureRecognizer];
 
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressFrom:)];
-    // longPressGestureRecognizer.minimumPressDuration = 1.0;
+    longPressGestureRecognizer.minimumPressDuration = 0.25;
     [[scene view] addGestureRecognizer:longPressGestureRecognizer];
-}
+    [longPressGestureRecognizer setDelegate:self];
 
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+    [[scene view] addGestureRecognizer:tapGestureRecognizer];
+
+}
 
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
     static CGFloat lastScale = 0;
@@ -57,8 +78,8 @@
 //    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
 //    recognizer.scale = 1;
 
-    // [_worldNode runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
-    // [_worldNode runAction:[SKAction scaleTo:.75 duration:5.0]];
+    // [_worldNode_firstLayer runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
+    // [_worldNode_firstLayer runAction:[SKAction scaleTo:.75 duration:5.0]];
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         if (previousScale > 0)
@@ -73,7 +94,7 @@
         if (potentialSize.width < 3200 && potentialSize.height < 3200) {
             scene.size = potentialSize;
             lastScale = recognizer.scale;
-            NSLog(@"Scale : %f, Size: %f", recognizer.scale, scene.size.width);
+            NSLog(@"Scale : %f, Size x: %f, Size x: %f", recognizer.scale, scene.size.width, scene.size.height);
         }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -90,38 +111,109 @@
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {
     //  recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
 //    recognizer.rotation = 0;
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
         CGPoint touchLocation = [recognizer locationInView:(scene.view)];
 
         touchLocation = [scene convertPointFromView:touchLocation];
-        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode];
+        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
 
         [self selectNodeForTouch:touchLocation];
     }
+
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+
+    }
 }
 
+- (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
+    //  recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
+//    recognizer.rotation = 0;
+    float scrollDuration = 2;
+
+    // CGPoint pos = [_selectedNode position];
+
+    CGPoint touchLocation = [recognizer locationInView:(scene.view)];
+
+    touchLocation = [scene convertPointFromView:touchLocation];
+    touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
+
+    CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
+
+
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        //   _selectedNode = nil;
+    }
+
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
+        if (unitNode) {
+            SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+
+            if (newPos.y > _selectedNode.position.y)
+                [(Builder *) _selectedNode animateWalk:atlas :NORTH];
+            else if (newPos.y < _selectedNode.position.y)
+                [(Builder *) _selectedNode animateWalk:atlas :SOUTH];
+            else if (newPos.x > _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :EAST];
+            else if (newPos.x < _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :WEST];
+            else if (newPos.y > _selectedNode.position.y && newPos.x < _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :NORTH_WEST];
+            else if (newPos.y > _selectedNode.position.y && newPos.x > _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :NORTH_EAST];
+            else if (newPos.y < _selectedNode.position.y && newPos.x > _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :SOUTH_EAST];
+            else if (newPos.y < _selectedNode.position.y && newPos.x < _selectedNode.position.x)
+                [(Builder *) _selectedNode animateWalk:atlas :SOUTH_WEST];
+
+            SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
+            [moveTo setTimingMode:SKActionTimingEaseOut];
+
+            [_selectedNode runAction:moveTo completion:^{
+                {
+                    [_selectedNode removeAllActions];
+                    //idle
+                }
+            }];
+        }
+        _selectedNode = nil;
+    }
+
+
+
+}
+
+-(BOOL) leftOrRight:(CGPoint) oldPoint:(CGPoint) newPoint{
+    CGFloat difference;
+    if(newPoint.x > oldPoint.x){
+        difference = oldPoint.x - newPoint.x;
+        if(difference > 100){
+            return true;
+        }
+    }
+
+    return true;
+}
 
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
     NSDate *start = [NSDate date];
     // do stuff...
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        CGPoint touchLocation = [recognizer locationInView:(scene.view)];
-        NSLog(@"Touch1 X: %f, Y : %f", touchLocation.x, touchLocation.y);
+//        CGPoint touchLocation = [recognizer locationInView:(scene.view)];
+//        NSLog(@"Touch1 X: %f, Y : %f", touchLocation.x, touchLocation.y);
+//
+//        touchLocation = [scene convertPointFromView:touchLocation];
+//        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
 
-        touchLocation = [scene convertPointFromView:touchLocation];
-        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode];
-
-        [self selectNodeForTouchRemoveSelection:touchLocation];
+        //   [self selectNodeForTouchRemoveSelection:touchLocation];
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        NSTimeInterval timeInterval = [start timeIntervalSinceNow];
-
         CGPoint translation = [recognizer translationInView:recognizer.view];
-
+        // CGPoint velocity = [recognizer velocityInView:scene.view];
         translation = CGPointMake(translation.x, -translation.y);
 
-        // translation = [self convertPoint:translation toNode:_worldNode];
+        // translation = [self convertPoint:translation toNode:_worldNode_firstLayer];
 
         NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
 
@@ -133,62 +225,59 @@
 
 
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+        float scrollDuration = 0.2;
+        CGPoint velocity = [recognizer velocityInView:recognizer.view];
+        CGPoint pos = [_selectedNode position];
+        CGPoint p = mult(velocity, scrollDuration);
 
-        if (![[_selectedNode name] isEqualToString:buildingNodeType]) {
-            float scrollDuration = 0.2;
-            CGPoint velocity = [recognizer velocityInView:recognizer.view];
-            CGPoint pos = [_selectedNode position];
-            CGPoint p = mult(velocity, scrollDuration);
+        CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
 
-            CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
-            NSLog(@"End Position X: %f, Y : %f", newPos.x, newPos.y);
+        /*      if ([[_selectedNode name] isEqualToString:tileNodeType]) {
 
+                  NSLog(@"End Position X: %f, Y : %f", newPos.x, newPos.y);
 
-            SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
-            [moveTo setTimingMode:SKActionTimingEaseOut];
+                  SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
+                  [moveTo setTimingMode:SKActionTimingEaseOut];
 
-            [_selectedNode removeAllActions];
-//
-            SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
-            SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
+                  [_selectedNode removeAllActions];
 
-            SKAction *returnToNormalSequence = [SKAction sequence:@[
-                    returnToRegularColour, returnToRegularRotation]];
+              }*/
 
-            [_selectedNode runAction:returnToNormalSequence];
-            _selectedNode = nil;
+        if (_selectedNode != nil) {
 
-        } else {
-            [_selectedNode removeAllActions];
+            unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
+            if (unitNode) {
+                SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+
+                if (newPos.y > _selectedNode.position.y)
+                    [(Builder *) _selectedNode animateWalk:atlas :NORTH];
+                if (newPos.y < _selectedNode.position.y)
+                    [(Builder *) _selectedNode animateWalk:atlas :SOUTH];
+
+                SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
+                [moveTo setTimingMode:SKActionTimingEaseOut];
+                [_selectedNode runAction:moveTo];
+
+            }
+
+            buildingNode = [[_selectedNode name] isEqualToString:buildingNodeType];
+            if (buildingNode) {
+                SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
+                SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
+
+                SKAction *returnToNormalSequence = [SKAction sequence:@[
+                        returnToRegularColour, returnToRegularRotation]];
+
+                [_selectedNode removeAllActions];
+
+                [_selectedNode runAction:returnToNormalSequence];
+
+                _selectedNode = nil;
+            }
+
         }
 
     }
-}
-
-- (void)selectNodeForTouchRemoveSelection:(CGPoint)touchLocation {
-    //1
-    SKSpriteNode *touchedNode;
-
-    BOOL nodeIsATile = (touchedNode = (SKSpriteNode *) [_buildingLayer nodeAtPoint:touchLocation]).name == nil;
-    if (nodeIsATile) {
-        touchedNode = (SKSpriteNode *) [_tileMap nodeAtPoint:touchLocation];
-    }
-
-    //2
-    if (![_selectedNode isEqual:touchedNode]) {
-/*        [_selectedNode removeAllActions];
-
-        SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
-        SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
-
-        SKAction *returnToNormalSequence = [SKAction sequence:@[
-                returnToRegularColour, returnToRegularRotation]];
-
-        [_selectedNode runAction:returnToNormalSequence];*/
-
-        _selectedNode = touchedNode;
-    }
-
 }
 
 
@@ -196,9 +285,22 @@
     //1
     SKSpriteNode *touchedNode;
 
-    BOOL nodeIsATile = (touchedNode = (SKSpriteNode *) [_buildingLayer nodeAtPoint:touchLocation]).name == nil;
-    if (nodeIsATile) {
-        touchedNode = (SKSpriteNode *) [_tileMap nodeAtPoint:touchLocation];
+    /*   BOOL nodeIsABuilding = [touchedNode.name isEqualToString:buildingNodeType];
+       BOOL nodeIsAUnit = [touchedNode.name isEqualToString:unitNodeType];
+       //BOOL nodeIsATile = [touchedNode.name isEqualToString:tileNodeType];
+
+
+       BOOL nodeIsATile = (touchedNode = (SKSpriteNode *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation]).name == nil;
+       BOOL nodeIsNotTile = (touchedNode = (SKSpriteNode *) [_worldNode_firstLayer nodeAtPoint:touchLocation]).name == unitNodeType;*/
+
+    if (touchedNode == nil) {
+        touchedNode = (SKSpriteNode *) [_worldNode_firstLayer nodeAtPoint:touchLocation];
+    }
+    if (touchedNode == nil) {
+        touchedNode = (SKSpriteNode *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation];
+    }
+    if (touchedNode == nil) {
+        touchedNode = (SKSpriteNode *) [_tileMap_thirdLayer nodeAtPoint:touchLocation];
     }
 
     //2
@@ -216,7 +318,9 @@
         _selectedNode = touchedNode;
 
         //3
-        if ([[touchedNode name] isEqualToString:buildingNodeType]) {
+        buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
+        if (buildingNode) {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
             SKAction *pulseGreen = [SKAction sequence:@[
                     [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
                     [SKAction waitForDuration:0.1],
@@ -232,6 +336,11 @@
 
             [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
         }
+        unitNode = [[touchedNode name] isEqualToString:unitNodeType];
+
+        if (unitNode) {
+        }
+
     }
 
 }
@@ -247,20 +356,20 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
 
-        newPos = [scene convertPoint:newPos toNode:_worldNode];
+        newPos = [scene convertPoint:newPos toNode:_worldNode_firstLayer];
 
-        //_worldNode.position = [self centerViewOn:newPos];
+        //_worldNode_firstLayer.position = [self centerViewOn:newPos];
 
         [self centerViewOn:newPos];
     }
 }
 
 float degToRad(float degree) {
-    return degree / 180.0f * M_PI;
+    return (float) (degree / 180.0f * M_PI);
 }
 
 - (void)centerViewOn:(CGPoint)centerOn {
-    _worldNode.position = [self pointToCenterViewOn:centerOn :_bgLayer];
+    _worldNode_firstLayer.position = [self pointToCenterViewOn:centerOn :_bgLayer];
 }
 
 - (CGPoint)pointToCenterViewOn:(CGPoint)centerOn :(TileMapLayer *)layer {

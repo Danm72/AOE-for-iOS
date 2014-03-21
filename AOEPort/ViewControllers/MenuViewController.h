@@ -10,6 +10,5 @@
 
 @interface MenuViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UITableView *menuTable;
-@property (nonatomic, strong) NSMutableArray *menuItems;
 
 @end

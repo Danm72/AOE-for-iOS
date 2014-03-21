@@ -5,8 +5,11 @@
 #import "JSTileMap.h"
 #import "TileMapLayer.h"
 static NSString * const buildingNodeType = @"Building";
+static NSString * const unitNodeType = @"Unit";
+static NSString * const tileNodeType = @"Tile";
 
-@interface TouchHandlers : NSObject{
+
+@interface TouchHandlers : NSObject <UIGestureRecognizerDelegate>{
     SKScene *scene;
 }
 
