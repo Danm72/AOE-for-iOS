@@ -3,7 +3,6 @@
 // Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Builder.h"
 #import "Constants.h"
 
@@ -13,6 +12,7 @@
 
     int direction_graphic_start;
     int direction_graphic_end;
+    BOOL flipGraphic;
 
 }
 
@@ -41,7 +41,7 @@
 }
 
 
-- (void)animateWalk:(SKTextureAtlas *)atlas:(NSInteger )direction {
+- (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction {
     SKAction *_builderWalkingAnimation;
 
     textures = [NSMutableArray arrayWithCapacity:15];
@@ -58,15 +58,31 @@
     _builderWalkingAnimation =
             [SKAction animateWithTextures:textures timePerFrame:0.1];
 
+    //SKAction *action0 = [SKAction scaleXTo:1.0 duration:0.1];
+    SKAction *action1 = [SKAction scaleXTo:-1.0 duration:0.1];
+    SKAction *action2 = [SKAction scaleXTo:1.0 duration:0.1];
+
+    SKAction *flipGraphicSequence = [SKAction sequence:@[
+           action1]];
+
+    [self removeAllActions];
+
     [SKTexture preloadTextures:textures withCompletionHandler:^(void) {
-        [self runAction:
-                [SKAction repeatActionForever:_builderWalkingAnimation]];
+        if (flipGraphic) {
+            [self runAction:[SKAction repeatAction:flipGraphicSequence count:1]];
+            [self runAction:[SKAction repeatActionForever:_builderWalkingAnimation]];
+            flipGraphic=false;
+        }
+        else{
+            [self runAction:[SKAction repeatAction:action2 count:1]];
+            [self runAction:[SKAction repeatActionForever:_builderWalkingAnimation]];
+        }
 
     }];
 
 }
 
--(void) evaluateMovementDirection:(NSInteger) direction{
+- (void)evaluateMovementDirection:(NSInteger)direction {
 
     switch (direction) {
 
@@ -86,41 +102,39 @@
             direction_graphic_start = 30;
             direction_graphic_end = 44;
             break;
-
         }
 
         case NORTH_WEST: {
             direction_graphic_start = 45;
             direction_graphic_end = 59;
             break;
-
         }
         case NORTH: {
             direction_graphic_start = 60;
             direction_graphic_end = 75;
             break;
-
         }
         case NORTH_EAST: {
-            direction_graphic_start = 0;
-            direction_graphic_end = 15;
+            flipGraphic = true;
+            direction_graphic_start = 45;
+            direction_graphic_end = 59;
             break;
-
         }
 
         case EAST: {
-            direction_graphic_start = 0;
-            direction_graphic_end = 15;
+            flipGraphic = true;
+            direction_graphic_start = 30;
+            direction_graphic_end = 44;
             break;
-
         }
 
         case SOUTH_EAST: {
-            direction_graphic_start = 0;
-            direction_graphic_end = 15;
+            flipGraphic = true;
+            direction_graphic_start = 15;
+            direction_graphic_end = 29;
             break;
-
         }
+
         default:
             break;
     }

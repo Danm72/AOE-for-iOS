@@ -4,9 +4,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Unit.h"
 
 
-@interface Villager : SKSpriteNode
+@interface Villager : Unit
 @property (readwrite) NSString *unitType;
 
 @end

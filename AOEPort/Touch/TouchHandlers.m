@@ -6,7 +6,6 @@
 #import "TouchHandlers.h"
 #import <AudioToolbox/AudioServices.h>
 #import "Builder.h"
-#import "Constants.h"
 
 @implementation TouchHandlers {
 
@@ -126,11 +125,6 @@
 }
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-    //  recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-//    recognizer.rotation = 0;
-    float scrollDuration = 2;
-
-    // CGPoint pos = [_selectedNode position];
 
     CGPoint touchLocation = [recognizer locationInView:(scene.view)];
 
@@ -147,52 +141,11 @@
     if (recognizer.state == UIGestureRecognizerStateEnded) {
         unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
         if (unitNode) {
-            SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
-
-            if (newPos.y > _selectedNode.position.y)
-                [(Builder *) _selectedNode animateWalk:atlas :NORTH];
-            else if (newPos.y < _selectedNode.position.y)
-                [(Builder *) _selectedNode animateWalk:atlas :SOUTH];
-            else if (newPos.x > _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :EAST];
-            else if (newPos.x < _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :WEST];
-            else if (newPos.y > _selectedNode.position.y && newPos.x < _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :NORTH_WEST];
-            else if (newPos.y > _selectedNode.position.y && newPos.x > _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :NORTH_EAST];
-            else if (newPos.y < _selectedNode.position.y && newPos.x > _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :SOUTH_EAST];
-            else if (newPos.y < _selectedNode.position.y && newPos.x < _selectedNode.position.x)
-                [(Builder *) _selectedNode animateWalk:atlas :SOUTH_WEST];
-
-            SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
-            [moveTo setTimingMode:SKActionTimingEaseOut];
-
-            [_selectedNode runAction:moveTo completion:^{
-                {
-                    [_selectedNode removeAllActions];
-                    //idle
-                }
-            }];
+            [((Unit *)_selectedNode) move:newPos];
         }
-        _selectedNode = nil;
+        // _selectedNode = nil;
     }
 
-
-
-}
-
--(BOOL) leftOrRight:(CGPoint) oldPoint:(CGPoint) newPoint{
-    CGFloat difference;
-    if(newPoint.x > oldPoint.x){
-        difference = oldPoint.x - newPoint.x;
-        if(difference > 100){
-            return true;
-        }
-    }
-
-    return true;
 }
 
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
@@ -244,7 +197,7 @@
               }*/
 
         if (_selectedNode != nil) {
-
+/*
             unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
             if (unitNode) {
                 SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
@@ -258,7 +211,7 @@
                 [moveTo setTimingMode:SKActionTimingEaseOut];
                 [_selectedNode runAction:moveTo];
 
-            }
+            }*/
 
             buildingNode = [[_selectedNode name] isEqualToString:buildingNodeType];
             if (buildingNode) {
