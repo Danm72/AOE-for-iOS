@@ -9,6 +9,7 @@
 
 @implementation Unit {
 
+
 }
 
 -(void) move:(CGPoint) newPos{
@@ -46,5 +47,63 @@
         }
     }];
 
+}
+
+- (void)evaluateMovementDirection:(NSInteger)direction {
+
+    switch (direction) {
+
+        case SOUTH: {
+            direction_graphic_start = 0;
+            direction_graphic_end = 14;
+            break;
+
+        }
+        case SOUTH_WEST: {
+            direction_graphic_start = 15;
+            direction_graphic_end = 29;
+            break;
+
+        }
+        case WEST: {
+            direction_graphic_start = 30;
+            direction_graphic_end = 44;
+            break;
+        }
+
+        case NORTH_WEST: {
+            direction_graphic_start = 45;
+            direction_graphic_end = 59;
+            break;
+        }
+        case NORTH: {
+            direction_graphic_start = 60;
+            direction_graphic_end = 75;
+            break;
+        }
+        case NORTH_EAST: {
+            flipGraphic = true;
+            direction_graphic_start = 45;
+            direction_graphic_end = 59;
+            break;
+        }
+
+        case EAST: {
+            flipGraphic = true;
+            direction_graphic_start = 30;
+            direction_graphic_end = 44;
+            break;
+        }
+
+        case SOUTH_EAST: {
+            flipGraphic = true;
+            direction_graphic_start = 15;
+            direction_graphic_end = 29;
+            break;
+        }
+
+        default:
+            break;
+    }
 }
 @end

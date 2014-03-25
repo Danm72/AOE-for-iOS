@@ -20,59 +20,63 @@
 
 @implementation GameViewController
 
-//- (void) viewWillAppear:(BOOL)animated{
-//    [self.loadingProgressIndicator startAnimating];
-//    
-//    SKView * skView = (SKView *)self.view;
-//    // CGSize viewSize = self.view.bounds.size;
-//    
-//    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
-//    scene.scaleMode = SKSceneScaleModeResizeFill;
-//
-//    [scene loadSceneAssetsWithCompletionHandler:^{
-//        
-//        //MyScene *scene  = [[MyScene alloc] initWithSize:skView.bounds.size];
-//        
-//        //CGSize viewSize = self.view.bounds.size;
-//        [self.loadingProgressIndicator stopAnimating];
-//        [self.loadingProgressIndicator setHidden:YES];
-//        [skView presentScene:scene];
-//        [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-//            self.enterButton.alpha = 1.0f;
-//            self.exitButton.alpha = 1.0f;
-//        } completion:NULL];
-//        
-//    }];
-//    skView.showsFPS = YES;
-//    skView.showsNodeCount = YES;
-//}
+/*- (void) viewWillAppear:(BOOL)animated{
+    [self.loadingProgressIndicator startAnimating];
 
-- (void)viewDidLoad
-{
+    SKView * skView = (SKView *)self.view;
+    // CGSize viewSize = self.view.bounds.size;
+
+    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    scene.scaleMode = SKSceneScaleModeResizeFill;
+
+    [scene loadSceneAssetsWithCompletionHandler:^{
+
+        //MyScene *scene  = [[MyScene alloc] initWithSize:skView.bounds.size];
+
+        //CGSize viewSize = self.view.bounds.size;
+        [self.loadingProgressIndicator stopAnimating];
+        [self.loadingProgressIndicator setHidden:YES];
+        [skView presentScene:scene];
+        [UIView animateWithDuration:2.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.enterButton.alpha = 1.0f;
+            self.exitButton.alpha = 1.0f;
+        } completion:NULL];
+
+    }];
+    skView.showsFPS = YES;
+    skView.showsNodeCount = YES;
+}*/
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
+- (void)viewDidLoad {
     [super viewDidLoad];
 
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    SKView *skView = (SKView *) self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
 
     // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
-  //  scene.scaleMode = SKSceneScaleModeResizeFill;
+    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    //  scene.scaleMode = SKSceneScaleModeResizeFill;
     scene.scaleMode = SKSceneScaleModeAspectFill;
     //scene.size = CGSizeMake(1284,1926);
 
+    [scene loadSceneAssetsWithCompletionHandler:^{
+        NSLog(@"Done Loading");
+        [skView presentScene:scene];
+    }];
     // Present the scene.
-    [skView presentScene:scene];
 }
 
-- (BOOL)shouldAutorotate
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
+- (NSUInteger)supportedInterfaceOrientations {
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     } else {
@@ -80,8 +84,7 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }

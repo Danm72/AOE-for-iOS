@@ -38,8 +38,10 @@
     int distance = (int) sqrt((xDist * xDist) + (yDist * yDist));
 
     //avoid overly fast movement
-    if (distance < 200)
-        distance = distance / 10;
+    if (distance < 100)
+        distance = distance / 25;
+    else if (distance < 200)
+        distance = distance / 50;
     else
         distance = distance / 100;
 

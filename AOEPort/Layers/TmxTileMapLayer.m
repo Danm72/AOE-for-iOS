@@ -13,6 +13,10 @@
 #import "TownCenter.h"
 #import "Church.h"
 #import "Barracks.h"
+#import "DirtTile.h"
+#import "SnowTile.h"
+#import "SandTile.h"
+
 
 //#import "Breakable.h"
 //#import "Player.h"
@@ -68,123 +72,86 @@
                 continue;
             //3
             if ([map propertiesForGid:tileGid][@"dirt"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //     NSLog(@"TileGID is: %s", "dirt1");
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
+                Tile *tile = [[DirtTile alloc] initWithTexture:[atlas textureNamed:@"dirt1"]];
+                tile.position = [self pointForCoord:coord];
+                tile.blendMode = SKBlendModeReplace;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
+               // [layer removeTileAtCoord:coord];
 
-                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
-                //            [self addChild:tile];
-                //
+                [self addChild:tile];
+            }
+            if ([map propertiesForGid:tileGid][@"sand"]) {
+                Tile *tile = [[SandTile alloc] initWithTexture:[atlas textureNamed:@"sand"]];
+                tile.position = [self pointForCoord:coord];
+                tile.blendMode = SKBlendModeReplace;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
 
-                // [self addChild:tile];
+                //[layer removeTileAtCoord:coord];
+                [self addChild:tile];
             }
 
             if ([map propertiesForGid:tileGid][@"grass"]) {
-                //                [layer removeTileAtCoord:coord];
-                //
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"Grass"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
+                Tile *tile = [[GrassTile alloc] initWithTexture:[atlas textureNamed:@"grass"]];
+                tile.position = [self pointForCoord:coord];
+                tile.blendMode = SKBlendModeReplace;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
 
-
+                // [layer removeTileAtCoord:coord];
+                [self addChild:tile];
             } else if ([map propertiesForGid:tileGid][@"snow"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"snow"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
-                //        SKNode *tile =
-                //         [[Breakable alloc]
-                //          initWithWhole:[atlas textureNamed:@"tree"]
-                //                 broken:[atlas textureNamed:@"tree-stump"]];
-                //         tile.position = [self pointForCoord:coord];
-                //         [self addChild:tile];
-                //         [layer removeTileAtCoord:coord];
+                Tile *tile = [[SnowTile alloc] initWithTexture:[atlas textureNamed:@"snow"]];
+                tile.position = [self pointForCoord:coord];
+                tile.blendMode = SKBlendModeReplace;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
+
+                // [layer removeTileAtCoord:coord];
+
+                [self addChild:tile];
             }
             if ([map propertiesForGid:tileGid][@"Wall"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
-
-                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
-                //            [self addChild:tile];
-                //
                 Building *tile = [[Wall alloc] initWithTexture:[atlas textureNamed:@"wall"]];
                 tile.position = [self pointForCoord:coord];
                 tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
+
+                //[layer removeTileAtCoord:coord];
+
                 [self addChild:tile];
 
-                // [self addChild:tile];
             }
             if ([map propertiesForGid:tileGid][@"TownCenter"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
-
-                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
-                //            [self addChild:tile];
-                //
                 Building *tile = [[TownCenter alloc] initWithTexture:[atlas textureNamed:@"towncenter"]];
                 tile.position = [self pointForCoord:coord];
-
                 tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
-                //NSLog(@"Name is : %@",self.name);
-               // NSLog(@"Position x : %f , Position y : %f , Position y : %f",tile.position.x, tile.position.x,tile.zPosition);
+                tile.texture.filteringMode = SKTextureFilteringNearest;
 
                 [self addChild:tile];
 
-
-                // [self addChild:tile];
             }
             if ([map propertiesForGid:tileGid][@"Barracks"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
-
-                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
-                //            [self addChild:tile];
-                //
                 Building *tile = [[Barracks alloc] initWithTexture:[atlas textureNamed:@"elitebarracks"]];
                 tile.position = [self pointForCoord:coord];
                 tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
 
                 [self addChild:tile];
 
                 // [self addChild:tile];
             }
             if ([map propertiesForGid:tileGid][@"Church"]) {
-                //  [layer removeTileAtCoord:coord];
 
-                //                Tile *tile = [[GrassTile alloc ]initWithTexture:[atlas textureNamed:@"dirt1"]];
-                //                tile.position = [self pointForCoord:coord];
-                //
-                //                [self addChild:tile];
-
-                //            SKSpriteNode *tile = [layer tileAtCoord:coord];
-                //            [self addChild:tile];
-                //
                 Building *tile = [[Church alloc] initWithTexture:[atlas textureNamed:@"barracks"]];
                 tile.position = [self pointForCoord:coord];
                 tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+                tile.texture.filteringMode = SKTextureFilteringNearest;
 
                 [self addChild:tile];
 
-                // [self addChild:tile];
             }
 
             else if (![map propertiesForGid:tileGid][@"snow"] && ![map propertiesForGid:tileGid][@"grass"] && ![map propertiesForGid:tileGid][@"dirt"]) {
@@ -194,7 +161,9 @@
                 //                Building *tile = [[Wall alloc ]initWithTexture:[atlas textureNamed:@"wall"]];
                 //                tile.position = [self pointForCoord:coord];
                 //                [self addChild:tile];
+
             }
+
         }
     }
 }

@@ -22,7 +22,7 @@
   SKSpriteNode *tile;
 
   // 1
-  switch (tileCode) {
+  /*switch (tileCode) {
     case 'x':
       tile = [SKSpriteNode spriteNodeWithTexture:
                [_atlas textureNamed:@"wall"]];
@@ -71,7 +71,7 @@
   }
   // 2
   tile.blendMode = SKBlendModeReplace;
-  tile.texture.filteringMode = SKTextureFilteringNearest;
+  tile.texture.filteringMode = SKTextureFilteringNearest;*/
   return tile;
 }
 

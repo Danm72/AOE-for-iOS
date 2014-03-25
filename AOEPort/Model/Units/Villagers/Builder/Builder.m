@@ -5,14 +5,10 @@
 
 #import "Builder.h"
 #import "Constants.h"
-
+#import "DrawDebugger.h"
 
 @implementation Builder {
-    NSMutableArray *textures;
 
-    int direction_graphic_start;
-    int direction_graphic_end;
-    BOOL flipGraphic;
 
 }
 
@@ -35,6 +31,20 @@
             [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
            //self.physicsBody.categoryBitMask = PCBugCategory;
             self.physicsBody.collisionBitMask = 0;*/
+
+            self.physicsBody =
+                    [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+            self.physicsBody.categoryBitMask = CNPhysicsCategoryUnit;
+            self.physicsBody.collisionBitMask = CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary;
+            //self.physicsBody.dynamic = NO;
+           // self.physicsBody.usesPreciseCollisionDetection = YES;
+            self.physicsBody.allowsRotation= NO;
+            self.physicsBody.friction = 1;
+            self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding;
+
+
+            [DrawDebugger attachDebugRectWithSize:self.size:self];
+
         }
     }
     return self;
@@ -42,6 +52,8 @@
 
 
 - (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction {
+
+   // [super animateWalk:atlas :direction];
     SKAction *_builderWalkingAnimation;
 
     textures = [NSMutableArray arrayWithCapacity:15];
@@ -82,62 +94,16 @@
 
 }
 
-- (void)evaluateMovementDirection:(NSInteger)direction {
+- (void)didBeginContact:(SKPhysicsContact *)contact {
+    NSLog(@"SUCCESS");
 
-    switch (direction) {
-
-        case SOUTH: {
-            direction_graphic_start = 0;
-            direction_graphic_end = 14;
-            break;
-
-        }
-        case SOUTH_WEST: {
-            direction_graphic_start = 15;
-            direction_graphic_end = 29;
-            break;
-
-        }
-        case WEST: {
-            direction_graphic_start = 30;
-            direction_graphic_end = 44;
-            break;
-        }
-
-        case NORTH_WEST: {
-            direction_graphic_start = 45;
-            direction_graphic_end = 59;
-            break;
-        }
-        case NORTH: {
-            direction_graphic_start = 60;
-            direction_graphic_end = 75;
-            break;
-        }
-        case NORTH_EAST: {
-            flipGraphic = true;
-            direction_graphic_start = 45;
-            direction_graphic_end = 59;
-            break;
-        }
-
-        case EAST: {
-            flipGraphic = true;
-            direction_graphic_start = 30;
-            direction_graphic_end = 44;
-            break;
-        }
-
-        case SOUTH_EAST: {
-            flipGraphic = true;
-            direction_graphic_start = 15;
-            direction_graphic_end = 29;
-            break;
-        }
-
-        default:
-            break;
+    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
+    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
+        NSLog(@"SUCCESS");
     }
+//    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
+//        NSLog(@"FAIL"); }
 }
+
 
 @end

@@ -1,3 +1,4 @@
+/*
 //
 //  TileMapLayerLoader.m
 //  PestControl
@@ -47,3 +48,4 @@
 }
 
 @end
+*/

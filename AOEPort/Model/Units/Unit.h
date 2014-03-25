@@ -5,11 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
+int direction_graphic_start;
+int direction_graphic_end;
+BOOL flipGraphic;
+NSMutableArray *textures;
 
 @interface Unit : SKSpriteNode
+
+
 @property (readwrite) NSString *movementSpeed;
 
 - (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction;
 
 - (void)move:(CGPoint)newPos;
+
+- (void)evaluateMovementDirection:(NSInteger)direction;
 @end

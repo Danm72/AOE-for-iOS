@@ -178,23 +178,7 @@
 
 
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        float scrollDuration = 0.2;
-        CGPoint velocity = [recognizer velocityInView:recognizer.view];
-        CGPoint pos = [_selectedNode position];
-        CGPoint p = mult(velocity, scrollDuration);
 
-        CGPoint newPos = CGPointMake(pos.x + p.x, pos.y + p.y);
-
-        /*      if ([[_selectedNode name] isEqualToString:tileNodeType]) {
-
-                  NSLog(@"End Position X: %f, Y : %f", newPos.x, newPos.y);
-
-                  SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
-                  [moveTo setTimingMode:SKActionTimingEaseOut];
-
-                  [_selectedNode removeAllActions];
-
-              }*/
 
         if (_selectedNode != nil) {
 /*

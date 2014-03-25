@@ -8,40 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		0B2E7F9358974FDAA3EEA41D /* libPods-AOEPortTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AF7DE555E142DAAD708135 /* libPods-AOEPortTests.a */; };
-		C184B001C1E5226D5B94AD22 /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B144115219AC93B3086C /* Builder.m */; };
-		C184B09577EA0972AC7B7A8C /* Church.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B10C0DFB6BF7121E29C7 /* Church.m */; };
+		C184B151209597F548BF1E6E /* Church.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B54602E2FCC3961D5CE5 /* Church.m */; };
 		C184B16D62084268170F9712 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B40E9E0F185F7F9981A1 /* logo.png */; };
 		C184B2BB2F48273A120B02DB /* SKSpriteNode+SSKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */; };
 		C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = C184B5D553B80AA330AA081C /* SKTUtils.mm */; };
+		C184B2DF753DF5E8F0B9DE34 /* Barracks.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B8107863A9A22C5EEA10 /* Barracks.m */; };
 		C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BDCA7518565072A49DBF /* tile32_256build.png */; };
-		C184B312B000C31DA2B6F30E /* Barracks.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BDEF5F12B2363C6F7FEC /* Barracks.m */; };
+		C184B3329468B0CF44B6631D /* GrassTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B84048EB17524395B6A5 /* GrassTile.m */; };
 		C184B343BE7044476E020ABB /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BC4A4F1017CA5F5FCB1F /* GameViewController.m */; };
+		C184B363DBED6EC686B67FC3 /* Villager.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD0EA34E0E7D11E77152 /* Villager.m */; };
+		C184B39D0C90FF5642CC0F41 /* TouchUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */; };
 		C184B4172DD15E35CEE5B216 /* Builder_build.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B2C59507C53E600D89E9 /* Builder_build.atlas */; };
+		C184B4D33396F00EF1034C55 /* TownCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B8CA290A7E4CE160D2EC /* TownCenter.m */; };
 		C184B4F2BF356A2B2C930650 /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B7350554D130573F205A /* tiles.atlas */; };
 		C184B50B2E7D6CAD8489D5C7 /* Builder_walk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */; };
 		C184B5AC0E71CDD417E38A13 /* buildings256.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = C184B2B628F0862CB8A3C930 /* buildings256.atlasc */; };
 		C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B1233908517431B7FA2B /* SSKTileableNode.m */; };
 		C184B68241D4E8E2A98FE077 /* tiles32 in Resources */ = {isa = PBXBuildFile; fileRef = C184B8C0284FB7411A4FE876 /* tiles32 */; };
 		C184B6A865CFD07EC53D87D9 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */; };
-		C184B76788DC26B897189A57 /* TownCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BC688238A04D47028002 /* TownCenter.m */; };
 		C184B7999A00E12CEEBEBBBE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = C184BF70B559CB8F6576AF59 /* icon */; };
 		C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0330AA52BBC75837B5A /* SSKMultiLineLabelNode.m */; };
 		C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF621D7F91B3C887BDFB /* SKTAudio.m */; };
-		C184B8964DBCD82DE5E5A9CF /* GrassTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB54948FF63E8712E6C0 /* GrassTile.m */; };
 		C184B8B2FCC4481DECD70893 /* isoMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B707DFC3E0B3B5940F74 /* isoMap.tmx */; };
+		C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0BE9D19B4441003676A /* SnowTile.m */; };
 		C184B9409237358172690560 /* SSKStretchableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB11A13AADE821547E93 /* SSKStretchableNode.m */; };
-		C184B95E74300135311D4424 /* DirtTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B9A9DBB63CC8A19CF181 /* DirtTile.m */; };
-		C184B9F019DBB3E16294F59C /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B487EAE519240B10322D /* Building.m */; };
+		C184B96D9604D88EBEF2C6EB /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B83C39B89964BA7CC148 /* Wall.m */; };
+		C184B99DF083BEAF858FEBBC /* DirtTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B64217F2E85A177134C3 /* DirtTile.m */; };
+		C184B9B526515A61529CF74F /* DrawDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B53E27836BD3CB24C061 /* DrawDebugger.m */; };
 		C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B6E41B33E796BA3965FF /* tile32_256build.tmx */; };
-		C184BB8AE52DBDC980F9A085 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BA8E373208F973D21F3E /* Constants.m */; };
 		C184BBD3A6D52E6EB487728C /* buildings.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B015FC9EF0FE8CDAB3CF /* buildings.atlas */; };
-		C184BBF4A1F36F1BDC5187C6 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BFCA7C780EBF0E9B0B05 /* Wall.m */; };
 		C184BCCB4724A3BF3B0F45B4 /* SKNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */; };
-		C184BD27A79692AB1559C69B /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF0AF6F919F5DF548736 /* SnowTile.m */; };
-		C184BD45C94F45B9AC011AE1 /* Villager.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BA06AE0DE8556123E7C7 /* Villager.m */; };
-		C184BDDD4917D05CDD45A824 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB5BA8764287546CA6ED /* Tile.m */; };
+		C184BD8FF7821A4CEE6AF401 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B51A482CA41C0701FBE6 /* Tile.m */; };
+		C184BDAAD3D569016A34BC66 /* Building.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB1AA6DA45FD308E103B /* Building.m */; };
+		C184BDE193C3784E03F5FFAF /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B7832A16A91DD5C104BB /* Unit.m */; };
+		C184BE0C514048A5E5CAC61F /* SandTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B7EC289CDAC01F72C4F9 /* SandTile.m */; };
 		C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */; };
 		C184BF3C58242275228657BD /* TouchHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BAEEDDF116C0C137704E /* TouchHandlers.m */; };
+		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
 		C84CA74118A6B14E0006AD27 /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73218A6B14E0006AD27 /* JSTileMap.m */; };
 		C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = C84CA73418A6B14E0006AD27 /* LFCGzipUtility.m */; };
 		C84CA74318A6B14E0006AD27 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C84CA73518A6B14E0006AD27 /* LICENSE.txt */; };
@@ -88,59 +91,67 @@
 		C184B04EAC9AC160A89639E9 /* SSKMultiLineLabelNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiLineLabelNode.h; sourceTree = "<group>"; };
 		C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
 		C184B090C54B0D45832D1F0A /* SKSpriteNode+SSKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+SSKAnimation.h"; sourceTree = "<group>"; };
-		C184B0F1C0A122FF63834D3A /* Villager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Villager.h; sourceTree = "<group>"; };
-		C184B10C0DFB6BF7121E29C7 /* Church.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Church.m; sourceTree = "<group>"; };
-		C184B1163B371FFDB665EA1E /* Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Builder.h; sourceTree = "<group>"; };
+		C184B0BE9D19B4441003676A /* SnowTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTile.m; sourceTree = "<group>"; };
 		C184B1233908517431B7FA2B /* SSKTileableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKTileableNode.m; sourceTree = "<group>"; };
-		C184B144115219AC93B3086C /* Builder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Builder.m; sourceTree = "<group>"; };
+		C184B1FA098CD8B94A27C199 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		C184B213F2E5560342506F70 /* TouchHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchHandlers.h; sourceTree = "<group>"; };
 		C184B2A05F844BCCBE9D2E29 /* SSKStretchableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKStretchableNode.h; sourceTree = "<group>"; };
 		C184B2B628F0862CB8A3C930 /* buildings256.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buildings256.atlasc; sourceTree = "<group>"; };
 		C184B2C59507C53E600D89E9 /* Builder_build.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_build.atlas; sourceTree = "<group>"; };
+		C184B39A67DA000FB5A92B17 /* Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Builder.h; sourceTree = "<group>"; };
+		C184B3C2584F81E771A4BFAF /* Builder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Builder.m; sourceTree = "<group>"; };
 		C184B40E9E0F185F7F9981A1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		C184B487EAE519240B10322D /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
+		C184B44C8FB712024682E62E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C184B4B6509083B0514338E7 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
+		C184B51A482CA41C0701FBE6 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		C184B53E27836BD3CB24C061 /* DrawDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawDebugger.m; sourceTree = "<group>"; };
+		C184B54602E2FCC3961D5CE5 /* Church.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Church.m; sourceTree = "<group>"; };
 		C184B5ACBE628E963209D825 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
+		C184B5BF953C80EEE3B6B022 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		C184B5D553B80AA330AA081C /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
+		C184B6047FAEFBF25E672F69 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		C184B64217F2E85A177134C3 /* DirtTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtTile.m; sourceTree = "<group>"; };
+		C184B6572EB33C8BBBE04967 /* TownCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TownCenter.h; sourceTree = "<group>"; };
 		C184B69AA29F96CA8443C726 /* SSKMultiplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiplatform.h; sourceTree = "<group>"; };
 		C184B6E41B33E796BA3965FF /* tile32_256build.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = tile32_256build.tmx; sourceTree = "<group>"; };
 		C184B707DFC3E0B3B5940F74 /* isoMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = isoMap.tmx; sourceTree = "<group>"; };
 		C184B7350554D130573F205A /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
-		C184B859E367556091BDB50D /* Church.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Church.h; sourceTree = "<group>"; };
+		C184B7832A16A91DD5C104BB /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
+		C184B786F9CB8566B73BC9D4 /* DrawDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawDebugger.h; sourceTree = "<group>"; };
+		C184B7EC289CDAC01F72C4F9 /* SandTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandTile.m; sourceTree = "<group>"; };
+		C184B8107863A9A22C5EEA10 /* Barracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barracks.m; sourceTree = "<group>"; };
+		C184B82BEEE8A85137D88086 /* Barracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barracks.h; sourceTree = "<group>"; };
+		C184B83C39B89964BA7CC148 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
+		C184B83CA2C8B0858AC51CFB /* TouchUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchUtilities.h; sourceTree = "<group>"; };
+		C184B84048EB17524395B6A5 /* GrassTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile.m; sourceTree = "<group>"; };
 		C184B8C0284FB7411A4FE876 /* tiles32 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = tiles32; sourceTree = "<group>"; };
-		C184B9A9DBB63CC8A19CF181 /* DirtTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtTile.m; sourceTree = "<group>"; };
+		C184B8CA290A7E4CE160D2EC /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
+		C184B9278B90FC42D524A02F /* GrassTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile.h; sourceTree = "<group>"; };
+		C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchUtilities.m; sourceTree = "<group>"; };
 		C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
-		C184B9F6DA9E17FAE65089C4 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
-		C184BA06AE0DE8556123E7C7 /* Villager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Villager.m; sourceTree = "<group>"; };
-		C184BA29796EA527FD31C197 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		C184BA3D5EB4AC8D26CD86D5 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
-		C184BA8B15EF0C0C68DE9273 /* DirtTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtTile.h; sourceTree = "<group>"; };
-		C184BA8E373208F973D21F3E /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		C184BAA2618560AF881CA62C /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BAD1D5FA56778BBE95FE /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BAEEDDF116C0C137704E /* TouchHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchHandlers.m; sourceTree = "<group>"; };
+		C184BB0227833EBC0E351008 /* SandTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SandTile.h; sourceTree = "<group>"; };
 		C184BB11A13AADE821547E93 /* SSKStretchableNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKStretchableNode.m; sourceTree = "<group>"; };
+		C184BB1AA6DA45FD308E103B /* Building.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Building.m; sourceTree = "<group>"; };
 		C184BB1E4321CB76CF2A0725 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
-		C184BB54948FF63E8712E6C0 /* GrassTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GrassTile.m; sourceTree = "<group>"; };
-		C184BB5BA8764287546CA6ED /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		C184BC377AFFAB5EDFE0AEC3 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
+		C184BC0414CFC372EBA241C9 /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
+		C184BC41FD8541A6CA6FFF37 /* SnowTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTile.h; sourceTree = "<group>"; };
 		C184BC4A4F1017CA5F5FCB1F /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
-		C184BC688238A04D47028002 /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
-		C184BD236495CBFC2CF6B8ED /* SnowTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTile.h; sourceTree = "<group>"; };
+		C184BCFDAF2529A294D250DA /* Church.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Church.h; sourceTree = "<group>"; };
+		C184BD0EA34E0E7D11E77152 /* Villager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Villager.m; sourceTree = "<group>"; };
 		C184BDCA7518565072A49DBF /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
-		C184BDEF5F12B2363C6F7FEC /* Barracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barracks.m; sourceTree = "<group>"; };
-		C184BE378017FC44266F4D2F /* Barracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barracks.h; sourceTree = "<group>"; };
-		C184BE5D2026378E6BAD9CFF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		C184BEFF1BA028846C30C17D /* GrassTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile.h; sourceTree = "<group>"; };
-		C184BF0AF6F919F5DF548736 /* SnowTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTile.m; sourceTree = "<group>"; };
+		C184BE91A8A58A926DADC313 /* Age of Empires Port-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Age of Empires Port-Prefix.pch"; sourceTree = "<group>"; };
+		C184BF40E9A2FBD4281EE81F /* DirtTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirtTile.h; sourceTree = "<group>"; };
+		C184BF427400145F094F184F /* Villager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Villager.h; sourceTree = "<group>"; };
 		C184BF621D7F91B3C887BDFB /* SKTAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKTAudio.m; sourceTree = "<group>"; };
 		C184BF6DBA3AB30CA283F924 /* SSKTileableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKTileableNode.h; sourceTree = "<group>"; };
 		C184BF70B559CB8F6576AF59 /* icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
-		C184BFCA7C780EBF0E9B0B05 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
-		C184BFFBA5D56853EB6F3919 /* TownCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TownCenter.h; sourceTree = "<group>"; };
 		C84CA73118A6B14E0006AD27 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		C84CA73218A6B14E0006AD27 /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		C84CA73318A6B14E0006AD27 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
@@ -221,6 +232,32 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		C184B36F60DB186E2430629D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C184B9792E830CC47A69010B /* Tiles */,
+				C184BCE88CCA188B79748208 /* Units */,
+				C184B4194DFE84B1C66551AF /* Buildings */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C184B4194DFE84B1C66551AF /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				C184B6047FAEFBF25E672F69 /* Wall.h */,
+				C184B83C39B89964BA7CC148 /* Wall.m */,
+				C184BCFDAF2529A294D250DA /* Church.h */,
+				C184B54602E2FCC3961D5CE5 /* Church.m */,
+				C184B82BEEE8A85137D88086 /* Barracks.h */,
+				C184B8107863A9A22C5EEA10 /* Barracks.m */,
+				C184B6572EB33C8BBBE04967 /* TownCenter.h */,
+				C184B8CA290A7E4CE160D2EC /* TownCenter.m */,
+				C184B8AC40C5A36018A402BE /* AbstractBuilding */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
 		C184B5A06FD7DFB56F49A9EF /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,30 +270,14 @@
 			path = Atlas;
 			sourceTree = "<group>";
 		};
-		C184B5DE1C6C52020849F60E /* Builder */ = {
+		C184B6D93E7C060FEDF2C621 /* Villagers */ = {
 			isa = PBXGroup;
 			children = (
-				C184B144115219AC93B3086C /* Builder.m */,
-				C184B1163B371FFDB665EA1E /* Builder.h */,
+				C184BD57A4ED4F5777512696 /* Builder */,
+				C184BF427400145F094F184F /* Villager.h */,
+				C184BD0EA34E0E7D11E77152 /* Villager.m */,
 			);
-			path = Builder;
-			sourceTree = "<group>";
-		};
-		C184B6FFC2C991D416FC6BB9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C184BE5D2026378E6BAD9CFF /* Constants.h */,
-			);
-			name = Resources;
-			path = AOEPort;
-			sourceTree = SOURCE_ROOT;
-		};
-		C184B7B7EB0232F89B50D644 /* Units */ = {
-			isa = PBXGroup;
-			children = (
-				C184BD90E2675C2DF06AB937 /* Villagers */,
-			);
-			path = Units;
+			path = Villagers;
 			sourceTree = "<group>";
 		};
 		C184B8962ED47BF26817D778 /* SKTUtils */ = {
@@ -274,6 +295,32 @@
 				C184B5D553B80AA330AA081C /* SKTUtils.mm */,
 			);
 			path = SKTUtils;
+			sourceTree = "<group>";
+		};
+		C184B8AC40C5A36018A402BE /* AbstractBuilding */ = {
+			isa = PBXGroup;
+			children = (
+				C184B5BF953C80EEE3B6B022 /* Building.h */,
+				C184BB1AA6DA45FD308E103B /* Building.m */,
+			);
+			path = AbstractBuilding;
+			sourceTree = "<group>";
+		};
+		C184B9792E830CC47A69010B /* Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				C184B1FA098CD8B94A27C199 /* Tile.h */,
+				C184B51A482CA41C0701FBE6 /* Tile.m */,
+				C184BF40E9A2FBD4281EE81F /* DirtTile.h */,
+				C184B64217F2E85A177134C3 /* DirtTile.m */,
+				C184BC41FD8541A6CA6FFF37 /* SnowTile.h */,
+				C184B0BE9D19B4441003676A /* SnowTile.m */,
+				C184B9278B90FC42D524A02F /* GrassTile.h */,
+				C184B84048EB17524395B6A5 /* GrassTile.m */,
+				C184B7EC289CDAC01F72C4F9 /* SandTile.m */,
+				C184BB0227833EBC0E351008 /* SandTile.h */,
+			);
+			path = Tiles;
 			sourceTree = "<group>";
 		};
 		C184B99E76A6BD55A16EDFE6 /* Images */ = {
@@ -295,33 +342,13 @@
 			path = Art;
 			sourceTree = "<group>";
 		};
-		C184BA9899CCCE41534A1247 /* Tiles */ = {
-			isa = PBXGroup;
-			children = (
-				C184BA8B15EF0C0C68DE9273 /* DirtTile.h */,
-				C184B9A9DBB63CC8A19CF181 /* DirtTile.m */,
-				C184BD236495CBFC2CF6B8ED /* SnowTile.h */,
-				C184BF0AF6F919F5DF548736 /* SnowTile.m */,
-				C184BEFF1BA028846C30C17D /* GrassTile.h */,
-				C184BB54948FF63E8712E6C0 /* GrassTile.m */,
-			);
-			path = Tiles;
-			sourceTree = "<group>";
-		};
-		C184BB1841CC92430091DC02 /* AbstractBuilding */ = {
-			isa = PBXGroup;
-			children = (
-				C184B487EAE519240B10322D /* Building.m */,
-				C184BC377AFFAB5EDFE0AEC3 /* Building.h */,
-			);
-			path = AbstractBuilding;
-			sourceTree = "<group>";
-		};
 		C184BB570AD83F807E280C6A /* Touch */ = {
 			isa = PBXGroup;
 			children = (
 				C184BAEEDDF116C0C137704E /* TouchHandlers.m */,
 				C184B213F2E5560342506F70 /* TouchHandlers.h */,
+				C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */,
+				C184B83CA2C8B0858AC51CFB /* TouchUtilities.h */,
 			);
 			path = Touch;
 			sourceTree = "<group>";
@@ -342,30 +369,23 @@
 			path = SSKExtensionCode;
 			sourceTree = "<group>";
 		};
-		C184BCA53DD99B656016AC8E /* Buildings */ = {
+		C184BCE88CCA188B79748208 /* Units */ = {
 			isa = PBXGroup;
 			children = (
-				C184B9F6DA9E17FAE65089C4 /* Wall.h */,
-				C184BFCA7C780EBF0E9B0B05 /* Wall.m */,
-				C184B859E367556091BDB50D /* Church.h */,
-				C184B10C0DFB6BF7121E29C7 /* Church.m */,
-				C184BE378017FC44266F4D2F /* Barracks.h */,
-				C184BDEF5F12B2363C6F7FEC /* Barracks.m */,
-				C184BFFBA5D56853EB6F3919 /* TownCenter.h */,
-				C184BC688238A04D47028002 /* TownCenter.m */,
-				C184BB1841CC92430091DC02 /* AbstractBuilding */,
+				C184BC0414CFC372EBA241C9 /* Unit.h */,
+				C184B7832A16A91DD5C104BB /* Unit.m */,
+				C184B6D93E7C060FEDF2C621 /* Villagers */,
 			);
-			path = Buildings;
+			path = Units;
 			sourceTree = "<group>";
 		};
-		C184BD90E2675C2DF06AB937 /* Villagers */ = {
+		C184BD57A4ED4F5777512696 /* Builder */ = {
 			isa = PBXGroup;
 			children = (
-				C184BA06AE0DE8556123E7C7 /* Villager.m */,
-				C184B0F1C0A122FF63834D3A /* Villager.h */,
-				C184B5DE1C6C52020849F60E /* Builder */,
+				C184B39A67DA000FB5A92B17 /* Builder.h */,
+				C184B3C2584F81E771A4BFAF /* Builder.m */,
 			);
-			path = Villagers;
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		C184BDF36218160F10F5B0CE /* Levels */ = {
@@ -387,19 +407,6 @@
 			);
 			path = Resources;
 			sourceTree = "<group>";
-		};
-		C184BEE21FFF3B4C40510BBC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C184BA9899CCCE41534A1247 /* Tiles */,
-				C184BA29796EA527FD31C197 /* Tile.h */,
-				C184BB5BA8764287546CA6ED /* Tile.m */,
-				C184BCA53DD99B656016AC8E /* Buildings */,
-				C184B6FFC2C991D416FC6BB9 /* Resources */,
-				C184B7B7EB0232F89B50D644 /* Units */,
-			);
-			path = Model;
-			sourceTree = SOURCE_ROOT;
 		};
 		C184BFC916A14E2F052C44D1 /* UI */ = {
 			isa = PBXGroup;
@@ -468,12 +475,14 @@
 				C8933B1818A1597500116A26 /* MyScene.m */,
 				C84CA73018A6B14E0006AD27 /* JSTileMap */,
 				C8933B0318A1597500116A26 /* Supporting Files */,
-				C184BEE21FFF3B4C40510BBC /* Model */,
 				C184BE9A594F024149429CB5 /* Resources */,
 				C184BC3A64BD12A43CF5AF78 /* SSKExtensionCode */,
 				C184B105F1D0D4F1C29250AD /* ViewControllers */,
 				C184BB570AD83F807E280C6A /* Touch */,
-				C184BA8E373208F973D21F3E /* Constants.m */,
+				C184B36F60DB186E2430629D /* Model */,
+				C184B44C8FB712024682E62E /* Constants.h */,
+				C184B53E27836BD3CB24C061 /* DrawDebugger.m */,
+				C184B786F9CB8566B73BC9D4 /* DrawDebugger.h */,
 			);
 			path = AOEPort;
 			sourceTree = "<group>";
@@ -485,6 +494,7 @@
 				C8933B0518A1597500116A26 /* InfoPlist.strings */,
 				C8933B0818A1597500116A26 /* main.m */,
 				C8933B0A18A1597500116A26 /* Age of Empires Port-Prefix.pch */,
+				C184BE91A8A58A926DADC313 /* Age of Empires Port-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -687,16 +697,8 @@
 				C8933B0918A1597500116A26 /* main.m in Sources */,
 				C8C3EB6418AE82CA00893AE0 /* TileMapLayerLoader.m in Sources */,
 				C84CA74218A6B14E0006AD27 /* LFCGzipUtility.m in Sources */,
-				C184B95E74300135311D4424 /* DirtTile.m in Sources */,
-				C184BD27A79692AB1559C69B /* SnowTile.m in Sources */,
-				C184B8964DBCD82DE5E5A9CF /* GrassTile.m in Sources */,
 				C86B326A18CA21C400468EB9 /* MenuViewController.m in Sources */,
-				C184BDDD4917D05CDD45A824 /* Tile.m in Sources */,
-				C184BBF4A1F36F1BDC5187C6 /* Wall.m in Sources */,
 				C86B326D18CA28E700468EB9 /* MenuItemTableViewCell.m in Sources */,
-				C184B09577EA0972AC7B7A8C /* Church.m in Sources */,
-				C184B312B000C31DA2B6F30E /* Barracks.m in Sources */,
-				C184B76788DC26B897189A57 /* TownCenter.m in Sources */,
 				C184B2BB2F48273A120B02DB /* SKSpriteNode+SSKAnimation.m in Sources */,
 				C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */,
 				C184B9409237358172690560 /* SSKStretchableNode.m in Sources */,
@@ -708,10 +710,21 @@
 				C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */,
 				C184B343BE7044476E020ABB /* GameViewController.m in Sources */,
 				C184BF3C58242275228657BD /* TouchHandlers.m in Sources */,
-				C184B9F019DBB3E16294F59C /* Building.m in Sources */,
-				C184BD45C94F45B9AC011AE1 /* Villager.m in Sources */,
-				C184B001C1E5226D5B94AD22 /* Builder.m in Sources */,
-				C184BB8AE52DBDC980F9A085 /* Constants.m in Sources */,
+				C184B39D0C90FF5642CC0F41 /* TouchUtilities.m in Sources */,
+				C184BD8FF7821A4CEE6AF401 /* Tile.m in Sources */,
+				C184B99DF083BEAF858FEBBC /* DirtTile.m in Sources */,
+				C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */,
+				C184B3329468B0CF44B6631D /* GrassTile.m in Sources */,
+				C184BDE193C3784E03F5FFAF /* Unit.m in Sources */,
+				C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */,
+				C184B363DBED6EC686B67FC3 /* Villager.m in Sources */,
+				C184B96D9604D88EBEF2C6EB /* Wall.m in Sources */,
+				C184B151209597F548BF1E6E /* Church.m in Sources */,
+				C184B2DF753DF5E8F0B9DE34 /* Barracks.m in Sources */,
+				C184B4D33396F00EF1034C55 /* TownCenter.m in Sources */,
+				C184BDAAD3D569016A34BC66 /* Building.m in Sources */,
+				C184BE0C514048A5E5CAC61F /* SandTile.m in Sources */,
+				C184B9B526515A61529CF74F /* DrawDebugger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
