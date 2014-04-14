@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "MyScene.h"
+#import "SWRevealViewController.h"
 
 @interface GameViewController ()
 //@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
@@ -54,35 +55,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-      UIViewController *topViewController = [[UIViewController alloc] init];
-//      UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStylePlain target:self action:@selector(anchorRight)];
-      UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStylePlain target:self action:@selector(test)];
-  //    self.window.rootViewController = navigationController;
+//    _sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
 
-//    topViewController.navigationItem.leftBarButtonItem = anchorRightButton;
-//    topViewController.navigationItem.rightBarButtonItem = anchorLeftButton;
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+
+    // Set the gesture
+    [self.navigationController.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     // Configure the view.
-    SKView *skView = [[SKView alloc] init];
+//    SKView *skView = [[SKView alloc] init];
+    SKView *skView = (SKView *) self.view;
+
     self.view = skView;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    CGSize size = CGSizeMake(500, 500);
     // Create and configure the scene.
-    MyScene *scene = [MyScene sceneWithSize:size];
+//    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(500, 500)];
+
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    //scene.size = CGSizeMake(1284,1926);
 
     [scene loadSceneAssetsWithCompletionHandler:^{
         NSLog(@"Done Loading");
         [skView presentScene:scene];
     }];
-//    skView.userInteractionEnabled = YES;
-    // Present the scene.
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
-    navigationController.navigationItem.leftBarButtonItem = anchorLeftButton;
-//    navigationController.
-
 
 }
 
@@ -98,9 +96,10 @@
     }
 }
 
--(void) test{
-    NSLog(@"%s","Button Pressed");
+- (void)test {
+    NSLog(@"%s", "Button Pressed");
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.

@@ -7,44 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "MenuViewController.h"
-#import "GameViewController.h"
-#import "SWRevealViewController.h"
 
 @implementation AppDelegate
-@synthesize window = _window;
-@synthesize viewController = _viewController;
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    GameViewController *topView =  [[GameViewController alloc] init];
-//    self.viewController.anchorRightPeekAmount = 100.0;
-//    self.viewController.anchorLeftRevealAmount = 250.0;
-////    self.viewController = [[ECSlidingViewController alloc] init];
-  /*  UIViewController *topViewController = [[UIViewController alloc] init];
-    UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStylePlain target:self action:@selector(anchorRight)];
-    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStylePlain target:self action:@selector(anchorLeft)];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:topViewController];
-*///    self.window.rootViewController = navigationController;
-
-    [topView.navigationController.view addGestureRecognizer:self.viewController.panGestureRecognizer];
-    [topView.navigationController.view addGestureRecognizer:self.viewController.tapGestureRecognizer];
-
-    self.viewController = [[SWRevealViewController alloc] init];
-//    topViewController.navigationItem.leftBarButtonItem = anchorRightButton;
-//    topViewController.navigationItem.rightBarButtonItem = anchorLeftButton;
-////    self.viewController.topViewController = [[UINavigationController alloc] initWithRootViewController:[[GameViewController alloc] init]];
-    self.viewController.rearViewController = [[MenuViewController alloc] init];
-    self.viewController.frontViewController = topView;
-
-
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
     return YES;
-
 
 }
 

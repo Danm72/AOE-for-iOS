@@ -6,8 +6,6 @@
 #import "TouchHandlers.h"
 #import "Builder.h"
 #import "Building.h"
-#import "JASidePanelController.h"
-#import "UIViewController+JASidePanel.h"
 
 @implementation TouchHandlers {
 
@@ -106,7 +104,6 @@
 - (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
 //    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
 //    recognizer.rotation = 0;
-       [scene.view.window.rootViewController.sidePanelController showCenterPanelAnimated:YES];
 }
 
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {

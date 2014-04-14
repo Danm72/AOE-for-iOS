@@ -26,7 +26,7 @@
         [self createNodesFromLayer:layer];
 
     }
-    _layer = nil;
+//    _layer = nil;
     return self;
 }
 

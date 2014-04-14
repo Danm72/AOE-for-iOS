@@ -9,5 +9,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface GameViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @end
