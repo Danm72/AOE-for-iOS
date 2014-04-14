@@ -14,6 +14,16 @@
     CGSize _tmxTileSize;
     CGSize _tmxGridSize;
     CGSize _tmxLayerSize;
+
+    SKTexture *dirt;
+    SKTexture *sand;
+    SKTexture *grass;
+    SKTexture *snow;
+    SKTexture *townCentre;
+    SKTexture *barracks;
+    SKTexture *eliteBarracks;
+    SKTexture *wall;
+
 }
 
 - (instancetype)initWithTmxLayer:(TMXLayer *)layer {
@@ -44,12 +54,20 @@
 
 - (void)createNodesFromLayer:(TMXLayer *)layer {
     SKTextureAtlas *atlas;
-
     Boolean tileLayer = [layer.layerInfo.name isEqualToString:@"Tiles"];
     if (tileLayer) {
         atlas = [SKTextureAtlas atlasNamed:@"tiles"];
+        dirt = [atlas textureNamed:@"dirt2"];
+        sand = [atlas textureNamed:@"sand"];
+        grass = [atlas textureNamed:@"grass"];
+        snow = [atlas textureNamed:@"snow"];
     } else {
         atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+        wall = [atlas textureNamed:@"wall"];
+        townCentre = [atlas textureNamed:@"towncenter"];
+        barracks = [atlas textureNamed:@"barracks"];
+        eliteBarracks = [atlas textureNamed:@"elitebarracks"];
+
     }
 
     //1
@@ -64,18 +82,17 @@
                 continue;
             //3
             if (tileLayer) {
-                [self layerContainingTile:layer tileAtlas:atlas coord:coord];
+                [self layerContainingTile:layer coord:coord];
             } else if (!tileLayer) {
-                [self removeBuildingFromLayer:layer buildingAtlas:atlas coord:coord];
+                [self removeBuildingFromLayer:layer coord:coord];
             }
-
 
         }
     }
 
 }
 
-- (void)removeBuildingFromLayer:(TMXLayer *)layer buildingAtlas:(SKTextureAtlas *)atlas coord:(CGPoint)coord {
+- (void)removeBuildingFromLayer:(TMXLayer *)layer coord:(CGPoint)coord {
     JSTileMap *map = layer.map;
 
     //2
@@ -84,76 +101,87 @@
 
     if ([map propertiesForGid:tileGid][@"Wall"]) {
 
-        Building *tile = [[Wall alloc] initWithTexture:[atlas textureNamed:@"wall"]];
+        Building *tile = [[Wall alloc] initWithTexture:wall];
         tile.position = [self pointForCoord:coord];
-//                tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
-        tile.zPosition = coord.y;
+
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
 
         tile.texture.filteringMode = SKTextureFilteringNearest;
 
         [self addChild:tile];
     } else if ([map propertiesForGid:tileGid][@"TownCenter"]) {
 
-        Building *tile = [[TownCenter alloc] initWithTexture:[atlas textureNamed:@"towncenter"]];
+        Building *tile = [[TownCenter alloc] initWithTexture:townCentre];
         tile.position = [self pointForCoord:coord];
-        tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
         tile.texture.filteringMode = SKTextureFilteringNearest;
 
         [self addChild:tile];
 
     } else if ([map propertiesForGid:tileGid][@"Barracks"]) {
 
-        Building *tile = [[Barracks alloc] initWithTexture:[atlas textureNamed:@"elitebarracks"]];
+        Building *tile = [[Barracks alloc] initWithTexture:eliteBarracks];
         tile.position = [self pointForCoord:coord];
-        tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
         tile.texture.filteringMode = SKTextureFilteringNearest;
 
         [self addChild:tile];
 
     } else if ([map propertiesForGid:tileGid][@"Church"]) {
 
-        Building *tile = [[Church alloc] initWithTexture:[atlas textureNamed:@"barracks"]];
+        Building *tile = [[Church alloc] initWithTexture:barracks];
         tile.position = [self pointForCoord:coord];
-        tile.zPosition = coord.x + coord.y * layer.layerInfo.layerGridSize.width;
+        tile.zPosition = self.layerSize.height - tile.position.y;
         tile.texture.filteringMode = SKTextureFilteringNearest;
 
         [self addChild:tile];
     }
 }
 
-- (void)layerContainingTile:(TMXLayer *)layer tileAtlas:(SKTextureAtlas *)atlas coord:(CGPoint)coord {
+- (void)layerContainingTile:(TMXLayer *)layer coord:(CGPoint)coord {
     JSTileMap *map = layer.map;
     //2
     NSInteger tileGid = [layer.layerInfo tileGidAtCoord:coord];
 
     if ([map propertiesForGid:tileGid][@"dirt"]) {
 
-        Tile *tile = [[DirtTile alloc] initWithTexture:[atlas textureNamed:@"dirt2"]];
+        Tile *tile = [[DirtTile alloc] initWithTexture:dirt];
         tile.position = [self pointForCoord:coord];
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
+
         [self setBlendMode:tile];
 
 
         [self addChild:tile];
     }
     else if ([map propertiesForGid:tileGid][@"sand"]) {
-        Tile *tile = [[SandTile alloc] initWithTexture:[atlas textureNamed:@"sand"]];
+        Tile *tile = [[SandTile alloc] initWithTexture:sand];
         tile.position = [self pointForCoord:coord];
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
         [self setBlendMode:tile];
 
 //        [self addChild:tile];
 
     } else if ([map propertiesForGid:tileGid][@"grass"]) {
-        Tile *tile = [[GrassTile alloc] initWithTexture:[atlas textureNamed:@"grass"]];
+        Tile *tile = [[GrassTile alloc] initWithTexture:grass];
         tile.position = [self pointForCoord:coord];
-        [self setBlendMode:tile];
+        tile.zPosition = self.layerSize.height - tile.position.y;
 
+        [self setBlendMode:tile];
 
         [self addChild:tile];
 
     } else if ([map propertiesForGid:tileGid][@"snow"]) {
 
-        Tile *tile = [[SnowTile alloc] initWithTexture:[atlas textureNamed:@"snow"]];
+        Tile *tile = [[SnowTile alloc] initWithTexture:snow];
         tile.position = [self pointForCoord:coord];
+        tile.zPosition = self.layerSize.height - tile.position.y;
+
         [self setBlendMode:tile];
 
         [self addChild:tile];

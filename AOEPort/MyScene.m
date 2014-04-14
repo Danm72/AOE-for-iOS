@@ -101,10 +101,20 @@
     atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
     Builder *builder = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
-    builder.position = CGPointMake(2000, 2000);
-    //node.zPosition = 5000;
+    builder.position = CGPointMake(2001, 2000);
+    builder.zPosition =_bgLayer.layerSize.height - builder.position.y;
     [_worldNode addChild:builder];
 
+
+//    Builder *builder2 = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
+//    builder.position = CGPointMake(2000, 2001);
+//    //node.zPosition = 5000;
+//    [_worldNode addChild:builder2];
+//
+//    Builder *builder3 = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
+//    builder.position = CGPointMake(2000, 2000);
+//    //node.zPosition = 5000;
+//    [_worldNode addChild:builder3];
 }
 
 - (TileMapLayer *)createScenery {

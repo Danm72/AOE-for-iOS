@@ -74,11 +74,11 @@
     static CGFloat lastScale = 0;
     static CGFloat previousScale = 0;
 
-//    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-//    recognizer.scale = 1;
+/*    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
+    recognizer.scale = 1;
 
-    // [_worldNode_firstLayer runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
-    // [_worldNode_firstLayer runAction:[SKAction scaleTo:.75 duration:5.0]];
+    [_worldNode_firstLayer runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
+    [_worldNode_firstLayer runAction:[SKAction scaleTo:.75 duration:5.0]];*/
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         if (previousScale > 0)
@@ -278,11 +278,11 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 - (void)panForTranslation:(CGPoint)translation {
    SKSpriteNode * parent = [_selectedNode parent];
     CGPoint position = [_selectedNode position];
-    CGFloat z = _tileMap_thirdLayer.yScale - position.y;
+    CGFloat z = _buildingLayer_secondLayer.layerSize.height - _selectedNode.position.y;
 
     if ([[_selectedNode name] isEqualToString:buildingNodeType]) {
         [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
-//        [_selectedNode setZPosition:(z)];
+        [_selectedNode setZPosition:(z)];
 
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
