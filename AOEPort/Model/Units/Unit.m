@@ -49,6 +49,14 @@
 
 }
 
+- (void)moveToward:(CGPoint)targetPosition {
+    CGPoint targetVector = CGPointNormalize(CGPointSubtract(targetPosition,
+            self.position));
+    targetVector = CGPointMultiplyScalar(targetVector, 300);
+    self.physicsBody.velocity = CGVectorMake(targetVector.x,
+            targetVector.y);
+}
+
 - (void)evaluateMovementDirection:(NSInteger)direction {
 
     switch (direction) {

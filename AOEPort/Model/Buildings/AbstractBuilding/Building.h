@@ -8,9 +8,12 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Building : SKSpriteNode
-{
-}
+@interface Building : SKSpriteNode <SKPhysicsContactDelegate>
 
 @property (readwrite) NSString *buildType;
+
+
++ (SKAction *)selectedBuildingAction;
+
+- (void)setupPhysicsBody;
 @end

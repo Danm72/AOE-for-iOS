@@ -10,7 +10,7 @@ int direction_graphic_end;
 BOOL flipGraphic;
 NSMutableArray *textures;
 
-@interface Unit : SKSpriteNode
+@interface Unit : SKSpriteNode  <SKPhysicsContactDelegate>
 
 
 @property (readwrite) NSString *movementSpeed;

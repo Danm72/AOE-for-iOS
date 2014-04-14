@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-AOEPortTests-SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AOEPortTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A5657FBC68464273894F8727</key>
+		<key>188D5D46DBB04E99839A2508</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B15498AC600F4459AEF47868</key>
+		<key>414C11C34CD54DFBBAEB6370</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41929D03B1AC452E8EA03988</key>
 		<dict>
 			<key>primary</key>
 			<true/>

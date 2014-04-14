@@ -14,5 +14,9 @@ platform :ios, '7.0'
 # (XCTest based instead of OCUnit based) use this instead:
 I18n.enforce_available_locales = false
 target :AOEPortTests, :exclusive => true do
-  pod 'Kiwi/XCTest', '~> 2.2.3'
+  pod 'Kiwi/XCTest', '~> 2.2.4'
+  #pod 'JASidePanels', '~> 1.3.2'
+  #pod 'ECSlidingViewController', '~> 2.0.1'
+  pod 'SWRevealViewController', '~> 2.0.0'
+
 end

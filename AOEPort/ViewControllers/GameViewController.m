@@ -54,13 +54,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+      UIViewController *topViewController = [[UIViewController alloc] init];
+//      UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Left" style:UIBarButtonItemStylePlain target:self action:@selector(anchorRight)];
+      UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Right" style:UIBarButtonItemStylePlain target:self action:@selector(test)];
+  //    self.window.rootViewController = navigationController;
+
+//    topViewController.navigationItem.leftBarButtonItem = anchorRightButton;
+//    topViewController.navigationItem.rightBarButtonItem = anchorLeftButton;
     // Configure the view.
-    SKView *skView = (SKView *) self.view;
+    SKView *skView = [[SKView alloc] init];
+    self.view = skView;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-
+    CGSize size = CGSizeMake(500, 500);
     // Create and configure the scene.
-    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    MyScene *scene = [MyScene sceneWithSize:size];
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
     scene.scaleMode = SKSceneScaleModeAspectFill;
     //scene.size = CGSizeMake(1284,1926);
@@ -69,7 +77,13 @@
         NSLog(@"Done Loading");
         [skView presentScene:scene];
     }];
+//    skView.userInteractionEnabled = YES;
     // Present the scene.
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self];
+    navigationController.navigationItem.leftBarButtonItem = anchorLeftButton;
+//    navigationController.
+
+
 }
 
 - (BOOL)shouldAutorotate {
@@ -84,6 +98,9 @@
     }
 }
 
+-(void) test{
+    NSLog(@"%s","Button Pressed");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.

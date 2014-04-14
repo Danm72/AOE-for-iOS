@@ -7,103 +7,56 @@
 //
 
 #import "Building.h"
-#import "MyScene.h"
+#import "Constants.h"
+#import "DrawDebugger.h"
+#import <AudioToolbox/AudioServices.h>
+
 
 @implementation Building
 @synthesize buildType;
 
-//- (instancetype)init
-//{
-////    SKTextureAtlas *atlas =
-////    [SKTextureAtlas atlasNamed: @"buildings"];
-////    SKTexture *texture = [atlas textureNamed:@"building"];
-//    
-////    SKSpriteNode *spaceship = [SKSpriteNode spriteNodeWithImageNamed:@"building.png"];
-////    texture.filteringMode = SKTextureFilteringNearest;
-//    
-//  //  if (self = [super initWithTexture:texture]) {
-//    if (self = [super initWithImageNamed:@"building.png"]) {
-//
-//        self.name = @"building";
-//        // 1
-//        CGFloat minDiam = MIN(self.size.width, self.size.height);
-//        minDiam = MAX(minDiam-16, 4);
-////        self.physicsBody =
-////        [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
-////        // 2
-////        self.physicsBody.usesPreciseCollisionDetection = YES;
-////        // 3
-////        self.physicsBody.allowsRotation = NO;
-////        self.physicsBody.restitution = 1;
-////        self.physicsBody.friction = 0;
-////        self.physicsBody.linearDamping = 0;
-////        self.physicsBody.categoryBitMask = PCPlayerCategory;
-////        self.physicsBody.contactTestBitMask = 0xFFFFFFFF;
-////        self.physicsBody.collisionBitMask =
-////        PCBoundaryCategory | PCWallCategory | PCWaterCategory | PCFireBugCategory;
-////        
-////        self.facingForwardAnim =
-////        [Player createAnimWithPrefix:@"player" suffix:@"ft"];
-////        self.facingBackAnim =
-////        [Player createAnimWithPrefix:@"player" suffix:@"bk"];
-////        self.facingSideAnim =
-////        [Player createAnimWithPrefix:@"player" suffix:@"lt"];
-//        
-//    }
-//    return self;
-//}
+- (instancetype)init {
 
-//- (void)moveToward:(CGPoint)targetPosition
-//{
-//    CGPoint targetVector =
-//    CGPointNormalize(CGPointSubtract(targetPosition,
-//                                     self.position));
-//    
-//    targetVector = CGPointMultiplyScalar(targetVector, 300);
-//    self.physicsBody.velocity = CGVectorMake(targetVector.x,
-//                                             targetVector.y);
-//    
-//    [self faceCurrentDirection];
-//}
-//
-//- (void)faceCurrentDirection
-//{
-//    // 1
-//    PCFacingDirection facingDir = self.facingDirection;
-//    
-//    // 2
-//    CGVector dir = self.physicsBody.velocity;
-//    if (abs(dir.dy) >  abs(dir.dx)) {
-//        if (dir.dy < 0) {
-//            facingDir = PCFacingForward;
-//        } else {
-//            facingDir = PCFacingBack;
-//        }
-//    } else {
-//        facingDir = (dir.dx > 0) ? PCFacingRight : PCFacingLeft;
-//    }
-//    
-//    // 3
-//    self.facingDirection = facingDir;
-//}
-
-
-- (instancetype)init{
-//    SKTexture *texture = [_atlas textureNamed:texName];
-//    texture.filteringMode = SKTextureFilteringNearest;
-//
-//    if (self = [super initWithTexture:texture]) {
-//        self.name = @"building";
-//        _nodeLocation = self.position;
-//        CGFloat minDiam = MIN(self.size.width, self.size.height);
-//        minDiam = MAX(minDiam-8, 8);
-//        self.physicsBody =
-//        [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
-//        self.physicsBody.categoryBitMask = PCBugCategory;
-//        self.physicsBody.collisionBitMask = 0;
-//    }
     buildType = @"Generic Building";
     return self;
 }
+
++ (SKAction *)selectedBuildingAction {
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    SKAction *pulseGreen = [SKAction sequence:@[
+            [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
+            [SKAction waitForDuration:0.1],
+            [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
+
+    SKAction *rotate = [SKAction sequence:@[
+            [SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
+            [SKAction rotateByAngle:0.0 duration:0.1],
+            [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
+
+    SKAction *sequence = [SKAction sequence:@[
+            rotate, pulseGreen]];
+    return sequence;
+}
+
+float degToRad(float degree) {
+    return (float) (degree / 180.0f * M_PI);
+}
+
+- (void)setupPhysicsBody {
+    CGSize size = CGSizeMake(self.size.width, self.size.height);
+    self.physicsBody =
+            [SKPhysicsBody bodyWithRectangleOfSize:size];
+    self.physicsBody.categoryBitMask = CNPhysicsCategoryBuilding;
+    self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit | CNPhysicsCategoryBoundary;
+    self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
+    self.physicsBody.dynamic = NO;
+    // self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.allowsRotation = NO;
+    //self.physicsBody.restitution = 1;
+    self.physicsBody.friction = 0;
+    self.physicsBody.linearDamping = 0;
+    [DrawDebugger attachDebugRectWithSize:self.size :self];
+}
+
 
 @end

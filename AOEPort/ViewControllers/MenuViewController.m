@@ -32,6 +32,8 @@
     self.menuItems = [NSMutableArray array];
 
     _menuItems = [NSArray arrayWithObjects:@"Campaign", @"Skirmish", @"Options", nil];
+//    self.view.userInteractionEnabled = YES;
+    NSLog(@"%s","Menu Initialised");
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

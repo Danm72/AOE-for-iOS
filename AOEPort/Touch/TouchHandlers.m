@@ -4,8 +4,10 @@
 //
 
 #import "TouchHandlers.h"
-#import <AudioToolbox/AudioServices.h>
 #import "Builder.h"
+#import "Building.h"
+#import "JASidePanelController.h"
+#import "UIViewController+JASidePanel.h"
 
 @implementation TouchHandlers {
 
@@ -58,7 +60,7 @@
     [[scene view] addGestureRecognizer:pinchGestureRecognizer];
 
 //    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
-//    [[self view] addGestureRecognizer:rotationGestureRecognizer];
+//    [[scene view] addGestureRecognizer:rotationGestureRecognizer];
 
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressFrom:)];
     longPressGestureRecognizer.minimumPressDuration = 0.25;
@@ -102,9 +104,9 @@
 }
 
 - (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
-    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-    recognizer.rotation = 0;
-
+//    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
+//    recognizer.rotation = 0;
+       [scene.view.window.rootViewController.sidePanelController showCenterPanelAnimated:YES];
 }
 
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {
@@ -168,7 +170,7 @@
 
         // translation = [self convertPoint:translation toNode:_worldNode_firstLayer];
 
-        NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
+//        NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
 
         [self panForTranslation:translation];
 
@@ -257,19 +259,7 @@
         //3
         buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
         if (buildingNode) {
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-            SKAction *pulseGreen = [SKAction sequence:@[
-                    [SKAction colorizeWithColor:[SKColor greenColor] colorBlendFactor:1.0 duration:0.15],
-                    [SKAction waitForDuration:0.1],
-                    [SKAction colorizeWithColorBlendFactor:0.0 duration:0.15]]];
-
-            SKAction *rotate = [SKAction sequence:@[
-                    [SKAction rotateByAngle:degToRad(-4.0f) duration:0.1],
-                    [SKAction rotateByAngle:0.0 duration:0.1],
-                    [SKAction rotateByAngle:degToRad(4.0f) duration:0.1]]];
-
-            SKAction *sequence = [SKAction sequence:@[
-                    rotate, pulseGreen]];
+            SKAction *sequence= [Building selectedBuildingAction];
 
             [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
         }
@@ -282,14 +272,21 @@
 
 }
 
+
+
 CGPoint mult(const CGPoint v, const CGFloat s) {
     return CGPointMake(v.x * s, v.y * s);
 }
 
 - (void)panForTranslation:(CGPoint)translation {
+   SKSpriteNode * parent = [_selectedNode parent];
     CGPoint position = [_selectedNode position];
+    CGFloat z = _tileMap_thirdLayer.yScale - position.y;
+
     if ([[_selectedNode name] isEqualToString:buildingNodeType]) {
         [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+//        [_selectedNode setZPosition:(z)];
+
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
 
@@ -301,9 +298,6 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
     }
 }
 
-float degToRad(float degree) {
-    return (float) (degree / 180.0f * M_PI);
-}
 
 - (void)centerViewOn:(CGPoint)centerOn {
     _worldNode_firstLayer.position = [self pointToCenterViewOn:centerOn :_bgLayer];

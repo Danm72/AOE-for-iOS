@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B15498AC600F4459AEF47868"
-               BuildableName = "libPods-AOEPortTests-Kiwi.a"
-               BlueprintName = "Pods-AOEPortTests-Kiwi"
+               BlueprintIdentifier = "5D4BD8D3396B4492877894B0"
+               BuildableName = "libPods-AOEPortTests.a"
+               BlueprintName = "Pods-AOEPortTests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,19 +35,10 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C8933AF618A1597500116A26"
-            BuildableName = "AOEPort.app"
-            BlueprintName = "AOEPort"
-            ReferencedContainer = "container:../AOEPort.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

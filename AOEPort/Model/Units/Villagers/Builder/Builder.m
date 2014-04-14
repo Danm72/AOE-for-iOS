@@ -37,7 +37,7 @@
             self.physicsBody.categoryBitMask = CNPhysicsCategoryUnit;
             self.physicsBody.collisionBitMask = CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary;
             //self.physicsBody.dynamic = NO;
-           // self.physicsBody.usesPreciseCollisionDetection = YES;
+           self.physicsBody.usesPreciseCollisionDetection = YES;
             self.physicsBody.allowsRotation= NO;
             self.physicsBody.friction = 1;
             self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding;
@@ -93,6 +93,7 @@
     }];
 
 }
+
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
     NSLog(@"SUCCESS");

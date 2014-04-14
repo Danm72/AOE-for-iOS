@@ -23,50 +23,23 @@
 
             self.userData = data;
             self.buildType = @"Wall";
-            CGSize size = CGSizeMake(self.size.width*2, self.size.height*2);
-            self.physicsBody =
-                    [SKPhysicsBody bodyWithRectangleOfSize:size];
-            self.physicsBody.categoryBitMask = CNPhysicsCategoryBuilding;
-            self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary;
-            self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit;
-            self.physicsBody.dynamic = NO;
-            // self.physicsBody.usesPreciseCollisionDetection = YES;
-            self.physicsBody.allowsRotation = NO;
-            //self.physicsBody.restitution = 1;
-            self.physicsBody.friction = 1;
-            self.physicsBody.linearDamping = 0;
-            [DrawDebugger attachDebugRectWithSize:self.size:self];
-//            CGFloat minDiam = MIN(self.size.width, self.size.height);
-//            minDiam = MAX(minDiam-8, 8);
-//            self.physicsBody =
-//            [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
-//           //self.physicsBody.categoryBitMask = PCBugCategory;
-//            self.physicsBody.collisionBitMask = 0;
+            [self setupPhysicsBody];
+
         }
     }
     return self;
 }
 
-
-//- (id)init{
-//    
-//    if( self = [super init]){
-//        self.name = @"Building";
-//        NSMutableDictionary *data =  [[NSMutableDictionary alloc] init];
-//        [data setValue:@"Wall" forKey:@"Type"];
-//        
-//        self.userData = data;
-//        
-//    }
-//    
-//    return self;
-//}
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"SUCCESS");
+    NSLog(@"Wall contact");
 
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-        NSLog(@"SUCCESS");
+        NSLog(@"BUILD UNIT");
+        [contact.bodyA.node runAction:[Building selectedBuildingAction]];
+    }
+    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryBuilding)) {
+        NSLog(@"BUILDING");
     }
 //    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
 //        NSLog(@"FAIL"); }

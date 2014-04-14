@@ -22,6 +22,7 @@
             
             self.userData = data;
             self.buildType = @"TownCenter";
+            [self setupPhysicsBody];
 
         }
     }

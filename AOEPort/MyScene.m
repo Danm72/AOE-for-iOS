@@ -14,11 +14,9 @@
 @implementation MyScene {
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
-    //    Player *_player;
     TileMapLayer *_buildingLayer;
     TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
-    SKSpriteNode *touchedNode;
     TouchHandlers *handlers;
 
     SKTextureAtlas *atlas;
@@ -40,13 +38,17 @@
 }
 
 - (void)loadSceneAssets {
+    [self createPhysicsBody];
+    [self createWorld];
+    [self createCharacters];
+}
+
+- (void)createPhysicsBody {
     self.physicsBody =
             [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.gravity = CGVectorMake(0, 0);
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
-
-    [self createWorld];
-    [self createCharacters];
+    self.physicsWorld.contactDelegate = self;
 }
 
 - (CGPoint)positionForRow:(NSInteger)row col:(NSInteger)col {
@@ -68,6 +70,7 @@
     }
 
     _worldNode = [SKNode node];
+    [_worldNode setName:@"World Node"];
     if (_tileMap) {
         [_worldNode addChild:_tileMap];
     }
@@ -106,15 +109,23 @@
 
 - (TileMapLayer *)createScenery {
     _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
-    return [[TmxTileMapLayer alloc]
+    [_tileMap setName:@"TileMap"];
+    TileMapLayer *mapLayer = [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
+    [mapLayer setName:@"TileMap"];
+
+    return mapLayer;
 }
 
 - (TileMapLayer *)createBuildings {
 
     //   _tileMap_thirdLayer = [JSTileMap mapNamed:@"tile32_256build.tmx"];
-    return [[TmxTileMapLayer alloc]
+    TileMapLayer *buildingLayer = [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Buildings"]];
+
+    [buildingLayer setName:@"BuildingLayer"];
+
+    return buildingLayer;
 }
 
 
@@ -166,7 +177,6 @@
     handlers = [[TouchHandlers alloc] initWithScene:self];
     [handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_tileMap];
     [handlers registerTouchEvents];
-    NSLog(@"TOUCH MEEEE");
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
@@ -174,12 +184,20 @@
 
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-        NSLog(@"SUCCESS");
+        NSLog(@"Building and unit");
+        if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
+            [contact.bodyA.node removeAllActions];
+        } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
+            [contact.bodyB.node removeAllActions];
+        }
+    } else if (collision == 0) {
+        NSLog(@"Building and Building");
+
     }
+
 //    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
 //        NSLog(@"FAIL"); }
 }
-
 
 
 @end

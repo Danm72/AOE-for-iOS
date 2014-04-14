@@ -8,6 +8,6 @@
 
 #import "Building.h"
 
-@interface Wall : Building  <SKPhysicsContactDelegate>
+@interface Wall : Building
 
 @end
