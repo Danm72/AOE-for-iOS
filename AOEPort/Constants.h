@@ -16,4 +16,5 @@ static const int WEST = 6;
 static const int SOUTH_WEST = 7;
 
 static BOOL kDebugDraw = NO;
+static BOOL DEBUG_MODE = NO;
 

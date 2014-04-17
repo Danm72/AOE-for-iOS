@@ -138,11 +138,9 @@
     return buildingLayer;
 }
 
-
 - (void)update:(NSTimeInterval)currentTime {
 
 }
-
 
 - (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props {
     return [self tileAtPoint:[_bgLayer pointForCoord:coord]

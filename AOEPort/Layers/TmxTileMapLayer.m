@@ -57,7 +57,7 @@
     Boolean tileLayer = [layer.layerInfo.name isEqualToString:@"Tiles"];
     if (tileLayer) {
         atlas = [SKTextureAtlas atlasNamed:@"tiles"];
-        dirt = [atlas textureNamed:@"dirt2"];
+        dirt = [atlas textureNamed:@"dirt1"];
         sand = [atlas textureNamed:@"sand"];
         grass = [atlas textureNamed:@"grass"];
         snow = [atlas textureNamed:@"snow"];
@@ -65,7 +65,7 @@
         atlas = [SKTextureAtlas atlasNamed:@"buildings"];
         wall = [atlas textureNamed:@"wall"];
         townCentre = [atlas textureNamed:@"towncenter"];
-        barracks = [atlas textureNamed:@"barracks"];
+        barracks = [atlas textureNamed:@"elitetowncenter"];
         eliteBarracks = [atlas textureNamed:@"elitebarracks"];
 
     }
