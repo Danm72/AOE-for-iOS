@@ -1,5 +1,5 @@
 //
-//  MenuCollectionViewController.h
+//  MainMenuViewController.h
 //  AOEPort
 //
 //  Created by Dan Malone on 19/04/2014.
@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuCollectionViewController : UICollectionViewController
+@interface MainMenuViewController : UICollectionViewController
 @property (strong, nonatomic) NSArray *images;
+@property (weak, nonatomic) IBOutlet SKView *skView;
 
 @end

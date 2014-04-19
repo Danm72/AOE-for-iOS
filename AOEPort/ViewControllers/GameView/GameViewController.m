@@ -52,6 +52,24 @@
     return YES;
 }
 
+-(void) loadScene{
+    SKView *skView = (SKView *) self.view;
+    
+    self.view = skView;
+    //    skView.showsFPS = YES;
+    //    skView.showsNodeCount = YES;
+    // Create and configure the scene.
+    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+    //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
+    //  scene.scaleMode = SKSceneScaleModeResizeFill;
+    scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    [scene loadSceneAssetsWithCompletionHandler:^{
+        NSLog(@"Done Loading");
+        [skView presentScene:scene];
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -61,25 +79,8 @@
 
     // Set the gesture
     [self.navigationController.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    // Configure the view.
-//    SKView *skView = [[SKView alloc] init];
-    SKView *skView = (SKView *) self.view;
-
-    self.view = skView;
-//    skView.showsFPS = YES;
-//    skView.showsNodeCount = YES;
-    // Create and configure the scene.
-    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
-//    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
-
-    //  scene.scaleMode = SKSceneScaleModeResizeFill;
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-
-    [scene loadSceneAssetsWithCompletionHandler:^{
-        NSLog(@"Done Loading");
-        [skView presentScene:scene];
-    }];
-
+    
+    [self loadScene];
 }
 
 - (BOOL)shouldAutorotate {

@@ -1,5 +1,5 @@
 //
-//  MainMenuChoiceTableViewCell.h
+//  MainMenuTableViewCell.h
 //  AOEPort
 //
 //  Created by Dan Malone on 19/04/2014.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainMenuChoiceTableViewCell : UICollectionViewCell
+@interface MainMenuTableViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @end

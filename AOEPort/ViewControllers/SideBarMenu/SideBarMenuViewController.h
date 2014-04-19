@@ -1,5 +1,5 @@
 //
-//  MenuViewController.h
+//  SideBarMenuViewController.h
 //  AOEPort
 //
 //  Created by Dan Malone on 07/03/2014.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MenuViewController : UITableViewController
+@interface SideBarMenuViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UITableView *menuTable;
 
 @end

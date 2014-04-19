@@ -1,14 +1,14 @@
 //
-//  MainMenuChoiceTableViewCell.m
+//  MainMenuTableViewCell.m
 //  AOEPort
 //
 //  Created by Dan Malone on 19/04/2014.
 //  Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
-#import "MainMenuChoiceTableViewCell.h"
+#import "MainMenuTableViewCell.h"
 
-@implementation MainMenuChoiceTableViewCell
+@implementation MainMenuTableViewCell
 
 - (id)initWithFrame:(CGRect)frame
 {

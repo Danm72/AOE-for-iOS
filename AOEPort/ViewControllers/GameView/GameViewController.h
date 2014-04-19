@@ -11,4 +11,5 @@
 @interface GameViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
+-(void) loadScene;
 @end
