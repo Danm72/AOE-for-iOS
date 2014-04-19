@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainMenuViewController : UICollectionViewController
+@interface MainMenuViewController : UIViewController
+@property (strong, nonatomic) NSArray *images;
 
 @end

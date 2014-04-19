@@ -52,6 +52,8 @@
 		C860896918ABF6D100810C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860896818ABF6D100810C1A /* Images.xcassets */; };
 		C86B326A18CA21C400468EB9 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B326918CA21C400468EB9 /* MenuViewController.m */; };
 		C86B326D18CA28E700468EB9 /* MenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C86B326C18CA28E700468EB9 /* MenuItemTableViewCell.m */; };
+		C86F2A6E1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C86F2A6D1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.m */; };
+		C86F2A711902056D00D8E971 /* MenuCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C86F2A701902056D00D8E971 /* MenuCollectionViewController.m */; };
 		C87E312318FD7C430034C290 /* miltarybuilds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C87E312218FD7C430034C290 /* miltarybuilds.atlas */; };
 		C891016219003DDA00D41692 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C891016119003DDA00D41692 /* MainMenuViewController.m */; };
 		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
@@ -68,6 +70,8 @@
 		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
 		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
 		C89C76E518FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C76E418FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a */; };
+		C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */ = {isa = PBXBuildFile; fileRef = C8A9CA79190171EF00AA2BE0 /* parchment.png */; };
+		C8A9CA7D1901743F00AA2BE0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A9CA7C1901743F00AA2BE0 /* RootViewController.m */; };
 		C8BDA28A18FEEAF5005E029C /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8BDA28918FEEAF5005E029C /* SplashScreenViewController.m */; };
 		C8BDA28C18FEEC52005E029C /* age-of-empires-2-hd-main-menu.png in Resources */ = {isa = PBXBuildFile; fileRef = C8BDA28B18FEEC52005E029C /* age-of-empires-2-hd-main-menu.png */; };
 		C8BDA28E18FEEC92005E029C /* 10375043.png in Resources */ = {isa = PBXBuildFile; fileRef = C8BDA28D18FEEC92005E029C /* 10375043.png */; };
@@ -166,6 +170,10 @@
 		C86B326918CA21C400468EB9 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		C86B326B18CA28E700468EB9 /* MenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemTableViewCell.h; sourceTree = "<group>"; };
 		C86B326C18CA28E700468EB9 /* MenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemTableViewCell.m; sourceTree = "<group>"; };
+		C86F2A6C1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuChoiceTableViewCell.h; sourceTree = "<group>"; };
+		C86F2A6D1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuChoiceTableViewCell.m; sourceTree = "<group>"; };
+		C86F2A6F1902056D00D8E971 /* MenuCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCollectionViewController.h; sourceTree = "<group>"; };
+		C86F2A701902056D00D8E971 /* MenuCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuCollectionViewController.m; sourceTree = "<group>"; };
 		C87E312218FD7C430034C290 /* miltarybuilds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = miltarybuilds.atlas; sourceTree = "<group>"; };
 		C891016019003DDA00D41692 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		C891016119003DDA00D41692 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
@@ -191,6 +199,9 @@
 		C89C76E018FB35F0003379E6 /* libPods-AOEPortTests-JASidePanels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-JASidePanels.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-JASidePanels.a"; sourceTree = "<group>"; };
 		C89C76E218FB583A003379E6 /* libPods-AOEPortTests-ECSlidingViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-ECSlidingViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-ECSlidingViewController.a"; sourceTree = "<group>"; };
 		C89C76E418FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-SWRevealViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-SWRevealViewController.a"; sourceTree = "<group>"; };
+		C8A9CA79190171EF00AA2BE0 /* parchment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parchment.png; sourceTree = "<group>"; };
+		C8A9CA7B1901743F00AA2BE0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		C8A9CA7C1901743F00AA2BE0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		C8BDA28818FEEAF5005E029C /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
 		C8BDA28918FEEAF5005E029C /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		C8BDA28B18FEEC52005E029C /* age-of-empires-2-hd-main-menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "age-of-empires-2-hd-main-menu.png"; sourceTree = "<group>"; };
@@ -243,6 +254,12 @@
 				C8BDA28918FEEAF5005E029C /* SplashScreenViewController.m */,
 				C891016019003DDA00D41692 /* MainMenuViewController.h */,
 				C891016119003DDA00D41692 /* MainMenuViewController.m */,
+				C8A9CA7B1901743F00AA2BE0 /* RootViewController.h */,
+				C8A9CA7C1901743F00AA2BE0 /* RootViewController.m */,
+				C86F2A6C1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.h */,
+				C86F2A6D1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.m */,
+				C86F2A6F1902056D00D8E971 /* MenuCollectionViewController.h */,
+				C86F2A701902056D00D8E971 /* MenuCollectionViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -342,6 +359,7 @@
 		C184B99E76A6BD55A16EDFE6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C8A9CA79190171EF00AA2BE0 /* parchment.png */,
 				C8BDA28D18FEEC92005E029C /* 10375043.png */,
 				C8BDA28B18FEEC52005E029C /* age-of-empires-2-hd-main-menu.png */,
 				C184BFC916A14E2F052C44D1 /* UI */,
@@ -642,6 +660,7 @@
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
 				C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
+				C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */,
 				C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */,
 				C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */,
 				C184B16D62084268170F9712 /* logo.png in Resources */,
@@ -722,15 +741,18 @@
 				C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */,
 				C184B9409237358172690560 /* SSKStretchableNode.m in Sources */,
 				C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */,
+				C86F2A6E1901FA0C00D8E971 /* MainMenuChoiceTableViewCell.m in Sources */,
 				C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */,
 				C891016219003DDA00D41692 /* MainMenuViewController.m in Sources */,
 				C184B6A865CFD07EC53D87D9 /* SKEmitterNode+SKTExtras.m in Sources */,
 				C184BCCB4724A3BF3B0F45B4 /* SKNode+SKTExtras.m in Sources */,
 				C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */,
 				C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */,
+				C8A9CA7D1901743F00AA2BE0 /* RootViewController.m in Sources */,
 				C184B343BE7044476E020ABB /* GameViewController.m in Sources */,
 				C184BF3C58242275228657BD /* TouchHandlers.m in Sources */,
 				C184B39D0C90FF5642CC0F41 /* TouchUtilities.m in Sources */,
+				C86F2A711902056D00D8E971 /* MenuCollectionViewController.m in Sources */,
 				C184BD8FF7821A4CEE6AF401 /* Tile.m in Sources */,
 				C184B99DF083BEAF858FEBBC /* DirtTile.m in Sources */,
 				C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */,
