@@ -9,6 +9,8 @@
 @interface TouchUtilities : NSObject
 + (BOOL)accuracyOfTouchX:(CGPoint)oldPoint :(CGPoint)newPoint;
 
++ (NSArray *)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint;
+
 + (int)getSpeed:(CGPoint)oldPoint :(CGPoint)newPoint;
 
 + (BOOL)accuracyOfTouchY:(CGPoint)oldPoint :(CGPoint)newPoint;

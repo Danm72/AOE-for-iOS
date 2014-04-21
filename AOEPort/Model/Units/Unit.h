@@ -15,6 +15,8 @@ NSMutableArray *textures;
 
 @property (readwrite) NSString *movementSpeed;
 
++ (NSArray *)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint;
+
 - (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction;
 
 - (void)move:(CGPoint)newPos;

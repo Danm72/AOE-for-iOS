@@ -45,6 +45,14 @@
 
             [DrawDebugger attachDebugRectWithSize:self.size:self];
 
+            SKLabelNode *letter = [SKLabelNode labelNodeWithFontNamed:@"Villager"];
+            letter.color    = [SKColor whiteColor];
+            letter.text     = self.unitType;
+            letter.fontSize = 10;
+            letter.position = CGPointMake(0, -25);
+            letter.horizontalAlignmentMode =
+                    SKLabelHorizontalAlignmentModeCenter;
+            [self addChild:letter];
         }
     }
     return self;

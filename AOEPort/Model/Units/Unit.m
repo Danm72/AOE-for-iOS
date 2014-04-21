@@ -12,7 +12,7 @@
 
 }
 
--(void) move:(CGPoint) newPos{
+- (void)move:(CGPoint)newPos {
     SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
     int direction = -1;
@@ -37,15 +37,21 @@
     [self animateWalk:atlas :direction];
     int speed = [TouchUtilities getSpeed:self.position :newPos];
 
-    SKAction *moveTo = [SKAction moveTo:newPos duration:speed];
-    [moveTo setTimingMode:SKActionTimingEaseOut];
+//    NSArray *points = [self findPointsInPath:newPos];
+    NSArray *points = [TouchUtilities getAllPointsFromPoint:self.position toPoint:newPos];
 
-    [self runAction:moveTo completion:^{
-        {
-            [self removeAllActions];
-            //idle
-        }
-    }];
+    for( NSValue *val in points){
+        CGPoint p = [val CGPointValue];
+        SKAction *moveTo = [SKAction moveTo:p duration:speed];
+        [moveTo setTimingMode:SKActionTimingEaseOut];
+
+        [self runAction:moveTo completion:^{
+            {
+                [self removeAllActions];
+                //idle
+            }
+        }];
+    }
 
 }
 

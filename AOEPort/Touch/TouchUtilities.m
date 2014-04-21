@@ -31,6 +31,41 @@
     return false;
 }
 
++(NSArray*)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint
+{
+    /*Simplyfied implementation of Bresenham's line algoritme */
+    NSMutableArray *ret = [NSMutableArray array];
+    float deltaX = fabsf(tPoint.x - fPoint.x);
+    float deltaY = fabsf(tPoint.y - fPoint.y);
+    float x = fPoint.x;
+    float y = fPoint.y;
+    float err = deltaX-deltaY;
+
+    float sx = -0.5;
+    float sy = -0.5;
+    if(fPoint.x<tPoint.x)
+        sx = 0.5;
+
+    if(fPoint.y<tPoint.y)
+        sy = 0.5;
+    do {
+        [ret addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
+        float e = 2*err;
+        if(e > -deltaY)
+        {
+            err -=deltaY;
+            x +=sx;
+        }
+        if(e < deltaX)
+        {
+            err +=deltaX;
+            y+=sy;
+        }
+    } while (round(x)  != round(tPoint.x) && round(y) != round(tPoint.y));
+    [ret addObject:[NSValue valueWithCGPoint:tPoint]];//add final point
+    return ret;
+}
+
 + (int)getSpeed:(CGPoint)oldPoint :(CGPoint)newPoint {
 
     CGFloat xDist = (oldPoint.x - newPoint.x);

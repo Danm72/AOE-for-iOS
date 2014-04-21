@@ -21,6 +21,7 @@
 		C184B3329468B0CF44B6631D /* GrassTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B84048EB17524395B6A5 /* GrassTile.m */; };
 		C184B363DBED6EC686B67FC3 /* Villager.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD0EA34E0E7D11E77152 /* Villager.m */; };
 		C184B39D0C90FF5642CC0F41 /* TouchUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */; };
+		C184B3E481074114A2BAFBFE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BBCED4A9653A30BC9FBF /* spark.png */; };
 		C184B4172DD15E35CEE5B216 /* Builder_build.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B2C59507C53E600D89E9 /* Builder_build.atlas */; };
 		C184B4D33396F00EF1034C55 /* TownCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B8CA290A7E4CE160D2EC /* TownCenter.m */; };
 		C184B4F2BF356A2B2C930650 /* tiles.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B7350554D130573F205A /* tiles.atlas */; };
@@ -33,6 +34,7 @@
 		C184B7999A00E12CEEBEBBBE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = C184BF70B559CB8F6576AF59 /* icon */; };
 		C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0330AA52BBC75837B5A /* SSKMultiLineLabelNode.m */; };
 		C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF621D7F91B3C887BDFB /* SKTAudio.m */; };
+		C184B7EC1651AA7B4976D111 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = C184B0C9D97C53A156FA140E /* MyParticle.sks */; };
 		C184B7FDB172C387865587CD /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B17FEF2A6E7C6B1ADDF5 /* GameViewController.m */; };
 		C184B8B2FCC4481DECD70893 /* isoMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B707DFC3E0B3B5940F74 /* isoMap.tmx */; };
 		C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0BE9D19B4441003676A /* SnowTile.m */; };
@@ -57,6 +59,8 @@
 		C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */; };
 		C184BF3C58242275228657BD /* TouchHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BAEEDDF116C0C137704E /* TouchHandlers.m */; };
 		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
+		C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBA1904B99B00D0DD44 /* hammer.png */; };
+		C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBB1904B99B00D0DD44 /* splash.png */; };
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
 		C860896918ABF6D100810C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860896818ABF6D100810C1A /* Images.xcassets */; };
 		C87E312318FD7C430034C290 /* miltarybuilds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C87E312218FD7C430034C290 /* miltarybuilds.atlas */; };
@@ -77,8 +81,11 @@
 		C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */; };
 		C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786218AC3B9500866DEF /* TileMapLayer.m */; };
 		C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */; };
-		C8E5C1BC1902E7E200AD2BB0 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1BA1902E7E200AD2BB0 /* MyParticle.sks */; };
-		C8E5C1BD1902E7E200AD2BB0 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1BB1902E7E200AD2BB0 /* spark.png */; };
+		C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */; };
+		C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1C01902FEC700AD2BB0 /* Spark.sks */; };
+		C8FDF8251902FF4500569257 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8FDF8241902FF4500569257 /* Smoke.sks */; };
+		C8FDF8281902FF6800569257 /* Bokeh.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8FDF8261902FF6800569257 /* Bokeh.sks */; };
+		C8FDF8291902FF6800569257 /* bokeh.png in Resources */ = {isa = PBXBuildFile; fileRef = C8FDF8271902FF6800569257 /* bokeh.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +108,7 @@
 		C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKAction+SKTExtras.m"; sourceTree = "<group>"; };
 		C184B090C54B0D45832D1F0A /* SKSpriteNode+SSKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKSpriteNode+SSKAnimation.h"; sourceTree = "<group>"; };
 		C184B0BE9D19B4441003676A /* SnowTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnowTile.m; sourceTree = "<group>"; };
+		C184B0C9D97C53A156FA140E /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
 		C184B0D2BE8C1B942544FC15 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
 		C184B0E4F70FB0A4FE9FFCB5 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C184B10E51D988D5A12DB579 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 		C184BB1E4321CB76CF2A0725 /* SKNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKNode+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKSpriteNode+SSKAnimation.m"; sourceTree = "<group>"; };
 		C184BB35138BD183D17ED408 /* MyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
+		C184BBCED4A9653A30BC9FBF /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		C184BC0414CFC372EBA241C9 /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
 		C184BC068F859A1E3EF5B099 /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		C184BC41FD8541A6CA6FFF37 /* SnowTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowTile.h; sourceTree = "<group>"; };
@@ -183,6 +192,8 @@
 		C184BF70B559CB8F6576AF59 /* icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		C184BF78B36B7B69DA78F498 /* debugMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = debugMap.tmx; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
+		C83D0CBA1904B99B00D0DD44 /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
+		C83D0CBB1904B99B00D0DD44 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C860896818ABF6D100810C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C87E312218FD7C430034C290 /* miltarybuilds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = miltarybuilds.atlas; sourceTree = "<group>"; };
@@ -211,8 +222,11 @@
 		C8D1786218AC3B9500866DEF /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 		C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
-		C8E5C1BA1902E7E200AD2BB0 /* MyParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyParticle.sks; sourceTree = "<group>"; };
-		C8E5C1BB1902E7E200AD2BB0 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicParticles.sks; sourceTree = "<group>"; };
+		C8E5C1C01902FEC700AD2BB0 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
+		C8FDF8241902FF4500569257 /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
+		C8FDF8261902FF6800569257 /* Bokeh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bokeh.sks; sourceTree = "<group>"; };
+		C8FDF8271902FF6800569257 /* bokeh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bokeh.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +353,20 @@
 			path = RootView;
 			sourceTree = "<group>";
 		};
+		C184B57271673B8CDFD015CB /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				C184B0C9D97C53A156FA140E /* MyParticle.sks */,
+				C184BBCED4A9653A30BC9FBF /* spark.png */,
+				C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */,
+				C8E5C1C01902FEC700AD2BB0 /* Spark.sks */,
+				C8FDF8241902FF4500569257 /* Smoke.sks */,
+				C8FDF8261902FF6800569257 /* Bokeh.sks */,
+				C8FDF8271902FF6800569257 /* bokeh.png */,
+			);
+			path = Particles;
+			sourceTree = "<group>";
+		};
 		C184B5A06FD7DFB56F49A9EF /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +436,8 @@
 		C184B99E76A6BD55A16EDFE6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C83D0CBA1904B99B00D0DD44 /* hammer.png */,
+				C83D0CBB1904B99B00D0DD44 /* splash.png */,
 				C8A9CA79190171EF00AA2BE0 /* parchment.png */,
 				C8BDA28D18FEEC92005E029C /* 10375043.png */,
 				C184BFC916A14E2F052C44D1 /* UI */,
@@ -511,8 +541,7 @@
 				C184B8962ED47BF26817D778 /* SKTUtils */,
 				C184BDF36218160F10F5B0CE /* Levels */,
 				C184B9DE2E556168047978BA /* Art */,
-				C8E5C1BA1902E7E200AD2BB0 /* MyParticle.sks */,
-				C8E5C1BB1902E7E200AD2BB0 /* spark.png */,
+				C184B57271673B8CDFD015CB /* Particles */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -717,24 +746,31 @@
 			files = (
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
 				C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */,
+				C8FDF8251902FF4500569257 /* Smoke.sks in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
 				C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */,
 				C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */,
 				C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */,
 				C184B16D62084268170F9712 /* logo.png in Resources */,
 				C184B7999A00E12CEEBEBBBE /* icon in Resources */,
+				C8FDF8281902FF6800569257 /* Bokeh.sks in Resources */,
 				C184B68241D4E8E2A98FE077 /* tiles32 in Resources */,
 				C184B8B2FCC4481DECD70893 /* isoMap.tmx in Resources */,
-				C8E5C1BD1902E7E200AD2BB0 /* spark.png in Resources */,
 				C87E312318FD7C430034C290 /* miltarybuilds.atlas in Resources */,
 				C184BBD3A6D52E6EB487728C /* buildings.atlas in Resources */,
 				C184B5AC0E71CDD417E38A13 /* buildings256.atlasc in Resources */,
+				C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */,
+				C8FDF8291902FF6800569257 /* bokeh.png in Resources */,
 				C184B4F2BF356A2B2C930650 /* tiles.atlas in Resources */,
 				C8BDA28E18FEEC92005E029C /* 10375043.png in Resources */,
 				C184B50B2E7D6CAD8489D5C7 /* Builder_walk.atlas in Resources */,
 				C184B4172DD15E35CEE5B216 /* Builder_build.atlas in Resources */,
 				C184B51C77D45EFC417FFA77 /* debugMap.tmx in Resources */,
-				C8E5C1BC1902E7E200AD2BB0 /* MyParticle.sks in Resources */,
+				C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */,
+				C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */,
+				C184B7EC1651AA7B4976D111 /* MyParticle.sks in Resources */,
+				C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */,
+				C184B3E481074114A2BAFBFE /* spark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

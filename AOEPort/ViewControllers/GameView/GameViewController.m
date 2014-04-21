@@ -11,7 +11,9 @@
 #import "SWRevealViewController.h"
 
 @interface GameViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *buildingPrimaryBtn;
 //@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *buildingSecondaryBtn;
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 //@property (nonatomic) IBOutlet SKView *skView;
 //@property (nonatomic) IBOutlet UIButton *enterButton;

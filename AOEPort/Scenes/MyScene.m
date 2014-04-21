@@ -196,6 +196,7 @@
         if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
             [contact.bodyA.node removeAllActions];
         } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
+
             [contact.bodyB.node removeAllActions];
         }
     } else if (collision == 0) {
