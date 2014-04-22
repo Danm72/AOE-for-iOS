@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="buildings256.1" tilewidth="256" tileheight="256">
+  <image source="buildings256.atlasc/buildings256.1.png" width="1536" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="Wall" value="1"/>
+    <property name="impassable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="TownCenter" value="1"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="Barracks" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="Church" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="7" name="tiles" tilewidth="32" tileheight="32">
+  <image source="tiles32/sprites.png" width="128" height="256"/>
+  <tile id="0">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="impassable" value="true"/>
+    <property name="snow" value="1"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="grass" value="1"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="sand" value="1"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="dirt" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="39" name="sprites" tilewidth="64" tileheight="64" spacing="1" margin="1">
+  <image source="map_resources/resources.png" width="512" height="1024"/>
+  <tile id="0">
+   <properties>
+    <property name="impassable" value="true"/>
+    <property name="tree" value="1"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="impassable" value="true"/>
+    <property name="tree" value="1"/>
+   </properties>
+  </tile>
+  <tile id="37">
+   <properties>
+    <property name="impassable" value="true"/>
+    <property name="tree" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tiles" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1jGOwkAUBFEO4RUBIfe/46YWwhjMmOr/p4KWhQgQ9TQDy+VyWZruWnB0Mz30SB7dTA89kkc300OP5NHN9NAjeXQzPfRIHt1MDz2SRzfTQ4/k0c300CN5dDM99Ege3UwPPZJHN9NDj+TRzfTQI3l0Mz30SB7dTA89kkc300OP5NHN9JjHo6IN3UmTeT0quNBtNNEj2YRuMmK3Ri50yxEW33okudA9R1isTR6f1UzopiMctkxGnZWbHocsRt1b5Hmh+37jsfX+GZ/7q/NC9/3U4pXNyPvqXZvH1zN5bBkduatS7za6Z8fpkbe97veN7f1fSRjddpTJfcdCj9+ZLDsOevx+XTy6mHTy6GDSzaO6SUePyiZdPaq6dPeoZjKDRyWTWTyqmMzkUcFkNo90kxk9kl1m9nhl8qzDsnq+2+6M0c3O3Ccd1g6kCd0sxSPFhG6W5LG+tygTulmaxzMTPXgPfz9yPIhzoUemCd0s2cPzoQfdTA89kkc300OP5NHN9NAjeXQzPfRIHt1MDz2SRzfTQ4/k0c300CN5dDM99Ege3UwPPZJHN9NDj+TRzfTQ4+j+Bq+zx+hWxCp70O3OGt1Vl9oedC895vKi++lQ2+Pd70J3Pbp/TIHKpA==
+  </data>
+ </layer>
+ <objectgroup name="Resources" width="100" height="100">
+  <object type="Tree" gid="76" x="2107" y="2346"/>
+  <object type="Tree" gid="76" x="2048" y="2301"/>
+  <object type="Tree" gid="76" x="1981" y="2256"/>
+  <object type="Tree" gid="76" x="1918" y="2202"/>
+  <object type="Tree" gid="76" x="2458" y="2270"/>
+  <object type="Tree" gid="76" x="2395" y="2216"/>
+  <object type="Tree" gid="76" x="2341" y="2166"/>
+  <object type="Tree" gid="76" x="2273" y="2117"/>
+  <object type="Tree" gid="76" x="2210" y="2067"/>
+  <object type="Tree" gid="76" x="878" y="2914"/>
+  <object type="Tree" gid="76" x="963" y="2923"/>
+  <object type="Tree" gid="76" x="923" y="2936"/>
+  <object type="Tree" gid="76" x="873" y="3044"/>
+  <object type="Tree" gid="76" x="873" y="2954"/>
+  <object type="Tree" gid="76" x="972" y="3004"/>
+  <object type="Tree" gid="76" x="918" y="2990"/>
+  <object type="Tree" gid="76" x="2791" y="958"/>
+  <object type="Tree" gid="76" x="2876" y="967"/>
+  <object type="Tree" gid="76" x="2836" y="980"/>
+  <object type="Tree" gid="76" x="2786" y="1088"/>
+  <object type="Tree" gid="76" x="2786" y="998"/>
+  <object type="Tree" gid="76" x="2885" y="1048"/>
+  <object type="Tree" gid="76" x="2831" y="1034"/>
+  <object type="Tree" gid="76" x="2622" y="794"/>
+  <object type="Tree" gid="76" x="2707" y="803"/>
+  <object type="Tree" gid="76" x="2667" y="816"/>
+  <object type="Tree" gid="76" x="2617" y="924"/>
+  <object type="Tree" gid="76" x="2617" y="834"/>
+  <object type="Tree" gid="76" x="2716" y="884"/>
+  <object type="Tree" gid="76" x="2662" y="870"/>
+  <object type="Tree" gid="76" x="2375" y="740"/>
+  <object type="Tree" gid="76" x="2460" y="749"/>
+  <object type="Tree" gid="76" x="2420" y="762"/>
+  <object type="Tree" gid="76" x="2370" y="870"/>
+  <object type="Tree" gid="76" x="2370" y="780"/>
+  <object type="Tree" gid="76" x="2469" y="830"/>
+  <object type="Tree" gid="76" x="2415" y="816"/>
+  <object type="Tree" gid="76" x="2554" y="924"/>
+  <object type="Tree" gid="76" x="2639" y="933"/>
+  <object type="Tree" gid="76" x="2599" y="946"/>
+  <object type="Tree" gid="76" x="2549" y="1054"/>
+  <object type="Tree" gid="76" x="2549" y="964"/>
+  <object type="Tree" gid="76" x="2648" y="1014"/>
+  <object type="Tree" gid="76" x="2594" y="1000"/>
+  <object type="Tree" gid="76" x="2303" y="393"/>
+  <object type="Tree" gid="76" x="2388" y="402"/>
+  <object type="Tree" gid="76" x="2348" y="415"/>
+  <object type="Tree" gid="76" x="2298" y="523"/>
+  <object type="Tree" gid="76" x="2298" y="433"/>
+  <object type="Tree" gid="76" x="2397" y="483"/>
+  <object type="Tree" gid="76" x="2343" y="469"/>
+  <object type="Tree" gid="76" x="2187" y="513"/>
+  <object type="Tree" gid="76" x="2272" y="522"/>
+  <object type="Tree" gid="76" x="2232" y="535"/>
+  <object type="Tree" gid="76" x="2182" y="643"/>
+  <object type="Tree" gid="76" x="2182" y="553"/>
+  <object type="Tree" gid="76" x="2281" y="603"/>
+  <object type="Tree" gid="76" x="2227" y="589"/>
+  <object type="Tree" gid="76" x="2714" y="538"/>
+  <object type="Tree" gid="76" x="2799" y="547"/>
+  <object type="Tree" gid="76" x="2759" y="560"/>
+  <object type="Tree" gid="76" x="2709" y="668"/>
+  <object type="Tree" gid="76" x="2709" y="578"/>
+  <object type="Tree" gid="76" x="2808" y="628"/>
+  <object type="Tree" gid="76" x="2754" y="614"/>
+  <object type="Tree" gid="76" x="2448" y="335"/>
+  <object type="Tree" gid="76" x="2533" y="344"/>
+  <object type="Tree" gid="76" x="2493" y="357"/>
+  <object type="Tree" gid="76" x="2443" y="465"/>
+  <object type="Tree" gid="76" x="2443" y="375"/>
+  <object type="Tree" gid="76" x="2542" y="425"/>
+  <object type="Tree" gid="76" x="2488" y="411"/>
+  <object type="Tree" gid="76" x="2535" y="407"/>
+  <object type="Tree" gid="76" x="2383" y="600"/>
+  <object type="Tree" gid="76" x="2580" y="429"/>
+  <object type="Tree" gid="76" x="2530" y="537"/>
+  <object type="Tree" gid="76" x="2530" y="447"/>
+  <object type="Tree" gid="76" x="2629" y="497"/>
+  <object type="Tree" gid="76" x="2575" y="483"/>
+  <object type="Tree" gid="76" x="2491" y="494"/>
+  <object type="Tree" gid="76" x="2576" y="503"/>
+  <object type="Tree" gid="76" x="2536" y="516"/>
+  <object type="Tree" gid="76" x="2486" y="624"/>
+  <object type="Tree" gid="76" x="2486" y="534"/>
+  <object type="Tree" gid="76" x="2585" y="584"/>
+  <object type="Tree" gid="76" x="2531" y="570"/>
+  <object type="Tree" gid="76" x="2569" y="639"/>
+  <object type="Tree" gid="76" x="2654" y="648"/>
+  <object type="Tree" gid="76" x="2614" y="661"/>
+  <object type="Tree" gid="76" x="2564" y="769"/>
+  <object type="Tree" gid="76" x="2564" y="679"/>
+  <object type="Tree" gid="76" x="2663" y="729"/>
+  <object type="Tree" gid="76" x="2609" y="715"/>
+  <object type="Tree" gid="76" x="2371" y="533"/>
+  <object type="Tree" gid="76" x="2456" y="542"/>
+  <object type="Tree" gid="76" x="2416" y="555"/>
+  <object type="Tree" gid="76" x="2366" y="663"/>
+  <object type="Tree" gid="76" x="2366" y="573"/>
+  <object type="Tree" gid="76" x="2465" y="623"/>
+  <object type="Tree" gid="76" x="2411" y="609"/>
+  <object type="Tree" gid="76" x="2506" y="755"/>
+  <object type="Tree" gid="76" x="2591" y="764"/>
+  <object type="Tree" gid="76" x="2551" y="777"/>
+  <object type="Tree" gid="76" x="2501" y="885"/>
+  <object type="Tree" gid="76" x="2501" y="795"/>
+  <object type="Tree" gid="76" x="2600" y="845"/>
+  <object type="Tree" gid="76" x="2546" y="831"/>
+  <object type="Tree" gid="76" x="2888" y="653"/>
+  <object type="Tree" gid="76" x="2973" y="662"/>
+  <object type="Tree" gid="76" x="2933" y="675"/>
+  <object type="Tree" gid="76" x="2883" y="783"/>
+  <object type="Tree" gid="76" x="2883" y="693"/>
+  <object type="Tree" gid="76" x="2982" y="743"/>
+  <object type="Tree" gid="76" x="2928" y="729"/>
+  <object type="Tree" gid="76" x="2801" y="740"/>
+  <object type="Tree" gid="76" x="2886" y="749"/>
+  <object type="Tree" gid="76" x="2846" y="762"/>
+  <object type="Tree" gid="76" x="2796" y="870"/>
+  <object type="Tree" gid="76" x="2796" y="780"/>
+  <object type="Tree" gid="76" x="2895" y="830"/>
+  <object type="Tree" gid="76" x="2841" y="816"/>
+  <object type="Tree" gid="76" x="984" y="3021"/>
+  <object type="Tree" gid="76" x="1069" y="3030"/>
+  <object type="Tree" gid="76" x="1029" y="3043"/>
+  <object type="Tree" gid="76" x="979" y="3151"/>
+  <object type="Tree" gid="76" x="979" y="3061"/>
+  <object type="Tree" gid="76" x="1078" y="3111"/>
+  <object type="Tree" gid="76" x="1024" y="3097"/>
+  <object type="Tree" gid="76" x="714" y="3021"/>
+  <object type="Tree" gid="76" x="799" y="3030"/>
+  <object type="Tree" gid="76" x="759" y="3043"/>
+  <object type="Tree" gid="76" x="709" y="3151"/>
+  <object type="Tree" gid="76" x="709" y="3061"/>
+  <object type="Tree" gid="76" x="808" y="3111"/>
+  <object type="Tree" gid="76" x="754" y="3097"/>
+  <object type="Tree" gid="76" x="409" y="3025"/>
+  <object type="Tree" gid="76" x="494" y="3034"/>
+  <object type="Tree" gid="76" x="454" y="3047"/>
+  <object type="Tree" gid="76" x="404" y="3155"/>
+  <object type="Tree" gid="76" x="404" y="3065"/>
+  <object type="Tree" gid="76" x="503" y="3115"/>
+  <object type="Tree" gid="76" x="449" y="3101"/>
+  <object type="Tree" gid="76" x="549" y="3021"/>
+  <object type="Tree" gid="76" x="634" y="3030"/>
+  <object type="Tree" gid="76" x="594" y="3043"/>
+  <object type="Tree" gid="76" x="544" y="3151"/>
+  <object type="Tree" gid="76" x="544" y="3061"/>
+  <object type="Tree" gid="76" x="643" y="3111"/>
+  <object type="Tree" gid="76" x="589" y="3097"/>
+  <object type="Tree" gid="76" x="714" y="2818"/>
+  <object type="Tree" gid="76" x="799" y="2827"/>
+  <object type="Tree" gid="76" x="759" y="2840"/>
+  <object type="Tree" gid="76" x="709" y="2948"/>
+  <object type="Tree" gid="76" x="709" y="2858"/>
+  <object type="Tree" gid="76" x="808" y="2908"/>
+  <object type="Tree" gid="76" x="754" y="2894"/>
+  <object type="Tree" gid="76" x="1705" y="3187"/>
+  <object type="Tree" gid="76" x="1416" y="3013"/>
+  <object type="Tree" gid="76" x="1336" y="3137"/>
+  <object type="Tree" gid="76" x="1036" y="3101"/>
+  <object type="Tree" gid="76" x="1111" y="3017"/>
+  <object type="Tree" gid="76" x="1611" y="3097"/>
+  <object type="Tree" gid="76" x="1121" y="3110"/>
+  <object type="Tree" gid="76" x="1426" y="3106"/>
+  <object type="Tree" gid="76" x="1216" y="3173"/>
+  <object type="Tree" gid="76" x="1606" y="3137"/>
+  <object type="Tree" gid="76" x="1012" y="3057"/>
+  <object type="Tree" gid="76" x="1500" y="3120"/>
+  <object type="Tree" gid="76" x="1081" y="3123"/>
+  <object type="Tree" gid="76" x="1221" y="3119"/>
+  <object type="Tree" gid="76" x="1500" y="3030"/>
+  <object type="Tree" gid="76" x="1152" y="3053"/>
+  <object type="Tree" gid="76" x="1031" y="3141"/>
+  <object type="Tree" gid="76" x="1599" y="3080"/>
+  <object type="Tree" gid="76" x="1076" y="3177"/>
+  <object type="Tree" gid="76" x="1176" y="3097"/>
+  <object type="Tree" gid="76" x="1386" y="3119"/>
+  <object type="Tree" gid="76" x="1696" y="3106"/>
+  <object type="Tree" gid="76" x="1381" y="3173"/>
+  <object type="Tree" gid="76" x="1171" y="3137"/>
+  <object type="Tree" gid="76" x="1587" y="3053"/>
+  <object type="Tree" gid="76" x="1317" y="3053"/>
+  <object type="Tree" gid="76" x="1656" y="3119"/>
+  <object type="Tree" gid="76" x="1341" y="3097"/>
+  <object type="Tree" gid="76" x="1545" y="3066"/>
+  <object type="Tree" gid="76" x="1251" y="3013"/>
+  <object type="Tree" gid="76" x="1336" y="3024"/>
+  <object type="Tree" gid="76" x="1651" y="3173"/>
+  <object type="Tree" gid="76" x="1261" y="3106"/>
+  <object type="Tree" gid="76" x="1618" y="2960"/>
+  <object type="Tree" gid="76" x="1348" y="2960"/>
+  <object type="Tree" gid="76" x="1249" y="2910"/>
+  <object type="Tree" gid="76" x="949" y="2874"/>
+  <object type="Tree" gid="76" x="1043" y="2964"/>
+  <object type="Tree" gid="76" x="1524" y="2870"/>
+  <object type="Tree" gid="76" x="1034" y="2883"/>
+  <object type="Tree" gid="76" x="1339" y="2879"/>
+  <object type="Tree" gid="76" x="1129" y="2946"/>
+  <object type="Tree" gid="76" x="1519" y="2910"/>
+  <object type="Tree" gid="76" x="944" y="3004"/>
+  <object type="Tree" gid="76" x="1413" y="2893"/>
+  <object type="Tree" gid="76" x="994" y="2896"/>
+  <object type="Tree" gid="76" x="1134" y="2892"/>
+  <object type="Tree" gid="76" x="1413" y="2803"/>
+  <object type="Tree" gid="76" x="1084" y="3000"/>
+  <object type="Tree" gid="76" x="944" y="2914"/>
+  <object type="Tree" gid="76" x="1512" y="2853"/>
+  <object type="Tree" gid="76" x="989" y="2950"/>
+  <object type="Tree" gid="76" x="1089" y="2870"/>
+  <object type="Tree" gid="76" x="1299" y="2892"/>
+  <object type="Tree" gid="76" x="1609" y="2879"/>
+  <object type="Tree" gid="76" x="1294" y="2946"/>
+  <object type="Tree" gid="76" x="1084" y="2910"/>
+  <object type="Tree" gid="76" x="1519" y="3000"/>
+  <object type="Tree" gid="76" x="1249" y="3000"/>
+  <object type="Tree" gid="76" x="1569" y="2892"/>
+  <object type="Tree" gid="76" x="1254" y="2870"/>
+  <object type="Tree" gid="76" x="1458" y="2839"/>
+  <object type="Tree" gid="76" x="1183" y="2960"/>
+  <object type="Tree" gid="76" x="1249" y="2797"/>
+  <object type="Tree" gid="76" x="1564" y="2946"/>
+  <object type="Tree" gid="76" x="1174" y="2879"/>
+  <object type="Tree" gid="76" x="1710" y="226"/>
+  <object type="Tree" gid="76" x="1440" y="226"/>
+  <object type="Tree" gid="76" x="1341" y="176"/>
+  <object type="Tree" gid="76" x="1041" y="140"/>
+  <object type="Tree" gid="76" x="1135" y="230"/>
+  <object type="Tree" gid="76" x="1616" y="136"/>
+  <object type="Tree" gid="76" x="1126" y="149"/>
+  <object type="Tree" gid="76" x="1431" y="145"/>
+  <object type="Tree" gid="76" x="1221" y="212"/>
+  <object type="Tree" gid="76" x="1611" y="176"/>
+  <object type="Tree" gid="76" x="1036" y="270"/>
+  <object type="Tree" gid="76" x="1505" y="159"/>
+  <object type="Tree" gid="76" x="1086" y="162"/>
+  <object type="Tree" gid="76" x="1226" y="158"/>
+  <object type="Tree" gid="76" x="1505" y="69"/>
+  <object type="Tree" gid="76" x="1176" y="266"/>
+  <object type="Tree" gid="76" x="1036" y="180"/>
+  <object type="Tree" gid="76" x="1604" y="119"/>
+  <object type="Tree" gid="76" x="1081" y="216"/>
+  <object type="Tree" gid="76" x="1181" y="136"/>
+  <object type="Tree" gid="76" x="1391" y="158"/>
+  <object type="Tree" gid="76" x="1701" y="145"/>
+  <object type="Tree" gid="76" x="1386" y="212"/>
+  <object type="Tree" gid="76" x="1176" y="176"/>
+  <object type="Tree" gid="76" x="1611" y="266"/>
+  <object type="Tree" gid="76" x="1341" y="266"/>
+  <object type="Tree" gid="76" x="1661" y="158"/>
+  <object type="Tree" gid="76" x="1346" y="136"/>
+  <object type="Tree" gid="76" x="1550" y="105"/>
+  <object type="Tree" gid="76" x="1275" y="226"/>
+  <object type="Tree" gid="76" x="1341" y="63"/>
+  <object type="Tree" gid="76" x="1656" y="212"/>
+  <object type="Tree" gid="76" x="1266" y="145"/>
+ </objectgroup>
+ <objectgroup name="Buildings" width="100" height="100">
+  <object name="Wall" type="Wall" gid="1" x="1801" y="3201"/>
+  <object type="Wall" gid="1" x="1801" y="3061"/>
+  <object type="Wall" gid="1" x="1801" y="2935"/>
+  <object type="Wall" gid="1" x="1801" y="2818"/>
+  <object type="Wall" gid="1" x="1801" y="2710"/>
+  <object type="Wall" gid="1" x="1882" y="2656"/>
+  <object type="Wall" gid="1" x="1954" y="2624"/>
+  <object type="Wall" gid="1" x="2044" y="2602"/>
+  <object type="Wall" gid="1" x="2130" y="2575"/>
+  <object type="Wall" gid="1" x="2422" y="2476"/>
+  <object type="Wall" gid="1" x="2508" y="2440"/>
+  <object type="Wall" gid="1" x="2580" y="2408"/>
+  <object type="Wall" gid="1" x="2702" y="2404"/>
+  <object type="Wall" gid="1" x="2832" y="2404"/>
+  <object type="Wall" gid="1" x="2945" y="2408"/>
+  <object type="Wall" gid="1" x="3008" y="2462"/>
+  <object type="Town" gid="2" x="2868" y="3120"/>
+  <object type="Barracks" gid="4" x="2130" y="3120"/>
+  <object type="Barracks" gid="4" x="2121" y="2899"/>
+  <object name="Church" type="Church" gid="5" x="2864" y="2602"/>
+  <object name="Wall" type="Wall" gid="1" x="715" y="589"/>
+  <object type="Wall" gid="1" x="768" y="570"/>
+  <object type="Wall" gid="1" x="768" y="444"/>
+  <object type="Wall" gid="1" x="768" y="327"/>
+  <object type="Wall" gid="1" x="768" y="219"/>
+  <object type="Wall" gid="1" x="-59" y="991"/>
+  <object type="Wall" gid="1" x="13" y="959"/>
+  <object type="Wall" gid="1" x="103" y="937"/>
+  <object type="Wall" gid="1" x="652" y="611"/>
+  <object type="Wall" gid="1" x="152" y="971"/>
+  <object type="Wall" gid="1" x="238" y="935"/>
+  <object type="Wall" gid="1" x="310" y="903"/>
+  <object type="Wall" gid="1" x="717" y="652"/>
+  <object type="Wall" gid="1" x="775" y="676"/>
+  <object type="Wall" gid="1" x="381" y="874"/>
+  <object type="Wall" gid="1" x="444" y="841"/>
+  <object type="Town" gid="2" x="43" y="286"/>
+  <object type="Barracks" gid="4" x="122" y="722"/>
+  <object name="Church" type="Church" gid="5" x="551" y="251"/>
+  <object type="Tree" gid="76" x="1553" y="1289"/>
+  <object type="Tree" gid="76" x="553" y="1120"/>
+  <object type="Tree" gid="76" x="750" y="989"/>
+  <object type="Tree" gid="76" x="799" y="1057"/>
+  <object type="Tree" gid="76" x="1463" y="1410"/>
+  <object type="Tree" gid="76" x="790" y="976"/>
+  <object type="Tree" gid="76" x="1653" y="1298"/>
+  <object type="Tree" gid="76" x="1702" y="1366"/>
+  <object type="Tree" gid="76" x="1468" y="1280"/>
+  <object type="Tree" gid="76" x="700" y="1007"/>
+  <object type="Tree" gid="76" x="700" y="1097"/>
+  <object type="Tree" gid="76" x="1603" y="1406"/>
+  <object type="Tree" gid="76" x="1608" y="1276"/>
+  <object type="Tree" gid="76" x="454" y="1070"/>
+  <object type="Tree" gid="76" x="1693" y="1285"/>
+  <object type="Tree" gid="76" x="459" y="1030"/>
+  <object type="Tree" gid="76" x="504" y="1052"/>
+  <object type="Tree" gid="76" x="705" y="967"/>
+  <object type="Tree" gid="76" x="1562" y="1370"/>
+  <object type="Tree" gid="76" x="745" y="1043"/>
+  <object type="Tree" gid="76" x="594" y="990"/>
+  <object type="Tree" gid="76" x="639" y="936"/>
+  <object type="Tree" gid="76" x="1648" y="1352"/>
+  <object type="Tree" gid="76" x="1513" y="1302"/>
+  <object type="Tree" gid="76" x="499" y="1106"/>
+  <object type="Tree" gid="76" x="544" y="1039"/>
+  <object type="Tree" gid="76" x="454" y="1160"/>
+  <object type="Tree" gid="76" x="693" y="950"/>
+  <object type="Tree" gid="76" x="1463" y="1320"/>
+  <object type="Tree" gid="76" x="1603" y="1316"/>
+  <object type="Tree" gid="76" x="594" y="900"/>
+  <object type="Tree" gid="76" x="1508" y="1356"/>
+  <object type="Tree" gid="76" x="454" y="957"/>
+ </objectgroup>
+</map>

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-vE-8XF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-vE-8XF">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -99,22 +99,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parchment.png" translatesAutoresizingMaskIntoConstraints="NO" id="3qT-zV-gZN">
+                            <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="parchment.png" translatesAutoresizingMaskIntoConstraints="NO" id="3qT-zV-gZN">
                                 <rect key="frame" x="20" y="244" width="280" height="324"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEA-yD-2PW">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="aEA-yD-2PW">
                                 <rect key="frame" x="61" y="503" width="150" height="2"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="QDn-FL-93U"/>
+                                </constraints>
                             </progressView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-DX-oRN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zbz-DX-oRN">
                                 <rect key="frame" x="88" y="291" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-zt-AHw">
-                                <rect key="frame" x="265" y="51" width="50" height="50"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIn-zt-AHw">
+                                <rect key="frame" x="265" y="20" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -125,8 +128,23 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52J-9J-6oz">
-                                <rect key="frame" x="265" y="114" width="50" height="50"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doW-vm-axc">
+                                <rect key="frame" x="7" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m1B-pe-InM"/>
+                                    <constraint firstAttribute="width" constant="50" id="sKh-cV-djH"/>
+                                </constraints>
+                                <state key="normal" image="hammer.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sideBarTouch:" destination="LVB-YS-i5n" eventType="touchUpInside" id="VhE-Lx-nHW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52J-9J-6oz">
+                                <rect key="frame" x="265" y="78" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -140,13 +158,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3qT-zV-gZN" firstAttribute="top" secondItem="Zbz-DX-oRN" secondAttribute="bottom" constant="-30" id="2xB-41-CiO"/>
                             <constraint firstAttribute="trailing" secondItem="aIn-zt-AHw" secondAttribute="trailing" constant="5" id="36t-yz-vqR"/>
+                            <constraint firstItem="Zbz-DX-oRN" firstAttribute="centerX" secondItem="aEA-yD-2PW" secondAttribute="centerX" constant="0.5" id="6GB-Q0-D5i"/>
+                            <constraint firstItem="doW-vm-axc" firstAttribute="top" secondItem="aIn-zt-AHw" secondAttribute="top" id="6de-YV-rdn"/>
                             <constraint firstItem="a4N-ba-cS8" firstAttribute="top" secondItem="3qT-zV-gZN" secondAttribute="bottom" id="Azl-wC-9on"/>
                             <constraint firstItem="52J-9J-6oz" firstAttribute="leading" secondItem="aIn-zt-AHw" secondAttribute="leading" id="B8n-lz-gRr"/>
-                            <constraint firstAttribute="trailing" secondItem="3qT-zV-gZN" secondAttribute="trailing" constant="20" id="D9J-Y5-s2j"/>
+                            <constraint firstAttribute="trailing" secondItem="3qT-zV-gZN" secondAttribute="trailing" constant="5" id="D9J-Y5-s2j"/>
                             <constraint firstItem="aIn-zt-AHw" firstAttribute="top" secondItem="okk-hU-6iK" secondAttribute="bottom" constant="7" id="Oqz-g0-csX"/>
                             <constraint firstItem="3qT-zV-gZN" firstAttribute="top" secondItem="okk-hU-6iK" secondAttribute="bottom" constant="200" id="ThW-xN-A40"/>
-                            <constraint firstItem="3qT-zV-gZN" firstAttribute="leading" secondItem="bdc-N1-crn" secondAttribute="leading" constant="20" id="lGz-fo-NEV"/>
+                            <constraint firstItem="aEA-yD-2PW" firstAttribute="leading" secondItem="bdc-N1-crn" secondAttribute="leading" constant="150" id="Xw3-3K-MUd"/>
+                            <constraint firstItem="aEA-yD-2PW" firstAttribute="top" secondItem="Zbz-DX-oRN" secondAttribute="bottom" constant="50" id="itW-JN-e8W"/>
+                            <constraint firstItem="Zbz-DX-oRN" firstAttribute="leading" secondItem="3qT-zV-gZN" secondAttribute="leading" constant="100" id="klo-Dd-LdK"/>
+                            <constraint firstItem="3qT-zV-gZN" firstAttribute="leading" secondItem="bdc-N1-crn" secondAttribute="leading" constant="5" id="lGz-fo-NEV"/>
+                            <constraint firstItem="doW-vm-axc" firstAttribute="leading" secondItem="bdc-N1-crn" secondAttribute="leading" constant="7" id="qbk-bP-Msn"/>
                             <constraint firstItem="52J-9J-6oz" firstAttribute="top" secondItem="aIn-zt-AHw" secondAttribute="bottom" constant="13" id="zcx-KE-GhM"/>
                         </constraints>
                     </view>
@@ -155,8 +180,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="buildingPrimaryBtn" destination="52J-9J-6oz" id="oCW-Hm-xLq"/>
-                        <outlet property="buildingSecondaryBtn" destination="52J-9J-6oz" id="6aQ-VT-6SK"/>
+                        <outlet property="buildingSecondaryBtn" destination="52J-9J-6oz" id="EPx-zh-m4d"/>
                         <outlet property="sidebarButton" destination="7GW-8T-8f6" id="QKn-cJ-v1D"/>
+                        <outlet property="slideButton" destination="doW-vm-axc" id="b0V-ie-w1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
@@ -291,7 +317,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </imageView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Campaign" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-4t-JRf">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-4t-JRf">
                                             <rect key="frame" x="0.0" y="-3" width="125" height="96"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
@@ -347,6 +373,7 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="uwh-r9-GRR"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="skView" destination="BJM-2T-tU3" id="g5s-Pj-07M"/>
                         <segue destination="TT5-k9-ZFB" kind="modal" identifier="campaignSegue" id="C6V-X3-7PS"/>
@@ -370,6 +397,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="HRr-SA-V3l"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="do9-b8-Cwx" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="eUh-Rp-amd"/>
                         <segue destination="zmC-Yl-NAq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="FYy-us-6gB"/>
@@ -382,9 +410,10 @@
         <!--Navigation Controller - AOE-->
         <scene sceneID="4ca-Cz-TDY">
             <objects>
-                <navigationController title="AOE" automaticallyAdjustsScrollViewInsets="NO" id="zmC-Yl-NAq" sceneMemberID="viewController">
+                <navigationController title="AOE" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zmC-Yl-NAq" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4xF-o4-KJL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -402,7 +431,7 @@
     <resources>
         <image name="hammer.png" width="512" height="512"/>
         <image name="parchment.png" width="4301" height="2349"/>
-        <image name="splash.png" width="640" height="480"/>
+        <image name="splash.png" width="800" height="460"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>

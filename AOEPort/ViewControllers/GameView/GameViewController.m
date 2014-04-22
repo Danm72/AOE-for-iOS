@@ -11,9 +11,7 @@
 #import "SWRevealViewController.h"
 
 @interface GameViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *buildingPrimaryBtn;
-//@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingProgressIndicator;
-@property (weak, nonatomic) IBOutlet UIButton *buildingSecondaryBtn;
+
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 //@property (nonatomic) IBOutlet SKView *skView;
 //@property (nonatomic) IBOutlet UIButton *enterButton;
@@ -54,6 +52,10 @@
     return YES;
 }
 
+- (IBAction)sideBarTouch:(id)sender {
+    [[self revealViewController] revealToggle:sender];
+}
+
 -(void) loadScene{
     SKView *skView = (SKView *) self.view;
     
@@ -84,6 +86,7 @@
     
     [self loadScene];
 }
+
 
 - (BOOL)shouldAutorotate {
     return YES;

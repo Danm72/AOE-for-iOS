@@ -22,10 +22,6 @@ typedef void (^AssetLoadCompletionHandler)(void);
 @interface MyScene : SKScene {
 }
 
-- (BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props;
-
-- (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props;
-
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 
 -(void) loadSceneAssets;

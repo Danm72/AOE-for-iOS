@@ -36,6 +36,8 @@
 		C184B7CC402104CEF110F4F0 /* SKTAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF621D7F91B3C887BDFB /* SKTAudio.m */; };
 		C184B7EC1651AA7B4976D111 /* MyParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = C184B0C9D97C53A156FA140E /* MyParticle.sks */; };
 		C184B7FDB172C387865587CD /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B17FEF2A6E7C6B1ADDF5 /* GameViewController.m */; };
+		C184B80E477B842244C61F17 /* resources_map1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184BA28E85B99B64F839AFD /* resources_map1.tmx */; };
+		C184B851714ED2D96FB9D221 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD44D000E995FFD1E28E /* Tree.m */; };
 		C184B8B2FCC4481DECD70893 /* isoMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B707DFC3E0B3B5940F74 /* isoMap.tmx */; };
 		C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0BE9D19B4441003676A /* SnowTile.m */; };
 		C184B92D4C90AA4B6BC79E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0E4F70FB0A4FE9FFCB5 /* AppDelegate.m */; };
@@ -56,9 +58,12 @@
 		C184BDE193C3784E03F5FFAF /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B7832A16A91DD5C104BB /* Unit.m */; };
 		C184BE0C514048A5E5CAC61F /* SandTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B7EC289CDAC01F72C4F9 /* SandTile.m */; };
 		C184BE3C8BC7E3EB4774F3A7 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB35138BD183D17ED408 /* MyScene.m */; };
+		C184BE7C299064A8FD063F93 /* trees.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B80E1BEFFFCE4B88D416 /* trees.atlas */; };
 		C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */; };
 		C184BF3C58242275228657BD /* TouchHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BAEEDDF116C0C137704E /* TouchHandlers.m */; };
 		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
+		C828D4311905D9ED00069403 /* resources_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C828D4301905D9ED00069403 /* resources_map.tmx */; };
+		C828D4361905DBD900069403 /* map_resources in Resources */ = {isa = PBXBuildFile; fileRef = C828D4351905DBD900069403 /* map_resources */; };
 		C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBA1904B99B00D0DD44 /* hammer.png */; };
 		C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBB1904B99B00D0DD44 /* splash.png */; };
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
@@ -78,9 +83,9 @@
 		C89C76E518FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C76E418FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a */; };
 		C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */ = {isa = PBXBuildFile; fileRef = C8A9CA79190171EF00AA2BE0 /* parchment.png */; };
 		C8BDA28E18FEEC92005E029C /* 10375043.png in Resources */ = {isa = PBXBuildFile; fileRef = C8BDA28D18FEEC92005E029C /* 10375043.png */; };
-		C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */; };
 		C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786218AC3B9500866DEF /* TileMapLayer.m */; };
 		C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */; };
+		C8D4E478190566FA008977BA /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D4E476190566FA008977BA /* Main_iPhone.storyboard */; };
 		C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */; };
 		C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1C01902FEC700AD2BB0 /* Spark.sks */; };
 		C8FDF8251902FF4500569257 /* Smoke.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8FDF8241902FF4500569257 /* Smoke.sks */; };
@@ -147,6 +152,7 @@
 		C184B78805CE5D5D7BEC623E /* MainMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuTableViewCell.m; sourceTree = "<group>"; };
 		C184B7914E8C16937FC6E13E /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		C184B7EC289CDAC01F72C4F9 /* SandTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SandTile.m; sourceTree = "<group>"; };
+		C184B80E1BEFFFCE4B88D416 /* trees.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = trees.atlas; sourceTree = "<group>"; };
 		C184B8107863A9A22C5EEA10 /* Barracks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barracks.m; sourceTree = "<group>"; };
 		C184B82BEEE8A85137D88086 /* Barracks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barracks.h; sourceTree = "<group>"; };
 		C184B83C39B89964BA7CC148 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wall.m; sourceTree = "<group>"; };
@@ -160,8 +166,10 @@
 		C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchUtilities.m; sourceTree = "<group>"; };
 		C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
 		C184BA1A8A2AB3E177D9F15D /* MainMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuTableViewCell.h; sourceTree = "<group>"; };
+		C184BA28E85B99B64F839AFD /* resources_map1.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = resources_map1.tmx; sourceTree = "<group>"; };
 		C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+SKTExtras.m"; sourceTree = "<group>"; };
 		C184BA788627AEAFC1E89EC5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C184BA9FD33A002539C04118 /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
 		C184BAA2618560AF881CA62C /* SKAction+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKAction+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BAD1D5FA56778BBE95FE /* SKEmitterNode+SKTExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+SKTExtras.h"; sourceTree = "<group>"; };
 		C184BAEEDDF116C0C137704E /* TouchHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchHandlers.m; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 		C184BCFDAF2529A294D250DA /* Church.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Church.h; sourceTree = "<group>"; };
 		C184BD04AF0D1596BBCE7B8B /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		C184BD0EA34E0E7D11E77152 /* Villager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Villager.m; sourceTree = "<group>"; };
+		C184BD44D000E995FFD1E28E /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
 		C184BDCA7518565072A49DBF /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
 		C184BE3C8945B51D35F9D73F /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
 		C184BE91A8A58A926DADC313 /* Age of Empires Port-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Age of Empires Port-Prefix.pch"; sourceTree = "<group>"; };
@@ -192,6 +201,8 @@
 		C184BF70B559CB8F6576AF59 /* icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		C184BF78B36B7B69DA78F498 /* debugMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = debugMap.tmx; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
+		C828D4301905D9ED00069403 /* resources_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = resources_map.tmx; sourceTree = "<group>"; };
+		C828D4351905DBD900069403 /* map_resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map_resources; sourceTree = "<group>"; };
 		C83D0CBA1904B99B00D0DD44 /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
 		C83D0CBB1904B99B00D0DD44 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -217,11 +228,11 @@
 		C89C76E418FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-SWRevealViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-SWRevealViewController.a"; sourceTree = "<group>"; };
 		C8A9CA79190171EF00AA2BE0 /* parchment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parchment.png; sourceTree = "<group>"; };
 		C8BDA28D18FEEC92005E029C /* 10375043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10375043.png; sourceTree = "<group>"; };
-		C8C3EB5B18AE4D9000893AE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C8D1786118AC3B9500866DEF /* TileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786218AC3B9500866DEF /* TileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileMapLayer.m; sourceTree = "<group>"; };
 		C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
+		C8D4E477190566FA008977BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicParticles.sks; sourceTree = "<group>"; };
 		C8E5C1C01902FEC700AD2BB0 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		C8FDF8241902FF4500569257 /* Smoke.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Smoke.sks; sourceTree = "<group>"; };
@@ -278,6 +289,23 @@
 			path = GameView;
 			sourceTree = "<group>";
 		};
+		C184B316CA03BE7C27189481 /* Scenery */ = {
+			isa = PBXGroup;
+			children = (
+				C184B368FC677BF97B859279 /* Trees */,
+			);
+			path = Scenery;
+			sourceTree = "<group>";
+		};
+		C184B368FC677BF97B859279 /* Trees */ = {
+			isa = PBXGroup;
+			children = (
+				C184BD44D000E995FFD1E28E /* Tree.m */,
+				C184BA9FD33A002539C04118 /* Tree.h */,
+			);
+			path = Trees;
+			sourceTree = "<group>";
+		};
 		C184B36AD864ABBCE8AA5FE1 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +321,7 @@
 				C184B9792E830CC47A69010B /* Tiles */,
 				C184BCE88CCA188B79748208 /* Units */,
 				C184B4194DFE84B1C66551AF /* Buildings */,
+				C184B316CA03BE7C27189481 /* Scenery */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,12 +399,14 @@
 		C184B5A06FD7DFB56F49A9EF /* Atlas */ = {
 			isa = PBXGroup;
 			children = (
+				C828D4351905DBD900069403 /* map_resources */,
 				C87E312218FD7C430034C290 /* miltarybuilds.atlas */,
 				C184B015FC9EF0FE8CDAB3CF /* buildings.atlas */,
 				C184B2B628F0862CB8A3C930 /* buildings256.atlasc */,
 				C184B7350554D130573F205A /* tiles.atlas */,
 				C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */,
 				C184B2C59507C53E600D89E9 /* Builder_build.atlas */,
+				C184B80E1BEFFFCE4B88D416 /* trees.atlas */,
 			);
 			path = Atlas;
 			sourceTree = "<group>";
@@ -527,10 +558,12 @@
 		C184BDF36218160F10F5B0CE /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				C828D4301905D9ED00069403 /* resources_map.tmx */,
 				C184BDCA7518565072A49DBF /* tile32_256build.png */,
 				C184B6E41B33E796BA3965FF /* tile32_256build.tmx */,
 				C184B707DFC3E0B3B5940F74 /* isoMap.tmx */,
 				C184BF78B36B7B69DA78F498 /* debugMap.tmx */,
+				C184BA28E85B99B64F839AFD /* resources_map1.tmx */,
 			);
 			path = Levels;
 			sourceTree = "<group>";
@@ -646,7 +679,7 @@
 		C8C3EB5518AE4D9000893AE0 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */,
+				C8D4E476190566FA008977BA /* Main_iPhone.storyboard */,
 			);
 			path = Base.lproj;
 			sourceTree = "<group>";
@@ -745,7 +778,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
-				C8C3EB5E18AE4D9000893AE0 /* Main_iPhone.storyboard in Resources */,
 				C8FDF8251902FF4500569257 /* Smoke.sks in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
 				C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */,
@@ -761,6 +793,7 @@
 				C184B5AC0E71CDD417E38A13 /* buildings256.atlasc in Resources */,
 				C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */,
 				C8FDF8291902FF6800569257 /* bokeh.png in Resources */,
+				C828D4311905D9ED00069403 /* resources_map.tmx in Resources */,
 				C184B4F2BF356A2B2C930650 /* tiles.atlas in Resources */,
 				C8BDA28E18FEEC92005E029C /* 10375043.png in Resources */,
 				C184B50B2E7D6CAD8489D5C7 /* Builder_walk.atlas in Resources */,
@@ -768,9 +801,13 @@
 				C184B51C77D45EFC417FFA77 /* debugMap.tmx in Resources */,
 				C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */,
 				C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */,
+				C8D4E478190566FA008977BA /* Main_iPhone.storyboard in Resources */,
 				C184B7EC1651AA7B4976D111 /* MyParticle.sks in Resources */,
 				C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */,
+				C828D4361905DBD900069403 /* map_resources in Resources */,
 				C184B3E481074114A2BAFBFE /* spark.png in Resources */,
+				C184B80E477B842244C61F17 /* resources_map1.tmx in Resources */,
+				C184BE7C299064A8FD063F93 /* trees.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +899,7 @@
 				C184B2AA93AE03371A3C24DE /* JSTileMap.m in Sources */,
 				C184B13AEF7967AE406EF3D6 /* LFCGzipUtility.m in Sources */,
 				C184B92D4C90AA4B6BC79E19 /* AppDelegate.m in Sources */,
+				C184B851714ED2D96FB9D221 /* Tree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,10 +938,10 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C8C3EB5A18AE4D9000893AE0 /* Main_iPhone.storyboard */ = {
+		C8D4E476190566FA008977BA /* Main_iPhone.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C8C3EB5B18AE4D9000893AE0 /* Base */,
+				C8D4E477190566FA008977BA /* Base */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";

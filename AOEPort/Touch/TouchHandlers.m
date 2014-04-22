@@ -113,7 +113,7 @@
         CGPoint touchLocation = [recognizer locationInView:(scene.view)];
 
         touchLocation = [scene convertPointFromView:touchLocation];
-        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
+        touchLocation = [scene convertPoint:touchLocation toNode:_buildingLayer_secondLayer];
 
         [self selectNodeForTouch:touchLocation];
     }

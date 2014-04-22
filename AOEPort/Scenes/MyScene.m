@@ -41,6 +41,7 @@
     [self createPhysicsBody];
     [self createWorld];
     [self createCharacters];
+
 }
 
 - (void)createPhysicsBody {
@@ -51,19 +52,13 @@
     self.physicsWorld.contactDelegate = self;
 }
 
-- (CGPoint)positionForRow:(NSInteger)row col:(NSInteger)col {
-    return
-            CGPointMake(
-                    col * _buildingLayer.tileSize.width + _buildingLayer.tileSize.width / 2,
-                    _buildingLayer.tileSize.height -
-                            (row * _buildingLayer.tileSize.height + _buildingLayer.tileSize.height / 2));
-}
-
 - (void)createWorld {
 
     @try {
         _bgLayer = [self createScenery];
-        _buildingLayer = [self createBuildings];
+//        _bgLayer.zPosition =  -60;
+//        _buildingLayer = [self createBuildings];
+
     }
     @catch (NSException *e) {
         NSLog(@"Exception: %@", e);
@@ -72,18 +67,22 @@
     _worldNode = [SKNode node];
     [_worldNode setName:@"World Node"];
     if (_tileMap) {
-        [_worldNode addChild:_tileMap];
-    }
-    //[_worldNode_firstLayer addChild:_bgLayer];
-    [_worldNode addChild:_buildingLayer];
-    [self addChild:_worldNode];
+        [self createBuildingGroup];
+        [self createResourcesGroup];
 
-    //   _breakableLayer = [self createBreakables];
+//        [_worldNode addChild:_buildingLayer];
+        [_worldNode addChild:_bgLayer];
+
+    }
+
+
+    [self addChild:_worldNode];
 
     self.anchorPoint = CGPointMake(0.5, 0.5);
     _worldNode.position =
             CGPointMake(-_bgLayer.layerSize.width / 2,
                     -_bgLayer.layerSize.height / 2);
+    _worldNode.scene.s
 
 
     SKNode *bounds = [SKNode node];
@@ -118,7 +117,9 @@
 }
 
 - (TileMapLayer *)createScenery {
-    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+//    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+    _tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
+
     [_tileMap setName:@"TileMap"];
     TileMapLayer *mapLayer = [[TmxTileMapLayer alloc]
             initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
@@ -127,40 +128,34 @@
     return mapLayer;
 }
 
-- (TileMapLayer *)createBuildings {
+- (void)createResourcesGroup
+{
+    TileMapLayer *_resourceLayer = [[TmxTileMapLayer alloc]
+            initWithTmxObjectGroup:[_tileMap
+                    groupNamed:@"Resources"]
+                          tileSize:_tileMap.tileSize
+                          gridSize:_bgLayer.gridSize];
 
-    //   _tileMap_thirdLayer = [JSTileMap mapNamed:@"tile32_256build.tmx"];
-    TileMapLayer *buildingLayer = [[TmxTileMapLayer alloc]
-            initWithTmxLayer:[_tileMap layerNamed:@"Buildings"]];
+    [_resourceLayer setName:@"ResourceLayer"];
 
-    [buildingLayer setName:@"BuildingLayer"];
+    [_worldNode addChild:_resourceLayer];
 
-    return buildingLayer;
+}
+
+- (void)createBuildingGroup
+{
+    _buildingLayer = [[TmxTileMapLayer alloc]
+            initWithTmxObjectGroup:[_tileMap
+                    groupNamed:@"Buildings"]
+                          tileSize:_tileMap.tileSize
+                          gridSize:_bgLayer.gridSize];
+
+    [_worldNode addChild:_buildingLayer];
+
 }
 
 - (void)update:(NSTimeInterval)currentTime {
 
-}
-
-- (BOOL)tileAtCoord:(CGPoint)coord hasAnyProps:(uint32_t)props {
-    return [self tileAtPoint:[_bgLayer pointForCoord:coord]
-                 hasAnyProps:props];
-}
-
-- (BOOL)tileAtPoint:(CGPoint)point hasAnyProps:(uint32_t)props {
-    SKNode *tile = [_breakableLayer tileAtPoint:point];
-    if (!tile)
-        tile = [_bgLayer tileAtPoint:point];
-    return tile.physicsBody.categoryBitMask & props;
-}
-
-- (TileMapLayer *)createBreakables {
-    //if (_tileMap_thirdLayer) {
-    TMXLayer *buildings = [_tileMap layerNamed:@"Buildings"];
-    return
-            (buildings ?
-                    [[TmxTileMapLayer alloc] initWithTmxLayer:buildings] :
-                    nil);
 }
 
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)handler {
