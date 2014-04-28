@@ -8,7 +8,7 @@
 
 #import "Building.h"
 #import "Constants.h"
-#import "DrawDebugger.h"
+#import "DrawSelectionBox.h"
 #import <AudioToolbox/AudioServices.h>
 
 
@@ -55,7 +55,7 @@ float degToRad(float degree) {
     //self.physicsBody.restitution = 1;
     self.physicsBody.friction = 0;
     self.physicsBody.linearDamping = 0;
-    [DrawDebugger attachDebugRectWithSize:self.size :self];
+//    [DrawSelectionBox attachDebugRectWithSize:self.size :self];
 }
 
 

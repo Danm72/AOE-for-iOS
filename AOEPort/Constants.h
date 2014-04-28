@@ -2,7 +2,7 @@ typedef NS_OPTIONS(uint32_t, CNPhysicsCategory) {
     CNPhysicsCategoryBuilding = 1 << 0, // 0001 = 1
     CNPhysicsCategoryUnit = 1 << 1, // 0010 = 2
     CNPhysicsCategoryBoundary = 1 << 2, // 0001 = 4
-
+    CNPhysicsCategorySelection = 1 << 4,
 
 };
 
@@ -15,6 +15,6 @@ static const int NORTH_WEST = 5;
 static const int WEST = 6;
 static const int SOUTH_WEST = 7;
 
-static BOOL kDebugDraw = NO;
+static BOOL kDebugDraw = YES;
 static BOOL DEBUG_MODE = YES;
 

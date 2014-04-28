@@ -8,7 +8,7 @@
 
 #import "Wall.h"
 #import "Constants.h"
-#import "DrawDebugger.h"
+#import "DrawSelectionBox.h"
 
 
 @implementation Wall

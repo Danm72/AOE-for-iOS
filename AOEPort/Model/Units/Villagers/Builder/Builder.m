@@ -5,7 +5,7 @@
 
 #import "Builder.h"
 #import "Constants.h"
-#import "DrawDebugger.h"
+#import "DrawSelectionBox.h"
 
 @implementation Builder {
 
@@ -43,7 +43,7 @@
             self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding;
 
 
-            [DrawDebugger attachDebugRectWithSize:self.size:self];
+//            [DrawSelectionBox attachDebugRectWithSize:self.size:self];
 
             SKLabelNode *letter = [SKLabelNode labelNodeWithFontNamed:@"Villager"];
             letter.color    = [SKColor whiteColor];
@@ -104,7 +104,7 @@
 
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"SUCCESS");
+    NSLog(@"SUCCESS BUILDER");
 
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {

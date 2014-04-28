@@ -6,16 +6,21 @@
 #import "TouchHandlers.h"
 #import "Builder.h"
 #import "Building.h"
+#import "DrawSelectionBox.h"
 
 @implementation TouchHandlers {
 
     SKNode *_worldNode_firstLayer;
     TileMapLayer *_bgLayer;
     TileMapLayer *_buildingLayer_secondLayer;
-    JSTileMap *_tileMap_thirdLayer;
+//    JSTileMap *_tileMap_thirdLayer;
     BOOL unitNode;
     BOOL buildingNode;
+@private
+    DrawSelectionBox *_selectionBox;
 }
+
+@synthesize selectionBox = _selectionBox;
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return YES;
@@ -34,6 +39,8 @@
     self = [super init];
     if (self) {
         scene = scene1;
+        _selectedNodes = [NSMutableArray array];
+
     }
 
     return self;
@@ -43,11 +50,10 @@
     [self didMoveToView];
 }
 
-- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer :(JSTileMap *)tileMap {
+- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer {
     _worldNode_firstLayer = worldNode;
     _bgLayer = bgLayer;
     _buildingLayer_secondLayer = buildingLayer;
-    _tileMap_thirdLayer = tileMap;
 }
 
 - (void)didMoveToView {
@@ -74,12 +80,6 @@
     static CGFloat lastScale = 0;
     static CGFloat previousScale = 0;
 
-/*    recognizer.view.transform = CGAffineTransformScale(recognizer.view.transform, recognizer.scale, recognizer.scale);
-    recognizer.scale = 1;
-
-    [_worldNode_firstLayer runAction:[SKAction scaleTo:recognizer.velocity/1000 duration:5.0]];
-    [_worldNode_firstLayer runAction:[SKAction scaleTo:.75 duration:5.0]];*/
-
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         if (previousScale > 0)
             recognizer.scale = previousScale;
@@ -90,7 +90,7 @@
         CGFloat widthDifference = scene.size.width * scaleDifference;
         CGSize potentialSize = CGSizeMake(scene.size.width + widthDifference, scene.size.height + heightDifference);
 
-        if (potentialSize.width < 3200 && potentialSize.height < 3200) {
+        if ((potentialSize.width < 3200 && potentialSize.height < 3200) && (potentialSize.width > 0 && potentialSize.height > 0)) {
             scene.size = potentialSize;
             lastScale = recognizer.scale;
             NSLog(@"Scale : %f, Size x: %f, Size x: %f", recognizer.scale, scene.size.width, scene.size.height);
@@ -113,7 +113,27 @@
         CGPoint touchLocation = [recognizer locationInView:(scene.view)];
 
         touchLocation = [scene convertPointFromView:touchLocation];
-        touchLocation = [scene convertPoint:touchLocation toNode:_buildingLayer_secondLayer];
+//        touchLocation = [scene convertPoint:touchLocation toNode:_buildingLayer_secondLayer];
+        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
+
+        CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
+
+//        if (pointOne.x == 0) {
+//            pointOne = newPos;
+//            isSelecting = true;
+//        }
+/*        else if (pointTwo.x == 0) {
+            pointTwo = newPos;
+
+            CGSize size = CGSizeMake((pointOne.x - pointTwo.x), (pointOne.y - pointTwo.y));
+
+            selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :_worldNode_firstLayer :newPos];
+
+            [_worldNode_firstLayer addChild:selectionBox];
+            pointOne.x = 0;
+            pointTwo.x = 0;
+            isSelecting = false;
+        }*/
 
         [self selectNodeForTouch:touchLocation];
     }
@@ -133,16 +153,32 @@
     CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
 
 
+/*    if (pointOne.x == 0) {
+        pointOne = newPos;
+    } else if (pointTwo.x == 0) {
+        pointTwo = newPos;
+
+        CGSize size = CGSizeMake((pointOne.x - pointTwo.x), (pointOne.y - pointTwo.y));
+
+        selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :_worldNode_firstLayer :newPos];
+
+        [_worldNode_firstLayer addChild:selectionBox];
+        pointOne.x = 0;
+        pointTwo.x = 0;
+    }*/
+
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        //   _selectedNode = nil;
     }
 
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
-        if (unitNode) {
-            [((Unit *)_selectedNode) move:newPos];
+
+        for (SKSpriteNode *node in _selectedNodes) {
+            unitNode = [[node name] isEqualToString:unitNodeType];
+            if (unitNode) {
+                [((Unit *) node) move:newPos];
+            }
+//            [_selectedNodes removeObject:node];
         }
-        // _selectedNode = nil;
     }
 
 }
@@ -152,26 +188,21 @@
     // do stuff...
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-//        CGPoint touchLocation = [recognizer locationInView:(scene.view)];
-//        NSLog(@"Touch1 X: %f, Y : %f", touchLocation.x, touchLocation.y);
-//
-//        touchLocation = [scene convertPointFromView:touchLocation];
-//        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
 
-        //   [self selectNodeForTouchRemoveSelection:touchLocation];
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:recognizer.view];
         // CGPoint velocity = [recognizer velocityInView:scene.view];
         translation = CGPointMake(translation.x, -translation.y);
 
-        // translation = [self convertPoint:translation toNode:_worldNode_firstLayer];
 
-//        NSLog(@"Drag X: %f, Y : %f", translation.x, translation.y);
+        if (isSelecting) {
+            [_selectionBox expandSelectionBox:translation];
 
-        [self panForTranslation:translation];
+        } else {
+            [self panForTranslation:translation];
+        }
 
-        // [self centerViewOn:translation];
 
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
 
@@ -179,41 +210,39 @@
     } else if (recognizer.state == UIGestureRecognizerStateEnded) {
 
 
-        if (_selectedNode != nil) {
-/*
-            unitNode = [[_selectedNode name] isEqualToString:unitNodeType];
-            if (unitNode) {
-                SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+        if ([_selectedNodes count] != 0) {
 
-                if (newPos.y > _selectedNode.position.y)
-                    [(Builder *) _selectedNode animateWalk:atlas :NORTH];
-                if (newPos.y < _selectedNode.position.y)
-                    [(Builder *) _selectedNode animateWalk:atlas :SOUTH];
-
-                SKAction *moveTo = [SKAction moveTo:newPos duration:scrollDuration];
-                [moveTo setTimingMode:SKActionTimingEaseOut];
-                [_selectedNode runAction:moveTo];
-
-            }*/
-
-            buildingNode = [[_selectedNode name] isEqualToString:buildingNodeType];
-            if (buildingNode) {
-                SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
-                SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
-
-                SKAction *returnToNormalSequence = [SKAction sequence:@[
-                        returnToRegularColour, returnToRegularRotation]];
-
-                [_selectedNode removeAllActions];
-
-                [_selectedNode runAction:returnToNormalSequence];
-
-                _selectedNode = nil;
+            for (SKSpriteNode *node in _selectedNodes) {
+                [self removeBuildingActions:node];
             }
-
         }
-
+        [self resetSelectionBox];
     }
+}
+
+
+- (void)resetSelectionBox {
+    pointOne.x = 0;
+    pointTwo.x = 0;
+    isSelecting = false;
+    [_selectionBox removeFromParent];
+}
+
+- (void)removeBuildingActions:(SKSpriteNode *)node {
+    buildingNode = [[node name] isEqualToString:buildingNodeType];
+    if (buildingNode) {
+                    SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
+                    SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
+
+                    SKAction *returnToNormalSequence = [SKAction sequence:@[
+                            returnToRegularColour, returnToRegularRotation]];
+
+                    [node removeAllActions];
+
+                    [node runAction:returnToNormalSequence];
+
+                    [_selectedNodes removeAllObjects];
+                }
 }
 
 
@@ -221,54 +250,50 @@
     //1
     SKSpriteNode *touchedNode;
 
-    /*   BOOL nodeIsABuilding = [touchedNode.name isEqualToString:buildingNodeType];
-       BOOL nodeIsAUnit = [touchedNode.name isEqualToString:unitNodeType];
-       //BOOL nodeIsATile = [touchedNode.name isEqualToString:tileNodeType];
 
-
-       BOOL nodeIsATile = (touchedNode = (SKSpriteNode *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation]).name == nil;
-       BOOL nodeIsNotTile = (touchedNode = (SKSpriteNode *) [_worldNode_firstLayer nodeAtPoint:touchLocation]).name == unitNodeType;*/
-
-    if (touchedNode == nil) {
-        touchedNode = (SKSpriteNode *) [_worldNode_firstLayer nodeAtPoint:touchLocation];
-    }
-    if (touchedNode == nil) {
-        touchedNode = (SKSpriteNode *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation];
-    }
-    if (touchedNode == nil) {
-        touchedNode = (SKSpriteNode *) [_tileMap_thirdLayer nodeAtPoint:touchLocation];
+    if ([[_buildingLayer_secondLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
+        touchedNode = (Building *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation];
+    } else if ([[_worldNode_firstLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
+        touchedNode = (Unit *) [_worldNode_firstLayer nodeAtPoint:touchLocation];
     }
 
     //2
-    if (![_selectedNode isEqual:touchedNode]) {
-/*        [_selectedNode removeAllActions];
+    if (![_selectedNodes isEqual:touchedNode]) {
 
-        SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
-        SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
+        if (touchedNode != nil) {
+            [_selectedNodes addObject:touchedNode];
 
-        SKAction *returnToNormalSequence = [SKAction sequence:@[
-                returnToRegularColour, returnToRegularRotation]];
+            //3
+            buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
+            unitNode = [[touchedNode name] isEqualToString:unitNodeType];
 
-        [_selectedNode runAction:returnToNormalSequence];*/
+            if (buildingNode) {
+                SKAction *sequence = [Building selectedBuildingAction];
+                for (SKSpriteNode *node in _selectedNodes) {
 
-        _selectedNode = touchedNode;
+                    [node runAction:[SKAction repeatActionForever:sequence]];
+                }
+            } else if (unitNode) {
 
-        //3
-        buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
-        if (buildingNode) {
-            SKAction *sequence= [Building selectedBuildingAction];
+            }
+        } else {
+            if (pointOne.x == 0) {
+                pointOne = touchLocation;
+                isSelecting = true;
 
-            [_selectedNode runAction:[SKAction repeatActionForever:sequence]];
-        }
-        unitNode = [[touchedNode name] isEqualToString:unitNodeType];
+                CGSize size = CGSizeMake((0), (0));
 
-        if (unitNode) {
+//                self.selectionBox = [DrawSelectionBox addSelectionBox:size :touchLocation];
+
+                self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
+                [_worldNode_firstLayer addChild:self.selectionBox];
+
+            }
         }
 
     }
 
 }
-
 
 
 CGPoint mult(const CGPoint v, const CGFloat s) {
@@ -276,28 +301,37 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 }
 
 - (void)panForTranslation:(CGPoint)translation {
-   SKSpriteNode * parent = [_selectedNode parent];
-    CGPoint position = [_selectedNode position];
-    CGFloat z = _buildingLayer_secondLayer.layerSize.height - _selectedNode.position.y;
 
-    if ([[_selectedNode name] isEqualToString:buildingNodeType]) {
-        [_selectedNode setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
-        [_selectedNode setZPosition:(z)];
-
+    if ([_selectedNodes count] > 0) {
+        for (SKSpriteNode *node in _selectedNodes) {
+            [self moveBuilding:translation node:node];
+        }
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
 
         newPos = [scene convertPoint:newPos toNode:_worldNode_firstLayer];
 
-        //_worldNode_firstLayer.position = [self centerViewOn:newPos];
-
         [self centerViewOn:newPos];
+
+    }
+}
+
+- (void)moveBuilding:(CGPoint)translation node:(SKSpriteNode *)node {
+    if ([[node name] isEqualToString:buildingNodeType]) {
+
+        CGPoint position = [node position];
+        CGFloat z = _buildingLayer_secondLayer.layerSize.height - node.position.y;
+
+        [node setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+        [node setZPosition:(z)];
+
     }
 }
 
 
 - (void)centerViewOn:(CGPoint)centerOn {
     _worldNode_firstLayer.position = [self pointToCenterViewOn:centerOn :_bgLayer];
+//    _worldNode_firstLayer.position = cent
 }
 
 - (CGPoint)pointToCenterViewOn:(CGPoint)centerOn :(TileMapLayer *)layer {

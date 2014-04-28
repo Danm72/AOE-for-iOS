@@ -15,7 +15,6 @@
     SKNode *_worldNode;
     TileMapLayer *_bgLayer;
     TileMapLayer *_buildingLayer;
-    TileMapLayer *_breakableLayer;
     JSTileMap *_tileMap;
     TouchHandlers *handlers;
 
@@ -74,7 +73,8 @@
         [_worldNode addChild:_bgLayer];
 
     }
-
+    _tileMap = nil;
+    
 
     [self addChild:_worldNode];
 
@@ -82,8 +82,6 @@
     _worldNode.position =
             CGPointMake(-_bgLayer.layerSize.width / 2,
                     -_bgLayer.layerSize.height / 2);
-    _worldNode.scene.s
-
 
     SKNode *bounds = [SKNode node];
     bounds.physicsBody =
@@ -178,12 +176,12 @@
 
 - (void)didMoveToView:(SKView *)view {
     handlers = [[TouchHandlers alloc] initWithScene:self];
-    [handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_tileMap];
+    [handlers passPointers:_worldNode :_bgLayer :_buildingLayer];
     [handlers registerTouchEvents];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"SUCCESS");
+    NSLog(@"SUCCESS SCENE");
 
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
@@ -194,7 +192,13 @@
 
             [contact.bodyB.node removeAllActions];
         }
-    } else if (collision == 0) {
+    } if(collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)){
+        NSLog(@"Selection and Units");
+
+        [handlers.selectedNodes addObject:contact.bodyA.node];
+
+    }
+    else if (collision == 0) {
         NSLog(@"Building and Building");
 
     }
