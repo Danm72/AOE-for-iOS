@@ -1,4 +1,4 @@
-#import "MyScene.h"
+ #import "MyScene.h"
 #import "Builder.h"
 #import "Constants.h"
 
@@ -70,7 +70,7 @@
     [self.worldNode setName:@"World Node"];
     if (self.tileMap) {
         [self createBuildingGroup];
-//        [self createResourcesGroup];
+        [self createResourcesGroup];
         [self createCharacters];
 
 
@@ -232,9 +232,18 @@
     }
     if (collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)) {
         NSLog(@"Selection and Units");
-
-        [self.handlers.selectedNodes addObject:contact.bodyA.node];
-
+        
+        if ([contact.bodyA.node isKindOfClass:[Unit class]]){
+            if(![self.handlers.selectedNodes containsObject:contact.bodyA.node]){
+                [self.handlers.selectedNodes addObject:contact.bodyA.node];
+            }
+        }
+        else if ([contact.bodyA.node isKindOfClass:[Unit class]]){
+            if(![self.handlers.selectedNodes containsObject:contact.bodyB.node]){
+                [self.handlers.selectedNodes addObject:contact.bodyB.node];
+            }
+        }
+        
     }
     else if (collision == 0) {
         NSLog(@"Building and Building");

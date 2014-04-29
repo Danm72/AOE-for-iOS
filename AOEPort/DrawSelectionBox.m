@@ -29,6 +29,7 @@
         self.zPosition = 3200- self.position.y;
 
         self.position = point;
+
         self.glowWidth = 0.5;
 //        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
 //
@@ -61,10 +62,12 @@
 
     CGSize selectSize = self.frame.size;
     CGSize size = CGSizeMake((selectSize.width + translation.x), (selectSize.height + translation.y));
-
+    
     CGPathRef bodyPath = CGPathCreateWithRect(CGRectMake(0, 0, size.width, size.height), nil);
 
     self.path = bodyPath;
+    self.zPosition = 3200 - self.position.y;
+
 
     self.physicsBody =
             [SKPhysicsBody bodyWithRectangleOfSize:size];

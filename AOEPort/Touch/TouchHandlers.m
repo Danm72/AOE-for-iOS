@@ -233,6 +233,7 @@ int signum(CGFloat n) {
         //  translation = CGPointMake(p1, p2);
         if (self.isSelecting) {
             [self.selectionBox expandSelectionBox:translation];
+            
 
         } else {
             [self panForTranslation:translation];
@@ -325,8 +326,7 @@ int signum(CGFloat n) {
 //                self.selectionBox = [DrawSelectionBox addSelectionBox:size :touchLocation];
 
                 self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
-                [_unitLayer addChild:self.selectionBox];
-
+                [_worldNode addChild:self.selectionBox];
             }
         }
 
