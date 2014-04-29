@@ -11,7 +11,7 @@
 #import "MenuScene.h"
 #import "GameViewController.h"
 
-@interface MainMenuViewController () <UICollectionViewDataSource>
+@interface MainMenuViewController () <UICollectionViewDataSource>//, UICollectionViewDelegateFlowLayout>
 
 @end
 
@@ -33,17 +33,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.images = @[@"parchment.png",@"10375043.png"];
-    
-    
+    self.images = @[@"parchment.png",@"parchment.png",@"parchment.png",@"parchment.png"];
+    self.titles = @[@"New Game",@"Skirmish",@"Load Game",@"Settings"];
+
     SKView * skView = _skView;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
-    
+
     // Create and configure the scene.
     SKScene * scene = [MenuScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
-    
+
     // Present the scene.
     [skView presentScene:scene];
     // Do any additional setup after loading the view.
@@ -69,6 +69,10 @@
     UIImage *image = [[UIImage alloc] init];
     image = [UIImage imageNamed:[self.images objectAtIndex:indexPath.row]];
     cell.images.image = image;
+    cell.textBox.text = [self.titles objectAtIndex:indexPath.row];
+    [cell.textBox  setFont:[UIFont fontWithName:@"Times New Roman" size:18.0]];
+    [cell.textBox  setTextColor:[UIColor blueColor]];
+
     return cell;
 }
 
@@ -87,7 +91,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"campaignSegue"]) {
-        
+
         // Get destination view
 //        GameViewController *vc = [segue destinationViewController];
 //        
@@ -111,5 +115,19 @@
  // Pass the selected object to the new view controller.
  }
  */
+/*- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    NSString *searchTerm = self.sear
+ ches[indexPath.section]; FlickrPhoto *photo =
+//            self.searchResults[searchTerm][indexPath.row];
+    UIImage *image = [UIImage imageNamed:[self.images objectAtIndex:indexPath.row]];
+    CGSize retval = CGSizeMake(100, 100);
+    retval.height += 35; retval.width += 35; return retval;
+}
+
+// 3
+- (UIEdgeInsets)collectionView:
+        (UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(50, 50, 50, 20);
+}*/
 
 @end

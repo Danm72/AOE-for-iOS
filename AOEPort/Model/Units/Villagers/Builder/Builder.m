@@ -12,7 +12,6 @@
 
 }
 
-
 - (id)initWithTexture:(SKTexture *)texture {
     if (self = [super initWithTexture:texture]) {
         texture.filteringMode = SKTextureFilteringNearest;
@@ -20,7 +19,7 @@
         if (self = [super initWithTexture:texture]) {
             self.name = @"Unit";
             NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-            [data setValue:@"Wall" forKey:@"Type"];
+            [data setValue:@"Builder" forKey:@"Type"];
 
             self.userData = data;
             self.unitType = @"Builder";
@@ -35,15 +34,15 @@
             self.physicsBody =
                     [SKPhysicsBody bodyWithRectangleOfSize:self.size];
             self.physicsBody.categoryBitMask = CNPhysicsCategoryUnit;
-            self.physicsBody.collisionBitMask = CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary;
+            self.physicsBody.collisionBitMask = CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit;
             //self.physicsBody.dynamic = NO;
            self.physicsBody.usesPreciseCollisionDetection = YES;
             self.physicsBody.allowsRotation= NO;
             self.physicsBody.friction = 1;
-            self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding;
+            self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit;
 
 
-//            [DrawSelectionBox attachDebugRectWithSize:self.size:self];
+/*            [DrawSelectionBox attachDebugRectWithSize:self.size:self];
 
             SKLabelNode *letter = [SKLabelNode labelNodeWithFontNamed:@"Villager"];
             letter.color    = [SKColor whiteColor];
@@ -52,7 +51,7 @@
             letter.position = CGPointMake(0, -25);
             letter.horizontalAlignmentMode =
                     SKLabelHorizontalAlignmentModeCenter;
-            [self addChild:letter];
+            [self addChild:letter];*/
         }
     }
     return self;

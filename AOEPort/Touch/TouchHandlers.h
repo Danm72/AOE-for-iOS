@@ -5,24 +5,21 @@
 #import "JSTileMap.h"
 #import "TileMapLayer.h"
 #import "DrawSelectionBox.h"
-static NSString * const buildingNodeType = @"Building";
-static NSString * const unitNodeType = @"Unit";
-static NSString * const tileNodeType = @"Tile";
+
+static NSString *const buildingNodeType = @"Building";
+static NSString *const unitNodeType = @"Unit";
+static NSString *const tileNodeType = @"Tile";
 
 
-@interface TouchHandlers : NSObject <UIGestureRecognizerDelegate>{
-    SKScene *scene;
-    CGPoint pointOne;
-    CGPoint pointTwo;
-    BOOL isSelecting;
-}
+@interface TouchHandlers : NSObject <UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) NSMutableArray *selectedNodes;
+@property(nonatomic, strong) NSMutableArray *selectedNodes;
 @property(nonatomic, strong) DrawSelectionBox *selectionBox;
 
 
 - (instancetype)initWithScene:(SKScene *)scene;
 
--(void)registerTouchEvents;
-- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer;
+- (void)registerTouchEvents;
+
+- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer :(SKNode *)unitLayer;
 @end

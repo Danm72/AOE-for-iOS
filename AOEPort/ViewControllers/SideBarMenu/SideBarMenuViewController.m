@@ -31,7 +31,7 @@
 
     self.menuItems = [NSMutableArray array];
 
-    _menuItems = [NSArray arrayWithObjects:@"Campaign", @"Skirmish", @"Options", nil];
+    _menuItems = [NSArray arrayWithObjects:@"Diplomacy", @"Technology", @"Resources",@"Save Game",@"Load Game", @"Settings", nil];
 //    self.view.userInteractionEnabled = YES;
     NSLog(@"%s","Menu Initialised");
 

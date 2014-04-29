@@ -6,21 +6,28 @@
 #import "TouchHandlers.h"
 #import "Builder.h"
 #import "Building.h"
-#import "DrawSelectionBox.h"
 
-@implementation TouchHandlers {
-
-    SKNode *_worldNode_firstLayer;
-    TileMapLayer *_bgLayer;
-    TileMapLayer *_buildingLayer_secondLayer;
-//    JSTileMap *_tileMap_thirdLayer;
-    BOOL unitNode;
-    BOOL buildingNode;
-@private
-    DrawSelectionBox *_selectionBox;
+int signum(CGFloat n) {
+    return (n < 0) ? -1 : (n > 0) ? +1 : 0;
 }
 
-@synthesize selectionBox = _selectionBox;
+
+@interface TouchHandlers ()
+
+@property(nonatomic, strong) SKNode *worldNode;
+@property(nonatomic, strong) TileMapLayer *bgLayer;
+@property(nonatomic, strong) TileMapLayer *buildingLayer;
+@property(nonatomic, strong) SKNode *unitLayer;
+@property(nonatomic) BOOL unitNode;
+@property(nonatomic) BOOL buildingNode;
+@property(nonatomic) CGPoint pointTwo;
+@property(nonatomic) CGPoint pointOne;
+@property(nonatomic, strong) SKScene *scene;
+@property(nonatomic) BOOL isSelecting;
+@property(nonatomic) CGPoint previousLocation;
+@end
+
+@implementation TouchHandlers
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return YES;
@@ -38,7 +45,7 @@
 - (instancetype)initWithScene:(SKScene *)scene1 {
     self = [super init];
     if (self) {
-        scene = scene1;
+        self.scene = scene1;
         _selectedNodes = [NSMutableArray array];
 
     }
@@ -50,29 +57,30 @@
     [self didMoveToView];
 }
 
-- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer {
-    _worldNode_firstLayer = worldNode;
+- (void)passPointers:(SKNode *)worldNode :(TileMapLayer *)bgLayer :(TileMapLayer *)buildingLayer :(SKNode *)unitLayer {
+    _worldNode = worldNode;
     _bgLayer = bgLayer;
-    _buildingLayer_secondLayer = buildingLayer;
+    _buildingLayer = buildingLayer;
+    _unitLayer = unitLayer;
 }
 
 - (void)didMoveToView {
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [[scene view] addGestureRecognizer:panGestureRecognizer];
+    [[self.scene view] addGestureRecognizer:panGestureRecognizer];
 
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
-    [[scene view] addGestureRecognizer:pinchGestureRecognizer];
+    [[self.scene view] addGestureRecognizer:pinchGestureRecognizer];
 
 //    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
 //    [[scene view] addGestureRecognizer:rotationGestureRecognizer];
 
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressFrom:)];
     longPressGestureRecognizer.minimumPressDuration = 0.25;
-    [[scene view] addGestureRecognizer:longPressGestureRecognizer];
+    [[self.scene view] addGestureRecognizer:longPressGestureRecognizer];
     [longPressGestureRecognizer setDelegate:self];
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-    [[scene view] addGestureRecognizer:tapGestureRecognizer];
+    [[self.scene view] addGestureRecognizer:tapGestureRecognizer];
 
 }
 
@@ -86,15 +94,33 @@
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGFloat scaleDifference = recognizer.scale - lastScale;
-        CGFloat heightDifference = scene.size.height * scaleDifference;
-        CGFloat widthDifference = scene.size.width * scaleDifference;
-        CGSize potentialSize = CGSizeMake(scene.size.width + widthDifference, scene.size.height + heightDifference);
+        CGFloat heightDifference = self.scene.size.height * scaleDifference;
+        CGFloat widthDifference = self.scene.size.width * scaleDifference;
+        CGSize potentialSize = CGSizeMake(self.scene.size.width + widthDifference, self.scene.size.height + heightDifference);
 
-        if ((potentialSize.width < 3200 && potentialSize.height < 3200) && (potentialSize.width > 0 && potentialSize.height > 0)) {
-            scene.size = potentialSize;
+        if (potentialSize.width > 0 && potentialSize.height > 0) {
+
+            if (potentialSize.width > 3200) {
+                potentialSize.width = 3200;
+            } else {
+                potentialSize.width = potentialSize.width;
+            }
+
+            if (potentialSize.height > 3200) {
+                potentialSize.height = 3200;
+            } else {
+                potentialSize.height = potentialSize.height;
+            }
             lastScale = recognizer.scale;
-            NSLog(@"Scale : %f, Size x: %f, Size x: %f", recognizer.scale, scene.size.width, scene.size.height);
+            self.scene.size = potentialSize;
+
         }
+//        if ((potentialSize.width < 3200 && potentialSize.height < 3200) && ()) {
+//            self.scene.size = potentialSize;
+//            lastScale = recognizer.scale;
+//
+//            NSLog(@"Scale : %f, Size x: %f, Size x: %f", recognizer.scale, self.scene.size.width, self.scene.size.height);
+//        }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded) {
         previousScale = recognizer.scale;
@@ -110,30 +136,13 @@
     //  recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
 //    recognizer.rotation = 0;
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        CGPoint touchLocation = [recognizer locationInView:(scene.view)];
+        [_selectedNodes removeAllObjects];
 
-        touchLocation = [scene convertPointFromView:touchLocation];
-//        touchLocation = [scene convertPoint:touchLocation toNode:_buildingLayer_secondLayer];
-        touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
+        CGPoint touchLocation = [recognizer locationInView:(self.scene.view)];
 
-        CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
-
-//        if (pointOne.x == 0) {
-//            pointOne = newPos;
-//            isSelecting = true;
-//        }
-/*        else if (pointTwo.x == 0) {
-            pointTwo = newPos;
-
-            CGSize size = CGSizeMake((pointOne.x - pointTwo.x), (pointOne.y - pointTwo.y));
-
-            selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :_worldNode_firstLayer :newPos];
-
-            [_worldNode_firstLayer addChild:selectionBox];
-            pointOne.x = 0;
-            pointTwo.x = 0;
-            isSelecting = false;
-        }*/
+        touchLocation = [self.scene convertPointFromView:touchLocation];
+//        touchLocation = [scene convertPoint:touchLocation toNode:buildingLayer];
+        touchLocation = [self.scene convertPoint:touchLocation toNode:_worldNode];
 
         [self selectNodeForTouch:touchLocation];
     }
@@ -145,10 +154,10 @@
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
 
-    CGPoint touchLocation = [recognizer locationInView:(scene.view)];
+    CGPoint touchLocation = [recognizer locationInView:(self.scene.view)];
 
-    touchLocation = [scene convertPointFromView:touchLocation];
-    touchLocation = [scene convertPoint:touchLocation toNode:_worldNode_firstLayer];
+    touchLocation = [self.scene convertPointFromView:touchLocation];
+    touchLocation = [self.scene convertPoint:touchLocation toNode:_worldNode];
 
     CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
 
@@ -160,9 +169,9 @@
 
         CGSize size = CGSizeMake((pointOne.x - pointTwo.x), (pointOne.y - pointTwo.y));
 
-        selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :_worldNode_firstLayer :newPos];
+        selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :worldNode :newPos];
 
-        [_worldNode_firstLayer addChild:selectionBox];
+        [worldNode addChild:selectionBox];
         pointOne.x = 0;
         pointTwo.x = 0;
     }*/
@@ -173,8 +182,8 @@
     if (recognizer.state == UIGestureRecognizerStateEnded) {
 
         for (SKSpriteNode *node in _selectedNodes) {
-            unitNode = [[node name] isEqualToString:unitNodeType];
-            if (unitNode) {
+            self.unitNode = [[node name] isEqualToString:unitNodeType];
+            if (self.unitNode) {
                 [((Unit *) node) move:newPos];
             }
 //            [_selectedNodes removeObject:node];
@@ -184,20 +193,46 @@
 }
 
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
-    NSDate *start = [NSDate date];
+//    NSDate *start = [NSDate date];
     // do stuff...
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-
+        _previousLocation = [recognizer translationInView:_worldNode.scene.view];
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [recognizer translationInView:recognizer.view];
+        CGPoint translation = [recognizer translationInView:_worldNode.scene.view];
         // CGPoint velocity = [recognizer velocityInView:scene.view];
-        translation = CGPointMake(translation.x, -translation.y);
+//        translation = CGPointMake(translation.x, -translation.y);
 
 
-        if (isSelecting) {
-            [_selectionBox expandSelectionBox:translation];
+        translation = [recognizer translationInView:_worldNode.scene.view];
+
+        /*       CGFloat p1;
+               CGFloat p2;
+
+               if (signum(_previousLocation.x) > 0 && signum(translation.x) > 0) {
+                   p1 = _previousLocation.x + translation.x;
+               }else if (signum(_previousLocation.x) < 0 && signum(translation.x) < 0) {
+                   p1 = _previousLocation.x - translation.x;
+               }else if (signum(_previousLocation.x) > 0 && signum(translation.x) < 0) {
+                   p1 = _previousLocation.x + translation.x;
+               }
+
+               if (signum(_previousLocation.y) > 0 && signum(translation.y) > 0) {
+                   p2 = _previousLocation.y + translation.y;
+               }else if (signum(_previousLocation.y) < 0 && signum(translation.y) < 0) {
+                   p2 = _previousLocation.y - translation.y;
+               }else if (signum(_previousLocation.y) > 0 && signum(translation.y) < 0) {
+                   p2 = _previousLocation.y + translation.y;
+               }*/
+
+
+        translation = CGPointMake(translation.x * 4,
+                -translation.y * 4);
+
+        //  translation = CGPointMake(p1, p2);
+        if (self.isSelecting) {
+            [self.selectionBox expandSelectionBox:translation];
 
         } else {
             [self panForTranslation:translation];
@@ -207,7 +242,9 @@
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
 
 
-    } else if (recognizer.state == UIGestureRecognizerStateEnded) {
+    }
+
+    else if (recognizer.state == UIGestureRecognizerStateEnded) {
 
 
         if ([_selectedNodes count] != 0) {
@@ -222,27 +259,29 @@
 
 
 - (void)resetSelectionBox {
-    pointOne.x = 0;
-    pointTwo.x = 0;
-    isSelecting = false;
+    _pointOne.x = 0;
+    _pointTwo.x = 0;
+    _isSelecting = false;
     [_selectionBox removeFromParent];
+//    [_selectedNodes removeAllObjects];
+
 }
 
 - (void)removeBuildingActions:(SKSpriteNode *)node {
-    buildingNode = [[node name] isEqualToString:buildingNodeType];
-    if (buildingNode) {
-                    SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
-                    SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
+    self.buildingNode = [[node name] isEqualToString:buildingNodeType];
+    if (self.buildingNode) {
+        SKAction *returnToRegularRotation = [SKAction rotateToAngle:0.0f duration:0.1];
+        SKAction *returnToRegularColour = [SKAction colorizeWithColorBlendFactor:0.0 duration:0.0];
 
-                    SKAction *returnToNormalSequence = [SKAction sequence:@[
-                            returnToRegularColour, returnToRegularRotation]];
+        SKAction *returnToNormalSequence = [SKAction sequence:@[
+                returnToRegularColour, returnToRegularRotation]];
 
-                    [node removeAllActions];
+        [node removeAllActions];
 
-                    [node runAction:returnToNormalSequence];
+        [node runAction:returnToNormalSequence];
 
-                    [_selectedNodes removeAllObjects];
-                }
+        [_selectedNodes removeAllObjects];
+    }
 }
 
 
@@ -251,10 +290,10 @@
     SKSpriteNode *touchedNode;
 
 
-    if ([[_buildingLayer_secondLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
-        touchedNode = (Building *) [_buildingLayer_secondLayer nodeAtPoint:touchLocation];
-    } else if ([[_worldNode_firstLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
-        touchedNode = (Unit *) [_worldNode_firstLayer nodeAtPoint:touchLocation];
+    if ([[_buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
+        touchedNode = (Building *) [_buildingLayer nodeAtPoint:touchLocation];
+    } else if ([[_unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
+        touchedNode = (Unit *) [_unitLayer nodeAtPoint:touchLocation];
     }
 
     //2
@@ -264,29 +303,29 @@
             [_selectedNodes addObject:touchedNode];
 
             //3
-            buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
-            unitNode = [[touchedNode name] isEqualToString:unitNodeType];
+            self.buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
+            self.unitNode = [[touchedNode name] isEqualToString:unitNodeType];
 
-            if (buildingNode) {
+            if (self.buildingNode) {
                 SKAction *sequence = [Building selectedBuildingAction];
                 for (SKSpriteNode *node in _selectedNodes) {
 
                     [node runAction:[SKAction repeatActionForever:sequence]];
                 }
-            } else if (unitNode) {
+            } else if (self.unitNode) {
 
             }
         } else {
-            if (pointOne.x == 0) {
-                pointOne = touchLocation;
-                isSelecting = true;
+            if (self.pointOne.x == 0) {
+                self.pointOne = touchLocation;
+                self.isSelecting = true;
 
                 CGSize size = CGSizeMake((0), (0));
 
 //                self.selectionBox = [DrawSelectionBox addSelectionBox:size :touchLocation];
 
                 self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
-                [_worldNode_firstLayer addChild:self.selectionBox];
+                [_unitLayer addChild:self.selectionBox];
 
             }
         }
@@ -309,7 +348,7 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
 
-        newPos = [scene convertPoint:newPos toNode:_worldNode_firstLayer];
+        newPos = [self.scene convertPoint:newPos toNode:_worldNode];
 
         [self centerViewOn:newPos];
 
@@ -320,9 +359,12 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
     if ([[node name] isEqualToString:buildingNodeType]) {
 
         CGPoint position = [node position];
-        CGFloat z = _buildingLayer_secondLayer.layerSize.height - node.position.y;
 
         [node setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
+        CGFloat previousz = node.zPosition;
+
+        CGFloat z = _buildingLayer.layerSize.height - node.position.y;
+
         [node setZPosition:(z)];
 
     }
@@ -330,12 +372,12 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 
 
 - (void)centerViewOn:(CGPoint)centerOn {
-    _worldNode_firstLayer.position = [self pointToCenterViewOn:centerOn :_bgLayer];
-//    _worldNode_firstLayer.position = cent
+    _worldNode.position = [self pointToCenterViewOn:centerOn :_bgLayer];
+//    worldNode.position = cent
 }
 
 - (CGPoint)pointToCenterViewOn:(CGPoint)centerOn :(TileMapLayer *)layer {
-    CGSize size = scene.size;
+    CGSize size = self.scene.size;
 
     CGFloat x = Clamp(centerOn.x, size.width / 2,
             layer.layerSize.width - size.width / 2);

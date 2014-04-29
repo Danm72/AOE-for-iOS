@@ -71,7 +71,52 @@
     [scene loadSceneAssetsWithCompletionHandler:^{
         NSLog(@"Done Loading");
         [skView presentScene:scene];
+//        [self saveGame:scene :@"SAVE_1"];
     }];
+    
+}
+
+-(BOOL) saveGame:(MyScene*) scene : (NSString*) saveName{
+//    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+//    NSString *secondParentPath = [[bundlePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+
+    @try {
+        // Try something
+
+    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+    NSMutableData *data = [NSMutableData data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:scene forKey:saveName];
+    [archiver finishEncoding];
+
+
+
+    BOOL result = [data writeToURL:archiveURL atomically:YES];
+    
+    return result;
+
+    }
+    @catch (NSException * e) {
+        NSLog(@"Exception: %@", e);
+        return false;
+    }
+}
+
+-(void) loadGame:(NSString*) saveName{
+    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+
+    NSData *data = [NSData dataWithContentsOfURL:archiveURL];
+    
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    // Customize the unarchiver.
+    MyScene *scene = [unarchiver decodeObjectForKey:saveName];
+    [unarchiver finishDecoding];
+    
+    SKView *skView = (SKView *) self.view;
+    
+    self.view = skView;
+    
+    [skView presentScene:scene];
 }
 
 - (void)viewDidLoad {

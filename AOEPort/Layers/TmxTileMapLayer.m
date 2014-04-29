@@ -30,10 +30,11 @@
 - (instancetype)initWithTmxLayer:(TMXLayer *)layer {
     if (self = [super init]) {
         _layer = layer;
-        _tmxTileSize = layer.mapTileSize;
-        _tmxGridSize = layer.layerInfo.layerGridSize;
-        _tmxLayerSize = CGSizeMake(layer.layerWidth,
-                layer.layerHeight);
+        _tmxTileSize = _layer.mapTileSize;
+        _tmxGridSize = _layer.layerInfo.layerGridSize;
+        _tmxLayerSize = CGSizeMake(_layer.layerWidth,
+                _layer.layerHeight);
+
         [self createNodesFromLayer:layer];
 
     }

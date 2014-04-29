@@ -26,17 +26,30 @@
                                             alpha:0.5];
         self.lineWidth = 1.0;
 
+        self.zPosition = 3200- self.position.y;
+
         self.position = point;
         self.glowWidth = 0.5;
-        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+//        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+//
+//        body.usesPreciseCollisionDetection = YES;
+//
+//        body.categoryBitMask = CNPhysicsCategorySelection;
+//        body.collisionBitMask = CNPhysicsCategoryUnit;
+//        body.contactTestBitMask = CNPhysicsCategoryUnit;
 
-        body.usesPreciseCollisionDetection = YES;
+//        self.physicsBody = body;
 
-        body.categoryBitMask = CNPhysicsCategorySelection;
-        body.collisionBitMask = CNPhysicsCategoryUnit;
-        body.contactTestBitMask = CNPhysicsCategoryUnit;
+        self.physicsBody =
+                [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+        self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
+//        self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
+        self.physicsBody.contactTestBitMask = CNPhysicsCategoryUnit;
+        //self.physicsBody.dynamic = NO;
+        self.physicsBody.usesPreciseCollisionDetection = YES;
+        self.physicsBody.allowsRotation= NO;
+        self.physicsBody.friction = 1;
 
-        self.physicsBody = body;
         CGPathRelease(bodyPath);
     }
 
@@ -52,6 +65,16 @@
     CGPathRef bodyPath = CGPathCreateWithRect(CGRectMake(0, 0, size.width, size.height), nil);
 
     self.path = bodyPath;
+
+    self.physicsBody =
+            [SKPhysicsBody bodyWithRectangleOfSize:size];
+    self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
+//    self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
+    self.physicsBody.contactTestBitMask = CNPhysicsCategoryUnit;
+    //self.physicsBody.dynamic = NO;
+    self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.allowsRotation= NO;
+    self.physicsBody.friction = 1;
 
 }
 

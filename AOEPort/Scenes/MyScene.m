@@ -9,19 +9,17 @@
 @property(nonatomic) NSArray *hudScores;
 @property(nonatomic) NSArray *hudLifeHeartArrays;      // an array of NSArrays of life hearts
 
+@property(nonatomic, strong, readwrite) SKNode *unitLayer;
+@property(nonatomic, strong) SKNode *worldNode;
+@property(nonatomic, strong) TileMapLayer *bgLayer;
+@property(nonatomic, strong) TileMapLayer *buildingLayer;
+@property(nonatomic, strong) JSTileMap *tileMap;
+@property(nonatomic, strong) TouchHandlers *handlers;
+@property(nonatomic, strong) SKTextureAtlas *atlas;
+@property(nonatomic, strong) SKSpriteNode *node;
 @end
 
-@implementation MyScene {
-    SKNode *_worldNode;
-    TileMapLayer *_bgLayer;
-    TileMapLayer *_buildingLayer;
-    JSTileMap *_tileMap;
-    TouchHandlers *handlers;
-
-    SKTextureAtlas *atlas;
-    SKSpriteNode *node;
-
-}
+@implementation MyScene
 
 - (id)initWithSize:(CGSize)size {
 
@@ -39,7 +37,6 @@
 - (void)loadSceneAssets {
     [self createPhysicsBody];
     [self createWorld];
-    [self createCharacters];
 
 }
 
@@ -52,10 +49,16 @@
 }
 
 - (void)createWorld {
-
+    SKNode *background;
     @try {
-        _bgLayer = [self createScenery];
-//        _bgLayer.zPosition =  -60;
+        if (TILEMAP_MODE)
+            _bgLayer = [self createScenery];
+        else {
+            background = [self createSceneryImage];
+            background.zPosition = -40;
+        }
+
+//        bgLayer.zPosition =  -60;
 //        _buildingLayer = [self createBuildings];
 
     }
@@ -63,90 +66,124 @@
         NSLog(@"Exception: %@", e);
     }
 
-    _worldNode = [SKNode node];
-    [_worldNode setName:@"World Node"];
-    if (_tileMap) {
+    self.worldNode = [SKNode node];
+    [self.worldNode setName:@"World Node"];
+    if (self.tileMap) {
         [self createBuildingGroup];
-        [self createResourcesGroup];
+//        [self createResourcesGroup];
+        [self createCharacters];
+
 
 //        [_worldNode addChild:_buildingLayer];
-        [_worldNode addChild:_bgLayer];
+        if (TILEMAP_MODE) {
+            [_worldNode addChild:_bgLayer];
+            _worldNode.position =
+                    CGPointMake(-_bgLayer.layerSize.width / 2,
+                            -_bgLayer.layerSize.height / 2);
+        }
+        else {
+            [_worldNode addChild:background];
+            self.worldNode.position =
+                    CGPointMake(-background.scene.size.width / 2,
+                            -background.scene.size.height / 2);
+        }
 
     }
-    _tileMap = nil;
-    
+    self.tileMap = nil;
 
-    [self addChild:_worldNode];
+
+    [self addChild:self.worldNode];
 
     self.anchorPoint = CGPointMake(0.5, 0.5);
-    _worldNode.position =
-            CGPointMake(-_bgLayer.layerSize.width / 2,
-                    -_bgLayer.layerSize.height / 2);
+
 
     SKNode *bounds = [SKNode node];
     bounds.physicsBody =
             [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0,
-                    _bgLayer.layerSize.width,
-                    _bgLayer.layerSize.height)];
+                    self.bgLayer.layerSize.width,
+                    self.bgLayer.layerSize.height)];
     bounds.physicsBody.categoryBitMask = CNPhysicsCategoryBoundary;
     bounds.physicsBody.friction = 0;
-    [_worldNode addChild:bounds];
+    [self.worldNode addChild:bounds];
 }
 
 - (void)createCharacters {
 
-    atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+    _unitLayer = [SKNode node];
+    _unitLayer.scene.size = CGSizeMake(3200, 3200);
+    self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
-    Builder *builder = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
-    builder.position = CGPointMake(2001, 2000);
-    builder.zPosition =_bgLayer.layerSize.height - builder.position.y;
-    [_worldNode addChild:builder];
+    Builder *builder = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    builder.position = CGPointMake(2000, 2001);
+    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
+    [_unitLayer addChild:builder];
 
 
-//    Builder *builder2 = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
-//    builder.position = CGPointMake(2000, 2001);
-//    //node.zPosition = 5000;
-//    [_worldNode addChild:builder2];
-//
-//    Builder *builder3 = [Builder spriteNodeWithTexture:[atlas textureNamed:@"builderwalking0"]];
-//    builder.position = CGPointMake(2000, 2000);
-//    //node.zPosition = 5000;
-//    [_worldNode addChild:builder3];
+    Builder *builder2 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    builder2.position = CGPointMake(1990, 2005);
+    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
+    [_unitLayer addChild:builder2];
+
+    Builder *builder3 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    builder3.position = CGPointMake(2010, 2000);
+    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
+    [_unitLayer addChild:builder3];
+
+
+    [self.worldNode addChild:_unitLayer];
 }
 
 - (TileMapLayer *)createScenery {
 //    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
-    _tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
+    self.tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
 
-    [_tileMap setName:@"TileMap"];
+    [self.tileMap setName:@"TileMap"];
+
+
     TileMapLayer *mapLayer = [[TmxTileMapLayer alloc]
-            initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
+            initWithTmxLayer:[self.tileMap layerNamed:@"Tiles"]];
     [mapLayer setName:@"TileMap"];
+
 
     return mapLayer;
 }
 
-- (void)createResourcesGroup
-{
+
+- (SKNode *)createSceneryImage {
+//    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
+//    self.tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
+    self.tileMap = [JSTileMap mapNamed:@"resources_map_imageLayer.tmx"];
+    SKSpriteNode *image;
+    if ([self.tileMap.imageLayers count] > 0) {
+        for (TMXImageLayer *layer in self.tileMap.imageLayers) {
+            image = [SKSpriteNode spriteNodeWithImageNamed:layer.imageSource];
+
+        }
+
+    }
+    return image;
+}
+
+
+- (void)createResourcesGroup {
     TileMapLayer *_resourceLayer = [[TmxTileMapLayer alloc]
-            initWithTmxObjectGroup:[_tileMap
+            initWithTmxObjectGroup:[self.tileMap
                     groupNamed:@"Resources"]
-                          tileSize:_tileMap.tileSize
-                          gridSize:_bgLayer.gridSize];
+                          tileSize:self.tileMap.tileSize
+                          gridSize:self.bgLayer.gridSize];
 
     [_resourceLayer setName:@"ResourceLayer"];
 
-    [_worldNode addChild:_resourceLayer];
+    [self.worldNode addChild:_resourceLayer];
 
 }
 
-- (void)createBuildingGroup
-{
-    _buildingLayer = [[TmxTileMapLayer alloc]
-            initWithTmxObjectGroup:[_tileMap
+- (void)createBuildingGroup {
+    self.buildingLayer = [[TmxTileMapLayer alloc]
+            initWithTmxObjectGroup:[self.tileMap
                     groupNamed:@"Buildings"]
-                          tileSize:_tileMap.tileSize
-                          gridSize:_bgLayer.gridSize];
+                          tileSize:self.tileMap.tileSize
+                          gridSize:self.bgLayer.gridSize];
 
     [_worldNode addChild:_buildingLayer];
 
@@ -175,9 +212,9 @@
 }
 
 - (void)didMoveToView:(SKView *)view {
-    handlers = [[TouchHandlers alloc] initWithScene:self];
-    [handlers passPointers:_worldNode :_bgLayer :_buildingLayer];
-    [handlers registerTouchEvents];
+    self.handlers = [[TouchHandlers alloc] initWithScene:self];
+    [self.handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_unitLayer];
+    [self.handlers registerTouchEvents];
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
@@ -192,10 +229,11 @@
 
             [contact.bodyB.node removeAllActions];
         }
-    } if(collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)){
+    }
+    if (collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)) {
         NSLog(@"Selection and Units");
 
-        [handlers.selectedNodes addObject:contact.bodyA.node];
+        [self.handlers.selectedNodes addObject:contact.bodyA.node];
 
     }
     else if (collision == 0) {

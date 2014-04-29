@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainMenuTableViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UITextField *textBox;
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @end

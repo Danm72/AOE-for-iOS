@@ -38,7 +38,7 @@
         NSLog(@"BUILD UNIT");
         [contact.bodyA.node runAction:[Building selectedBuildingAction]];
     }
-    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryBuilding)) {
+    if (collision == (CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding)) {
         NSLog(@"BUILDING");
     }
 //    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {

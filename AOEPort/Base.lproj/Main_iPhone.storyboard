@@ -30,13 +30,15 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="j8P-3D-HtR"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="DWi-Vx-bVZ" kind="modal" identifier="menuSegue" id="CF8-eb-CwA"/>
+                        <segue destination="xpt-fj-sI6" kind="modal" identifier="menuSegue" id="PkF-Ql-LKr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jF8-FU-zWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2011" y="73"/>
+            <point key="canvasLocation" x="-2007" y="-503"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="aLM-be-sck">
@@ -293,11 +295,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2io-Tn-H2w">
-                            <size key="itemSize" width="125" height="96"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="25" minimumInteritemSpacing="50" id="2io-Tn-H2w">
+                            <size key="itemSize" width="200" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="5" maxX="25" maxY="25"/>
                         </collectionViewFlowLayout>
                         <view key="backgroundView" contentMode="scaleToFill" id="BJM-2T-tU3" customClass="SKView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -306,74 +308,80 @@
                         </view>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CampaignCell" id="oVg-J7-xMo" customClass="MainMenuTableViewCell">
-                                <rect key="frame" x="0.0" y="50" width="125" height="96"/>
+                                <rect key="frame" x="40" y="5" width="216" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="216" height="131"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="parchment.png" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-xy-XGQ">
-                                            <rect key="frame" x="-7" y="20" width="100" height="50"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parchment.png" translatesAutoresizingMaskIntoConstraints="NO" id="nWe-xy-XGQ">
+                                            <rect key="frame" x="8" y="16" width="200" height="100"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </imageView>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-4t-JRf">
-                                            <rect key="frame" x="0.0" y="-3" width="125" height="96"/>
+                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odL-Gl-36j">
+                                            <rect key="frame" x="60" y="51" width="97" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <attributedString key="attributedText">
-                                                <fragment content="Campaign">
+                                                <fragment content="Test">
                                                     <attributes>
-                                                        <color key="NSColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="14" name="CopperplateGothic-Bold"/>
+                                                        <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                        <font key="NSFont" size="18" name="CharlemagneStd-Bold"/>
+                                                        <font key="NSOriginalFont" size="18" name="CharlemagneStd-Bold"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                         </textField>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="nWe-xy-XGQ" firstAttribute="top" secondItem="oVg-J7-xMo" secondAttribute="top" id="2hD-5N-coZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rbk-4t-JRf" secondAttribute="bottom" id="8Z3-F4-akR"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rbk-4t-JRf" secondAttribute="trailing" id="SyW-vB-Wnc"/>
-                                    <constraint firstItem="nWe-xy-XGQ" firstAttribute="leading" secondItem="oVg-J7-xMo" secondAttribute="leading" id="cAm-cY-nMS"/>
-                                    <constraint firstItem="Rbk-4t-JRf" firstAttribute="top" secondItem="oVg-J7-xMo" secondAttribute="top" id="tfj-yq-VOT"/>
-                                    <constraint firstItem="Rbk-4t-JRf" firstAttribute="leading" secondItem="oVg-J7-xMo" secondAttribute="leading" id="tg3-kd-slM"/>
-                                    <constraint firstAttribute="bottom" secondItem="nWe-xy-XGQ" secondAttribute="bottom" id="vMj-ig-KbR"/>
-                                    <constraint firstAttribute="trailing" secondItem="nWe-xy-XGQ" secondAttribute="trailing" id="x5z-38-YtB"/>
+                                    <constraint firstItem="nWe-xy-XGQ" firstAttribute="centerX" secondItem="oVg-J7-xMo" secondAttribute="centerX" id="3bR-lA-E7O"/>
+                                    <constraint firstItem="nWe-xy-XGQ" firstAttribute="top" secondItem="oVg-J7-xMo" secondAttribute="top" constant="16" id="6Xt-9h-KQ9"/>
+                                    <constraint firstItem="nWe-xy-XGQ" firstAttribute="leading" secondItem="oVg-J7-xMo" secondAttribute="leading" constant="8" id="DQf-oQ-rvg"/>
+                                    <constraint firstItem="odL-Gl-36j" firstAttribute="centerY" secondItem="nWe-xy-XGQ" secondAttribute="centerY" id="Q1f-bl-YBj"/>
+                                    <constraint firstItem="odL-Gl-36j" firstAttribute="centerX" secondItem="nWe-xy-XGQ" secondAttribute="centerX" constant="0.5" id="Txa-ZC-BVm"/>
+                                    <constraint firstItem="odL-Gl-36j" firstAttribute="leading" secondItem="oVg-J7-xMo" secondAttribute="leading" constant="60" id="bAn-3l-Xzv"/>
+                                    <constraint firstAttribute="bottom" secondItem="nWe-xy-XGQ" secondAttribute="bottom" constant="15" id="huS-jq-kpD"/>
                                 </constraints>
+                                <size key="customSize" width="216" height="131"/>
+                                <connections>
+                                    <outlet property="images" destination="nWe-xy-XGQ" id="C7B-gI-V4f"/>
+                                    <outlet property="textBox" destination="odL-Gl-36j" id="DMS-NP-CW6"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CampaignCell2" id="KJr-Aj-Pj6" customClass="MainMenuTableViewCell">
+                                <rect key="frame" x="40" y="161" width="216" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="216" height="131"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="parchment.png" translatesAutoresizingMaskIntoConstraints="NO" id="sBB-yd-1h4">
+                                            <rect key="frame" x="8" y="16" width="200" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <size key="customSize" width="216" height="131"/>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qOs-qI-yYd">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Main Menu" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9JC-8M-iLW">
-                                    <rect key="frame" x="112" y="10" width="97" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <attributedString key="attributedText">
-                                        <fragment content="Main Menu">
-                                            <attributes>
-                                                <color key="NSColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                                <font key="NSFont" size="24" name="CharlemagneStd-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                            </subviews>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="xpt-fj-sI6" id="Fnm-B0-bjp"/>
                             <outlet property="delegate" destination="xpt-fj-sI6" id="fCP-gV-Zkt"/>
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" systemItem="contacts" id="uwh-r9-GRR"/>
+                    <navigationItem key="navigationItem" id="l09-Zy-uXs"/>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="skView" destination="BJM-2T-tU3" id="g5s-Pj-07M"/>
                         <segue destination="TT5-k9-ZFB" kind="modal" identifier="campaignSegue" id="C6V-X3-7PS"/>
@@ -438,4 +446,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="tIl-g7-MYQ"/>
+    </inferredMetricsTieBreakers>
 </document>
