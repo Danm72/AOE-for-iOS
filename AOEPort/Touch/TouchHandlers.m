@@ -47,7 +47,6 @@ int signum(CGFloat n) {
     if (self) {
         self.scene = scene1;
         _selectedNodes = [NSMutableArray array];
-
     }
 
     return self;
@@ -133,8 +132,8 @@ int signum(CGFloat n) {
 }
 
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {
-    //  recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-//    recognizer.rotation = 0;
+    //recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
+    //recognizer.rotation = 0;
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [_selectedNodes removeAllObjects];
 
@@ -201,9 +200,8 @@ int signum(CGFloat n) {
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [recognizer translationInView:_worldNode.scene.view];
-        // CGPoint velocity = [recognizer velocityInView:scene.view];
-//        translation = CGPointMake(translation.x, -translation.y);
-
+        //CGPoint velocity = [recognizer velocityInView:scene.view];
+        //translation = CGPointMake(translation.x, -translation.y);
 
         translation = [recognizer translationInView:_worldNode.scene.view];
 
@@ -233,15 +231,12 @@ int signum(CGFloat n) {
         //  translation = CGPointMake(p1, p2);
         if (self.isSelecting) {
             [self.selectionBox expandSelectionBox:translation];
-            
 
         } else {
             [self panForTranslation:translation];
         }
 
-
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
-
 
     }
 

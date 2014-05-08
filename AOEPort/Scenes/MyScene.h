@@ -19,9 +19,13 @@
 typedef void (^AssetLoadCompletionHandler)(void);
 
 
+@protocol MYSceneDelegate <NSObject>
+-(void)castleClicked;
+@end
+
 @interface MyScene : SKScene {
 }
-
+@property (nonatomic, weak) id <MYSceneDelegate> delegate;
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 
 -(void) loadSceneAssets;

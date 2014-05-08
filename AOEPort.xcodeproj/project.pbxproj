@@ -64,6 +64,9 @@
 		C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B054FD87B78C6ECF7F68 /* SKAction+SKTExtras.m */; };
 		C184BF3C58242275228657BD /* TouchHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BAEEDDF116C0C137704E /* TouchHandlers.m */; };
 		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
+		C816997A191BDBF600B28403 /* GameLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8169979191BDBF600B28403 /* GameLoadingViewController.m */; };
+		C816997E191BE18400B28403 /* CastleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C816997C191BE18400B28403 /* CastleViewController.m */; };
+		C816997F191BE18400B28403 /* CastleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C816997D191BE18400B28403 /* CastleViewController.xib */; };
 		C828D4311905D9ED00069403 /* resources_map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C828D4301905D9ED00069403 /* resources_map.tmx */; };
 		C828D4361905DBD900069403 /* map_resources in Resources */ = {isa = PBXBuildFile; fileRef = C828D4351905DBD900069403 /* map_resources */; };
 		C82AA34E190F014900432449 /* smokeParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = C82AA34D190F014900432449 /* smokeParticle.sks */; };
@@ -208,6 +211,11 @@
 		C184BF71A4020B9714137ACA /* resources_map_imageLayer.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = resources_map_imageLayer.tmx; sourceTree = "<group>"; };
 		C184BF78B36B7B69DA78F498 /* debugMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = debugMap.tmx; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
+		C8169978191BDBF600B28403 /* GameLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLoadingViewController.h; sourceTree = "<group>"; };
+		C8169979191BDBF600B28403 /* GameLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLoadingViewController.m; sourceTree = "<group>"; };
+		C816997B191BE18400B28403 /* CastleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastleViewController.h; sourceTree = "<group>"; };
+		C816997C191BE18400B28403 /* CastleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastleViewController.m; sourceTree = "<group>"; };
+		C816997D191BE18400B28403 /* CastleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastleViewController.xib; sourceTree = "<group>"; };
 		C828D4301905D9ED00069403 /* resources_map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = resources_map.tmx; sourceTree = "<group>"; };
 		C828D4351905DBD900069403 /* map_resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = map_resources; sourceTree = "<group>"; };
 		C82AA34D190F014900432449 /* smokeParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = smokeParticle.sks; sourceTree = "<group>"; };
@@ -286,6 +294,8 @@
 				C184B5539FCFC8BBF214B14F /* RootView */,
 				C184BBF1DCB8911BCD98D404 /* SideBarMenu */,
 				C184B38A6181F348622D28FA /* MainMenu */,
+				C8169978191BDBF600B28403 /* GameLoadingViewController.h */,
+				C8169979191BDBF600B28403 /* GameLoadingViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -295,6 +305,9 @@
 			children = (
 				C184B46EC3D9CAC1A9886822 /* GameViewController.h */,
 				C184B17FEF2A6E7C6B1ADDF5 /* GameViewController.m */,
+				C816997B191BE18400B28403 /* CastleViewController.h */,
+				C816997C191BE18400B28403 /* CastleViewController.m */,
+				C816997D191BE18400B28403 /* CastleViewController.xib */,
 			);
 			path = GameView;
 			sourceTree = "<group>";
@@ -761,7 +774,7 @@
 				ORGANIZATIONNAME = "Dan Malone";
 				TargetAttributes = {
 					C8933AF618A1597500116A26 = {
-						DevelopmentTeam = C3L7Q7TU5D;
+						DevelopmentTeam = RL5BZVWAZT;
 					};
 					C8933B2118A1597500116A26 = {
 						TestTargetID = C8933AF618A1597500116A26;
@@ -824,6 +837,7 @@
 				C184B3E481074114A2BAFBFE /* spark.png in Resources */,
 				C184B80E477B842244C61F17 /* resources_map1.tmx in Resources */,
 				C184BE7C299064A8FD063F93 /* trees.atlas in Resources */,
+				C816997F191BE18400B28403 /* CastleViewController.xib in Resources */,
 				C184BBE1C74D7AE5A9D208DA /* resources_map_imageLayer.png in Resources */,
 				C184BA27D2EDAC8A19F4CB6D /* resources_map_imageLayer.tmx in Resources */,
 				C184B77692A4FD8A5609076E /* fable.png in Resources */,
@@ -886,6 +900,7 @@
 				C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */,
 				C184B9409237358172690560 /* SSKStretchableNode.m in Sources */,
 				C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */,
+				C816997A191BDBF600B28403 /* GameLoadingViewController.m in Sources */,
 				C184BECAB8254FFAEBD1553A /* SKAction+SKTExtras.m in Sources */,
 				C184B6A865CFD07EC53D87D9 /* SKEmitterNode+SKTExtras.m in Sources */,
 				C184BCCB4724A3BF3B0F45B4 /* SKNode+SKTExtras.m in Sources */,
@@ -897,6 +912,7 @@
 				C184B99DF083BEAF858FEBBC /* DirtTile.m in Sources */,
 				C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */,
 				C184B3329468B0CF44B6631D /* GrassTile.m in Sources */,
+				C816997E191BE18400B28403 /* CastleViewController.m in Sources */,
 				C184BDE193C3784E03F5FFAF /* Unit.m in Sources */,
 				C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */,
 				C184B363DBED6EC686B67FC3 /* Villager.m in Sources */,

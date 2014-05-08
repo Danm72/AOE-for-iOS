@@ -9,8 +9,8 @@
 #import "GameViewController.h"
 #import "MyScene.h"
 #import "SWRevealViewController.h"
-
-@interface GameViewController ()
+#import  "CastleViewController.h"
+@interface GameViewController () <MYSceneDelegate>
 
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 //@property (nonatomic) IBOutlet SKView *skView;
@@ -54,26 +54,37 @@
 
 - (IBAction)sideBarTouch:(id)sender {
     [[self revealViewController] revealToggle:sender];
+    CastleViewController *vc = [[CastleViewController alloc] init];
+    [[self revealViewController] setRightViewController:vc];
+    [[self revealViewController] rightRevealToggle:sender];
+
 }
 
 -(void) loadScene{
-    SKView *skView = (SKView *) self.view;
-    
-    self.view = skView;
-        skView.showsFPS = YES;
-        skView.showsNodeCount = YES;
+//    SKView *skView = (SKView *) self.view;
+//    self.view = skView;
+//    skView.showsFPS = YES;
+//    skView.showsNodeCount = YES;
     // Create and configure the scene.
-    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
-    //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
-    //  scene.scaleMode = SKSceneScaleModeResizeFill;
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+//    MyScene *scene = [MyScene sceneWithSize:skView.bounds.size];
+//    //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
+//    //  scene.scaleMode = SKSceneScaleModeResizeFill;
+//    scene.scaleMode = SKSceneScaleModeAspectFill;
     
-    [scene loadSceneAssetsWithCompletionHandler:^{
-        NSLog(@"Done Loading");
-        [skView presentScene:scene];
-//        [self saveGame:scene :@"SAVE_1"];
-    }];
+//    [scene loadSceneAssetsWithCompletionHandler:^{
+//        NSLog(@"Done Loading");
+//        [skView presentScene:scene];
+////        [self saveGame:scene :@"SAVE_1"];
+//    }];
     
+}
+
+-(void)setScene:(MyScene *)scene
+{
+    _scene = scene;
+    SKView *skView = (SKView *) self.view;
+    _scene.delegate = self;
+    [skView presentScene:_scene];
 }
 
 -(BOOL) saveGame:(MyScene*) scene : (NSString*) saveName{
@@ -124,6 +135,7 @@
 
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(rightRevealToggle:);
     _sidebarButton.action = @selector(revealToggle:);
 
     // Set the gesture
@@ -143,6 +155,13 @@
     } else {
         return UIInterfaceOrientationMaskAll;
     }
+}
+
+-(void)castleClicked
+{
+    CastleViewController *vc = [[CastleViewController alloc] init];
+    [[self revealViewController] setRightViewController:vc];
+    [[self revealViewController] rightRevealToggle:nil];
 }
 
 - (void)test {

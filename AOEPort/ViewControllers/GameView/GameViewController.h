@@ -7,7 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "MyScene.h"
 @interface GameViewController : UIViewController{
     IBOutlet UIButton *slideButton;
     IBOutlet UIButton *buildingPrimaryBtn;
@@ -17,6 +17,7 @@
 @property (weak, nonatomic)  UIButton *slideButton;
 @property (weak, nonatomic)  UIButton *buildingPrimaryBtn;
 @property (weak, nonatomic)  UIButton *buildingSecondaryBtn;
+@property (strong, nonatomic) MyScene *scene;
 - (IBAction)sideBarTouch:(id)sender;
 -(void) loadScene;
 @end
