@@ -6,6 +6,8 @@
 #import "TileMapLayer.h"
 #import "DrawSelectionBox.h"
 
+@class MyScene;
+
 static NSString *const buildingNodeType = @"Building";
 static NSString *const unitNodeType = @"Unit";
 static NSString *const tileNodeType = @"Tile";
@@ -17,7 +19,7 @@ static NSString *const tileNodeType = @"Tile";
 @property(nonatomic, strong) DrawSelectionBox *selectionBox;
 
 
-- (instancetype)initWithScene:(SKScene *)scene;
+- (instancetype)initWithScene:(MyScene *)scene;
 
 - (void)registerTouchEvents;
 

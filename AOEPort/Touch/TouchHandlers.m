@@ -6,6 +6,7 @@
 #import "TouchHandlers.h"
 #import "Builder.h"
 #import "Building.h"
+#import "MyScene.h"
 
 int signum(CGFloat n) {
     return (n < 0) ? -1 : (n > 0) ? +1 : 0;
@@ -22,7 +23,7 @@ int signum(CGFloat n) {
 @property(nonatomic) BOOL buildingNode;
 @property(nonatomic) CGPoint pointTwo;
 @property(nonatomic) CGPoint pointOne;
-@property(nonatomic, strong) SKScene *scene;
+@property(nonatomic, strong) MyScene *scene;
 @property(nonatomic) BOOL isSelecting;
 @property(nonatomic) CGPoint previousLocation;
 @end
@@ -42,7 +43,7 @@ int signum(CGFloat n) {
 }
 
 
-- (instancetype)initWithScene:(SKScene *)scene1 {
+- (instancetype)initWithScene:(MyScene *)scene1 {
     self = [super init];
     if (self) {
         self.scene = scene1;
@@ -81,7 +82,36 @@ int signum(CGFloat n) {
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
     [[self.scene view] addGestureRecognizer:tapGestureRecognizer];
 
+    UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
+    edgePanGestureRecognizer.edges = UIRectEdgeLeft;
+//    edgePanGestureRecognizer.delegate = self;
+    [[self.scene view] addGestureRecognizer:edgePanGestureRecognizer];
+
 }
+
+- (void)handleLeftEdgeGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
+    // Get the current view we are touching
+//    UIView *view = [self.scene.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
+
+    if (UIGestureRecognizerStateBegan == gesture.state ||
+            UIGestureRecognizerStateChanged == gesture.state) {
+//        CGPoint translation = [gesture translationInView:gesture.view];
+        // Move the view's center using the gesture
+//        view.center = CGPointMake(_centerX + translation.x, view.center.y);
+        //[[_scene.con revealViewController] revealToggle:nil];
+        NSLog(@"FIRED");
+//        [_scene.delegate leftSwipe];
+
+    } else {// cancel, fail, or ended
+        // Animate back to center x
+        //[[self revealViewController] revealToggle:nil];
+        [_scene.delegate leftSwipe];
+
+        NSLog(@"FIRED1");
+
+    }
+}
+
 
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
     static CGFloat lastScale = 0;
@@ -303,13 +333,12 @@ int signum(CGFloat n) {
             self.unitNode = [[touchedNode name] isEqualToString:unitNodeType];
 
             if (self.buildingNode) {
-                SKAction *sequence = [Building selectedBuildingAction];
-                for (SKSpriteNode *node in _selectedNodes) {
 
-                    [node runAction:[SKAction repeatActionForever:sequence]];
-                }
+                Building *building = [_selectedNodes objectAtIndex:0];
+                [_scene.delegate castleClicked:building];
             } else if (self.unitNode) {
-
+                Unit *unit = [_selectedNodes objectAtIndex:0];
+                [_scene.delegate unitClicked:unit];
             }
         } else {
             if (self.pointOne.x == 0) {

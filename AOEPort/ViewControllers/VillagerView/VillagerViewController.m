@@ -1,18 +1,18 @@
 //
-//  CastleViewController.m
+//  VillagerViewController.m
 //  AOEPort
 //
 //  Created by Dan Malone on 08/05/2014.
 //  Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
-#import "CastleViewController.h"
+#import "VillagerViewController.h"
 
-@interface CastleViewController ()
+@interface VillagerViewController ()
 
 @end
 
-@implementation CastleViewController
+@implementation VillagerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +33,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)numberOfUnitsIncreased:(id)sender
+{
+    [self.delegate numberOfUnitsIncreased];
 }
 
 @end

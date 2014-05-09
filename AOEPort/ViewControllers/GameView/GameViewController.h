@@ -8,16 +8,11 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "MyScene.h"
-@interface GameViewController : UIViewController{
-    IBOutlet UIButton *slideButton;
-    IBOutlet UIButton *buildingPrimaryBtn;
-    IBOutlet UIButton *buildingSecondaryBtn;
+#import "VillagerViewController.h"
+
+@interface GameViewController : UIViewController <UIGestureRecognizerDelegate> {
 }
 @property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
-@property (weak, nonatomic)  UIButton *slideButton;
-@property (weak, nonatomic)  UIButton *buildingPrimaryBtn;
-@property (weak, nonatomic)  UIButton *buildingSecondaryBtn;
 @property (strong, nonatomic) MyScene *scene;
 - (IBAction)sideBarTouch:(id)sender;
--(void) loadScene;
 @end

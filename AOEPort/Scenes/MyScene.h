@@ -15,12 +15,18 @@
 #import "TmxTileMapLayer.h"
 #import "TouchHandlers.h"
 
+@class Building;
+@class Unit;
+
 #define kNumPlayers 4
 typedef void (^AssetLoadCompletionHandler)(void);
 
 
 @protocol MYSceneDelegate <NSObject>
--(void)castleClicked;
+-(void)castleClicked:(Building *)castleNode;
+-(void)leftSwipe;
+-(void)unitClicked:(Unit *) unitNode;
+
 @end
 
 @interface MyScene : SKScene {

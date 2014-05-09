@@ -1,13 +1,10 @@
- #import "MyScene.h"
+#import "MyScene.h"
 #import "Builder.h"
 #import "Constants.h"
+#import "Building.h"
+#import "Unit.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
-
-@property(nonatomic) NSArray *hudAvatars;              // keep track of the various nodes for the HUD
-@property(nonatomic) NSArray *hudLabels;               // - there are always 'kNumPlayers' instances in each array
-@property(nonatomic) NSArray *hudScores;
-@property(nonatomic) NSArray *hudLifeHeartArrays;      // an array of NSArrays of life hearts
 
 @property(nonatomic, strong, readwrite) SKNode *unitLayer;
 @property(nonatomic, strong) SKNode *worldNode;
@@ -24,12 +21,6 @@
 - (id)initWithSize:(CGSize)size {
 
     if (self = [super initWithSize:size]) {
-/*        [self createWorld];
-        [self createCharacters];*/
-        /*       [self loadSceneAssetsWithCompletionHandler:^{
-
-               }];*/
-        //[self centerViewOn:_player.position];
     }
     return self;
 }
@@ -232,18 +223,18 @@
     }
     if (collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)) {
         NSLog(@"Selection and Units");
-        
-        if ([contact.bodyA.node isKindOfClass:[Unit class]]){
-            if(![self.handlers.selectedNodes containsObject:contact.bodyA.node]){
+
+        if ([contact.bodyA.node isKindOfClass:[Unit class]]) {
+            if (![self.handlers.selectedNodes containsObject:contact.bodyA.node]) {
                 [self.handlers.selectedNodes addObject:contact.bodyA.node];
             }
         }
-        else if ([contact.bodyA.node isKindOfClass:[Unit class]]){
-            if(![self.handlers.selectedNodes containsObject:contact.bodyB.node]){
+        else if ([contact.bodyA.node isKindOfClass:[Unit class]]) {
+            if (![self.handlers.selectedNodes containsObject:contact.bodyB.node]) {
                 [self.handlers.selectedNodes addObject:contact.bodyB.node];
             }
         }
-        
+
     }
     else if (collision == 0) {
         NSLog(@"Building and Building");

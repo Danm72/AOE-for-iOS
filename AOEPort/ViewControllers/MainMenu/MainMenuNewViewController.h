@@ -1,5 +1,5 @@
 //
-//  CastleViewController.h
+//  MainMenuNewViewController.h
 //  AOEPort
 //
 //  Created by Dan Malone on 08/05/2014.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CastleViewController : UIViewController
-@property (nonatomic, readwrite) NSInteger numberOfUnites;
+@interface MainMenuNewViewController : UIViewController
+@property (weak, nonatomic) IBOutlet SKView *skView;
+
 @end
