@@ -146,6 +146,10 @@
     }
 }
 
+- (void)updateProgress:(NSString *)progress {
+
+}
+
 
 - (void)setRightViewController:(UIViewController *)vc {
     [[self revealViewController] setRightViewController:vc];

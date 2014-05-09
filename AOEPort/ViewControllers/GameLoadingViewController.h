@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GameLoadingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *progressTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end

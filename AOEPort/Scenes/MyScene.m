@@ -1,8 +1,6 @@
 #import "MyScene.h"
 #import "Builder.h"
 #import "Constants.h"
-#import "Building.h"
-#import "Unit.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -29,21 +27,29 @@
     [self createPhysicsBody];
     [self createWorld];
 
+    [self.delegate updateProgress:@"Preparations Complete"];
 }
 
 - (void)createPhysicsBody {
+    [self.delegate updateProgress:@"Creating Physics Bodies"];
     self.physicsBody =
             [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.gravity = CGVectorMake(0, 0);
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
     self.physicsWorld.contactDelegate = self;
+    [self.delegate updateProgress:@"Physics Bodies Created"];
+
 }
 
 - (void)createWorld {
+    [self.delegate updateProgress:@"Creating World"];
+
     SKNode *background;
     @try {
-        if (TILEMAP_MODE)
+        if (TILEMAP_MODE) {
+            [self.delegate updateProgress:@"Creating Tile Map"];
             _bgLayer = [self createScenery];
+        }
         else {
             background = [self createSceneryImage];
             background.zPosition = -40;
@@ -60,13 +66,17 @@
     self.worldNode = [SKNode node];
     [self.worldNode setName:@"World Node"];
     if (self.tileMap) {
+        [self.delegate updateProgress:@"Adding Buidings"];
         [self createBuildingGroup];
+        [self.delegate updateProgress:@"Adding Resources"];
         [self createResourcesGroup];
+        [self.delegate updateProgress:@"Adding Units"];
         [self createCharacters];
-
 
 //        [_worldNode addChild:_buildingLayer];
         if (TILEMAP_MODE) {
+            [self.delegate updateProgress:@"Adjusting Positions of map"];
+
             [_worldNode addChild:_bgLayer];
             _worldNode.position =
                     CGPointMake(-_bgLayer.layerSize.width / 2,
@@ -86,7 +96,7 @@
     [self addChild:self.worldNode];
 
     self.anchorPoint = CGPointMake(0.5, 0.5);
-
+    [self.delegate updateProgress:@"Finalising Physics Bodies"];
 
     SKNode *bounds = [SKNode node];
     bounds.physicsBody =

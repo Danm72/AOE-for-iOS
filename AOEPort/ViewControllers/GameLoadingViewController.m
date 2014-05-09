@@ -9,8 +9,10 @@
 #import "GameLoadingViewController.h"
 #import "GameViewController.h"
 #import "MyScene.h"
+#import "Unit.h"
+#import "Building.h"
 
-@interface GameLoadingViewController ()
+@interface GameLoadingViewController ()<MYSceneDelegate>
 @property (nonatomic, readwrite, strong) MyScene *loadedScene;
 @end
 
@@ -45,6 +47,7 @@
     //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.delegate = self;
     
     [self.activityIndicator startAnimating];
     [scene loadSceneAssetsWithCompletionHandler:^{
@@ -64,6 +67,24 @@
         viewController.scene = self.loadedScene;
     }
 }
+
+- (void)unitClicked:(Unit *)unitNode {
+
+}
+
+- (void)updateProgress:(NSString *)progress {
+    _progressTextView.text = progress;
+}
+
+
+- (void)castleClicked:(Building *)castleNode {
+
+}
+
+- (void)leftSwipe {
+
+}
+
 
 /*
 #pragma mark - Navigation

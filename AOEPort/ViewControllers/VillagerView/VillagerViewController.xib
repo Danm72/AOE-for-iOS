@@ -14,18 +14,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view alpha="0.90000000000000036" contentMode="scaleAspectFit" restorationIdentifier="Wall" translatesAutoresizingMaskIntoConstraints="NO" id="ihb-tg-yX5">
+                <view alpha="0.90000000000000036" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" restorationIdentifier="Wall" translatesAutoresizingMaskIntoConstraints="NO" id="ihb-tg-yX5">
                     <rect key="frame" x="7" y="8" width="140" height="245"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wall.png" translatesAutoresizingMaskIntoConstraints="NO" id="mnU-cZ-FZl">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="wall.png" translatesAutoresizingMaskIntoConstraints="NO" id="mnU-cZ-FZl">
                             <rect key="frame" x="21" y="11" width="100" height="181"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="YES"/>
                             </accessibility>
                         </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-Qg-nw2">
+                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wall" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q51-Qg-nw2">
                             <rect key="frame" x="24" y="195" width="97" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,11 +81,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="StepWall" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-02-qLR">
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" restorationIdentifier="StepWall" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="1Ag-02-qLR">
                     <rect key="frame" x="30" y="261" width="94" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </stepper>
-                <view alpha="0.90000000000000036" contentMode="scaleToFill" restorationIdentifier="TownCenter" translatesAutoresizingMaskIntoConstraints="NO" id="lKf-3x-hq5">
+                <view alpha="0.90000000000000036" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="TownCenter" translatesAutoresizingMaskIntoConstraints="NO" id="lKf-3x-hq5">
                     <rect key="frame" x="160" y="8" width="140" height="245"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -140,11 +140,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" restorationIdentifier="TownStep" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6iE-LU-6Cs">
+                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" restorationIdentifier="TownStep" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6iE-LU-6Cs">
                     <rect key="frame" x="183" y="261" width="94" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </stepper>
-                <view alpha="0.90000000000000036" contentMode="scaleToFill" restorationIdentifier="Church" translatesAutoresizingMaskIntoConstraints="NO" id="cv1-8C-dja">
+                <view alpha="0.90000000000000036" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="Church" translatesAutoresizingMaskIntoConstraints="NO" id="cv1-8C-dja">
                     <rect key="frame" x="7" y="298" width="140" height="224"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -203,7 +203,7 @@
                     <rect key="frame" x="30" y="530" width="94" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </stepper>
-                <view alpha="0.90000000000000036" contentMode="scaleToFill" restorationIdentifier="Barracks" translatesAutoresizingMaskIntoConstraints="NO" id="sgF-R3-zbw">
+                <view alpha="0.90000000000000036" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="Barracks" translatesAutoresizingMaskIntoConstraints="NO" id="sgF-R3-zbw">
                     <rect key="frame" x="160" y="298" width="140" height="224"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>

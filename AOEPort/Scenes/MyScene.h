@@ -26,6 +26,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
 -(void)castleClicked:(Building *)castleNode;
 -(void)leftSwipe;
 -(void)unitClicked:(Unit *) unitNode;
+-(void) updateProgress:(NSString *) progress;
 
 @end
 

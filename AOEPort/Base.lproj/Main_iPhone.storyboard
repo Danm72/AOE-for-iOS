@@ -250,17 +250,27 @@
                                 <rect key="frame" x="274" y="140" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Progress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-Mb-tah">
+                                <rect key="frame" x="236" y="261" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="h3a-Mb-tah" secondAttribute="centerY" constant="-116" id="22K-pX-1Ih"/>
                             <constraint firstAttribute="centerY" secondItem="edH-I4-1mN" secondAttribute="centerY" constant="10" id="BDO-MP-Ifs"/>
                             <constraint firstAttribute="centerX" secondItem="edH-I4-1mN" secondAttribute="centerX" id="DQA-0z-O5h"/>
+                            <constraint firstItem="h3a-Mb-tah" firstAttribute="top" secondItem="PBP-Dh-VY4" secondAttribute="bottom" constant="261" id="kD6-QQ-j13"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="nwn-ro-z4W"/>
                     <connections>
                         <outlet property="activityIndicator" destination="edH-I4-1mN" id="Wn3-cs-wMl"/>
+                        <outlet property="progressTextView" destination="h3a-Mb-tah" id="Pmn-tT-u0a"/>
                         <segue destination="LVB-YS-i5n" kind="push" identifier="game_has_loaded" id="qvh-ly-z2I"/>
                     </connections>
                 </viewController>
