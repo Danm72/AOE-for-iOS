@@ -4,14 +4,7 @@
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
-@property(nonatomic, strong, readwrite) SKNode *unitLayer;
-@property(nonatomic, strong) SKNode *worldNode;
-@property(nonatomic, strong) TileMapLayer *bgLayer;
-@property(nonatomic, strong) TileMapLayer *buildingLayer;
-@property(nonatomic, strong) JSTileMap *tileMap;
-@property(nonatomic, strong) TouchHandlers *handlers;
-@property(nonatomic, strong) SKTextureAtlas *atlas;
-@property(nonatomic, strong) SKSpriteNode *node;
+
 @end
 
 @implementation MyScene

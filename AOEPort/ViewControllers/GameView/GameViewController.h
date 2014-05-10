@@ -14,5 +14,6 @@
 }
 @property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) MyScene *scene;
+@property (strong, nonatomic) SKNode *activeNode;
 - (IBAction)sideBarTouch:(id)sender;
 @end

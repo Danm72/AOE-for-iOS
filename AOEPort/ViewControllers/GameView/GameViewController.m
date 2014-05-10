@@ -140,9 +140,13 @@
 
 - (void)unitClicked:(Unit *)unitNode {
     if ([unitNode isKindOfClass:[Builder class]]) {
-        VillagerViewController *vc = [[VillagerViewController alloc] init];
+//        VillagerViewController *vc = [[VillagerViewController alloc] init];
+        VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
+
         vc.delegate = self;
         [self setRightViewController:vc];
+        
+        _activeNode = unitNode;
     }
 }
 
@@ -156,9 +160,17 @@
     [[self revealViewController] rightRevealToggle:nil];
 }
 
-- (void)numberOfUnitsIncreased {
+- (void)addStructure:(Building*) building {
     //[self.scene increaseNumberOfUnitesForSacte]
     NSLog(@"increase number of units");
+    
+    SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
+    [building runAction:[SKAction repeatActionForever:sequence]];
+    
+    building.position = _activeNode.position;
+    building.zPosition = _activeNode.zPosition;
+    [_scene.buildingLayer addChild:building];
+    
 }
 
 - (void)test {

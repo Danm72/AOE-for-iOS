@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class Building;
 @protocol VillagerViewControllerDelegate <NSObject>
--(void)numberOfUnitsIncreased;
+-(void)addStructure:(Building*) building ;
 @end
 
-@interface VillagerViewController : UIViewController
+@interface VillagerViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, readwrite) NSInteger numberOfUnites;
+@property (nonatomic,readwrite) SKTextureAtlas* atlas;
+
 @property (nonatomic, readwrite, weak) id <VillagerViewControllerDelegate> delegate;
 @end

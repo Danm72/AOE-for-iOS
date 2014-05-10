@@ -37,7 +37,7 @@
 
 - (IBAction)numberOfUnitsIncreased:(id)sender
 {
-    [self.delegate numberOfUnitsIncreased];
+    [self.delegate addStructure];
 }
 
 @end

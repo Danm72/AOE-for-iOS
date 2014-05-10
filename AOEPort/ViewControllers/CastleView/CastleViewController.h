@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol CastleViewControllerDelegate <NSObject>
--(void)numberOfUnitsIncreased;
+-(void)addStructure;
 @end
 
 @interface CastleViewController : UIViewController

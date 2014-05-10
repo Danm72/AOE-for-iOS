@@ -49,7 +49,6 @@
 		C184B9EC32FE5670D8C93D7A /* MenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BC789E54C0C18634C3B5 /* MenuItemTableViewCell.m */; };
 		C184BA27D2EDAC8A19F4CB6D /* resources_map_imageLayer.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184BF71A4020B9714137ACA /* resources_map_imageLayer.tmx */; };
 		C184BAA83363C05FBF705920 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF37C81288FCCE11CA08 /* RootViewController.m */; };
-		C184BB0BE30C45E679B7F54A /* VillagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C184B970B78F873342382D13 /* VillagerViewController.xib */; };
 		C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B6E41B33E796BA3965FF /* tile32_256build.tmx */; };
 		C184BBD3A6D52E6EB487728C /* buildings.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B015FC9EF0FE8CDAB3CF /* buildings.atlas */; };
 		C184BBE1C74D7AE5A9D208DA /* resources_map_imageLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B4ADE8DE88F5288C02A8 /* resources_map_imageLayer.png */; };
@@ -101,6 +100,10 @@
 		C8D1786518AC3B9500866DEF /* TileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786218AC3B9500866DEF /* TileMapLayer.m */; };
 		C8D1786618AC3B9500866DEF /* TmxTileMapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */; };
 		C8D4E478190566FA008977BA /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8D4E476190566FA008977BA /* Main_iPhone.storyboard */; };
+		C8E1EB3C191DBDE500FF6723 /* wall.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E1EB38191DBDE500FF6723 /* wall.png */; };
+		C8E1EB3D191DBDE500FF6723 /* church.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E1EB39191DBDE500FF6723 /* church.png */; };
+		C8E1EB3E191DBDE500FF6723 /* elitebarracks.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E1EB3A191DBDE500FF6723 /* elitebarracks.png */; };
+		C8E1EB3F191DBDE500FF6723 /* elitetowncenter.png in Resources */ = {isa = PBXBuildFile; fileRef = C8E1EB3B191DBDE500FF6723 /* elitetowncenter.png */; };
 		C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */; };
 		C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8E5C1C01902FEC700AD2BB0 /* Spark.sks */; };
 		C8FDF8281902FF6800569257 /* Bokeh.sks in Resources */ = {isa = PBXBuildFile; fileRef = C8FDF8261902FF6800569257 /* Bokeh.sks */; };
@@ -180,7 +183,6 @@
 		C184B87B304B509F55695A77 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		C184B8CA290A7E4CE160D2EC /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
 		C184B9278B90FC42D524A02F /* GrassTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile.h; sourceTree = "<group>"; };
-		C184B970B78F873342382D13 /* VillagerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VillagerViewController.xib; sourceTree = "<group>"; };
 		C184B987DCAE6146F5592A29 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
 		C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchUtilities.m; sourceTree = "<group>"; };
 		C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
@@ -266,6 +268,10 @@
 		C8D1786318AC3B9500866DEF /* TmxTileMapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmxTileMapLayer.h; sourceTree = "<group>"; };
 		C8D1786418AC3B9500866DEF /* TmxTileMapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmxTileMapLayer.m; sourceTree = "<group>"; };
 		C8D4E477190566FA008977BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		C8E1EB38191DBDE500FF6723 /* wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = wall.png; path = Atlas/buildings.atlas/wall.png; sourceTree = "<group>"; };
+		C8E1EB39191DBDE500FF6723 /* church.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = church.png; path = Atlas/buildings.atlas/church.png; sourceTree = "<group>"; };
+		C8E1EB3A191DBDE500FF6723 /* elitebarracks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elitebarracks.png; path = Atlas/buildings.atlas/elitebarracks.png; sourceTree = "<group>"; };
+		C8E1EB3B191DBDE500FF6723 /* elitetowncenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elitetowncenter.png; path = Atlas/buildings.atlas/elitetowncenter.png; sourceTree = "<group>"; };
 		C8E5C1BE1902FDBA00AD2BB0 /* MagicParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicParticles.sks; sourceTree = "<group>"; };
 		C8E5C1C01902FEC700AD2BB0 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		C8FDF8261902FF6800569257 /* Bokeh.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Bokeh.sks; sourceTree = "<group>"; };
@@ -503,7 +509,6 @@
 			children = (
 				C184B83FA4D08E9CE1FEBB2A /* VillagerViewController.h */,
 				C184B52D5F0AFFAF421B38EC /* VillagerViewController.m */,
-				C184B970B78F873342382D13 /* VillagerViewController.xib */,
 			);
 			path = VillagerView;
 			sourceTree = "<group>";
@@ -529,6 +534,10 @@
 			isa = PBXGroup;
 			children = (
 				C8169985191C4B2B00B28403 /* wood_icon.png */,
+				C8E1EB38191DBDE500FF6723 /* wall.png */,
+				C8E1EB39191DBDE500FF6723 /* church.png */,
+				C8E1EB3A191DBDE500FF6723 /* elitebarracks.png */,
+				C8E1EB3B191DBDE500FF6723 /* elitetowncenter.png */,
 				C8169986191C4B2B00B28403 /* stone_icon.png */,
 				C83D0CBA1904B99B00D0DD44 /* hammer.png */,
 				C8169983191C438800B28403 /* menu_logo.png */,
@@ -845,6 +854,7 @@
 			files = (
 				C860896918ABF6D100810C1A /* Images.xcassets in Resources */,
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
+				C8E1EB3F191DBDE500FF6723 /* elitetowncenter.png in Resources */,
 				C8A9CA7A190171EF00AA2BE0 /* parchment.png in Resources */,
 				C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */,
 				C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */,
@@ -859,6 +869,7 @@
 				C184B5AC0E71CDD417E38A13 /* buildings256.atlasc in Resources */,
 				C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */,
 				C8FDF8291902FF6800569257 /* bokeh.png in Resources */,
+				C8E1EB3C191DBDE500FF6723 /* wall.png in Resources */,
 				C8169988191C4B2B00B28403 /* stone_icon.png in Resources */,
 				C828D4311905D9ED00069403 /* resources_map.tmx in Resources */,
 				C184B4F2BF356A2B2C930650 /* tiles.atlas in Resources */,
@@ -868,8 +879,10 @@
 				C184B51C77D45EFC417FFA77 /* debugMap.tmx in Resources */,
 				C8169987191C4B2B00B28403 /* wood_icon.png in Resources */,
 				C8E5C1BF1902FDBA00AD2BB0 /* MagicParticles.sks in Resources */,
+				C8E1EB3E191DBDE500FF6723 /* elitebarracks.png in Resources */,
 				C8E5C1C11902FEC700AD2BB0 /* Spark.sks in Resources */,
 				C82AA350190F08DE00432449 /* SnowParticles.sks in Resources */,
+				C8E1EB3D191DBDE500FF6723 /* church.png in Resources */,
 				C8D4E478190566FA008977BA /* Main_iPhone.storyboard in Resources */,
 				C184B7EC1651AA7B4976D111 /* MyParticle.sks in Resources */,
 				C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */,
@@ -883,7 +896,6 @@
 				C184B77692A4FD8A5609076E /* fable.png in Resources */,
 				C82AA34E190F014900432449 /* smokeParticle.sks in Resources */,
 				C184B7CADBC318E493598004 /* CastleViewController.xib in Resources */,
-				C184BB0BE30C45E679B7F54A /* VillagerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
