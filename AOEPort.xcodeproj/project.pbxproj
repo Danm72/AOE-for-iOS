@@ -30,6 +30,7 @@
 		C184B5AC0E71CDD417E38A13 /* buildings256.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = C184B2B628F0862CB8A3C930 /* buildings256.atlasc */; };
 		C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B1233908517431B7FA2B /* SSKTileableNode.m */; };
 		C184B6A865CFD07EC53D87D9 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */; };
+		C184B761146C38B447C7EE82 /* PinchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD1EE4194C7525F9AEF0 /* PinchHandler.m */; };
 		C184B77692A4FD8A5609076E /* fable.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B5A89FFC48F62E09DF48 /* fable.png */; };
 		C184B7999A00E12CEEBEBBBE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = C184BF70B559CB8F6576AF59 /* icon */; };
 		C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0330AA52BBC75837B5A /* SSKMultiLineLabelNode.m */; };
@@ -168,6 +169,7 @@
 		C184B707DFC3E0B3B5940F74 /* isoMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = isoMap.tmx; sourceTree = "<group>"; };
 		C184B734041C86EADBE5B7CB /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		C184B7350554D130573F205A /* tiles.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = tiles.atlas; sourceTree = "<group>"; };
+		C184B761C46BC86DE7434C44 /* PinchHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinchHandler.h; sourceTree = "<group>"; };
 		C184B7832A16A91DD5C104BB /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
 		C184B786F9CB8566B73BC9D4 /* DrawSelectionBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawSelectionBox.h; sourceTree = "<group>"; };
 		C184B78805CE5D5D7BEC623E /* MainMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuTableViewCell.m; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 		C184BCFDAF2529A294D250DA /* Church.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Church.h; sourceTree = "<group>"; };
 		C184BD04AF0D1596BBCE7B8B /* MenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuScene.m; sourceTree = "<group>"; };
 		C184BD0EA34E0E7D11E77152 /* Villager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Villager.m; sourceTree = "<group>"; };
+		C184BD1EE4194C7525F9AEF0 /* PinchHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinchHandler.m; sourceTree = "<group>"; };
 		C184BD44D000E995FFD1E28E /* Tree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tree.m; sourceTree = "<group>"; };
 		C184BDCA7518565072A49DBF /* tile32_256build.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile32_256build.png; sourceTree = "<group>"; };
 		C184BE3C8945B51D35F9D73F /* JSTileMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSTileMap.m; sourceTree = "<group>"; };
@@ -567,6 +570,8 @@
 				C184B213F2E5560342506F70 /* TouchHandlers.h */,
 				C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */,
 				C184B83CA2C8B0858AC51CFB /* TouchUtilities.h */,
+				C184BD1EE4194C7525F9AEF0 /* PinchHandler.m */,
+				C184B761C46BC86DE7434C44 /* PinchHandler.h */,
 			);
 			path = Touch;
 			sourceTree = "<group>";
@@ -992,6 +997,7 @@
 				C184B851714ED2D96FB9D221 /* Tree.m in Sources */,
 				C184BF94BAE6D95FF236DE31 /* CastleViewController.m in Sources */,
 				C184BF6D559CEE023A799F74 /* VillagerViewController.m in Sources */,
+				C184B761146C38B447C7EE82 /* PinchHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

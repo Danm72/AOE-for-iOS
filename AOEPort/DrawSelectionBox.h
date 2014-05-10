@@ -8,6 +8,7 @@
 @interface DrawSelectionBox : SKShapeNode
 
 - (id)initWithPointAndSize:(CGPoint)point :(CGSize)s;
+@property (nonatomic) CGPoint origin;
 
 - (void)expandSelectionBox:(CGPoint)translation;
 

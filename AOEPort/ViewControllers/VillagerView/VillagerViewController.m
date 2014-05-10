@@ -11,6 +11,7 @@
 #import "TownCenter.h"
 #import "Barracks.h"
 #import "Church.h"
+#import "SWRevealViewController.h"
 
 @interface VillagerViewController ()
 
@@ -42,13 +43,12 @@ static NSString *cellIdentifier;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    cellIdentifier = @"rowCell";
-//    [self.tab registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
-//    self.data = @[@"Apple",@"Banana",@"Peach",@"Grape",@"Strawberry",@"Watermelon"];
-    // Do any additional setup after loading the view from its nib.
+
     NSLog(@"Sidebar loaded");
      _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+    SWRevealViewController *revealController = self.revealViewController;
 
+    [self.view addGestureRecognizer:revealController.panGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning

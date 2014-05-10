@@ -7,7 +7,6 @@
 //
 
 #import "GameViewController.h"
-#import "MyScene.h"
 #import "SWRevealViewController.h"
 #import "CastleViewController.h"
 #import "Building.h"
@@ -33,7 +32,7 @@
 }
 
 - (IBAction)sideBarTouch:(id)sender {
-    [[self revealViewController] revealToggle:sender];
+    [[self revealViewController] rightRevealToggle:sender];
 //    CastleViewController *vc = [[CastleViewController alloc] init];
 //    [[self revealViewController] setRightViewController:vc];
 //    [[self revealViewController] rightRevealToggle:sender];
@@ -92,9 +91,9 @@
     [super viewDidLoad];
 
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(rightRevealToggle:);
-    _sidebarButton.action = @selector(revealToggle:);
+//    _sidebarButton.target = self.revealViewController;
+//    _sidebarButton.action = @selector(rightRevealToggle:);
+//    _sidebarButton.action = @selector(revealToggle:);
 
     // Set the gesture
 }
@@ -112,6 +111,7 @@
 }
 
 - (void)castleClicked:(Building *)building {
+    _sidebarButton.hidden = true;
 
     if ([building isKindOfClass:[TownCenter class]]) {
         CastleViewController *vc = [[CastleViewController alloc] init];
@@ -138,14 +138,20 @@
     [[self revealViewController] revealToggle:nil];
 }
 
+- (void)rightSwipe {
+    [[self revealViewController] rightRevealToggle:nil];
+}
+
 - (void)unitClicked:(Unit *)unitNode {
+    _sidebarButton.hidden = false;
+
     if ([unitNode isKindOfClass:[Builder class]]) {
 //        VillagerViewController *vc = [[VillagerViewController alloc] init];
         VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
 
         vc.delegate = self;
         [self setRightViewController:vc];
-        
+
         _activeNode = unitNode;
     }
 }
@@ -157,24 +163,21 @@
 
 - (void)setRightViewController:(UIViewController *)vc {
     [[self revealViewController] setRightViewController:vc];
-    [[self revealViewController] rightRevealToggle:nil];
+//    [[self revealViewController] rightRevealToggle:nil];
+    _currentSideController = vc;
 }
 
-- (void)addStructure:(Building*) building {
+- (void)addStructure:(Building *)building {
     //[self.scene increaseNumberOfUnitesForSacte]
     NSLog(@"increase number of units");
-    
+
     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
     [building runAction:[SKAction repeatActionForever:sequence]];
-    
+
     building.position = _activeNode.position;
     building.zPosition = _activeNode.zPosition;
     [_scene.buildingLayer addChild:building];
-    
-}
 
-- (void)test {
-    NSLog(@"%s", "Button Pressed");
 }
 
 - (void)didReceiveMemoryWarning {

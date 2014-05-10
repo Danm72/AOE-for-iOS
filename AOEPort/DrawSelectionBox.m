@@ -17,7 +17,8 @@
 - (id)initWithPointAndSize:(CGPoint)point :(CGSize)s {
     self = [super init];
     if (self) {
-        CGPathRef bodyPath = CGPathCreateWithRect(CGRectMake(0, 0, s.width, s.height), nil);
+        _origin = point;
+        CGPathRef bodyPath = CGPathCreateWithRect(CGRectMake(point.x, point.y, 0, 0), nil);
         self.fillColor = [SKColor colorWithRed:1.0 green:0 blue:0
                                           alpha:0.1];
 //3
@@ -26,9 +27,9 @@
                                             alpha:0.5];
         self.lineWidth = 1.0;
 
-        self.zPosition = 3200- self.position.y;
+        self.zPosition = 3200;
 
-        self.position = point;
+//        self.position = point;
 
         self.glowWidth = 0.5;
 //        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
@@ -41,7 +42,7 @@
 
 //        self.physicsBody = body;
 
-        self.physicsBody =
+/*        self.physicsBody =
                 [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
         self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
 //        self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
@@ -49,7 +50,7 @@
         //self.physicsBody.dynamic = NO;
         self.physicsBody.usesPreciseCollisionDetection = YES;
         self.physicsBody.allowsRotation= NO;
-        self.physicsBody.friction = 1;
+        self.physicsBody.friction = 1;*/
 
         CGPathRelease(bodyPath);
     }
@@ -60,15 +61,21 @@
 
 - (void)expandSelectionBox:(CGPoint)translation {
 
-    CGSize selectSize = self.frame.size;
-    CGSize size = CGSizeMake((selectSize.width + translation.x), (selectSize.height + translation.y));
-    
-    CGPathRef bodyPath = CGPathCreateWithRect(CGRectMake(0, 0, size.width, size.height), nil);
+//    CGSize selectSize = self.frame.size;
+//    CGSize size = CGSizeMake((selectSize.width + translation.x), (selectSize.height + translation.y));
+    CGRect box = CGPathGetBoundingBox(self.path);
+    box.size = CGSizeMake(box.size.width += translation.x*2, box.size.height += translation.y*2);
+
+
+    CGPathRef bodyPath = CGPathCreateWithRect(box, nil);
 
     self.path = bodyPath;
-    self.zPosition = 3200 - self.position.y;
 
+//    self.zPosition = 3200 - self.position.y;
 
+    NSLog(@"ZPosition %f + Selection BAWKZ", self.zPosition);
+
+/*
     self.physicsBody =
             [SKPhysicsBody bodyWithRectangleOfSize:size];
     self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
@@ -77,7 +84,7 @@
     //self.physicsBody.dynamic = NO;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.allowsRotation= NO;
-    self.physicsBody.friction = 1;
+    self.physicsBody.friction = 1;*/
 
 }
 

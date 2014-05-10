@@ -17,7 +17,7 @@ static NSString *const tileNodeType = @"Tile";
 
 @property(nonatomic, strong) NSMutableArray *selectedNodes;
 @property(nonatomic, strong) DrawSelectionBox *selectionBox;
-
+@property(nonatomic, strong) MyScene *scene;
 
 - (instancetype)initWithScene:(MyScene *)scene;
 

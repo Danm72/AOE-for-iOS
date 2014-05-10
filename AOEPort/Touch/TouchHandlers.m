@@ -8,10 +8,6 @@
 #import "Building.h"
 #import "MyScene.h"
 
-int signum(CGFloat n) {
-    return (n < 0) ? -1 : (n > 0) ? +1 : 0;
-}
-
 
 @interface TouchHandlers ()
 
@@ -23,7 +19,6 @@ int signum(CGFloat n) {
 @property(nonatomic) BOOL buildingNode;
 @property(nonatomic) CGPoint pointTwo;
 @property(nonatomic) CGPoint pointOne;
-@property(nonatomic, strong) MyScene *scene;
 @property(nonatomic) BOOL isSelecting;
 @property(nonatomic) CGPoint previousLocation;
 @end
@@ -46,8 +41,8 @@ int signum(CGFloat n) {
 - (instancetype)initWithScene:(MyScene *)scene1 {
     self = [super init];
     if (self) {
-        self.scene = scene1;
         _selectedNodes = [NSMutableArray array];
+        _scene = scene1;
     }
 
     return self;
@@ -66,52 +61,48 @@ int signum(CGFloat n) {
 
 - (void)didMoveToView {
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [[self.scene view] addGestureRecognizer:panGestureRecognizer];
+    [[_scene view] addGestureRecognizer:panGestureRecognizer];
 
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
-    [[self.scene view] addGestureRecognizer:pinchGestureRecognizer];
+    [[_scene view] addGestureRecognizer:pinchGestureRecognizer];
 
 //    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(handleRotationFrom:)];
 //    [[scene view] addGestureRecognizer:rotationGestureRecognizer];
 
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressFrom:)];
-    longPressGestureRecognizer.minimumPressDuration = 0.25;
-    [[self.scene view] addGestureRecognizer:longPressGestureRecognizer];
+    longPressGestureRecognizer.minimumPressDuration = 0.15;
+    [[_scene view] addGestureRecognizer:longPressGestureRecognizer];
     [longPressGestureRecognizer setDelegate:self];
 
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
-    [[self.scene view] addGestureRecognizer:tapGestureRecognizer];
+    [[_scene view] addGestureRecognizer:tapGestureRecognizer];
 
-    UIScreenEdgePanGestureRecognizer *edgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
-    edgePanGestureRecognizer.edges = UIRectEdgeLeft;
-//    edgePanGestureRecognizer.delegate = self;
-    [[self.scene view] addGestureRecognizer:edgePanGestureRecognizer];
+    UIScreenEdgePanGestureRecognizer *leftEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
+    leftEdgePanGestureRecognizer.edges = UIRectEdgeLeft;
+//    leftEdgePanGestureRecognizer.delegate = self;
+    [[_scene view] addGestureRecognizer:leftEdgePanGestureRecognizer];
+
+    UIScreenEdgePanGestureRecognizer *rightEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightEdgeGesture:)];
+    rightEdgePanGestureRecognizer.edges = UIRectEdgeRight;
+    [[_scene view] addGestureRecognizer:rightEdgePanGestureRecognizer];
 
 }
 
 - (void)handleLeftEdgeGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
     // Get the current view we are touching
-//    UIView *view = [self.scene.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
+//    UIView *view = [_scene.view hitTest:[gesture locationInView:gesture.view] withEvent:nil];
 
     if (UIGestureRecognizerStateBegan == gesture.state ||
             UIGestureRecognizerStateChanged == gesture.state) {
-//        CGPoint translation = [gesture translationInView:gesture.view];
-        // Move the view's center using the gesture
-//        view.center = CGPointMake(_centerX + translation.x, view.center.y);
-        //[[_scene.con revealViewController] revealToggle:nil];
+
         NSLog(@"FIRED");
-//        [_scene.delegate leftSwipe];
 
     } else {// cancel, fail, or ended
-        // Animate back to center x
-        //[[self revealViewController] revealToggle:nil];
-        [_scene.delegate leftSwipe];
 
-        NSLog(@"FIRED1");
+        [_scene.delegate leftSwipe];
 
     }
 }
-
 
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
     static CGFloat lastScale = 0;
@@ -123,9 +114,9 @@ int signum(CGFloat n) {
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged) {
         CGFloat scaleDifference = recognizer.scale - lastScale;
-        CGFloat heightDifference = self.scene.size.height * scaleDifference;
-        CGFloat widthDifference = self.scene.size.width * scaleDifference;
-        CGSize potentialSize = CGSizeMake(self.scene.size.width + widthDifference, self.scene.size.height + heightDifference);
+        CGFloat heightDifference = _scene.size.height * scaleDifference;
+        CGFloat widthDifference = _scene.size.width * scaleDifference;
+        CGSize potentialSize = CGSizeMake(_scene.size.width + widthDifference, _scene.size.height + heightDifference);
 
         if (potentialSize.width > 0 && potentialSize.height > 0) {
 
@@ -141,7 +132,7 @@ int signum(CGFloat n) {
                 potentialSize.height = potentialSize.height;
             }
             lastScale = recognizer.scale;
-            self.scene.size = potentialSize;
+            _scene.size = potentialSize;
 
         }
 //        if ((potentialSize.width < 3200 && potentialSize.height < 3200) && ()) {
@@ -156,6 +147,20 @@ int signum(CGFloat n) {
     }
 }
 
+- (void)handleRightEdgeGesture:(UIScreenEdgePanGestureRecognizer *)gesture {
+    // Get the current view we are touching
+
+    if (UIGestureRecognizerStateBegan == gesture.state ||
+            UIGestureRecognizerStateChanged == gesture.state) {
+        NSLog(@"FIRED");
+
+    } else {// cancel, fail, or ended
+
+        [_scene.delegate rightSwipe];
+
+    }
+}
+
 - (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
 //    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
 //    recognizer.rotation = 0;
@@ -167,11 +172,11 @@ int signum(CGFloat n) {
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         [_selectedNodes removeAllObjects];
 
-        CGPoint touchLocation = [recognizer locationInView:(self.scene.view)];
+        CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
 
-        touchLocation = [self.scene convertPointFromView:touchLocation];
+        touchLocation = [_scene convertPointFromView:touchLocation];
 //        touchLocation = [scene convertPoint:touchLocation toNode:buildingLayer];
-        touchLocation = [self.scene convertPoint:touchLocation toNode:_worldNode];
+        touchLocation = [_scene convertPoint:touchLocation toNode:_worldNode];
 
         [self selectNodeForTouch:touchLocation];
     }
@@ -183,84 +188,74 @@ int signum(CGFloat n) {
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
 
-    CGPoint touchLocation = [recognizer locationInView:(self.scene.view)];
+    CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
 
-    touchLocation = [self.scene convertPointFromView:touchLocation];
-    touchLocation = [self.scene convertPoint:touchLocation toNode:_worldNode];
+    touchLocation = [_scene convertPointFromView:touchLocation];
+    touchLocation = [_scene convertPoint:touchLocation toNode:_worldNode];
 
     CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
-
-
-/*    if (pointOne.x == 0) {
-        pointOne = newPos;
-    } else if (pointTwo.x == 0) {
-        pointTwo = newPos;
-
-        CGSize size = CGSizeMake((pointOne.x - pointTwo.x), (pointOne.y - pointTwo.y));
-
-        selectionBox = [DrawSelectionBox attachDebugRectWithSize:size :worldNode :newPos];
-
-        [worldNode addChild:selectionBox];
-        pointOne.x = 0;
-        pointTwo.x = 0;
-    }*/
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
     }
 
     if (recognizer.state == UIGestureRecognizerStateEnded) {
 
-        for (SKSpriteNode *node in _selectedNodes) {
-            self.unitNode = [[node name] isEqualToString:unitNodeType];
-            if (self.unitNode) {
-                [((Unit *) node) move:newPos];
-            }
-//            [_selectedNodes removeObject:node];
-        }
+        [self moveAllUnitsToPos:newPos];
+
+/*        if (self.isSelecting) {
+            [self.selectionBox expandSelectionBox:translation];
+
+        }else if (self.pointOne.x == 0) {
+            self.pointOne = touchLocation;
+            self.isSelecting = true;
+
+            CGSize size = CGSizeMake((0), (0));
+
+            self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
+            [_worldNode addChild:self.selectionBox];
+        }*/
     }
 
 }
 
+- (void)moveAllUnitsToPos:(CGPoint)positionToMoveTo {
+    for (SKSpriteNode *node in _selectedNodes) {
+        self.unitNode = [[node name] isEqualToString:unitNodeType];
+        if (self.unitNode) {
+            [((Unit *) node) move:positionToMoveTo];
+        }
+//            [_selectedNodes removeObject:node];
+    }
+}
+
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
-//    NSDate *start = [NSDate date];
-    // do stuff...
 
     if (recognizer.state == UIGestureRecognizerStateBegan) {
         _previousLocation = [recognizer translationInView:_worldNode.scene.view];
 
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        CGPoint translation = [recognizer translationInView:_worldNode.scene.view];
-        //CGPoint velocity = [recognizer velocityInView:scene.view];
-        //translation = CGPointMake(translation.x, -translation.y);
+        CGPoint translation;
 
         translation = [recognizer translationInView:_worldNode.scene.view];
-
-        /*       CGFloat p1;
-               CGFloat p2;
-
-               if (signum(_previousLocation.x) > 0 && signum(translation.x) > 0) {
-                   p1 = _previousLocation.x + translation.x;
-               }else if (signum(_previousLocation.x) < 0 && signum(translation.x) < 0) {
-                   p1 = _previousLocation.x - translation.x;
-               }else if (signum(_previousLocation.x) > 0 && signum(translation.x) < 0) {
-                   p1 = _previousLocation.x + translation.x;
-               }
-
-               if (signum(_previousLocation.y) > 0 && signum(translation.y) > 0) {
-                   p2 = _previousLocation.y + translation.y;
-               }else if (signum(_previousLocation.y) < 0 && signum(translation.y) < 0) {
-                   p2 = _previousLocation.y - translation.y;
-               }else if (signum(_previousLocation.y) > 0 && signum(translation.y) < 0) {
-                   p2 = _previousLocation.y + translation.y;
-               }*/
-
 
         translation = CGPointMake(translation.x * 4,
                 -translation.y * 4);
 
-        //  translation = CGPointMake(p1, p2);
         if (self.isSelecting) {
             [self.selectionBox expandSelectionBox:translation];
+
+
+            [self.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
+
+                CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
+
+                if (CGRectContainsPoint(box, node.position)){
+                    if (![self.selectedNodes containsObject:node]) {
+                        [self.selectedNodes addObject:node];
+                    }
+                }
+
+            }];
 
         } else {
             [self panForTranslation:translation];
@@ -285,6 +280,7 @@ int signum(CGFloat n) {
 
 
 - (void)resetSelectionBox {
+    self.isSelecting = false;
     _pointOne.x = 0;
     _pointTwo.x = 0;
     _isSelecting = false;
@@ -318,43 +314,37 @@ int signum(CGFloat n) {
 
     if ([[_buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
         touchedNode = (Building *) [_buildingLayer nodeAtPoint:touchLocation];
+        self.buildingNode = YES;
+        self.unitNode = NO;
     } else if ([[_unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
         touchedNode = (Unit *) [_unitLayer nodeAtPoint:touchLocation];
-    }
+        self.buildingNode = NO;
+        self.unitNode = YES;
+    } else {
+        if (self.pointOne.x == 0) {
+            self.pointOne = touchLocation;
+            self.isSelecting = true;
 
-    //2
-    if (![_selectedNodes isEqual:touchedNode]) {
+            CGSize size = CGSizeMake((0), (0));
 
-        if (touchedNode != nil) {
-            [_selectedNodes addObject:touchedNode];
-
-            //3
-            self.buildingNode = [[touchedNode name] isEqualToString:buildingNodeType];
-            self.unitNode = [[touchedNode name] isEqualToString:unitNodeType];
-
-            if (self.buildingNode) {
-
-                Building *building = [_selectedNodes objectAtIndex:0];
-                [_scene.delegate castleClicked:building];
-            } else if (self.unitNode) {
-                Unit *unit = [_selectedNodes objectAtIndex:0];
-                [_scene.delegate unitClicked:unit];
-            }
-        } else {
-            if (self.pointOne.x == 0) {
-                self.pointOne = touchLocation;
-                self.isSelecting = true;
-
-                CGSize size = CGSizeMake((0), (0));
-
-//                self.selectionBox = [DrawSelectionBox addSelectionBox:size :touchLocation];
-
-                self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
-                [_worldNode addChild:self.selectionBox];
-            }
+            self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
+            [_unitLayer addChild:self.selectionBox];
         }
-
     }
+
+    if (touchedNode) {
+        [_selectedNodes addObject:touchedNode];
+
+        if (self.buildingNode) {
+
+            Building *building = [_selectedNodes objectAtIndex:0];
+            [_scene.delegate castleClicked:building];
+        } else if (self.unitNode) {
+            Unit *unit = [_selectedNodes objectAtIndex:0];
+            [_scene.delegate unitClicked:unit];
+        }
+    }
+
 
 }
 
@@ -365,14 +355,14 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 
 - (void)panForTranslation:(CGPoint)translation {
 
-    if ([_selectedNodes count] > 0) {
+    if ([_selectedNodes count] > 0 && self.buildingNode) {
         for (SKSpriteNode *node in _selectedNodes) {
             [self moveBuilding:translation node:node];
         }
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
 
-        newPos = [self.scene convertPoint:newPos toNode:_worldNode];
+        newPos = [_scene convertPoint:newPos toNode:_worldNode];
 
         [self centerViewOn:newPos];
 
@@ -401,7 +391,7 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 }
 
 - (CGPoint)pointToCenterViewOn:(CGPoint)centerOn :(TileMapLayer *)layer {
-    CGSize size = self.scene.size;
+    CGSize size = _scene.size;
 
     CGFloat x = Clamp(centerOn.x, size.width / 2,
             layer.layerSize.width - size.width / 2);

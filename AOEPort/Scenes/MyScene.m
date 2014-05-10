@@ -212,11 +212,11 @@
 }
 
 - (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"SUCCESS SCENE");
+//    NSLog(@"SUCCESS SCENE");
 
     uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-        NSLog(@"Building and unit");
+//        NSLog(@"Building and unit");
         if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
             [contact.bodyA.node removeAllActions];
         } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
@@ -225,18 +225,20 @@
         }
     }
     if (collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)) {
-        NSLog(@"Selection and Units");
+//        NSLog(@"Selection and Units");
 
-        if ([contact.bodyA.node isKindOfClass:[Unit class]]) {
+/*        if ([contact.bodyA.node isKindOfClass:[Unit class]]) {
             if (![self.handlers.selectedNodes containsObject:contact.bodyA.node]) {
                 [self.handlers.selectedNodes addObject:contact.bodyA.node];
+                NSLog(@"ZPosition %f", contact.bodyA.node.zPosition);
             }
         }
         else if ([contact.bodyA.node isKindOfClass:[Unit class]]) {
             if (![self.handlers.selectedNodes containsObject:contact.bodyB.node]) {
                 [self.handlers.selectedNodes addObject:contact.bodyB.node];
+                NSLog(@"ZPosition %f", contact.bodyB.node.zPosition);
             }
-        }
+        }*/
 
     }
     else if (collision == 0) {

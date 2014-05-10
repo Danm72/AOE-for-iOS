@@ -3,6 +3,7 @@
 //  Age of Empires Port
 //
 
+
 //  Copyright (c) 2014 Dan Malone. All rights reserved.
 //
 
@@ -12,8 +13,10 @@
 
 @interface GameViewController : UIViewController <UIGestureRecognizerDelegate> {
 }
-@property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
+//@property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
 @property (strong, nonatomic) MyScene *scene;
 @property (strong, nonatomic) SKNode *activeNode;
+@property (strong, nonatomic) UIViewController *currentSideController;
 - (IBAction)sideBarTouch:(id)sender;
 @end

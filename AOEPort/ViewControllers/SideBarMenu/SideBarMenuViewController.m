@@ -8,6 +8,7 @@
 
 #import "SideBarMenuViewController.h"
 #import "MenuItemTableViewCell.h"
+#import "SWRevealViewController.h"
 
 @interface SideBarMenuViewController ()
 @property NSIndexPath *selectedCellPath;
@@ -34,7 +35,9 @@
     _menuItems = [NSArray arrayWithObjects:@"Diplomacy", @"Technology", @"Resources",@"Save Game",@"Load Game", @"Settings", nil];
 //    self.view.userInteractionEnabled = YES;
     NSLog(@"%s","Menu Initialised");
+    SWRevealViewController *revealController = self.revealViewController;
 
+    [self.view addGestureRecognizer:revealController.panGestureRecognizer];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 
