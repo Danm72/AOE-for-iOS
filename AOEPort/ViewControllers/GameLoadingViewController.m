@@ -77,7 +77,7 @@
 }
 
 
-- (void)castleClicked:(Building *)castleNode {
+- (void)buildingClicked:(Building *)castleNode {
 
 }
 

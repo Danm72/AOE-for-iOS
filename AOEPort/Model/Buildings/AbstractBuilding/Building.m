@@ -11,7 +11,6 @@
 #import "DrawSelectionBox.h"
 #import <AudioToolbox/AudioServices.h>
 
-
 @implementation Building
 @synthesize buildType;
 
@@ -49,7 +48,7 @@ float degToRad(float degree) {
     self.physicsBody.categoryBitMask = CNPhysicsCategoryBuilding;
     self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit | CNPhysicsCategoryBoundary;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
-    self.physicsBody.dynamic = YES;
+//    self.physicsBody.dynamic = YES;
     // self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.allowsRotation = NO;
     //self.physicsBody.restitution = 1;

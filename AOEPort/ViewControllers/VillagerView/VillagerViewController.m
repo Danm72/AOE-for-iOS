@@ -65,24 +65,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     {
         
         Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
+        wall.placed = NO;
         [self.delegate addStructure:wall];
     }
     if (indexPath.section == 1)
     {
         
         Church *church = [Church spriteNodeWithTexture:[_atlas textureNamed:@"church"]];
+        church.placed = NO;
+
         [self.delegate addStructure:church];
     }
     if (indexPath.section == 2)
     {
         
         TownCenter *center = [TownCenter spriteNodeWithTexture:[_atlas textureNamed:@"elitetowncenter"]];
+        center.placed = NO;
         [self.delegate addStructure:center];
     }
     if (indexPath.section == 3)
     {
         
         Barracks *barracks = [Barracks spriteNodeWithTexture:[_atlas textureNamed:@"elitebarracks"]];
+        barracks.placed = NO;
         [self.delegate addStructure:barracks];
     }
 //		[self.nameTextField becomeFirstResponder];

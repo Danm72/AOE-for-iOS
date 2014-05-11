@@ -15,8 +15,10 @@
 #import "Church.h"
 #import "Unit.h"
 #import "Builder.h"
+#import "TownCenterViewController.h"
+#import "BarracksViewController.h"
 
-@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate>
+@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate>
 
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 //@property (nonatomic) IBOutlet SKView *skView;
@@ -110,24 +112,28 @@
     }
 }
 
-- (void)castleClicked:(Building *)building {
+- (void)buildingClicked:(Building *)building {
     _sidebarButton.hidden = true;
 
     if ([building isKindOfClass:[TownCenter class]]) {
-        CastleViewController *vc = [[CastleViewController alloc] init];
+        TownCenterViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"townCenterTable"];
+
         vc.delegate = self;
         [self setRightViewController:vc];
     }
     if ([building isKindOfClass:[Barracks class]]) {
-        CastleViewController *vc = [[CastleViewController alloc] init];
+        BarracksViewController *vc  = [self.storyboard instantiateViewControllerWithIdentifier:@"barracksTable"];
+
         vc.delegate = self;
         [self setRightViewController:vc];
     }
     if ([building isKindOfClass:[Church class]]) {
-        CastleViewController *vc = [[CastleViewController alloc] init];
+        CastleViewController *vc= [self.storyboard instantiateViewControllerWithIdentifier:@"castleTable"];
         vc.delegate = self;
         [self setRightViewController:vc];
     }
+
+    _activeNode = building;
 
 //     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
 //     [building runAction:[SKAction repeatActionForever:sequence]];
@@ -148,7 +154,6 @@
     if ([unitNode isKindOfClass:[Builder class]]) {
 //        VillagerViewController *vc = [[VillagerViewController alloc] init];
         VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
-
         vc.delegate = self;
         [self setRightViewController:vc];
 
@@ -183,6 +188,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)addUnit:(Builder *)villager {
+    NSLog(@"Add Unit");
+    villager.position = _activeNode.position;
+    villager.position = CGPointMake(villager.position.x + 100, villager.position.y+20);
+    villager.zPosition = _scene.size.height - villager.position.y;
+    [_scene.unitLayer addChild:villager];
 }
 
 

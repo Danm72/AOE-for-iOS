@@ -12,7 +12,7 @@
 -(void)addStructure;
 @end
 
-@interface CastleViewController : UIViewController
+@interface CastleViewController : UITableViewController
 @property (nonatomic, readwrite) NSInteger numberOfUnites;
 @property (nonatomic, readwrite, weak) id <CastleViewControllerDelegate> delegate;
 @end

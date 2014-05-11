@@ -23,7 +23,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
 
 
 @protocol MYSceneDelegate <NSObject>
--(void)castleClicked:(Building *)castleNode;
+-(void)buildingClicked:(Building *)buildingNode;
 -(void)leftSwipe;
 -(void)rightSwipe;
 -(void)unitClicked:(Unit *) unitNode;

@@ -24,26 +24,26 @@
             self.userData = data;
             self.buildType = @"Wall";
             [self setupPhysicsBody];
-
+            self.placed = NO;
         }
     }
     return self;
 }
 
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"Wall contact");
-
-    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
-    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-        NSLog(@"BUILD UNIT");
-        [contact.bodyA.node runAction:[Building selectedBuildingAction]];
-    }
-    if (collision == (CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding)) {
-        NSLog(@"BUILDING");
-    }
-//    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
-//        NSLog(@"FAIL"); }
-}
+//- (void)didBeginContact:(SKPhysicsContact *)contact {
+//    NSLog(@"Wall contact");
+//
+//    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
+//    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
+//        NSLog(@"BUILD UNIT");
+//        [contact.bodyA.node runAction:[Building selectedBuildingAction]];
+//    }
+//    if (collision == (CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding)) {
+//        NSLog(@"BUILDING");
+//    }
+////    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
+////        NSLog(@"FAIL"); }
+//}
 
 
 

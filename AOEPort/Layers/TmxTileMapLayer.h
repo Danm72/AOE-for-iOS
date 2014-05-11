@@ -15,5 +15,6 @@
 - (instancetype)initWithTmxObjectGroup:(TMXObjectGroup *)group
                               tileSize:(CGSize)tileize
                               gridSize:(CGSize)gridSize;
+@property (nonatomic,weak) SKTextureAtlas *atlas;
                                                             
 @end

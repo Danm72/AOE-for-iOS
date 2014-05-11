@@ -41,7 +41,10 @@
     @try {
         if (TILEMAP_MODE) {
             [self.delegate updateProgress:@"Creating Tile Map"];
-            _bgLayer = [self createScenery];
+            //_bgLayer = [self createScenery];
+
+            background = [self createSceneryImage];
+//            background.zPosition = -3200;
         }
         else {
             background = [self createSceneryImage];
@@ -70,10 +73,15 @@
         if (TILEMAP_MODE) {
             [self.delegate updateProgress:@"Adjusting Positions of map"];
 
-            [_worldNode addChild:_bgLayer];
+//            [_worldNode addChild:_bgLayer];
+//            [background setScale:<#(CGFloat)scale#>];
+            background.position = CGPointMake(3200/2,
+                           3200/2);
+            [_worldNode addChild:background];
+
             _worldNode.position =
-                    CGPointMake(-_bgLayer.layerSize.width / 2,
-                            -_bgLayer.layerSize.height / 2);
+                    CGPointMake(-3200 / 2,
+                            -3200 / 2);
         }
         else {
             [_worldNode addChild:background];
@@ -104,23 +112,29 @@
 - (void)createCharacters {
 
     _unitLayer = [SKNode node];
-    _unitLayer.scene.size = CGSizeMake(3200, 3200);
+    _unitLayer.scene.size = CGSizeMake(self.size.width, self.size.height);
     self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
     Builder *builder = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder.position = CGPointMake(2000, 2001);
-    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
+    builder.position = CGPointMake(self.size.width/2-50, self.size.height/2);
+//    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
+    builder.zPosition = 3200 - builder.position.y;
+
     [_unitLayer addChild:builder];
 
 
     Builder *builder2 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder2.position = CGPointMake(1990, 2005);
-    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
+    builder2.position = CGPointMake(self.size.width/2 + 50, self.size.height/2);
+//    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
+    builder.zPosition = 3200 - builder.position.y;
+
     [_unitLayer addChild:builder2];
 
     Builder *builder3 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder3.position = CGPointMake(2010, 2000);
-    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
+    builder3.position = CGPointMake(self.size.width/2, self.size.height/2+50);
+//    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
+    builder.zPosition = 3200 - builder.position.y;
+
     [_unitLayer addChild:builder3];
 
 
@@ -146,18 +160,22 @@
 - (SKNode *)createSceneryImage {
 //    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
 //    self.tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
-    self.tileMap = [JSTileMap mapNamed:@"resources_map_imageLayer.tmx"];
-    SKSpriteNode *image;
-    if ([self.tileMap.imageLayers count] > 0) {
-        for (TMXImageLayer *layer in self.tileMap.imageLayers) {
-            image = [SKSpriteNode spriteNodeWithImageNamed:layer.imageSource];
+//    self.tileMap = [JSTileMap mapNamed:@"resources_map_imageLayer.tmx"];
+    self.tileMap = [JSTileMap mapNamed:@"map_image.tmx"];
 
-        }
+//    SKSpriteNode *image = [SKSpriteNode spriteNodeWithImageNamed:@"maptest"];
+    SKSpriteNode *image = [SKSpriteNode spriteNodeWithImageNamed:@"maptest_small"];
+    image.size = CGSizeMake(3200, 3200);
 
-    }
+
+    /*   if ([self.tileMap.imageLayers count] > 0) {
+           for (TMXImageLayer *layer in self.tileMap.imageLayers) {
+               image = [SKSpriteNode spriteNodeWithImageNamed:layer.imageSource];
+           }
+
+       }*/
     return image;
 }
-
 
 - (void)createResourcesGroup {
     TileMapLayer *_resourceLayer = [[TmxTileMapLayer alloc]
@@ -173,9 +191,9 @@
 }
 
 - (void)createBuildingGroup {
+
     self.buildingLayer = [[TmxTileMapLayer alloc]
-            initWithTmxObjectGroup:[self.tileMap
-                    groupNamed:@"Buildings"]
+            initWithTmxObjectGroup:[self.tileMap groupNamed:@"Buildings"]
                           tileSize:self.tileMap.tileSize
                           gridSize:self.bgLayer.gridSize];
 
@@ -207,7 +225,7 @@
 
 - (void)didMoveToView:(SKView *)view {
     self.handlers = [[TouchHandlers alloc] initWithScene:self];
-    [self.handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_unitLayer];
+//    [self.handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_unitLayer];
     [self.handlers registerTouchEvents];
 }
 

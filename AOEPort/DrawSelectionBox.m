@@ -29,28 +29,7 @@
 
         self.zPosition = 3200;
 
-//        self.position = point;
-
         self.glowWidth = 0.5;
-//        SKPhysicsBody *body = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
-//
-//        body.usesPreciseCollisionDetection = YES;
-//
-//        body.categoryBitMask = CNPhysicsCategorySelection;
-//        body.collisionBitMask = CNPhysicsCategoryUnit;
-//        body.contactTestBitMask = CNPhysicsCategoryUnit;
-
-//        self.physicsBody = body;
-
-/*        self.physicsBody =
-                [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
-        self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
-//        self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
-        self.physicsBody.contactTestBitMask = CNPhysicsCategoryUnit;
-        //self.physicsBody.dynamic = NO;
-        self.physicsBody.usesPreciseCollisionDetection = YES;
-        self.physicsBody.allowsRotation= NO;
-        self.physicsBody.friction = 1;*/
 
         CGPathRelease(bodyPath);
     }
@@ -61,8 +40,6 @@
 
 - (void)expandSelectionBox:(CGPoint)translation {
 
-//    CGSize selectSize = self.frame.size;
-//    CGSize size = CGSizeMake((selectSize.width + translation.x), (selectSize.height + translation.y));
     CGRect box = CGPathGetBoundingBox(self.path);
     box.size = CGSizeMake(box.size.width += translation.x*2, box.size.height += translation.y*2);
 
@@ -70,21 +47,6 @@
     CGPathRef bodyPath = CGPathCreateWithRect(box, nil);
 
     self.path = bodyPath;
-
-//    self.zPosition = 3200 - self.position.y;
-
-    NSLog(@"ZPosition %f + Selection BAWKZ", self.zPosition);
-
-/*
-    self.physicsBody =
-            [SKPhysicsBody bodyWithRectangleOfSize:size];
-    self.physicsBody.categoryBitMask = CNPhysicsCategorySelection;
-//    self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
-    self.physicsBody.contactTestBitMask = CNPhysicsCategoryUnit;
-    //self.physicsBody.dynamic = NO;
-    self.physicsBody.usesPreciseCollisionDetection = YES;
-    self.physicsBody.allowsRotation= NO;
-    self.physicsBody.friction = 1;*/
 
 }
 

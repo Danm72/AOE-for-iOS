@@ -11,7 +11,7 @@
 @interface Building : SKSpriteNode <SKPhysicsContactDelegate>
 
 @property (readwrite) NSString *buildType;
-
+@property (nonatomic) Boolean placed;
 
 + (SKAction *)selectedBuildingAction;
 

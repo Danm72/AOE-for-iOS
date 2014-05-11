@@ -171,7 +171,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "-createScenery"
+            landmarkName = "-createCharacters"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -187,8 +187,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
             endingLineNumber = "143"
-            landmarkName = "-createScenery"
-            landmarkType = "5">
+            landmarkName = "@implementation MyScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "419822314.426182"
+            timestampString = "421459293.667435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "419822314.426182"
+            timestampString = "421459293.667435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -235,7 +235,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "308"
             endingLineNumber = "308"
-            landmarkName = "-selectNodeForTouch:"
+            landmarkName = "-removeBuildingActions:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -251,7 +251,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "279"
             endingLineNumber = "279"
-            landmarkName = "-removeBuildingActions:"
+            landmarkName = "-handlePanFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -283,7 +283,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "261"
             endingLineNumber = "261"
-            landmarkName = "-resetSelectionBox"
+            landmarkName = "-handlePanFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -331,8 +331,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
             endingLineNumber = "129"
-            landmarkName = "@implementation TouchHandlers"
-            landmarkType = "3">
+            landmarkName = "-handlePinchFrom:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -347,7 +347,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "-handleLongPressFrom:"
+            landmarkName = "-handlePinchFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -379,7 +379,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-handlePanFrom:"
+            landmarkName = "-handleTapFrom:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

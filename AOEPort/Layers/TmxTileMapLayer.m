@@ -32,8 +32,8 @@
         _layer = layer;
         _tmxTileSize = _layer.mapTileSize;
         _tmxGridSize = _layer.layerInfo.layerGridSize;
-        _tmxLayerSize = CGSizeMake(_layer.layerWidth,
-                _layer.layerHeight);
+        _tmxLayerSize = CGSizeMake(3200, 3200);
+
 
         [self createNodesFromLayer:layer];
 
@@ -48,8 +48,7 @@
     if (self = [super init]) {
         _tmxTileSize = tileSize;
         _tmxGridSize = gridSize;
-        _tmxLayerSize = CGSizeMake(tileSize.width * gridSize.width,
-                tileSize.height * gridSize.height);
+        _tmxLayerSize = CGSizeMake(3200, 3200);
 
         [self createNodesFromGroup:group];
     }
@@ -177,14 +176,16 @@
 - (void)createNodesFromGroup:(TMXObjectGroup *)group {
     //  NSDictionary *playerObj = [group objectNamed:@"player"];
     if ([group.groupName isEqualToString:@"Buildings"]) {
-        SKTextureAtlas *atlas =
-                [SKTextureAtlas atlasNamed:@"buildings"];
+        NSLog(@"TEST");
+        _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+        NSLog(@"TEST");
 
-        wall = [atlas textureNamed:@"wall"];
-        townCentre = [atlas textureNamed:@"towncenter"];
-        barracks = [atlas textureNamed:@"elitebarracks"];
+
+        wall = [_atlas textureNamed:@"wall"];
+        townCentre = [_atlas textureNamed:@"towncenter"];
+        barracks = [_atlas textureNamed:@"elitebarracks"];
 //        eliteBarracks = [atlas textureNamed:@"elitebarracks"];
-        church = [atlas textureNamed:@"church"];
+        church = [_atlas textureNamed:@"church"];
 
 
         NSArray *walls = [group objectsNamed:@"Wall"];
@@ -197,6 +198,7 @@
                         [wallPos[@"y"] floatValue]);
 
                 tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
                 [_layer removeTileAtCoord:CGPointMake([wallPos[@"x"] floatValue],
@@ -212,6 +214,7 @@
                 tile.position = CGPointMake([townPos[@"x"] floatValue],
                         [townPos[@"y"] floatValue]);
                 tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
 
@@ -224,10 +227,11 @@
         NSArray *barrax = [group objectsNamed:@"Barracks"];
         if (barracks) {
             for (NSDictionary *barracksPos in barrax) {
-                Building *tile = [[Barracks alloc] initWithTexture:eliteBarracks];
+                Building *tile = [[Barracks alloc] initWithTexture:barracks];
                 tile.position = CGPointMake([barracksPos[@"x"] floatValue],
                         [barracksPos[@"y"] floatValue]);
                 tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
                 [_layer removeTileAtCoord:CGPointMake([barracksPos[@"x"] floatValue],
@@ -245,6 +249,7 @@
                         [churchPos[@"y"] floatValue]);
                 tile.zPosition = self.layerSize.height - tile.position.y;
                 tile.texture.filteringMode = SKTextureFilteringNearest;
+                tile.placed = YES;
 
                 [self addChild:tile];
             }
