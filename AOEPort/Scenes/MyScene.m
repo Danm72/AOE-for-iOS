@@ -84,7 +84,7 @@
                             -3200 / 2);
         }
         else {
-            [_worldNode addChild:background];
+            //[_worldNode addChild:background];
             self.worldNode.position =
                     CGPointMake(-background.scene.size.width / 2,
                             -background.scene.size.height / 2);
@@ -97,16 +97,16 @@
     [self addChild:self.worldNode];
 
     self.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.delegate updateProgress:@"Finalising Physics Bodies"];
+    //[self.delegate updateProgress:@"Finalising Physics Bodies"];
 
-    SKNode *bounds = [SKNode node];
-    bounds.physicsBody =
-            [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0,
-                    self.bgLayer.layerSize.width,
-                    self.bgLayer.layerSize.height)];
-    bounds.physicsBody.categoryBitMask = CNPhysicsCategoryBoundary;
-    bounds.physicsBody.friction = 0;
-    [self.worldNode addChild:bounds];
+//    SKNode *bounds = [SKNode node];
+//    bounds.physicsBody =
+//            [SKPhysicsBody bodyWithEdgeLoopFromRect:CGRectMake(0, 0,
+//                    self.bgLayer.layerSize.width,
+//                    self.bgLayer.layerSize.height)];
+//    bounds.physicsBody.categoryBitMask = CNPhysicsCategoryBoundary;
+//    bounds.physicsBody.friction = 0;
+    //[self.worldNode addChild:bounds];
 }
 
 - (void)createCharacters {
@@ -116,7 +116,7 @@
     self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
     Builder *builder = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder.position = CGPointMake(self.size.width/2-50, self.size.height/2);
+    builder.position = CGPointMake(1570, 1500);
 //    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
     builder.zPosition = 3200 - builder.position.y;
 
@@ -124,16 +124,16 @@
 
 
     Builder *builder2 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder2.position = CGPointMake(self.size.width/2 + 50, self.size.height/2);
+    builder2.position = CGPointMake(1620, 1500);
 //    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
-    builder.zPosition = 3200 - builder.position.y;
+    builder2.zPosition = 3200 - builder2.position.y;
 
     [_unitLayer addChild:builder2];
 
     Builder *builder3 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder3.position = CGPointMake(self.size.width/2, self.size.height/2+50);
+    builder3.position = CGPointMake(1600, 1500);
 //    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
-    builder.zPosition = 3200 - builder.position.y;
+    builder3.zPosition = 3200 - builder3.position.y;
 
     [_unitLayer addChild:builder3];
 
@@ -191,6 +191,7 @@
 }
 
 - (void)createBuildingGroup {
+    NSLog(@"Building group");
 
     self.buildingLayer = [[TmxTileMapLayer alloc]
             initWithTmxObjectGroup:[self.tileMap groupNamed:@"Buildings"]

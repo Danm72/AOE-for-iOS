@@ -36,7 +36,7 @@
     self.images = @[@"parchment.png",@"parchment.png",@"parchment.png",@"parchment.png"];
     self.titles = @[@"New Game",@"Skirmish",@"Load Game",@"Settings"];
 
-    SKView * skView = _skView;
+    SKView * skView = skView;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
 

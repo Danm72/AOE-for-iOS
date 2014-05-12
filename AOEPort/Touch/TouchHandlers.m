@@ -372,13 +372,13 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
         Building *building =[_selectedNodes objectAtIndex:0];
         if(building.placed == NO)
             [self moveBuilding:translation node:building];
-        else{
-            CGPoint newPos = CGPointMake(-translation.x, -translation.y);
-            
-            newPos = [_scene convertPoint:newPos toNode:_scene.worldNode];
-            
-            [self centerViewOn:newPos];
-        }
+//        else{
+//            CGPoint newPos = CGPointMake(-translation.x, -translation.y);
+//            
+//            newPos = [_scene convertPoint:newPos toNode:_scene.worldNode];
+//            
+//            [self centerViewOn:newPos];
+//        }
         //}
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);

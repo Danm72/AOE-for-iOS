@@ -16,17 +16,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="gi5-vE-8XF">
-                                <rect key="frame" x="0.0" y="44" width="568" height="276"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yR-Yu-Rcu" customClass="SKView">
+                                <rect key="frame" x="0.0" y="0.0" width="573" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shield_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="mLq-41-rdL">
+                                <rect key="frame" x="109" y="0.0" width="350" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="oGF-wb-qRe"/>
+                                    <constraint firstAttribute="height" constant="320" id="sr2-oW-BiR"/>
+                                </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="left_sword_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="T8y-lP-8O1">
+                                <rect key="frame" x="83" y="-250" width="350" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="Mxc-nR-2zj"/>
+                                    <constraint firstAttribute="height" constant="320" id="ZBu-UJ-x2B"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="right_sword_red.png" translatesAutoresizingMaskIntoConstraints="NO" id="RFR-sc-tl5">
+                                <rect key="frame" x="138" y="-250" width="350" height="320"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="6qh-Ux-xWa"/>
+                                    <constraint firstAttribute="width" constant="350" id="6wJ-3q-hDf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LZn-Sz-28d">
+                                <rect key="frame" x="164" y="96" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="OWB-HY-y8s"/>
+                                    <constraint firstAttribute="height" constant="128" id="U5q-Bw-QeB"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dan Malone Studios" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-m4-OW0">
+                                <rect key="frame" x="155" y="40" width="259" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="259" id="DSU-ns-Uxl"/>
+                                </constraints>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HiraMinProN-W3" family="Hiragino Mincho ProN" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="gi5-vE-8XF" secondAttribute="trailing" id="1Ul-xo-EyL"/>
-                            <constraint firstItem="u3g-e7-gzl" firstAttribute="top" secondItem="gi5-vE-8XF" secondAttribute="bottom" id="RhE-wm-zUp"/>
-                            <constraint firstItem="gi5-vE-8XF" firstAttribute="leading" secondItem="HRn-jp-onI" secondAttribute="leading" id="pYH-my-3rN"/>
-                            <constraint firstItem="gi5-vE-8XF" firstAttribute="top" secondItem="h4Y-HU-KB2" secondAttribute="bottom" id="viL-nD-p26"/>
+                            <constraint firstItem="dWr-m4-OW0" firstAttribute="centerX" secondItem="mLq-41-rdL" secondAttribute="centerX" constant="0.5" id="710-gA-GVG"/>
+                            <constraint firstAttribute="centerX" secondItem="mLq-41-rdL" secondAttribute="centerX" id="71A-VS-Trf"/>
+                            <constraint firstItem="mLq-41-rdL" firstAttribute="centerX" secondItem="LZn-Sz-28d" secondAttribute="centerX" id="EdB-T0-EmP"/>
+                            <constraint firstAttribute="trailing" secondItem="RFR-sc-tl5" secondAttribute="trailing" constant="80" id="UbT-cF-lys"/>
+                            <constraint firstItem="mLq-41-rdL" firstAttribute="centerY" secondItem="LZn-Sz-28d" secondAttribute="centerY" id="ble-DE-32c"/>
+                            <constraint firstItem="T8y-lP-8O1" firstAttribute="leading" secondItem="HRn-jp-onI" secondAttribute="leading" constant="83" id="fg3-2H-EYp"/>
+                            <constraint firstAttribute="centerY" secondItem="mLq-41-rdL" secondAttribute="centerY" id="hzb-9d-YVH"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -35,6 +82,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="explosion" destination="LZn-Sz-28d" id="YI8-RG-XRE"/>
+                        <outlet property="leftSword" destination="T8y-lP-8O1" id="Z6U-Qp-lnj"/>
+                        <outlet property="rightSword" destination="RFR-sc-tl5" id="pMM-Wh-bTQ"/>
+                        <outlet property="shield" destination="RFR-sc-tl5" id="fVd-k3-jN4"/>
+                        <outlet property="skView" destination="4yR-Yu-Rcu" id="y5D-i2-r14"/>
+                        <outlet property="textBox" destination="dWr-m4-OW0" id="BTu-q8-adQ"/>
                         <segue destination="NhJ-vb-hK1" kind="push" identifier="menuSegue" id="NA7-8w-dkt"/>
                     </connections>
                 </viewController>
@@ -120,6 +173,12 @@
                                     <action selector="sideBarTouch:" destination="LVB-YS-i5n" eventType="touchUpInside" id="m4D-f9-dOI"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4n-vx-Sel">
+                                <rect key="frame" x="236" y="20" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -132,6 +191,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="7GW-8T-8f6"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblMusicName" destination="N4n-vx-Sel" id="HVw-pq-pv6"/>
                         <outlet property="sidebarButton" destination="doW-vm-axc" id="pwH-EH-Zkx"/>
                     </connections>
                 </viewController>
@@ -252,7 +312,7 @@
                                 <rect key="frame" x="274" y="140" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Progress" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-Mb-tah">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Progress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-Mb-tah">
                                 <rect key="frame" x="236" y="261" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -265,7 +325,7 @@
                             <constraint firstAttribute="centerY" secondItem="h3a-Mb-tah" secondAttribute="centerY" constant="-116" id="22K-pX-1Ih"/>
                             <constraint firstAttribute="centerY" secondItem="edH-I4-1mN" secondAttribute="centerY" constant="10" id="BDO-MP-Ifs"/>
                             <constraint firstAttribute="centerX" secondItem="edH-I4-1mN" secondAttribute="centerX" id="DQA-0z-O5h"/>
-                            <constraint firstItem="h3a-Mb-tah" firstAttribute="top" secondItem="PBP-Dh-VY4" secondAttribute="bottom" constant="261" id="kD6-QQ-j13"/>
+                            <constraint firstItem="h3a-Mb-tah" firstAttribute="centerX" secondItem="edH-I4-1mN" secondAttribute="centerX" constant="0.5" id="Ye2-BG-LYk"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -305,7 +365,7 @@
                                 <rect key="frame" x="300" y="17" width="262" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="20"/>
-                                <state key="normal" title="New Game" backgroundImage="parchment.png">
+                                <state key="normal" title="New Game" backgroundImage="parchment_small.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -316,7 +376,7 @@
                                 <rect key="frame" x="300" y="122" width="262" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="20"/>
-                                <state key="normal" title="Load Game" backgroundImage="parchment.png">
+                                <state key="normal" title="Load Game" backgroundImage="parchment_small.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -324,7 +384,7 @@
                                 <rect key="frame" x="300" y="217" width="262" height="89"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Copperplate-Light" family="Copperplate" pointSize="20"/>
-                                <state key="normal" title="Settings" backgroundImage="parchment.png">
+                                <state key="normal" title="Settings" backgroundImage="parchment_small.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -1642,9 +1702,12 @@
         <image name="elitebarracks.png" width="256" height="256"/>
         <image name="elitetowncenter.png" width="407" height="262"/>
         <image name="hammer.png" width="512" height="512"/>
+        <image name="left_sword_red.png" width="2758" height="1455"/>
         <image name="menu_logo.png" width="750" height="495"/>
         <image name="parchment.png" width="4301" height="2349"/>
-        <image name="splash.png" width="800" height="460"/>
+        <image name="parchment_small.png" width="256" height="140"/>
+        <image name="right_sword_red.png" width="2797" height="1468"/>
+        <image name="shield_red.png" width="2428" height="2428"/>
         <image name="stone_icon.png" width="512" height="512"/>
         <image name="wall.png" width="96" height="181"/>
         <image name="wood_icon.png" width="128" height="128"/>

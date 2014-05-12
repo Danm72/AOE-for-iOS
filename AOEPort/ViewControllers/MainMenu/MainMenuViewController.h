@@ -11,6 +11,6 @@
 @interface MainMenuViewController : UICollectionViewController
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSArray *titles;
-@property (weak, nonatomic) IBOutlet SKView *skView;
+
 
 @end

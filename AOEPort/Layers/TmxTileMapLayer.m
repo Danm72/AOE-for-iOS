@@ -178,7 +178,7 @@
     if ([group.groupName isEqualToString:@"Buildings"]) {
         NSLog(@"TEST");
         _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
-        NSLog(@"TEST");
+        NSLog(@"TEST" );
 
 
         wall = [_atlas textureNamed:@"wall"];
@@ -186,7 +186,6 @@
         barracks = [_atlas textureNamed:@"elitebarracks"];
 //        eliteBarracks = [atlas textureNamed:@"elitebarracks"];
         church = [_atlas textureNamed:@"church"];
-
 
         NSArray *walls = [group objectsNamed:@"Wall"];
 
@@ -197,7 +196,7 @@
                 tile.position = CGPointMake([wallPos[@"x"] floatValue],
                         [wallPos[@"y"] floatValue]);
 
-                tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.zPosition = 3200 - tile.position.y;
                 tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
@@ -213,7 +212,7 @@
                 Building *tile = [[TownCenter alloc] initWithTexture:townCentre];
                 tile.position = CGPointMake([townPos[@"x"] floatValue],
                         [townPos[@"y"] floatValue]);
-                tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.zPosition = 3200 - tile.position.y;
                 tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
@@ -230,13 +229,14 @@
                 Building *tile = [[Barracks alloc] initWithTexture:barracks];
                 tile.position = CGPointMake([barracksPos[@"x"] floatValue],
                         [barracksPos[@"y"] floatValue]);
-                tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.zPosition = 3200 - tile.position.y;
                 tile.placed = TRUE;
 
                 tile.texture.filteringMode = SKTextureFilteringNearest;
                 [_layer removeTileAtCoord:CGPointMake([barracksPos[@"x"] floatValue],
                         [barracksPos[@"y"] floatValue])];
                 [self addChild:tile];
+                NSLog(@"BARRACKS");
             }
         }
 
@@ -247,7 +247,7 @@
                 Building *tile = [[Church alloc] initWithTexture:church];
                 tile.position = CGPointMake([churchPos[@"x"] floatValue],
                         [churchPos[@"y"] floatValue]);
-                tile.zPosition = self.layerSize.height - tile.position.y;
+                tile.zPosition = 3200 - tile.position.y;
                 tile.texture.filteringMode = SKTextureFilteringNearest;
                 tile.placed = YES;
 

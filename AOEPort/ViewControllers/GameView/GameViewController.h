@@ -10,6 +10,8 @@
 #import <SpriteKit/SpriteKit.h>
 #import "MyScene.h"
 #import "VillagerViewController.h"
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface GameViewController : UIViewController <UIGestureRecognizerDelegate> {
 }
@@ -18,5 +20,10 @@
 @property (strong, nonatomic) MyScene *scene;
 @property (strong, nonatomic) SKNode *activeNode;
 @property (strong, nonatomic) UIViewController *currentSideController;
+@property (weak, nonatomic) IBOutlet UITextField *lblMusicName;
+@property (weak, nonatomic) IBOutlet UITextField *_lblMusicTime;
+
+
+
 - (IBAction)sideBarTouch:(id)sender;
 @end
