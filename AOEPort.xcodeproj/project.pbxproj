@@ -276,9 +276,9 @@
 		C83D0CBA1904B99B00D0DD44 /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
 		C83D0CBB1904B99B00D0DD44 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		C85F3F94191FBF3D00130FD9 /* left_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_sword_red.png; path = ../../../../../../../../../Pictures/photoshop/sword/left_sword_red.png; sourceTree = "<group>"; };
-		C85F3F95191FBF3D00130FD9 /* right_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_sword_red.png; path = ../../../../../../../../../Pictures/photoshop/sword/right_sword_red.png; sourceTree = "<group>"; };
-		C85F3F96191FBF3D00130FD9 /* shield_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield_red.png; path = ../../../../../../../../../Pictures/photoshop/sword/shield_red.png; sourceTree = "<group>"; };
+		C85F3F94191FBF3D00130FD9 /* left_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_sword_red.png; sourceTree = "<group>"; };
+		C85F3F95191FBF3D00130FD9 /* right_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_sword_red.png; sourceTree = "<group>"; };
+		C85F3F96191FBF3D00130FD9 /* shield_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_red.png; sourceTree = "<group>"; };
 		C85F3F9A191FC01800130FD9 /* SplashScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScene.m; sourceTree = "<group>"; };
 		C85F3F9B191FC01800130FD9 /* SplashScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScene.h; sourceTree = "<group>"; };
 		C85F3F9D191FC3B200130FD9 /* poof.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poof.png; sourceTree = "<group>"; };
