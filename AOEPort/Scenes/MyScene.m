@@ -178,7 +178,7 @@
 }
 
 - (void)createResourcesGroup {
-    TileMapLayer *_resourceLayer = [[TmxTileMapLayer alloc]
+    _resourceLayer = [[TmxTileMapLayer alloc]
             initWithTmxObjectGroup:[self.tileMap
                     groupNamed:@"Resources"]
                           tileSize:self.tileMap.tileSize
@@ -186,14 +186,14 @@
 
     [_resourceLayer setName:@"ResourceLayer"];
 
-    [self.worldNode addChild:_resourceLayer];
+    [_worldNode addChild:_resourceLayer];
 
 }
 
 - (void)createBuildingGroup {
     NSLog(@"Building group");
 
-    self.buildingLayer = [[TmxTileMapLayer alloc]
+    _buildingLayer = [[TmxTileMapLayer alloc]
             initWithTmxObjectGroup:[self.tileMap groupNamed:@"Buildings"]
                           tileSize:self.tileMap.tileSize
                           gridSize:self.bgLayer.gridSize];
@@ -243,7 +243,14 @@
             [contact.bodyB.node removeAllActions];
         }
     }
-    if (collision == (CNPhysicsCategorySelection | CNPhysicsCategoryUnit)) {
+    if (collision == (CNPhysicsCategoryResource | CNPhysicsCategoryUnit)) {
+        
+        if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
+            [contact.bodyA.node removeAllActions];
+        } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
+            
+            [contact.bodyB.node removeAllActions];
+        }
 //        NSLog(@"Selection and Units");
 
 /*        if ([contact.bodyA.node isKindOfClass:[Unit class]]) {

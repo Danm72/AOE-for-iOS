@@ -34,15 +34,9 @@
 
     _menuItems = [NSArray arrayWithObjects:@"Diplomacy", @"Technology", @"Resources",@"Save Game",@"Load Game", @"Settings", nil];
 //    self.view.userInteractionEnabled = YES;
-    NSLog(@"%s","Menu Initialised");
     SWRevealViewController *revealController = self.revealViewController;
 
     [self.view addGestureRecognizer:revealController.panGestureRecognizer];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)setupTable {

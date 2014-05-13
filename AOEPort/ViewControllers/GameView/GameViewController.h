@@ -17,13 +17,11 @@
 }
 //@property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
+- (IBAction)settingsButton:(id)sender;
 @property (strong, nonatomic) MyScene *scene;
-@property (strong, nonatomic) SKNode *activeNode;
+@property (strong, nonatomic) SKSpriteNode *activeNode;
 @property (strong, nonatomic) UIViewController *currentSideController;
 @property (weak, nonatomic) IBOutlet UITextField *lblMusicName;
 @property (weak, nonatomic) IBOutlet UITextField *_lblMusicTime;
-
-
-
 - (IBAction)sideBarTouch:(id)sender;
 @end

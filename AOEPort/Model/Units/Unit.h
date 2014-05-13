@@ -22,4 +22,6 @@ NSMutableArray *textures;
 - (void)move:(CGPoint)newPos;
 
 - (void)evaluateMovementDirection:(NSInteger)direction;
+-(void) setupPhysics;
+-(void) addSelectedCircle;
 @end

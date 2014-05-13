@@ -166,6 +166,9 @@
 
 - (void)buildingClicked:(Building *)building {
     _sidebarButton.hidden = false;
+    
+    UIImage *btnImage = [UIImage imageNamed:@"house"];
+    [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
 
     if ([building isKindOfClass:[TownCenter class]]) {
         TownCenterViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"townCenterTable"];
@@ -202,6 +205,9 @@
 
 - (void)unitClicked:(Unit *)unitNode {
     _sidebarButton.hidden = false;
+    
+    UIImage *btnImage = [UIImage imageNamed:@"hammer"];
+    [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
 
     if ([unitNode isKindOfClass:[Builder class]]) {
 //        VillagerViewController *vc = [[VillagerViewController alloc] init];
@@ -216,7 +222,6 @@
 - (void)updateProgress:(NSString *)progress {
 
 }
-
 
 - (void)setRightViewController:(UIViewController *)vc {
     [[self revealViewController] setRightViewController:vc];
@@ -245,10 +250,13 @@
 - (void)addUnit:(Builder *)villager {
     NSLog(@"Add Unit");
     villager.position = _activeNode.position;
-    villager.position = CGPointMake(villager.position.x + 100, villager.position.y+20);
+    villager.position = CGPointMake(villager.position.x  + _activeNode.size.width /2, villager.position.y+20);
     villager.zPosition = _scene.size.height - villager.position.y;
     [_scene.unitLayer addChild:villager];
 }
 
 
+- (IBAction)settingsButton:(id)sender {
+    [[self revealViewController] revealToggle:nil];
+}
 @end

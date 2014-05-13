@@ -6,5 +6,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Tree : SKSpriteNode
+@interface Tree : SKSpriteNode <SKPhysicsContactDelegate>
+- (void)setupPhysicsBody;
+
 @end

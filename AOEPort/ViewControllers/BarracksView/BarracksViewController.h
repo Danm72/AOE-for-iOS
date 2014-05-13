@@ -14,5 +14,5 @@
 
 @interface BarracksViewController : UITableViewController
 @property (nonatomic, readwrite) NSInteger numberOfUnites;
-@property (nonatomic, readwrite, weak) id <BarracksViewControllerDelegate> delegate;
+@property (nonatomic, readwrite, strong) id <BarracksViewControllerDelegate> delegate;
 @end

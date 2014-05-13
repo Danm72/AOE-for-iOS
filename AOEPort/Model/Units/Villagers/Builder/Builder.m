@@ -24,34 +24,8 @@
             self.userData = data;
             self.unitType = @"Builder";
 
-/*            CGFloat minDiam = MIN(self.size.width, self.size.height);
-            minDiam = MAX(minDiam-8, 8);
-            self.physicsBody =
-            [SKPhysicsBody bodyWithCircleOfRadius:minDiam/2.0];
-           //self.physicsBody.categoryBitMask = PCBugCategory;
-            self.physicsBody.collisionBitMask = 0;*/
-
-            self.physicsBody =
-                    [SKPhysicsBody bodyWithRectangleOfSize:self.size];
-            self.physicsBody.categoryBitMask = CNPhysicsCategoryUnit;
-            self.physicsBody.collisionBitMask = CNPhysicsCategoryBuilding | CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit;
-            //self.physicsBody.dynamic = NO;
-           self.physicsBody.usesPreciseCollisionDetection = YES;
-            self.physicsBody.allowsRotation= NO;
-            self.physicsBody.friction = 1;
-            self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit;
-
-
-/*            [DrawSelectionBox attachDebugRectWithSize:self.size:self];
-
-            SKLabelNode *letter = [SKLabelNode labelNodeWithFontNamed:@"Villager"];
-            letter.color    = [SKColor whiteColor];
-            letter.text     = self.unitType;
-            letter.fontSize = 10;
-            letter.position = CGPointMake(0, -25);
-            letter.horizontalAlignmentMode =
-                    SKLabelHorizontalAlignmentModeCenter;
-            [self addChild:letter];*/
+            [self setupPhysics];
+        
         }
     }
     return self;
@@ -78,8 +52,8 @@
             [SKAction animateWithTextures:textures timePerFrame:0.1];
 
     //SKAction *action0 = [SKAction scaleXTo:1.0 duration:0.1];
-    SKAction *action1 = [SKAction scaleXTo:-1.0 duration:0.1];
-    SKAction *action2 = [SKAction scaleXTo:1.0 duration:0.1];
+    SKAction *action1 = [SKAction scaleXTo:-1.0 duration:0.01];
+    SKAction *action2 = [SKAction scaleXTo:1.0 duration:0.01];
 
     SKAction *flipGraphicSequence = [SKAction sequence:@[
            action1]];
@@ -101,17 +75,6 @@
 
 }
 
-
-- (void)didBeginContact:(SKPhysicsContact *)contact {
-    NSLog(@"SUCCESS BUILDER");
-
-    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
-    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-        NSLog(@"SUCCESS");
-    }
-//    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
-//        NSLog(@"FAIL"); }
-}
 
 
 @end

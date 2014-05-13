@@ -176,9 +176,7 @@
 - (void)createNodesFromGroup:(TMXObjectGroup *)group {
     //  NSDictionary *playerObj = [group objectNamed:@"player"];
     if ([group.groupName isEqualToString:@"Buildings"]) {
-        NSLog(@"TEST");
         _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
-        NSLog(@"TEST" );
 
 
         wall = [_atlas textureNamed:@"wall"];
@@ -236,7 +234,6 @@
                 [_layer removeTileAtCoord:CGPointMake([barracksPos[@"x"] floatValue],
                         [barracksPos[@"y"] floatValue])];
                 [self addChild:tile];
-                NSLog(@"BARRACKS");
             }
         }
 
@@ -258,11 +255,33 @@
     } else if ([group.groupName isEqualToString:@"Resources"]) {
         NSArray *trees = [group objectsNamed:@"Tree"];
         if (trees) {
-            SKTextureAtlas *atlas;
-            atlas = [SKTextureAtlas atlasNamed:@"trees"];
+            _atlas = [SKTextureAtlas atlasNamed:@"trees"];
 
             for (NSDictionary *treePos in trees) {
-                Tree *tree = [[Tree alloc] initWithTexture:[atlas textureNamed:@"bamboo01"]];
+                int r = arc4random() % 10;
+
+                NSString *name;
+                
+                @try {
+                    if(r <= 4){
+                        name = @"bamboo01";
+                    }else if (r == 5){
+                        name = @"bamboo02";
+                    }else if (r == 6){
+                        name = @"bamboo03";
+                    }else if (r == 7){
+                        name = @"bamboo04";
+                    }else if (r == 8){
+                        name = @"bamboo05";
+                    }else if (r == 9){
+                        name = @"bamboo06";
+                    }
+                } @catch (NSException *exception) {
+                    NSLog(@"Exception: %@", exception);
+                }
+                
+                Tree *tree = [[Tree alloc] initWithTexture:[_atlas textureNamed:name]];
+
                 tree.position = CGPointMake([treePos[@"x"] floatValue],
                         [treePos[@"y"] floatValue]);
                 tree.zPosition = self.layerSize.height - tree.position.y;

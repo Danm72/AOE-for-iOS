@@ -20,20 +20,10 @@
 @implementation VillagerViewController
 static NSString *cellIdentifier;
 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
 	if ((self = [super initWithCoder:aDecoder]))
 	{
-		NSLog(@"init villager");
 	}
 	return self;
 }
@@ -44,7 +34,6 @@ static NSString *cellIdentifier;
 {
     [super viewDidLoad];
 
-    NSLog(@"Sidebar loaded");
      _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
     SWRevealViewController *revealController = self.revealViewController;
 
@@ -92,17 +81,5 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
 //		[self.nameTextField becomeFirstResponder];
 }
-
-
-
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [self.data count];
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    cell.textLabel.text = [self.data objectAtIndex:indexPath.row];
-//    return cell;
-//}
 
 @end
