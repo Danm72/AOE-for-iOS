@@ -7,6 +7,7 @@
 #import "Builder.h"
 #import "Building.h"
 #import "MyScene.h"
+#import "Wall.h"
 
 
 @interface TouchHandlers ()
@@ -38,11 +39,11 @@
 }
 
 
-- (instancetype)initWithScene:(MyScene *)scene1 {
+- (instancetype)initWithScene:(MyScene *)scene {
     self = [super init];
     if (self) {
         _selectedNodes = [NSMutableArray array];
-        _scene = scene1;
+        _scene = scene;
     }
     
     return self;
@@ -172,47 +173,24 @@
 }
 
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {
-    //recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
-    //recognizer.rotation = 0;
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-//        [_selectedNodes removeAllObjects];
         
         CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
         
         touchLocation = [_scene convertPointFromView:touchLocation];
-        //        touchLocation = [scene convertPoint:touchLocation toNode:buildingLayer];
         touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
         
-        //        [self selectNodeForTouch:touchLocation];
-        
-        SKSpriteNode *touchedNode;
-        
-        if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
-            touchedNode = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
-            self.buildingNode = YES;
-            self.unitNode = NO;
+        SKNode *node =[_scene.buildingLayer nodeAtPoint:touchLocation];
+        if ([node isKindOfClass:[Building class]] || [node isKindOfClass:[Wall class]]) {
+            [_selectedBuilding removeAllChildren];
+            _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
         }
         
-        if (touchedNode) {
-            if([_selectedNodes count] > 0 && self.unitNode) {
-                [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
-                    
-                    Unit *unit = (Unit*)node;
-                   // [unit removeAllChildren];
-                    
-                    
-                }];
-
-                [_selectedNodes removeAllObjects];
-            }
-            [_selectedNodes addObject:touchedNode];
-            
-            if (self.buildingNode) {
-                Building *building = [_selectedNodes objectAtIndex:0];
-                [_scene.delegate buildingClicked:building];
-            }
+        if (_selectedBuilding) {
+            [_scene.delegate buildingClicked:_selectedBuilding];
         }
-        if(!touchedNode){
+        
+        if(!_selectedBuilding){
             if (self.pointOne.x == 0) {
                 self.pointOne = touchLocation;
                 self.isSelecting = true;
@@ -223,7 +201,6 @@
                 [_scene.unitLayer addChild:self.selectionBox];
             }
         }
-        
         
         if (recognizer.state == UIGestureRecognizerStateEnded) {
             
@@ -248,36 +225,44 @@
         [self selectNodeForTouch:touchLocation];
         
         [self moveAllUnitsToPos:newPos];
-        
-        /*        if (self.isSelecting) {
-         [self.selectionBox expandSelectionBox:translation];
-         
-         }else if (self.pointOne.x == 0) {
-         self.pointOne = touchLocation;
-         self.isSelecting = true;
-         
-         CGSize size = CGSizeMake((0), (0));
-         
-         self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
-         [_worldNode addChild:self.selectionBox];
-         }*/
+    
     }
     
 }
 
 - (void)moveAllUnitsToPos:(CGPoint)positionToMoveTo {
-    for (SKSpriteNode *node in _selectedNodes) {
-        self.unitNode = [[node name] isEqualToString:unitNodeType];
-        if (self.unitNode) {
-            [((Unit *) node) move:positionToMoveTo];
-        }
-        //            [_selectedNodes removeObject:node];
+    for (Unit *node in _selectedNodes) {
+        [((Unit *) node) move:positionToMoveTo];
     }
+}
+
+- (void)selectUnitsWithinBox:(CGPoint)translation {
+    [self.selectionBox expandSelectionBox:translation];
+    
+    [_selectedNodes removeAllObjects];
+    [self.scene.delegate unitUnselected];
+    
+    [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
+        Unit *unit = (Unit*)node;
+        [unit removeAllChildren]; //remove circle
+        
+        CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
+        
+        if (CGRectContainsPoint(box, unit.position)) {
+            if (![_selectedNodes containsObject:unit]) {
+                [unit addSelectedCircle];
+                [_selectedNodes addObject:unit];
+                [_scene.delegate unitClicked:unit];
+            }
+        }
+    }];
 }
 
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
+        [self.delegate panBegun];
+        
         _previousLocation = [recognizer translationInView:_scene.worldNode.scene.view];
         
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
@@ -288,23 +273,8 @@
         translation = CGPointMake(translation.x * 4,
                                   -translation.y * 4);
         
-        if (self.isSelecting) {
-            [self.selectionBox expandSelectionBox:translation];
-            
-            
-            [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
-                
-                CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
-                
-                if (CGRectContainsPoint(box, node.position)) {
-                    if (![self.selectedNodes containsObject:node]) {
-                        Unit *unit = (Unit*)node;
-                        [unit addSelectedCircle];
-                        [self.selectedNodes addObject:unit];
-                        [_scene.delegate unitClicked:unit];
-                    }
-                }
-            }];
+        if (self.isSelecting ) {
+            [self selectUnitsWithinBox:translation];
             
         } else {
             [self panForTranslation:translation];
@@ -316,19 +286,13 @@
     
     else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-        if([_selectedNodes count] > 0 && [[_selectedNodes objectAtIndex:0]isKindOfClass:[Building class]]){
-            Building *building =[_selectedNodes objectAtIndex:0];
-            building.placed = YES;
+        if(_selectedBuilding && !_isSelecting){
+            _selectedBuilding.placed = YES;
+            [self removeBuildingActions:_selectedBuilding];
         }
-
         
-        if ([_selectedNodes count] != 0) {
-            
-            for (SKSpriteNode *node in _selectedNodes) {
-                [self removeBuildingActions:node];
-            }
-        }
         [self resetSelectionBox];
+        [self.delegate panEnded];
     }
 }
 
@@ -354,52 +318,37 @@
         
         [node runAction:returnToNormalSequence];
         
-        [_selectedNodes removeAllObjects];
+        //        [_selectedBuilding removeAllObjects];
     }
 }
 
 
 - (void)selectNodeForTouch:(CGPoint)touchLocation {
     //1
-    SKSpriteNode *touchedNode;
-    
+    Unit *unit = nil;
+    [_selectedBuilding removeAllChildren];
+    _selectedBuilding = nil;
     
     if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
-        touchedNode = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
-        self.buildingNode = YES;
-        self.unitNode = NO;
+        _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
+        [_selectedBuilding addSelectedCircle];
     } else if ([[_scene.unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
-        touchedNode = (Unit *) [_scene.unitLayer nodeAtPoint:touchLocation];
-        self.buildingNode = NO;
-        self.unitNode = YES;
-    } else {
-        
+        unit = (Unit*)[_scene.unitLayer nodeAtPoint:touchLocation];
     }
     
-    if (touchedNode) {
-        if([_selectedNodes count] >0 && unitNodeType){
-            [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
-                Unit *unit = (Unit*)node;
-//                [unit removeAllChildren];
-            }];
-
+    if (unit) {
+        for(Unit *unit in _selectedNodes){
+            [unit removeAllChildren];
+        }
         [_selectedNodes removeAllObjects];
-        }
+        [self.scene.delegate unitUnselected];
+        [unit addSelectedCircle];
+        [_scene.delegate unitClicked:unit];
+        [_selectedNodes addObject:unit];
         
-        if (self.buildingNode) {
-            Building *building = (Building*)touchedNode;
-            [_scene.delegate buildingClicked:building];
-            [_selectedNodes addObject:building];
-
-        } else if (self.unitNode) {
-            Unit *unit = (Unit*)touchedNode;
-            [unit addSelectedCircle];
-            [_scene.delegate unitClicked:unit];
-            
-            [_selectedNodes addObject:unit];
-        }
+    }else if(_selectedBuilding){
+        [_scene.delegate buildingClicked:_selectedBuilding];
     }
-    
     
 }
 
@@ -410,19 +359,22 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 
 - (void)panForTranslation:(CGPoint)translation {
     
-    if ([_selectedNodes count] > 0 && self.buildingNode) {
-        
-        //for (SKSpriteNode *node in _selectedNodes) {
-        Building *building =[_selectedNodes objectAtIndex:0];
-        if(building.placed == NO)
-            [self moveBuilding:translation node:building];
+    if (_selectedBuilding) {
+        if(_selectedBuilding.placed == NO)
+            [self moveBuilding:translation node:_selectedBuilding];
+        else{
+            CGPoint newPos = CGPointMake(-translation.x, -translation.y);
+            
+            newPos = [_scene convertPoint:newPos toNode:_scene.worldNode];
+            
+            [self centerViewOn:newPos];
+        }
     } else {
         CGPoint newPos = CGPointMake(-translation.x, -translation.y);
         
         newPos = [_scene convertPoint:newPos toNode:_scene.worldNode];
         
         [self centerViewOn:newPos];
-        
     }
 }
 

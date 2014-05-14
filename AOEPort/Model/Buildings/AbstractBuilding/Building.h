@@ -12,6 +12,8 @@
 
 @property (readwrite) NSString *buildType;
 @property (nonatomic) Boolean placed;
+-(void) addSelectedCircle;
+
 
 + (SKAction *)selectedBuildingAction;
 

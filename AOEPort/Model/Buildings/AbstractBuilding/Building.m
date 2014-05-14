@@ -55,5 +55,20 @@ float degToRad(float degree) {
     self.physicsBody.linearDamping = 0;
 }
 
+-(void) addSelectedCircle{
+
+    CGPathRef bodyPath = CGPathCreateWithRect( CGRectMake(-self.size.width/2, -self.size.height/2, self.size.width,   self.size.height),nil);
+
+    SKShapeNode *shape = [SKShapeNode node];
+    shape.path = bodyPath;
+    CGPathRelease(bodyPath);
+    
+    shape.strokeColor = [SKColor colorWithRed:0.0 green:1.0 blue:0 alpha:0.5];
+    shape.lineWidth = 5.0;
+    shape.zPosition = 3200 - self.position.y -10;
+    NSLog(@"ADDING CIRCLE");
+    [self addChild:shape];
+}
+
 
 @end

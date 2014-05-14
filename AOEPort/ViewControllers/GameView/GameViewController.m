@@ -18,7 +18,7 @@
 #import "TownCenterViewController.h"
 #import "BarracksViewController.h"
 
-@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate>
+@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol>
 
 @property (nonatomic, strong) AVQueuePlayer *player;
 @property (nonatomic, strong) id timeObserver;
@@ -47,7 +47,9 @@
     _scene = scene;
     SKView *skView = (SKView *) self.view;
     _scene.delegate = self;
+    
     [skView presentScene:_scene];
+    _scene.handlers.delegate = self;
 }
 
 - (BOOL)saveGame:(MyScene *)scene :(NSString *)saveName {
@@ -258,5 +260,42 @@
 
 - (IBAction)settingsButton:(id)sender {
     [[self revealViewController] revealToggle:nil];
+}
+- (IBAction)updateWood:(id)sender {
+//    _woodResourceCounter+=1;
+}
+- (IBAction)updateStone:(id)sender {
+//    _stoneResourceCounter+=1;
+
+}
+
+-(void) panEnded{
+    NSLog(@"Pan Ended");
+
+    _woodIcon.hidden = NO;
+    _stoneIcon.hidden = NO;
+    
+    _stoneResourceCounter.hidden = NO;
+    _woodResourceCounter.hidden = NO;
+    _settingsButtonIcon.hidden = NO;
+
+    if(_activeNode)
+        _sidebarButton.hidden = NO;
+
+}
+-(void) panBegun{
+    NSLog(@"Pan Begun");
+    _woodIcon.hidden = YES;
+    _stoneIcon.hidden = YES;
+    
+    _stoneResourceCounter.hidden = YES;
+    _woodResourceCounter.hidden = YES;
+    _settingsButtonIcon.hidden = YES;
+   _sidebarButton.hidden = YES;
+}
+
+-(void) unitUnselected{
+    _activeNode = nil;
+    _sidebarButton.hidden = YES;
 }
 @end

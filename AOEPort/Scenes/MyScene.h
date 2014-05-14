@@ -28,6 +28,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
 -(void)rightSwipe;
 -(void)unitClicked:(Unit *) unitNode;
 -(void) updateProgress:(NSString *) progress;
+-(void) unitUnselected;
 
 @end
 

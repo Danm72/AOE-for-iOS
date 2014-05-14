@@ -32,8 +32,8 @@
     wheel.path = path.CGPath;
     
     wheel.strokeColor = [SKColor greenColor];
-    wheel.position = CGPointMake(self.position.x, self.position.y);
-//    wheel.zPosition = self.zPosition -1;
+//    wheel.position = CGPointMake(self.position.x, self.position.y);
+    wheel.zPosition = self.zPosition -1;
     NSLog(@"ADDING CIRCLE");
     [self addChild:wheel];
 }

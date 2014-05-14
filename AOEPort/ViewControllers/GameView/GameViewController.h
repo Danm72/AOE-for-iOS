@@ -15,9 +15,16 @@
 
 @interface GameViewController : UIViewController <UIGestureRecognizerDelegate> {
 }
+- (IBAction)updateStone:(id)sender;
+- (IBAction)updateWood:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *woodIcon;
+@property (weak, nonatomic) IBOutlet UITextField *woodResourceCounter;
 //@property (weak, nonatomic)  IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIImageView *stoneIcon;
+@property (weak, nonatomic) IBOutlet UITextField *stoneResourceCounter;
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
 - (IBAction)settingsButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *settingsButtonIcon;
 @property (strong, nonatomic) MyScene *scene;
 @property (strong, nonatomic) SKSpriteNode *activeNode;
 @property (strong, nonatomic) UIViewController *currentSideController;
