@@ -8,13 +8,14 @@
 int direction_graphic_start;
 int direction_graphic_end;
 BOOL flipGraphic;
-NSMutableArray *textures;
 
 @interface Unit : SKSpriteNode  <SKPhysicsContactDelegate>
 #define idle_action 0
 #define base_action 1
 #define move_action 2
 @property (readwrite) NSString *movementSpeed;
+@property (strong, readwrite) NSMutableArray *textures;
+
 
 + (NSArray *)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint;
 

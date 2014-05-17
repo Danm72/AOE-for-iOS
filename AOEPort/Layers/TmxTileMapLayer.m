@@ -9,6 +9,7 @@
 #import "SnowTile.h"
 #import "SandTile.h"
 #import "Tree.h"
+#import "TextureContainer.h"
 
 @implementation TmxTileMapLayer {
     TMXLayer *_layer;
@@ -68,14 +69,16 @@
 }
 
 - (void)createNodesFromLayer:(TMXLayer *)layer {
-    SKTextureAtlas *atlas;
+//    SKTextureAtlas *atlas;
+    TextureContainer *tx = [TextureContainer getInstance];
+
     Boolean tileLayer = [layer.layerInfo.name isEqualToString:@"Tiles"];
     if (tileLayer) {
-        atlas = [SKTextureAtlas atlasNamed:@"tiles"];
-        dirt = [atlas textureNamed:@"dirt1"];
-        sand = [atlas textureNamed:@"sand"];
-        grass = [atlas textureNamed:@"grass"];
-        snow = [atlas textureNamed:@"snow"];
+//        t = [SKTextureAtlas atlasNamed:@"tiles"];
+        dirt = [tx.tiles textureNamed:@"dirt1"];
+        sand = [tx.tiles  textureNamed:@"sand"];
+        grass = [tx.tiles  textureNamed:@"grass"];
+        snow = [tx.tiles  textureNamed:@"snow"];
     } else {
 
     }
@@ -176,14 +179,14 @@
 - (void)createNodesFromGroup:(TMXObjectGroup *)group {
     //  NSDictionary *playerObj = [group objectNamed:@"player"];
     if ([group.groupName isEqualToString:@"Buildings"]) {
-        _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+//        _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+        TextureContainer *tx = [TextureContainer getInstance];
 
-
-        wall = [_atlas textureNamed:@"wall"];
-        townCentre = [_atlas textureNamed:@"towncenter"];
-        barracks = [_atlas textureNamed:@"elitebarracks"];
+        wall = [tx.buildings textureNamed:@"wall"];
+        townCentre = [tx.buildings textureNamed:@"towncenter"];
+        barracks = [tx.buildings textureNamed:@"elitebarracks"];
 //        eliteBarracks = [atlas textureNamed:@"elitebarracks"];
-        church = [_atlas textureNamed:@"church"];
+        church = [tx.buildings textureNamed:@"church"];
 
         NSArray *walls = [group objectsNamed:@"Wall"];
 
@@ -255,7 +258,8 @@
     } else if ([group.groupName isEqualToString:@"Resources"]) {
         NSArray *trees = [group objectsNamed:@"Tree"];
         if (trees) {
-            _atlas = [SKTextureAtlas atlasNamed:@"trees"];
+//            _atlas = [SKTextureAtlas atlasNamed:@"trees"];
+            TextureContainer *tx = [TextureContainer getInstance];
 
             for (NSDictionary *treePos in trees) {
                 int r = arc4random() % 10;
@@ -280,7 +284,7 @@
                     NSLog(@"Exception: %@", exception);
                 }
                 
-                Tree *tree = [[Tree alloc] initWithTexture:[_atlas textureNamed:name]];
+                Tree *tree = [[Tree alloc] initWithTexture:[tx.trees textureNamed:name]];
 
                 tree.position = CGPointMake([treePos[@"x"] floatValue],
                         [treePos[@"y"] floatValue]);

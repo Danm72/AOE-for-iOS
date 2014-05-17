@@ -232,13 +232,6 @@
     _currentSideController = vc;
 }
 
-/*void (^synchBlock)(void) = ^{
-//    counter++;
-
-    Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
-    [building removeFromParent];
-
-};*/
 
 - (void)addStructure:(Building *)building {
     //[self.scene increaseNumberOfUnitesForSacte]

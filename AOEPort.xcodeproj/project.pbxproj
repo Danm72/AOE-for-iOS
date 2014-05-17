@@ -93,6 +93,7 @@
 		C83D0CBC1904B99B00D0DD44 /* hammer.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBA1904B99B00D0DD44 /* hammer.png */; };
 		C83D0CBD1904B99B00D0DD44 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = C83D0CBB1904B99B00D0DD44 /* splash.png */; };
 		C84CA74A18A6B7940006AD27 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C84CA74918A6B7940006AD27 /* libz.dylib */; };
+		C85DB1A01927C20F00A7A154 /* TextureContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C85DB19F1927C20F00A7A154 /* TextureContainer.m */; };
 		C85F3F97191FBF3D00130FD9 /* left_sword_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C85F3F94191FBF3D00130FD9 /* left_sword_red.png */; };
 		C85F3F98191FBF3D00130FD9 /* right_sword_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C85F3F95191FBF3D00130FD9 /* right_sword_red.png */; };
 		C85F3F99191FBF3D00130FD9 /* shield_red.png in Resources */ = {isa = PBXBuildFile; fileRef = C85F3F96191FBF3D00130FD9 /* shield_red.png */; };
@@ -295,6 +296,8 @@
 		C83D0CBA1904B99B00D0DD44 /* hammer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hammer.png; sourceTree = "<group>"; };
 		C83D0CBB1904B99B00D0DD44 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		C84CA74918A6B7940006AD27 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		C85DB19E1927C20F00A7A154 /* TextureContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureContainer.h; sourceTree = "<group>"; };
+		C85DB19F1927C20F00A7A154 /* TextureContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureContainer.m; sourceTree = "<group>"; };
 		C85F3F94191FBF3D00130FD9 /* left_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_sword_red.png; sourceTree = "<group>"; };
 		C85F3F95191FBF3D00130FD9 /* right_sword_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_sword_red.png; sourceTree = "<group>"; };
 		C85F3F96191FBF3D00130FD9 /* shield_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shield_red.png; sourceTree = "<group>"; };
@@ -873,6 +876,8 @@
 				C184BB570AD83F807E280C6A /* Touch */,
 				C184B105F1D0D4F1C29250AD /* ViewControllers */,
 				C184B36AD864ABBCE8AA5FE1 /* Delegate */,
+				C85DB19E1927C20F00A7A154 /* TextureContainer.h */,
+				C85DB19F1927C20F00A7A154 /* TextureContainer.m */,
 			);
 			path = AOEPort;
 			sourceTree = "<group>";
@@ -1172,6 +1177,7 @@
 				C184B1DCD13649280B83CF12 /* SplashScreenViewController.m in Sources */,
 				C184B7FDB172C387865587CD /* GameViewController.m in Sources */,
 				C184BAA83363C05FBF705920 /* RootViewController.m in Sources */,
+				C85DB1A01927C20F00A7A154 /* TextureContainer.m in Sources */,
 				C85F3F9C191FC01800130FD9 /* SplashScene.m in Sources */,
 				C184B9EC32FE5670D8C93D7A /* MenuItemTableViewCell.m in Sources */,
 				C184BD03DD1FBCC508401B41 /* SideBarMenuViewController.m in Sources */,

@@ -50,14 +50,28 @@
     scene.delegate = self;
     
     [self.activityIndicator startAnimating];
-    [scene loadSceneAssetsWithCompletionHandler:^{
-        self.loadedScene = scene;
-        [self.activityIndicator stopAnimating];
-        [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
-        //        [skView presentScene:scene];
-        //        [self saveGame:scene :@"SAVE_1"];
+    TextureContainer *tx = [TextureContainer getInstance];
+    
+    tx.builderBuild = [SKTextureAtlas atlasNamed:@"Builder_build"];
+    tx.builderIdle= [SKTextureAtlas atlasNamed:@"builder_idle"];
+    tx.builderWalk= [SKTextureAtlas atlasNamed:@"Builder_walk"];
+    tx.buildings = [SKTextureAtlas atlasNamed:@"buildings"];
+    tx.trees = [SKTextureAtlas atlasNamed:@"trees"];
+    tx.resources = [SKTextureAtlas atlasNamed:@"resources"];
+    
+    [SKTextureAtlas preloadTextureAtlases:@[tx.builderBuild, tx.builderIdle, tx.builderWalk, tx.buildings, tx.trees, tx.resources] withCompletionHandler:^{
+        
+        NSLog(@"DONE DONE DONE");
+        [scene loadSceneAssetsWithCompletionHandler:^{
+            self.loadedScene = scene;
+            [self.activityIndicator stopAnimating];
+            [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
+            //        [skView presentScene:scene];
+            //        [self saveGame:scene :@"SAVE_1"];
+        }];
+
     }];
-}
+   }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

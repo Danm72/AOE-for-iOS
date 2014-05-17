@@ -166,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Scenes/MyScene.m"
-            timestampString = "421719609.211296"
+            timestampString = "422039942.729917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "-createCharacters"
             landmarkType = "5">
          </BreakpointContent>
@@ -182,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Scenes/MyScene.m"
-            timestampString = "421719609.211296"
+            timestampString = "422039942.729917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "@implementation MyScene"
             landmarkType = "3">
          </BreakpointContent>
@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
+            timestampString = "422040162.749961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
+            timestampString = "422040162.749961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -230,11 +230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Touch/TouchHandlers.m"
-            timestampString = "422034282.370508"
+            timestampString = "422035455.345603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "-resetSelectionBox"
             landmarkType = "5">
          </BreakpointContent>
@@ -374,23 +374,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-createNodesFromGroup:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
+            timestampString = "422040162.749961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
@@ -406,11 +390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
+            timestampString = "422040162.749961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -422,11 +406,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Layers/TmxTileMapLayer.m"
-            timestampString = "421694825.477929"
+            timestampString = "422040162.749961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "-createNodesFromGroup:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AOEPort/Layers/TmxTileMapLayer.m"
+            timestampString = "422040162.749961"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "261"
+            endingLineNumber = "261"
             landmarkName = "-createNodesFromGroup:"
             landmarkType = "5">
          </BreakpointContent>
@@ -502,11 +502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Touch/TouchHandlers.m"
-            timestampString = "422034282.370508"
+            timestampString = "422035455.345603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "-selectNodeForTouch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -518,11 +518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Touch/TouchHandlers.m"
-            timestampString = "422034282.370508"
+            timestampString = "422035455.345603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
             landmarkName = "-removeBuildingActions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -534,11 +534,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/Touch/TouchHandlers.m"
-            timestampString = "422034282.370508"
+            timestampString = "422035455.345603"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "376"
+            endingLineNumber = "376"
             landmarkName = "-selectNodeForTouch:"
             landmarkType = "5">
          </BreakpointContent>
@@ -565,11 +565,11 @@
                   symbolName = "-[TouchHandlers selectUnitsWithinBox:]"
                   moduleName = "AOEPort"
                   urlString = "file:///Users/danmalone/Documents/Programming/2014/IOS/AOEPort/AOEPort/Touch/TouchHandlers.m"
-                  timestampString = "422033077.712433"
+                  timestampString = "422038798.095907"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
+                  startingLineNumber = "267"
+                  endingLineNumber = "267"
                   offsetFromSymbolStart = "285">
                </Location>
                <Location
@@ -579,11 +579,11 @@
                   symbolName = "__38-[TouchHandlers selectUnitsWithinBox:]_block_invoke"
                   moduleName = "AOEPort"
                   urlString = "file:///Users/danmalone/Documents/Programming/2014/IOS/AOEPort/AOEPort/Touch/TouchHandlers.m"
-                  timestampString = "422033077.712667"
+                  timestampString = "422038798.096111"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "265"
-                  endingLineNumber = "265"
+                  startingLineNumber = "267"
+                  endingLineNumber = "267"
                   offsetFromSymbolStart = "70">
                </Location>
             </Locations>
@@ -596,11 +596,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/ViewControllers/GameView/GameViewController.m"
-            timestampString = "421724328.703861"
+            timestampString = "422039942.729917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "298"
-            endingLineNumber = "298"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "-panEnded"
             landmarkType = "5">
          </BreakpointContent>
@@ -612,11 +612,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/ViewControllers/GameView/GameViewController.m"
-            timestampString = "421724328.703861"
+            timestampString = "422039942.729917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "294"
-            endingLineNumber = "294"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "-panEnded"
             landmarkType = "5">
          </BreakpointContent>
@@ -644,12 +644,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AOEPort/ViewControllers/GameView/GameViewController.m"
-            timestampString = "422032792.694452"
+            timestampString = "422039942.729917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
             landmarkName = "-updateResources:woodNeeded:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AOEPort/Model/Units/Villagers/Builder/Builder.m"
+            timestampString = "422039028.897404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "-animate:::"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AOEPort/Model/Units/Villagers/Builder/Builder.m"
+            timestampString = "422039028.897404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-animate:::"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AOEPort/Model/Units/Villagers/Builder/Builder.m"
+            timestampString = "422038484.956539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-animate:::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

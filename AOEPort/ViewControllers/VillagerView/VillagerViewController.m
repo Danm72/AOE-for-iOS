@@ -12,6 +12,7 @@
 #import "Barracks.h"
 #import "Church.h"
 #import "SWRevealViewController.h"
+#import "TextureContainer.h"
 
 @interface VillagerViewController ()
 
@@ -34,7 +35,9 @@ static NSString *cellIdentifier;
 {
     [super viewDidLoad];
     
-    _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+//    _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+    _tx = [TextureContainer getInstance];
+
     SWRevealViewController *revealController = self.revealViewController;
     
     [self.view addGestureRecognizer:revealController.panGestureRecognizer];
@@ -56,7 +59,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         
         //        Wall *wall = [Wall spriteNodeWithTexture:tex];
         
-        Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
+        Wall *wall = [Wall spriteNodeWithTexture:[_tx.buildings textureNamed:@"building_site1"]];
         if([self.delegate updateResources:wall.stone woodNeeded:wall.wood]){
             wall.placed = NO;
             [self.delegate addStructure:wall];
@@ -69,7 +72,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (indexPath.section == 1)
     {
-        Church *church = [Church spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
+        Church *church = [Church spriteNodeWithTexture:[_tx.buildings textureNamed:@"building_site1"]];
         
         if([self.delegate updateResources:church.stone woodNeeded:church.wood]){
             
@@ -83,7 +86,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (indexPath.section == 2)
     {
-        TownCenter *center = [TownCenter spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
+        TownCenter *center = [TownCenter spriteNodeWithTexture:[_tx.buildings textureNamed:@"building_site1"]];
         
         if([self.delegate updateResources:center.stone woodNeeded:center.wood]){
             
@@ -96,7 +99,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     }
     if (indexPath.section == 3)
     {
-        Barracks *barracks = [Barracks spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
+        Barracks *barracks = [Barracks spriteNodeWithTexture:[_tx.buildings textureNamed:@"building_site1"]];
         
         if([self.delegate updateResources:barracks.stone woodNeeded:barracks.wood]){
             

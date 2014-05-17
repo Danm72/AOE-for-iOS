@@ -1,6 +1,7 @@
 #import "MyScene.h"
 #import "Builder.h"
 #import "Constants.h"
+#import "TextureContainer.h"
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
@@ -109,12 +110,13 @@
 }
 
 - (void)createCharacters {
+    TextureContainer *tx = [TextureContainer getInstance];
 
     _unitLayer = [SKNode node];
     _unitLayer.scene.size = CGSizeMake(self.size.width, self.size.height);
-    self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+//    self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
-    Builder *builder = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    Builder *builder = [Builder spriteNodeWithTexture:[tx.builderWalk textureNamed:@"builderwalking0"]];
     builder.position = CGPointMake(2540, 550);
 //    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
     builder.zPosition = 3200 - builder.position.y;
@@ -122,14 +124,14 @@
     [_unitLayer addChild:builder];
 
 
-    Builder *builder2 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    Builder *builder2 = [Builder spriteNodeWithTexture:[tx.builderWalk textureNamed:@"builderwalking0"]];
     builder2.position = CGPointMake(1880, 1400);
 //    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
     builder2.zPosition = 3200 - builder2.position.y;
 
     [_unitLayer addChild:builder2];
 
-    Builder *builder3 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
+    Builder *builder3 = [Builder spriteNodeWithTexture:[tx.builderWalk textureNamed:@"builderwalking0"]];
     builder3.position = CGPointMake(400, 2515);
 //    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
     builder3.zPosition = 3200 - builder3.position.y;
@@ -208,8 +210,9 @@
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)handler {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         // Load the shared assets in the background.
-        [self loadSceneAssets];
+     
 
+        [self loadSceneAssets];
         if (!handler) {
             return;
         }
@@ -218,7 +221,6 @@
             // Call the completion handler back on the main queue.
             NSLog(@"Calling Completion Handler");
             handler();
-            // [self didMoveToView:self.view];
         });
     });
 }

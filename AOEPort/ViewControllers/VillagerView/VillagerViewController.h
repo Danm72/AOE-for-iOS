@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TextureContainer.h"
 @class Building;
 @protocol VillagerViewControllerDelegate <NSObject>
 -(void)addStructure:(Building*) building;
@@ -18,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, readwrite) NSInteger numberOfUnites;
 @property (nonatomic,readwrite) SKTextureAtlas* atlas;
+@property (retain, strong)  TextureContainer *tx;
 
 @property (nonatomic, readwrite, weak) id <VillagerViewControllerDelegate> delegate;
 @end

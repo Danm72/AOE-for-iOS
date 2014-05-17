@@ -55,7 +55,7 @@
     // [super animateWalk:atlas :direction];
     SKAction *_lumberWalkingAnimation;
 
-    textures = [NSMutableArray arrayWithCapacity:15];
+    self.textures = [NSMutableArray arrayWithCapacity:15];
 
     [self evaluateMovementDirection:direction];
 
@@ -63,11 +63,11 @@
         NSString *textureName =
                 [NSString stringWithFormat:@"%@%d", animationName, i];
         SKTexture *texture = [_atlas textureNamed:textureName];
-        [textures addObject:texture];
+        [self.textures addObject:texture];
     }
 
     _lumberWalkingAnimation =
-            [SKAction animateWithTextures:textures timePerFrame:0.1];
+            [SKAction animateWithTextures:self.textures timePerFrame:0.1];
 
     //SKAction *action0 = [SKAction scaleXTo:1.0 duration:0.1];
     SKAction *action1 = [SKAction scaleXTo:-1.0 duration:0.01];
@@ -83,7 +83,7 @@
         NSLog(@"exception: %@", exception);
     }
 
-    [SKTexture preloadTextures:textures withCompletionHandler:^(void) {
+    [SKTexture preloadTextures:self.textures withCompletionHandler:^(void) {
         if (flipGraphic) {
             [self runAction:[SKAction repeatAction:flipGraphicSequence count:1]];
             [self runAction:[SKAction repeatActionForever:_lumberWalkingAnimation]];
