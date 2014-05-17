@@ -33,10 +33,10 @@ static NSString *cellIdentifier;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-     _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
+    
+    _atlas = [SKTextureAtlas atlasNamed:@"buildings"];
     SWRevealViewController *revealController = self.revealViewController;
-
+    
     [self.view addGestureRecognizer:revealController.panGestureRecognizer];
 }
 
@@ -52,34 +52,77 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section == 0)
     {
+        //        SKTexture *tex = [SKTexture textureWithImageNamed:@"building_site1.png"];
         
-        Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
-        wall.placed = NO;
-        [self.delegate addStructure:wall];
+        //        Wall *wall = [Wall spriteNodeWithTexture:tex];
+        
+        Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
+        if([self.delegate updateResources:wall.stone woodNeeded:wall.wood]){
+            wall.placed = NO;
+            [self.delegate addStructure:wall];
+            
+        }
+        else {
+            wall = nil;
+            [self showAlert];
+        }
     }
     if (indexPath.section == 1)
     {
+        Church *church = [Church spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
         
-        Church *church = [Church spriteNodeWithTexture:[_atlas textureNamed:@"church"]];
-        church.placed = NO;
-
-        [self.delegate addStructure:church];
+        if([self.delegate updateResources:church.stone woodNeeded:church.wood]){
+            
+            church.placed = NO;
+            
+            [self.delegate addStructure:church];
+        }else {
+            church = nil;
+            [self showAlert];
+        }
     }
     if (indexPath.section == 2)
     {
+        TownCenter *center = [TownCenter spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
         
-        TownCenter *center = [TownCenter spriteNodeWithTexture:[_atlas textureNamed:@"elitetowncenter"]];
-        center.placed = NO;
-        [self.delegate addStructure:center];
+        if([self.delegate updateResources:center.stone woodNeeded:center.wood]){
+            
+            center.placed = NO;
+            [self.delegate addStructure:center];
+        }else {
+            center = nil;
+            [self showAlert];
+        }
     }
     if (indexPath.section == 3)
     {
+        Barracks *barracks = [Barracks spriteNodeWithTexture:[_atlas textureNamed:@"building_site1"]];
         
-        Barracks *barracks = [Barracks spriteNodeWithTexture:[_atlas textureNamed:@"elitebarracks"]];
-        barracks.placed = NO;
-        [self.delegate addStructure:barracks];
+        if([self.delegate updateResources:barracks.stone woodNeeded:barracks.wood]){
+            
+            barracks.placed = NO;
+            [self.delegate addStructure:barracks];
+        }else {
+            barracks = nil;
+            [self showAlert];
+        }
     }
-//		[self.nameTextField becomeFirstResponder];
+    //		[self.nameTextField becomeFirstResponder];
+}
+
+- (void) showAlert {
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          
+                          initWithTitle:@"Resources"
+                          message:@"Not Enough Resources"
+                          delegate:nil
+                          cancelButtonTitle:@"Dismiss"
+                          otherButtonTitles:nil];
+    
+    [alert show];
+//    [alert release];
+    alert = nil;
 }
 
 @end

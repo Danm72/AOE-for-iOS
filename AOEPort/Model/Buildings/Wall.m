@@ -25,26 +25,11 @@
             self.buildType = @"Wall";
             [self setupPhysicsBody];
             self.placed = NO;
+            self.stone = 20;
+            self.wood = 10;
         }
     }
     return self;
 }
-
-//- (void)didBeginContact:(SKPhysicsContact *)contact {
-//    NSLog(@"Wall contact");
-//
-//    uint32_t collision = (contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask);
-//    if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
-//        NSLog(@"BUILD UNIT");
-//        [contact.bodyA.node runAction:[Building selectedBuildingAction]];
-//    }
-//    if (collision == (CNPhysicsCategoryBoundary | CNPhysicsCategoryBuilding)) {
-//        NSLog(@"BUILDING");
-//    }
-////    if (collision == (CNPhysicsCategoryCat|CNPhysicsCategoryEdge)) {
-////        NSLog(@"FAIL"); }
-//}
-
-
 
 @end

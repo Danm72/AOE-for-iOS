@@ -21,9 +21,10 @@
             [data setValue:@"TownCenter" forKey:@"Type"];
             
             self.userData = data;
-            self.buildType = @"TownCenter";
+            self.buildType = @"elitetowncenter";
             [self setupPhysicsBody];
-
+            self.stone = 75;
+            self.wood = 40;
         }
     }
     return self;

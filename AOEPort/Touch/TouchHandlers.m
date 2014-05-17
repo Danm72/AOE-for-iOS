@@ -5,7 +5,6 @@
 
 #import "TouchHandlers.h"
 #import "Builder.h"
-#import "Building.h"
 #import "MyScene.h"
 #import "Wall.h"
 
@@ -64,11 +63,13 @@
     //    [[scene view] addGestureRecognizer:rotationGestureRecognizer];
     
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressFrom:)];
-    longPressGestureRecognizer.minimumPressDuration = 0.15;
+    longPressGestureRecognizer.minimumPressDuration = 0.25;
     [[_scene view] addGestureRecognizer:longPressGestureRecognizer];
     [longPressGestureRecognizer setDelegate:self];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+    [tapGestureRecognizer requireGestureRecognizerToFail:longPressGestureRecognizer];
+    
     [[_scene view] addGestureRecognizer:tapGestureRecognizer];
     
     UIScreenEdgePanGestureRecognizer *leftEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
@@ -78,6 +79,7 @@
     
     UIScreenEdgePanGestureRecognizer *rightEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightEdgeGesture:)];
     rightEdgePanGestureRecognizer.edges = UIRectEdgeRight;
+    
     [[_scene view] addGestureRecognizer:rightEdgePanGestureRecognizer];
     
 }
@@ -163,13 +165,34 @@
     } else {// cancel, fail, or ended
         
         [_scene.delegate rightSwipe];
-        
     }
 }
 
 - (void)handleRotationFrom:(UIRotationGestureRecognizer *)recognizer {
     //    recognizer.view.transform = CGAffineTransformRotate(recognizer.view.transform, recognizer.rotation);
     //    recognizer.rotation = 0;
+}
+
+- (void)beginSelectionBox:(CGPoint)touchLocation {
+    //    if (!_selectedBuilding) {
+    if (self.pointOne.x == 0) {
+        self.pointOne = touchLocation;
+        self.isSelecting = true;
+        
+        CGSize size = CGSizeMake((0), (0));
+        
+        self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
+        [_scene.unitLayer addChild:self.selectionBox];
+    }
+    //    }
+}
+
+- (SKAction*)createBuilding:(Building *)building {
+    if([_selectedNodes count] >0 && building.built == NO && building.placed){
+        Builder *unit = [_selectedNodes objectAtIndex:0];
+        return [unit createBuilding:building];
+    }
+    return nil;
 }
 
 - (void)handleLongPressFrom:(UILongPressGestureRecognizer *)recognizer {
@@ -180,27 +203,22 @@
         touchLocation = [_scene convertPointFromView:touchLocation];
         touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
         
-        SKNode *node =[_scene.buildingLayer nodeAtPoint:touchLocation];
-        if ([node isKindOfClass:[Building class]] || [node isKindOfClass:[Wall class]]) {
+        
+        if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
+            Building *building =(Building*) [_scene.buildingLayer nodeAtPoint:touchLocation];
             [_selectedBuilding removeAllChildren];
-            _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
+            _selectedBuilding = building;
+            SKAction *seq = [self createBuilding:building];
+            
+            if(seq)
+                [_scene runAction:seq];
+            
+        }else{
+            [self beginSelectionBox:touchLocation];
+            
         }
         
-        if (_selectedBuilding) {
-            [_scene.delegate buildingClicked:_selectedBuilding];
-        }
         
-        if(!_selectedBuilding){
-            if (self.pointOne.x == 0) {
-                self.pointOne = touchLocation;
-                self.isSelecting = true;
-                
-                CGSize size = CGSizeMake((0), (0));
-                
-                self.selectionBox = [[DrawSelectionBox alloc] initWithPointAndSize:touchLocation :size];
-                [_scene.unitLayer addChild:self.selectionBox];
-            }
-        }
         
         if (recognizer.state == UIGestureRecognizerStateEnded) {
             
@@ -211,10 +229,12 @@
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
     
     CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
-    
+
     touchLocation = [_scene convertPointFromView:touchLocation];
     touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
     
+    NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
+
     CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -225,14 +245,16 @@
         [self selectNodeForTouch:touchLocation];
         
         [self moveAllUnitsToPos:newPos];
-    
+        
     }
     
 }
 
 - (void)moveAllUnitsToPos:(CGPoint)positionToMoveTo {
-    for (Unit *node in _selectedNodes) {
-        [((Unit *) node) move:positionToMoveTo];
+    if([ _selectedNodes count] > 0){
+        for (Unit *node in _selectedNodes) {
+            [((Unit *) node) move:positionToMoveTo];
+        }
     }
 }
 
@@ -243,7 +265,7 @@
     [self.scene.delegate unitUnselected];
     
     [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
-        Unit *unit = (Unit*)node;
+        Unit *unit = (Unit *) node;
         [unit removeAllChildren]; //remove circle
         
         CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
@@ -273,7 +295,7 @@
         translation = CGPointMake(translation.x * 4,
                                   -translation.y * 4);
         
-        if (self.isSelecting ) {
+        if (self.isSelecting) {
             [self selectUnitsWithinBox:translation];
             
         } else {
@@ -281,21 +303,21 @@
         }
         
         [recognizer setTranslation:CGPointZero inView:recognizer.view];
-        
     }
     
     else if (recognizer.state == UIGestureRecognizerStateEnded) {
         
-        if(_selectedBuilding && !_isSelecting){
+        if (_selectedBuilding && !_isSelecting) {
             _selectedBuilding.placed = YES;
+            
             [self removeBuildingActions:_selectedBuilding];
+            
         }
         
         [self resetSelectionBox];
         [self.delegate panEnded];
     }
 }
-
 
 - (void)resetSelectionBox {
     self.isSelecting = false;
@@ -333,11 +355,11 @@
         _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
         [_selectedBuilding addSelectedCircle];
     } else if ([[_scene.unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
-        unit = (Unit*)[_scene.unitLayer nodeAtPoint:touchLocation];
+        unit = (Unit *) [_scene.unitLayer nodeAtPoint:touchLocation];
     }
     
     if (unit) {
-        for(Unit *unit in _selectedNodes){
+        for (Unit *unit in _selectedNodes) {
             [unit removeAllChildren];
         }
         [_selectedNodes removeAllObjects];
@@ -346,7 +368,8 @@
         [_scene.delegate unitClicked:unit];
         [_selectedNodes addObject:unit];
         
-    }else if(_selectedBuilding){
+    } else if (_selectedBuilding) {
+        
         [_scene.delegate buildingClicked:_selectedBuilding];
     }
     
@@ -360,9 +383,9 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
 - (void)panForTranslation:(CGPoint)translation {
     
     if (_selectedBuilding) {
-        if(_selectedBuilding.placed == NO)
+        if (_selectedBuilding.placed == NO)
             [self moveBuilding:translation node:_selectedBuilding];
-        else{
+        else {
             CGPoint newPos = CGPointMake(-translation.x, -translation.y);
             
             newPos = [_scene convertPoint:newPos toNode:_scene.worldNode];

@@ -11,15 +11,23 @@ BOOL flipGraphic;
 NSMutableArray *textures;
 
 @interface Unit : SKSpriteNode  <SKPhysicsContactDelegate>
-
-
+#define idle_action 0
+#define base_action 1
+#define move_action 2
 @property (readwrite) NSString *movementSpeed;
 
 + (NSArray *)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint;
 
-- (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction;
+- (void)animateWalk:(NSInteger)direction;
+- (void)animateAction:(NSInteger)direction:(NSInteger) actionType;
+//- (void)idle:(NSInteger)direction;
+//- (void)action:(NSInteger)direction;
+- (void)animate:(NSInteger)direction :(NSString *)atlasName :(NSString *)animationName;
+//- (SKAction*)animate:(NSInteger)direction :(NSString *)atlasName :(NSString *)animationName;
+
 
 - (void)move:(CGPoint)newPos;
+- (void)move:(CGPoint)newPos:(NSInteger) completionAction;
 
 - (void)evaluateMovementDirection:(NSInteger)direction;
 -(void) setupPhysics;

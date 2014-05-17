@@ -21,8 +21,9 @@
             [data setValue:@"Barracks" forKey:@"Type"];
             
             self.userData = data;
-            self.buildType = @"Barracks";
-
+            self.buildType = @"elitebarracks";
+            self.stone = 100;
+            self.wood = 50;
         }
     }
     return self;

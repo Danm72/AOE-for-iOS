@@ -33,15 +33,53 @@
     
     wheel.strokeColor = [SKColor greenColor];
 //    wheel.position = CGPointMake(self.position.x, self.position.y);
-    wheel.zPosition = self.zPosition -1;
-    NSLog(@"ADDING CIRCLE");
+    wheel.zPosition = self.position.y - self.zPosition;
+//    NSLog(@"ADDING CIRCLE");
     [self addChild:wheel];
 }
+- (void)move:(CGPoint)newPos:(NSInteger) completionAction {
+
+    int direction = [self setDirection:newPos];
+
+    //    [self animateWalk :direction];
+    [self animateAction:direction:move_action];
+    int speed = [TouchUtilities getSpeed:self.position :newPos];
+    
+    //    NSArray *points = [self findPointsInPath:newPos];
+    NSArray *points = [TouchUtilities getAllPointsFromPoint:self.position toPoint:newPos];
+
+    for( NSValue *val in points){
+        CGPoint p = [val CGPointValue];
+        SKAction *moveTo = [SKAction moveTo:p duration:speed];
+        [moveTo setTimingMode:SKActionTimingEaseOut];
+        
+        @try {
+            [self runAction:moveTo completion:^{
+                {
+                    [self removeAllActions];
+                    if(completionAction == idle_action)
+                        [self animateAction:direction :idle_action];
+                    else if(completionAction == base_action){
+                        [self animateAction:direction :base_action];
+                        return;
+                    }
+                }
+                
+            }];
+        }@catch (NSException *exception) {
+            NSLog(@"exception: %@", exception);
+        }
+    }
+}
+
 - (void)move:(CGPoint)newPos {
-    SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
     
+    [self move:newPos:idle_action];
+}
+
+- (int)setDirection:(CGPoint)newPos {
     int direction = -1;
-    
+
     if (newPos.y > self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
         direction = NORTH;
     if (newPos.y < self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
@@ -58,35 +96,7 @@
         direction = SOUTH_EAST;
     if (newPos.y < self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
         direction = SOUTH_WEST;
-    
-    [self animateWalk:atlas :direction];
-    int speed = [TouchUtilities getSpeed:self.position :newPos];
-    
-    //    NSArray *points = [self findPointsInPath:newPos];
-    NSArray *points = [TouchUtilities getAllPointsFromPoint:self.position toPoint:newPos];
-    
-    for( NSValue *val in points){
-        CGPoint p = [val CGPointValue];
-        SKAction *moveTo = [SKAction moveTo:p duration:speed];
-        [moveTo setTimingMode:SKActionTimingEaseOut];
-        
-        @try {
-            [self runAction:moveTo completion:^{
-                {
-                    
-                    [self removeAllActions];
-                    
-                }
-                
-                
-                //idle
-                
-            }];
-        }@catch (NSException *exception) {
-            NSLog(@"exception: %@", exception);
-        }
-    }
-    
+    return direction;
 }
 
 - (void)moveToward:(CGPoint)targetPosition {

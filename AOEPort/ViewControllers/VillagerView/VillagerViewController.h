@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 @class Building;
 @protocol VillagerViewControllerDelegate <NSObject>
--(void)addStructure:(Building*) building ;
+-(void)addStructure:(Building*) building;
+-(BOOL)updateResources:(NSInteger)requiredStone woodNeeded:(NSInteger) requiredWood;
+
 @end
 
 @interface VillagerViewController : UITableViewController

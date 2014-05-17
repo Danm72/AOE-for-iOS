@@ -4,7 +4,6 @@
 
 @interface MyScene () <SKPhysicsContactDelegate>
 
-
 @end
 
 @implementation MyScene
@@ -116,7 +115,7 @@
     self.atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
 
     Builder *builder = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder.position = CGPointMake(1570, 1500);
+    builder.position = CGPointMake(2540, 550);
 //    builder.zPosition = _bgLayer.layerSize.height - builder.position.y;
     builder.zPosition = 3200 - builder.position.y;
 
@@ -124,14 +123,14 @@
 
 
     Builder *builder2 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder2.position = CGPointMake(1620, 1500);
+    builder2.position = CGPointMake(1880, 1400);
 //    builder2.zPosition = _bgLayer.layerSize.height - builder2.position.y;
     builder2.zPosition = 3200 - builder2.position.y;
 
     [_unitLayer addChild:builder2];
 
     Builder *builder3 = [Builder spriteNodeWithTexture:[self.atlas textureNamed:@"builderwalking0"]];
-    builder3.position = CGPointMake(1600, 1500);
+    builder3.position = CGPointMake(400, 2515);
 //    builder3.zPosition = _bgLayer.layerSize.height - builder3.position.y;
     builder3.zPosition = 3200 - builder3.position.y;
 
@@ -237,19 +236,19 @@
     if (collision == (CNPhysicsCategoryBuilding | CNPhysicsCategoryUnit)) {
 //        NSLog(@"Building and unit");
         if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
-            [contact.bodyA.node removeAllActions];
+//            [contact.bodyA.node removeAllActions];
         } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
 
-            [contact.bodyB.node removeAllActions];
+//            [contact.bodyB.node removeAllActions];
         }
     }
     if (collision == (CNPhysicsCategoryResource | CNPhysicsCategoryUnit)) {
         
         if (contact.bodyA.categoryBitMask == CNPhysicsCategoryUnit) {
-            [contact.bodyA.node removeAllActions];
+            //[contact.bodyA.node removeAllActions];
         } else if (contact.bodyB.categoryBitMask == CNPhysicsCategoryUnit) {
             
-            [contact.bodyB.node removeAllActions];
+           // [contact.bodyB.node removeAllActions];
         }
 //        NSLog(@"Selection and Units");
 

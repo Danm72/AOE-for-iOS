@@ -5,9 +5,13 @@
 
 #import <Foundation/Foundation.h>
 #import "Villager.h"
+#import "Building.h"
 
 
 
 @interface Builder : Villager
-- (void)animateWalk:(SKTextureAtlas *)atlas :(NSInteger)direction;
+//- (void)animateWalk :(NSInteger)direction;
+@property (strong, nonatomic) SKTextureAtlas *atlas;
+- (SKAction*)createBuilding:(Building *)building;
+
 @end

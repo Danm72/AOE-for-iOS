@@ -12,6 +12,8 @@
 		C184B151209597F548BF1E6E /* Church.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B54602E2FCC3961D5CE5 /* Church.m */; };
 		C184B16D62084268170F9712 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B40E9E0F185F7F9981A1 /* logo.png */; };
 		C184B1DCD13649280B83CF12 /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B734041C86EADBE5B7CB /* SplashScreenViewController.m */; };
+		C184B23B98C7488B527A7BFB /* lumberWalk.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B4891DB61820584FAB3A /* lumberWalk.atlas */; };
+		C184B2914A15C2A97A90E89A /* MinerStand.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184BF84AC70C992B418054D /* MinerStand.atlas */; };
 		C184B2AA93AE03371A3C24DE /* JSTileMap.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BE3C8945B51D35F9D73F /* JSTileMap.m */; };
 		C184B2BB2F48273A120B02DB /* SKSpriteNode+SSKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB29CE07BB3DA99EA935 /* SKSpriteNode+SSKAnimation.m */; };
 		C184B2C98FC38723E7F781CE /* SKTUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = C184B5D553B80AA330AA081C /* SKTUtils.mm */; };
@@ -19,9 +21,11 @@
 		C184B2FE5D55B126DAD69E6A /* MainMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B78805CE5D5D7BEC623E /* MainMenuTableViewCell.m */; };
 		C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BDCA7518565072A49DBF /* tile32_256build.png */; };
 		C184B3329468B0CF44B6631D /* GrassTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B84048EB17524395B6A5 /* GrassTile.m */; };
+		C184B3354D2FE9722C8431D6 /* builder_idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B9964B2D1E1939BFFD28 /* builder_idle.atlas */; };
 		C184B363DBED6EC686B67FC3 /* Villager.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD0EA34E0E7D11E77152 /* Villager.m */; };
 		C184B39D0C90FF5642CC0F41 /* TouchUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */; };
 		C184B3CB7248399B80D377E0 /* maptest_small.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B018BD50203F0063867F /* maptest_small.png */; };
+		C184B3D05B0A3C05B8F3BDE8 /* destroyedWall.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B25F6BB084586AE6E4CE /* destroyedWall.atlas */; };
 		C184B3E481074114A2BAFBFE /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = C184BBCED4A9653A30BC9FBF /* spark.png */; };
 		C184B4172DD15E35CEE5B216 /* Builder_build.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B2C59507C53E600D89E9 /* Builder_build.atlas */; };
 		C184B4D33396F00EF1034C55 /* TownCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B8CA290A7E4CE160D2EC /* TownCenter.m */; };
@@ -33,6 +37,7 @@
 		C184B5AFE67477C1E41C1FDC /* SSKTileableNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B1233908517431B7FA2B /* SSKTileableNode.m */; };
 		C184B5D3DC57A8B987006F34 /* maptest.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B33410169C8A42B032C8 /* maptest.png */; };
 		C184B6A865CFD07EC53D87D9 /* SKEmitterNode+SKTExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BA74AEF4534CE31414DF /* SKEmitterNode+SKTExtras.m */; };
+		C184B736428357B3C949F0E0 /* Lumber_swing.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B6127DBD039A296C0BF9 /* Lumber_swing.atlas */; };
 		C184B77692A4FD8A5609076E /* fable.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B5A89FFC48F62E09DF48 /* fable.png */; };
 		C184B7999A00E12CEEBEBBBE /* icon in Resources */ = {isa = PBXBuildFile; fileRef = C184BF70B559CB8F6576AF59 /* icon */; };
 		C184B7A1F85E0FE14A5FF410 /* SSKMultiLineLabelNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0330AA52BBC75837B5A /* SSKMultiLineLabelNode.m */; };
@@ -41,6 +46,7 @@
 		C184B7FDB172C387865587CD /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B17FEF2A6E7C6B1ADDF5 /* GameViewController.m */; };
 		C184B80E477B842244C61F17 /* resources_map1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184BA28E85B99B64F839AFD /* resources_map1.tmx */; };
 		C184B851714ED2D96FB9D221 /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BD44D000E995FFD1E28E /* Tree.m */; };
+		C184B87C33BAED2BC6AD38E1 /* LumberJack.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B677606214ACEA4A931D /* LumberJack.m */; };
 		C184B8B2FCC4481DECD70893 /* isoMap.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B707DFC3E0B3B5940F74 /* isoMap.tmx */; };
 		C184B92CD9C8401437EDAF7E /* SnowTile.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0BE9D19B4441003676A /* SnowTile.m */; };
 		C184B92D4C90AA4B6BC79E19 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B0E4F70FB0A4FE9FFCB5 /* AppDelegate.m */; };
@@ -50,6 +56,7 @@
 		C184B9B526515A61529CF74F /* DrawSelectionBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B53E27836BD3CB24C061 /* DrawSelectionBox.m */; };
 		C184B9EC32FE5670D8C93D7A /* MenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BC789E54C0C18634C3B5 /* MenuItemTableViewCell.m */; };
 		C184BA27D2EDAC8A19F4CB6D /* resources_map_imageLayer.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184BF71A4020B9714137ACA /* resources_map_imageLayer.tmx */; };
+		C184BA61ABB797DBB14BAFED /* resources.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C184B5AB5FABB49D344D2E8F /* resources.atlas */; };
 		C184BAA83363C05FBF705920 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BF37C81288FCCE11CA08 /* RootViewController.m */; };
 		C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */ = {isa = PBXBuildFile; fileRef = C184B6E41B33E796BA3965FF /* tile32_256build.tmx */; };
 		C184BBE1C74D7AE5A9D208DA /* resources_map_imageLayer.png in Resources */ = {isa = PBXBuildFile; fileRef = C184B4ADE8DE88F5288C02A8 /* resources_map_imageLayer.png */; };
@@ -170,6 +177,7 @@
 		C184B17FEF2A6E7C6B1ADDF5 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		C184B1FA098CD8B94A27C199 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		C184B213F2E5560342506F70 /* TouchHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchHandlers.h; sourceTree = "<group>"; };
+		C184B25F6BB084586AE6E4CE /* destroyedWall.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = destroyedWall.atlas; sourceTree = "<group>"; };
 		C184B2A05F844BCCBE9D2E29 /* SSKStretchableNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKStretchableNode.h; sourceTree = "<group>"; };
 		C184B2AA361A3AA9580086E8 /* TownCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenterViewController.m; sourceTree = "<group>"; };
 		C184B2C59507C53E600D89E9 /* Builder_build.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_build.atlas; sourceTree = "<group>"; };
@@ -181,6 +189,7 @@
 		C184B40E9E0F185F7F9981A1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		C184B44C8FB712024682E62E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C184B46EC3D9CAC1A9886822 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		C184B4891DB61820584FAB3A /* lumberWalk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lumberWalk.atlas; sourceTree = "<group>"; };
 		C184B4ADE8DE88F5288C02A8 /* resources_map_imageLayer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resources_map_imageLayer.png; sourceTree = "<group>"; };
 		C184B4B6509083B0514338E7 /* SKTAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTAudio.h; sourceTree = "<group>"; };
 		C184B51A482CA41C0701FBE6 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
@@ -188,15 +197,19 @@
 		C184B53E27836BD3CB24C061 /* DrawSelectionBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawSelectionBox.m; sourceTree = "<group>"; };
 		C184B54602E2FCC3961D5CE5 /* Church.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Church.m; sourceTree = "<group>"; };
 		C184B5A89FFC48F62E09DF48 /* fable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fable.png; sourceTree = "<group>"; };
+		C184B5AB5FABB49D344D2E8F /* resources.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = resources.atlas; sourceTree = "<group>"; };
 		C184B5ACBE628E963209D825 /* SKTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKTUtils.h; sourceTree = "<group>"; };
 		C184B5BF953C80EEE3B6B022 /* Building.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Building.h; sourceTree = "<group>"; };
 		C184B5D553B80AA330AA081C /* SKTUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SKTUtils.mm; sourceTree = "<group>"; };
 		C184B6047FAEFBF25E672F69 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wall.h; sourceTree = "<group>"; };
+		C184B6127DBD039A296C0BF9 /* Lumber_swing.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Lumber_swing.atlas; sourceTree = "<group>"; };
 		C184B61FFFC53E100197FDAD /* SideBarMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarMenuViewController.m; sourceTree = "<group>"; };
 		C184B64217F2E85A177134C3 /* DirtTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirtTile.m; sourceTree = "<group>"; };
 		C184B6572EB33C8BBBE04967 /* TownCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TownCenter.h; sourceTree = "<group>"; };
+		C184B677606214ACEA4A931D /* LumberJack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LumberJack.m; sourceTree = "<group>"; };
 		C184B69AA29F96CA8443C726 /* SSKMultiplatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKMultiplatform.h; sourceTree = "<group>"; };
 		C184B6B993F9A85D4EFABC77 /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		C184B6CBC8F236FF36EB8CC6 /* LumberJack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LumberJack.h; sourceTree = "<group>"; };
 		C184B6E41B33E796BA3965FF /* tile32_256build.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = tile32_256build.tmx; sourceTree = "<group>"; };
 		C184B707DFC3E0B3B5940F74 /* isoMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = isoMap.tmx; sourceTree = "<group>"; };
 		C184B734041C86EADBE5B7CB /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
@@ -219,6 +232,7 @@
 		C184B8CA290A7E4CE160D2EC /* TownCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TownCenter.m; sourceTree = "<group>"; };
 		C184B9278B90FC42D524A02F /* GrassTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GrassTile.h; sourceTree = "<group>"; };
 		C184B987DCAE6146F5592A29 /* JSTileMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSTileMap.h; sourceTree = "<group>"; };
+		C184B9964B2D1E1939BFFD28 /* builder_idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = builder_idle.atlas; sourceTree = "<group>"; };
 		C184B9C2B1104B20E1B03A73 /* TouchUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchUtilities.m; sourceTree = "<group>"; };
 		C184B9E34435A478095C1E29 /* SKNode+SKTExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKNode+SKTExtras.m"; sourceTree = "<group>"; };
 		C184BA1A8A2AB3E177D9F15D /* MainMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuTableViewCell.h; sourceTree = "<group>"; };
@@ -260,6 +274,7 @@
 		C184BF70B559CB8F6576AF59 /* icon */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		C184BF71A4020B9714137ACA /* resources_map_imageLayer.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = resources_map_imageLayer.tmx; sourceTree = "<group>"; };
 		C184BF78B36B7B69DA78F498 /* debugMap.tmx */ = {isa = PBXFileReference; lastKnownFileType = file.tmx; path = debugMap.tmx; sourceTree = "<group>"; };
+		C184BF84AC70C992B418054D /* MinerStand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MinerStand.atlas; sourceTree = "<group>"; };
 		C184BF9F6DF96F76D8F65724 /* CastleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastleViewController.h; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
 		C8160263191F1FEB0088BBDF /* left_sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_sword.png; path = ../../../../../../../../../Pictures/photoshop/sword/left_sword.png; sourceTree = "<group>"; };
@@ -532,6 +547,12 @@
 				C184B2C59507C53E600D89E9 /* Builder_build.atlas */,
 				C184B80E1BEFFFCE4B88D416 /* trees.atlas */,
 				C184B8C9E3914388E1918591 /* buildings.atlas */,
+				C184B25F6BB084586AE6E4CE /* destroyedWall.atlas */,
+				C184B6127DBD039A296C0BF9 /* Lumber_swing.atlas */,
+				C184B4891DB61820584FAB3A /* lumberWalk.atlas */,
+				C184BF84AC70C992B418054D /* MinerStand.atlas */,
+				C184B5AB5FABB49D344D2E8F /* resources.atlas */,
+				C184B9964B2D1E1939BFFD28 /* builder_idle.atlas */,
 			);
 			path = Atlas;
 			sourceTree = "<group>";
@@ -542,6 +563,7 @@
 				C184BD57A4ED4F5777512696 /* Builder */,
 				C184BF427400145F094F184F /* Villager.h */,
 				C184BD0EA34E0E7D11E77152 /* Villager.m */,
+				C184BB17C6776CEFAC844877 /* Lumberjack */,
 			);
 			path = Villagers;
 			sourceTree = "<group>";
@@ -653,6 +675,15 @@
 				C184BB455B813AB0F021275E /* BarracksViewController.m */,
 			);
 			path = BarracksView;
+			sourceTree = "<group>";
+		};
+		C184BB17C6776CEFAC844877 /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				C184B677606214ACEA4A931D /* LumberJack.m */,
+				C184B6CBC8F236FF36EB8CC6 /* LumberJack.h */,
+			);
+			path = Lumberjack;
 			sourceTree = "<group>";
 		};
 		C184BB570AD83F807E280C6A /* Touch */ = {
@@ -1051,6 +1082,12 @@
 				C184B5D3DC57A8B987006F34 /* maptest.png in Resources */,
 				C8E3C95C1921398E00CF45E0 /* Main_iPad.storyboard in Resources */,
 				C184BC25C98F5F42D791BA02 /* buildings.atlas in Resources */,
+				C184B3D05B0A3C05B8F3BDE8 /* destroyedWall.atlas in Resources */,
+				C184B736428357B3C949F0E0 /* Lumber_swing.atlas in Resources */,
+				C184B23B98C7488B527A7BFB /* lumberWalk.atlas in Resources */,
+				C184B2914A15C2A97A90E89A /* MinerStand.atlas in Resources */,
+				C184BA61ABB797DBB14BAFED /* resources.atlas in Resources */,
+				C184B3354D2FE9722C8431D6 /* builder_idle.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1187,7 @@
 				C184BF6D559CEE023A799F74 /* VillagerViewController.m in Sources */,
 				C184B520B6B957ACA9963B7A /* BarracksViewController.m in Sources */,
 				C184BCC5E81B67DA694784F3 /* TownCenterViewController.m in Sources */,
+				C184B87C33BAED2BC6AD38E1 /* LumberJack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

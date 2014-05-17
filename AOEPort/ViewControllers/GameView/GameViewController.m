@@ -17,6 +17,7 @@
 #import "Builder.h"
 #import "TownCenterViewController.h"
 #import "BarracksViewController.h"
+#import "Wall.h"
 
 @interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol>
 
@@ -231,6 +232,14 @@
     _currentSideController = vc;
 }
 
+/*void (^synchBlock)(void) = ^{
+//    counter++;
+
+    Wall *wall = [Wall spriteNodeWithTexture:[_atlas textureNamed:@"wall"]];
+    [building removeFromParent];
+
+};*/
+
 - (void)addStructure:(Building *)building {
     //[self.scene increaseNumberOfUnitesForSacte]
     NSLog(@"increase number of units");
@@ -240,6 +249,10 @@
 
     building.position = _activeNode.position;
     building.zPosition = _activeNode.zPosition;
+
+
+//    [self performSelector:@selector(lol) withObject:building afterDelay:1];
+
     [_scene.buildingLayer addChild:building];
 
 }
@@ -298,4 +311,20 @@
     _activeNode = nil;
     _sidebarButton.hidden = YES;
 }
+-(BOOL)updateResources:(NSInteger)requiredStone woodNeeded:(NSInteger) requiredWood{
+    NSInteger stone = [_stoneResourceCounter.text intValue];
+    NSInteger wood = [_woodResourceCounter.text intValue];
+    
+    if(stone - requiredStone < 0){
+        return false;
+    }else if (wood - requiredWood < 0){
+        return false;
+    }
+    _stoneResourceCounter.text = [NSString stringWithFormat:@"%d",(stone - requiredStone)] ;
+    _woodResourceCounter.text = [NSString stringWithFormat:@"%d", wood - requiredWood];
+
+    return true;
+
+}
+
 @end
