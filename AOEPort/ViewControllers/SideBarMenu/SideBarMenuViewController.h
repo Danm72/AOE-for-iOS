@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SideBarProtocol <NSObject>
+
+-(void) saveClicked;
+-(void) loadClicked;
+
+@end
 @interface SideBarMenuViewController : UITableViewController
+
 @property (strong, nonatomic) IBOutlet UITableView *menuTable;
+@property (nonatomic, readwrite, weak) id <SideBarProtocol> delegate;
 
 @end

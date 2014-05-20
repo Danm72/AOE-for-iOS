@@ -36,7 +36,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
     
 }
 @property (nonatomic, weak) id <MYSceneDelegate> delegate;
-@property(nonatomic, strong, readwrite) SKNode *unitLayer;
+@property(nonatomic, weak, readwrite) SKNode *unitLayer;
 @property(nonatomic, strong) SKNode *worldNode;
 @property(nonatomic, strong) TileMapLayer *bgLayer;
 @property(nonatomic, strong) TileMapLayer *buildingLayer;

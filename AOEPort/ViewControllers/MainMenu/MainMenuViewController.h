@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MainMenuViewController : UICollectionViewController
-@property (strong, nonatomic) NSArray *images;
-@property (strong, nonatomic) NSArray *titles;
+@property (weak, nonatomic) NSArray *images;
+@property (weak, nonatomic) NSArray *titles;
 
 
 @end

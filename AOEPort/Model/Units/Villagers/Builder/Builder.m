@@ -17,7 +17,12 @@
 @implementation Builder {
     
 }
-
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    if (self = [super initWithCoder:aDecoder]) {
+        NSLog(@"Builder Decoded");
+    }
+    return self;
+}
 
 - (id)initWithTexture:(SKTexture *)texture {
     if (self = [super initWithTexture:texture]) {
@@ -171,6 +176,10 @@
         
     }
 
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder{
+    [super encodeWithCoder:aCoder];
 }
 
 

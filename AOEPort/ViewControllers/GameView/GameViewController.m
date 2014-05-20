@@ -18,11 +18,12 @@
 #import "TownCenterViewController.h"
 #import "BarracksViewController.h"
 #import "Wall.h"
+#import "SideBarMenuViewController.h"
 
-@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol>
+@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol, SideBarProtocol>
 
-@property (nonatomic, strong) AVQueuePlayer *player;
-@property (nonatomic, strong) id timeObserver;
+@property (nonatomic, weak) AVQueuePlayer *player;
+@property (nonatomic, weak) id timeObserver;
 
 //@property (nonatomic) IBOutlet UIImageView *gameLogo;
 //@property (nonatomic) IBOutlet SKView *skView;
@@ -39,6 +40,7 @@
 
 - (IBAction)sideBarTouch:(id)sender {
     [[self revealViewController] rightRevealToggle:sender];
+    
 //    CastleViewController *vc = [[CastleViewController alloc] init];
 //    [[self revealViewController] setRightViewController:vc];
 //    [[self revealViewController] rightRevealToggle:sender];
@@ -53,6 +55,34 @@
     _scene.handlers.delegate = self;
 }
 
+-(void) saveClicked{
+    if( [self saveGame:_scene :@"Test"]){
+        NSLog(@"Saved");
+    }else{
+        NSLog(@"Save Failed");
+    }
+}
+
+-(void) loadClicked{
+    [self loadGame:@"Test"];
+}
+
+- (NSString *) pathForDataFile
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *folder = @"~/Library";
+    folder = [folder stringByExpandingTildeInPath];
+    
+    if ([fileManager fileExistsAtPath:folder] == NO)
+    {
+        [fileManager createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    NSString *fileName = @"Save.taskStore";
+    return [folder stringByAppendingPathComponent: fileName];
+}
+
 - (BOOL)saveGame:(MyScene *)scene :(NSString *)saveName {
 //    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
 //    NSString *secondParentPath = [[bundlePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
@@ -60,16 +90,23 @@
     @try {
         // Try something
 
-        NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+//        NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+        NSString * path = [self pathForDataFile];
         NSMutableData *data = [NSMutableData data];
         NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
         [archiver encodeObject:scene forKey:saveName];
         [archiver finishEncoding];
 
 
-        BOOL result = [data writeToURL:archiveURL atomically:YES];
+//        BOOL result = [data writeToURL:archiveURL atomically:YES];
+        
+        NSError *error;
+      BOOL success = [data writeToFile:path options:0 error:&error];
+        if (!success) {
+            NSLog(@"writeToFile failed with error %@", error);
+        }
 
-        return result;
+        return success;
 
     }
     @catch (NSException *e) {
@@ -79,20 +116,17 @@
 }
 
 - (void)loadGame:(NSString *)saveName {
-    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+//    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+    NSString *path = [self pathForDataFile];
+    NSData *data = [NSData dataWithContentsOfFile:path];
 
-    NSData *data = [NSData dataWithContentsOfURL:archiveURL];
-
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    NSKeyedUnarchiver *unarchiver =
+    [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     // Customize the unarchiver.
     MyScene *scene = [unarchiver decodeObjectForKey:saveName];
     [unarchiver finishDecoding];
 
-    SKView *skView = (SKView *) self.view;
-
-    self.view = skView;
-
-    [skView presentScene:scene];
+    [self setScene:scene];
 }
 
 - (void)viewDidLoad {
@@ -170,7 +204,9 @@
 - (void)buildingClicked:(Building *)building {
     _sidebarButton.hidden = false;
     
-    UIImage *btnImage = [UIImage imageNamed:@"house"];
+//    UIImage *btnImage = [UIImage imageNamed:@"house"];
+    UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"house" ofType: @"png"]];
+
     [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
 
     if ([building isKindOfClass:[TownCenter class]]) {
@@ -209,7 +245,9 @@
 - (void)unitClicked:(Unit *)unitNode {
     _sidebarButton.hidden = false;
     
-    UIImage *btnImage = [UIImage imageNamed:@"hammer"];
+//    UIImage *btnImage = [UIImage imageNamed:@"hammer"];
+    UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"hammer" ofType: @"png"]];
+
     [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
 
     if ([unitNode isKindOfClass:[Builder class]]) {
@@ -265,7 +303,14 @@
 
 
 - (IBAction)settingsButton:(id)sender {
+    
+    SideBarMenuViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuViewControllerId"];
+    
+    vc.delegate = self;
+    [[self revealViewController]  setRearViewController:vc];
+    
     [[self revealViewController] revealToggle:nil];
+    
 }
 - (IBAction)updateWood:(id)sender {
 //    _woodResourceCounter+=1;

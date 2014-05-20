@@ -210,8 +210,12 @@
             _selectedBuilding = building;
             SKAction *seq = [self createBuilding:building];
             
-            if(seq)
+            if(seq){
+                NSLog(@"Begin createBuilding sequence");
                 [_scene runAction:seq];
+                NSLog(@"Begin createBuilding ran");
+
+            }
             
         }else{
             [self beginSelectionBox:touchLocation];

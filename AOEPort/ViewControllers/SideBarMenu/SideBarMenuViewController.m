@@ -40,7 +40,7 @@
 }
 
 - (void)setupTable {
-    [self.tableView registerNib:[UINib nibWithNibName:@"TWTalkDayTableViewHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"day_header"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HEader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"menuItems"];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -93,9 +93,18 @@
     }
     else {
         self.selectedCellPath = indexPath;
+
         [self.tableView beginUpdates];
         [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         [self.tableView endUpdates];
+    }
+    if(indexPath.row == 3){
+        NSLog(@"Did selected Clicked");
+        [self.delegate saveClicked];
+    }
+    if(indexPath.row == 4){
+        NSLog(@"Did selected Clicked");
+        [self.delegate loadClicked];
     }
 }
 

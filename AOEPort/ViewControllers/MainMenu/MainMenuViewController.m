@@ -66,8 +66,10 @@
     //    return [self.collectionView cellForItemAtIndexPath:indexPath];
     MainMenuTableViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CampaignCell" forIndexPath:indexPath];
     //cell.imageView.image = [UIImage imageNamed:self.truckImages[0]];
-    UIImage *image = [[UIImage alloc] init];
-    image = [UIImage imageNamed:[self.images objectAtIndex:indexPath.row]];
+//    UIImage *image = [[UIImage alloc] init];
+//    image = [UIImage imageNamed:[self.images objectAtIndex:indexPath.row]];
+    UIImage* image = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: [self.images objectAtIndex:indexPath.row] ofType: @"png"]];
+
     cell.images.image = image;
     cell.textBox.text = [self.titles objectAtIndex:indexPath.row];
     [cell.textBox  setFont:[UIFont fontWithName:@"Times New Roman" size:18.0]];

@@ -14,6 +14,16 @@
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 
+#if __has_feature(objc_arc)
+    // ARC is On
+    NSLog(@"ARC on");
+    
+#else
+    // ARC is Off
+    NSLog(@"ARC off");
+    
+#endif
+    
     return YES;
 
 }

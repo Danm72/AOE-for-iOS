@@ -449,6 +449,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="loadGameButtonPressed:" destination="xPW-aj-KRN" eventType="touchUpInside" id="O5K-xH-uUc"/>
                                             <action selector="newGameButtonPressed:" destination="xPW-aj-KRN" eventType="touchUpInside" id="DBa-2m-I6R"/>
                                         </connections>
                                     </button>
@@ -465,6 +466,7 @@
                                         </state>
                                         <connections>
                                             <action selector="newGameButtonPressed:" destination="xPW-aj-KRN" eventType="touchUpInside" id="QX9-gJ-nNk"/>
+                                            <action selector="settingsButtonPressed:" destination="xPW-aj-KRN" eventType="touchUpInside" id="n4o-x2-4li"/>
                                         </connections>
                                     </button>
                                 </subviews>

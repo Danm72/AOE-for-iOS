@@ -58,8 +58,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         //        SKTexture *tex = [SKTexture textureWithImageNamed:@"building_site1.png"];
         
         //        Wall *wall = [Wall spriteNodeWithTexture:tex];
-        
+        NSLog(@"Wall Building");
+
         Wall *wall = [Wall spriteNodeWithTexture:[_tx.buildings textureNamed:@"building_site1"]];
+        NSLog(@"Wall Building Loaded");
+
         if([self.delegate updateResources:wall.stone woodNeeded:wall.wood]){
             wall.placed = NO;
             [self.delegate addStructure:wall];

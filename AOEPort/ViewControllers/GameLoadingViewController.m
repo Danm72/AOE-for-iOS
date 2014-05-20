@@ -13,7 +13,7 @@
 #import "Building.h"
 
 @interface GameLoadingViewController ()<MYSceneDelegate>
-@property (nonatomic, readwrite, strong) MyScene *loadedScene;
+@property (nonatomic, readwrite, weak) MyScene *loadedScene;
 @end
 
 @implementation GameLoadingViewController

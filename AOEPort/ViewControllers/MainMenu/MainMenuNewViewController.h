@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyScene.h"
 
 @interface MainMenuNewViewController : UIViewController
 @property (weak, nonatomic) IBOutlet SKView *skView;
+@property(weak, nonatomic) MyScene *loadedScene;
 
 @end

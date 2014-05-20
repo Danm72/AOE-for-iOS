@@ -80,10 +80,16 @@
 - (UIImageView *) explosion{
     //Position the explosion image view somewhere in the middle of your current view. In my case, I want it to take the whole view.Try to make the png to mach the view size, don't stretch it
 //    _explosion = [[UIImageView alloc] initWithFrame:_explosion.bounds];
-    
+    UIImage* poof1 = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"poof_01" ofType: @"png"]];
+    UIImage* poof2 = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"poof_02" ofType: @"png"]];
+    UIImage* poof3 = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"poof_03" ofType: @"png"]];
+    UIImage* poof4 = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"poof_04" ofType: @"png"]];
+    UIImage* poof5 = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"poof_05" ofType: @"png"]];
+
     //Add images which will be used for the animation using an array. Here I have created an array on the fly
-    _explosion.animationImages =  @[[UIImage imageNamed:@"poof_01.png"], [UIImage imageNamed:@"poof_02.png"],[UIImage imageNamed:@"poof_03.png"], [UIImage imageNamed:@"poof_04.png"],[UIImage imageNamed:@"poof_05.png"]];
-    
+//    _explosion.animationImages =  @[[UIImage imageNamed:@"poof_01.png"], [UIImage imageNamed:@"poof_02.png"],[UIImage imageNamed:@"poof_03.png"], [UIImage imageNamed:@"poof_04.png"],[UIImage imageNamed:@"poof_05.png"]];
+    _explosion.animationImages =  @[poof1, poof2,poof3, poof4,poof5];
+
     //Set the duration of the entire animation
     _explosion.animationDuration = .75;
     

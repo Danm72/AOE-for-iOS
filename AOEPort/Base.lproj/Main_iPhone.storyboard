@@ -446,6 +446,9 @@
                                 <state key="normal" title="Load Game" backgroundImage="parchment_small.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadGameButtonPressed:" destination="NhJ-vb-hK1" eventType="touchUpInside" id="JtJ-Om-Pm5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-kw-mRb">
                                 <rect key="frame" x="300" y="217" width="262" height="89"/>
@@ -454,6 +457,9 @@
                                 <state key="normal" title="Settings" backgroundImage="parchment_small.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="settingsButtonPressed:" destination="NhJ-vb-hK1" eventType="touchUpInside" id="agI-OC-ung"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -618,7 +624,6 @@
                     <navigationItem key="navigationItem" id="HRr-SA-V3l"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <segue destination="do9-b8-Cwx" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="eUh-Rp-amd"/>
                         <segue destination="zmC-Yl-NAq" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="FYy-us-6gB"/>
                         <segue destination="RkV-14-69a" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegue" id="ncE-in-uK9"/>
                     </connections>

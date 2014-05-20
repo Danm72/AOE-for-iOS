@@ -8,6 +8,8 @@
 
 #import "MainMenuNewViewController.h"
 #import "MenuScene.h"
+#import "MyScene.h"
+#import "GameLoadingViewController.h"
 
 @interface MainMenuNewViewController ()
 
@@ -18,6 +20,11 @@
     NSLog(@"PRESSED");
 
     [self performSelector:@selector(goToNextView) withObject:nil afterDelay:0];
+}
+- (IBAction)loadGameButtonPressed:(id)sender {
+    [self loadGame:@"Test"];
+}
+- (IBAction)settingsButtonPressed:(id)sender {
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,5 +75,43 @@
 
 - (void)goToNextView {
     [self performSegueWithIdentifier:@"campaignSegue" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"campaignSegue"] && _loadedScene != nil)
+    {
+        GameLoadingViewController *viewController = segue.destinationViewController;
+        viewController.scene = self.loadedScene;
+    }
+}
+
+- (void)loadGame:(NSString *)saveName {
+    //    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+    NSString *path = [self pathForDataFile];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    
+    NSKeyedUnarchiver *unarchiver =
+    [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    // Customize the unarchiver.
+    _loadedScene = [unarchiver decodeObjectForKey:saveName];
+    [unarchiver finishDecoding];
+    
+}
+
+- (NSString *) pathForDataFile
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSString *folder = @"~/Library";
+    folder = [folder stringByExpandingTildeInPath];
+    
+    if ([fileManager fileExistsAtPath:folder] == NO)
+    {
+        [fileManager createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
+    }
+    
+    NSString *fileName = @"Save.taskStore";
+    return [folder stringByAppendingPathComponent: fileName];
 }
 @end
