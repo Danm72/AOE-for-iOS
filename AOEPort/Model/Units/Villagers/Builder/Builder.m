@@ -11,7 +11,6 @@
 @property(strong, nonatomic) NSArray *actionAtlasNames;
 @property(strong, nonatomic) NSArray *animationNames;
 
-
 @end
 
 @implementation Builder {
@@ -39,7 +38,7 @@
             self.unitType = @"Builder";
             
             [self setupPhysics];
-            [self animateAction:1 :idle_action];
+            [self animateIdle];
         }
     }
     return self;
@@ -50,12 +49,15 @@
         [self animate:direction :[_actionAtlasNames objectAtIndex:2] :[_animationNames objectAtIndex:2]];
         //        [self animateWalk:direction];
     } else if (actionType == idle_action) {
-        [self animate:direction :[_actionAtlasNames objectAtIndex:0] :[_animationNames objectAtIndex:0]];
+//        [self animate:direction :[_actionAtlasNames objectAtIndex:0] :[_animationNames objectAtIndex:0]];
         //        [self idle:direction];
+        [self animateIdle];
+
     } else if (actionType == base_action) {
-        [self animate:direction :[_actionAtlasNames objectAtIndex:1] :[_animationNames objectAtIndex:1]];
+//        [self animate:direction :[_actionAtlasNames objectAtIndex:1] :[_animationNames objectAtIndex:1]];
         
         //        [self action:direction];
+        [self animateBuild];
     }
 }
 
@@ -84,9 +86,19 @@
     }];
 }
 
+- (void)preloadAndRunAnimation:(SKAction *)_animation:(NSMutableArray*)array {
+    [SKTexture preloadTextures:array withCompletionHandler:^(void) {
+        SKAction *a2 = [SKAction repeatActionForever:_animation];
+
+        [self runAction:a2];
+    }];
+}
+
 - (SKAction*)createBuilding:(Building *)building {
     CGPoint buildingPoint = CGPointMake(building.position.x - building.frame.size.width/2, building.position.y);
-    [self removeAllActions];
+    if([self hasActions]){
+        [self removeAllActions];
+    }
     
     SKAction *buildAct = [SKAction runBlock:^{
         [self move:buildingPoint:base_action];
@@ -100,12 +112,57 @@
     }];
     
     
-    SKAction *seq = [SKAction sequence:@[buildAct, [SKAction waitForDuration:20],buildAct2]];
+    SKAction *seq = [SKAction sequence:@[buildAct, [SKAction waitForDuration:10],buildAct2]];
     
     return seq;
     //    }
     
     //    return nil;
+}
+
+-(void) animateIdle{
+    TextureContainer *obj=[TextureContainer getInstance];
+    if([obj.idleTextures count] <= 0){
+        obj.idleTextures = [NSMutableArray arrayWithCapacity:15];
+        for (int i = 0; i < 14; i++) {
+            NSString *textureName =
+            [NSString stringWithFormat:@"%@%d", @"idle", i];
+            SKTexture *texture = [obj.builderIdle textureNamed:textureName];
+            [obj.idleTextures addObject:texture];
+        }
+    }
+    
+    SKAction * animation = [SKAction animateWithTextures:obj.idleTextures timePerFrame:0.1];
+    [self preloadAndRunAnimation:animation:obj.idleTextures];
+    
+}
+-(void) animateBuild{
+    TextureContainer *obj=[TextureContainer getInstance];
+    if([obj.buildTextures count] <= 0){
+        obj.buildTextures =[NSMutableArray arrayWithCapacity:15];
+        for (int i = 15; i < 29; i++) {
+            NSString *textureName =
+            [NSString stringWithFormat:@"%@%d", @"builderbuilding", i];
+            SKTexture *texture = [obj.builderBuild textureNamed:textureName];
+            [obj.buildTextures addObject:texture];
+        }
+    }
+    
+    SKAction *action1 = [SKAction scaleXTo:-1.0 duration:0.01];
+//    SKAction *action2 = [SKAction scaleXTo:1.0 duration:0.01];
+    
+    SKAction *flipGraphicSequence = [SKAction sequence:@[
+                                                         action1]];
+    
+    SKAction *animation =
+    [SKAction animateWithTextures:obj.buildTextures timePerFrame:0.1];
+    SKAction *a1 = [SKAction repeatAction:flipGraphicSequence count:1];
+    SKAction *a2 = [SKAction repeatActionForever:animation];
+    
+    SKAction *flipAnimate = [SKAction sequence:@[a1,a2]];
+    
+    [self preloadAndRunAnimation:flipAnimate:obj.buildTextures];
+    
 }
 
 - (void)animate:(NSInteger)direction :(NSString *)atlasName :(NSString *)animationName {
@@ -154,28 +211,8 @@
     }
     
     //    return _builderWalkingAnimation
-//    [self preloadAndRunAnimation:_builderWalkingAnimation action2:action2 flipGraphicSequence:flipGraphicSequence];
-    if (flipGraphic) {
-        SKAction *a1 = [SKAction repeatAction:flipGraphicSequence count:1];
-        SKAction *a2 = [SKAction repeatActionForever:_builderWalkingAnimation];
-        
-        SKAction *flipAnimate = [SKAction sequence:@[a1,a2]];
-        flipGraphic = false;
-        
-        [self runAction:flipAnimate];
-    }
-    else {
-        [self runAction:[SKAction repeatAction:action2 count:1]];
-        [self runAction:[SKAction repeatActionForever:_builderWalkingAnimation]];
-        
-        SKAction *a1 = [SKAction repeatAction:action2 count:1];
-        SKAction *a2 = [SKAction repeatActionForever:_builderWalkingAnimation];
-        
-        SKAction *flipAnimate = [SKAction sequence:@[a1,a2]];
-        [self runAction:flipAnimate];
-        
-    }
-
+    [self preloadAndRunAnimation:_builderWalkingAnimation action2:action2 flipGraphicSequence:flipGraphicSequence];
+    
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder{

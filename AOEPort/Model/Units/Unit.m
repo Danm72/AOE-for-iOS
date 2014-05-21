@@ -58,9 +58,12 @@
                 {
                     [self removeAllActions];
                     if(completionAction == idle_action)
-                        [self animateAction:direction :idle_action];
+//                        [self animateAction:direction :idle_action];
+                        [self animateIdle];
                     else if(completionAction == base_action){
-                        [self animateAction:direction :base_action];
+//                        [self animateAction:direction :base_action];
+                        [self animateBuild];
+
                         return;
                     }
                 }

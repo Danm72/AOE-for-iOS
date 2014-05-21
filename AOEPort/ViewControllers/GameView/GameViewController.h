@@ -25,8 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
 - (IBAction)settingsButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *settingsButtonIcon;
-@property (weak, nonatomic) MyScene *scene;
-@property (weak, nonatomic) SKSpriteNode *activeNode;
+@property (strong, nonatomic) MyScene *scene;
+@property (strong, nonatomic) SKSpriteNode *activeNode;
 @property (weak, nonatomic) UIViewController *currentSideController;
 @property (weak, nonatomic) IBOutlet UITextField *lblMusicName;
 @property (weak, nonatomic) IBOutlet UITextField *_lblMusicTime;

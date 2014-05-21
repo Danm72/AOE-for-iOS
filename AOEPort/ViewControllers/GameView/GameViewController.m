@@ -22,14 +22,9 @@
 
 @interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol, SideBarProtocol>
 
-@property (nonatomic, weak) AVQueuePlayer *player;
-@property (nonatomic, weak) id timeObserver;
+@property (nonatomic, strong) AVQueuePlayer *player;
+@property (nonatomic, strong) id timeObserver;
 
-//@property (nonatomic) IBOutlet UIImageView *gameLogo;
-//@property (nonatomic) IBOutlet SKView *skView;
-//@property (nonatomic) IBOutlet UIButton *enterButton;
-//@property (nonatomic) IBOutlet UIButton *exitButton;
-//@property (nonatomic) MyScene *scene;
 @end
 
 @implementation GameViewController
@@ -143,8 +138,8 @@
                             sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
     
     NSArray *queue = @[
-                       [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"soundtrack0" withExtension:@"mp3"]],
                        [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"soundtrack1" withExtension:@"mp3"]],
+                       [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"soundtrack0" withExtension:@"mp3"]],
                        [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"soundtrack2" withExtension:@"mp3"]]];
     
     self.player = [[AVQueuePlayer alloc] initWithItems:queue];
@@ -295,9 +290,17 @@
 
 - (void)addUnit:(Builder *)villager {
     NSLog(@"Add Unit");
+    CGPoint p =_activeNode.position;
+    CGFloat z =_activeNode.zPosition;
+
+
     villager.position = _activeNode.position;
+    CGSize s =_scene.size;
+
     villager.position = CGPointMake(villager.position.x  + _activeNode.size.width /2, villager.position.y+20);
-    villager.zPosition = _scene.size.height - villager.position.y;
+    int i = _scene.size.height - villager.position.y;
+
+    villager.zPosition =_activeNode.zPosition;
     [_scene.unitLayer addChild:villager];
 }
 
@@ -358,8 +361,8 @@
     }else if (wood - requiredWood < 0){
         return false;
     }
-    _stoneResourceCounter.text = [NSString stringWithFormat:@"%d",(stone - requiredStone)] ;
-    _woodResourceCounter.text = [NSString stringWithFormat:@"%d", wood - requiredWood];
+    _stoneResourceCounter.text = [NSString stringWithFormat:@"%ld",(stone - requiredStone)] ;
+    _woodResourceCounter.text = [NSString stringWithFormat:@"%ld", wood - requiredWood];
 
     return true;
 

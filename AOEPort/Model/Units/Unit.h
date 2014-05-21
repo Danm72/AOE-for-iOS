@@ -33,4 +33,8 @@ BOOL flipGraphic;
 - (void)evaluateMovementDirection:(NSInteger)direction;
 -(void) setupPhysics;
 -(void) addSelectedCircle;
+
+-(void) animateIdle;
+-(void) animateBuild;
+
 @end

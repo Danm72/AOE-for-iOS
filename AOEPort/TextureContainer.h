@@ -18,6 +18,10 @@
 @property(strong,retain)SKTextureAtlas *trees;
 @property(strong,retain)SKTextureAtlas *buildings;
 @property(strong,retain)SKTextureAtlas *resources;
+
+@property (strong, readwrite) NSMutableArray *idleTextures;
+@property (strong, readwrite) NSMutableArray *buildTextures;
+
 //@property(nonatomic,retain)SKTextureAtlas *trees;
 
 

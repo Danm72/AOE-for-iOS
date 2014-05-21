@@ -12,6 +12,18 @@
 
 @synthesize str;
 
+@synthesize builderWalk;
+@synthesize builderIdle;
+@synthesize builderBuild;
+@synthesize tiles;
+@synthesize trees;
+@synthesize buildings;
+@synthesize resources;
+
+@synthesize idleTextures;
+@synthesize buildTextures;
+
+
 static TextureContainer *instance = nil;
 
 +(TextureContainer *)getInstance

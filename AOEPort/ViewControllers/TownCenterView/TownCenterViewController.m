@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "Villager.h"
 #import "Builder.h"
+#import "TextureContainer.h"
 
 
 @interface TownCenterViewController ()
@@ -46,9 +47,11 @@
 - (void)tableView:(UITableView *)tableView
         didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TextureContainer *obj=[TextureContainer getInstance];
+
     if (indexPath.section == 0)
     {
-        Builder *villager = [Builder spriteNodeWithTexture:[_atlas textureNamed:@"builderwalking0"]];
+        Builder *villager = [Builder spriteNodeWithTexture:[obj.idleTextures objectAtIndex:0]];
         [self.delegate addUnit:villager];
     }
 

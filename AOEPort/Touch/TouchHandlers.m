@@ -7,6 +7,8 @@
 #import "Builder.h"
 #import "MyScene.h"
 #import "Wall.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 
 
 @interface TouchHandlers ()
@@ -53,8 +55,6 @@
 }
 
 - (void)didMoveToView {
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
-    [[_scene view] addGestureRecognizer:panGestureRecognizer];
     
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchFrom:)];
     [[_scene view] addGestureRecognizer:pinchGestureRecognizer];
@@ -74,6 +74,7 @@
     
     UIScreenEdgePanGestureRecognizer *leftEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
     leftEdgePanGestureRecognizer.edges = UIRectEdgeLeft;
+    
     //    leftEdgePanGestureRecognizer.delegate = self;
     [[_scene view] addGestureRecognizer:leftEdgePanGestureRecognizer];
     
@@ -81,6 +82,11 @@
     rightEdgePanGestureRecognizer.edges = UIRectEdgeRight;
     
     [[_scene view] addGestureRecognizer:rightEdgePanGestureRecognizer];
+    
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanFrom:)];
+    [[_scene view] addGestureRecognizer:panGestureRecognizer];
+    [panGestureRecognizer requireGestureRecognizerToFail:rightEdgePanGestureRecognizer];
+    [panGestureRecognizer requireGestureRecognizerToFail:leftEdgePanGestureRecognizer];
     
 }
 
@@ -176,6 +182,8 @@
 - (void)beginSelectionBox:(CGPoint)touchLocation {
     //    if (!_selectedBuilding) {
     if (self.pointOne.x == 0) {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        
         self.pointOne = touchLocation;
         self.isSelecting = true;
         
@@ -214,7 +222,7 @@
                 NSLog(@"Begin createBuilding sequence");
                 [_scene runAction:seq];
                 NSLog(@"Begin createBuilding ran");
-
+                
             }
             
         }else{
@@ -233,12 +241,12 @@
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
     
     CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
-
+    
     touchLocation = [_scene convertPointFromView:touchLocation];
     touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
     
     NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
-
+    
     CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -340,7 +348,8 @@
         SKAction *returnToNormalSequence = [SKAction sequence:@[
                                                                 returnToRegularColour, returnToRegularRotation]];
         
-        [node removeAllActions];
+        if(node.hasActions)
+            [node removeAllActions];
         
         [node runAction:returnToNormalSequence];
         
@@ -348,6 +357,15 @@
     }
 }
 
+
+- (void)removeSelectedUnits {
+    if([_selectedNodes count] >0){
+        for (Unit *unit in _selectedNodes) {
+            [unit removeAllChildren];
+        }
+        [_selectedNodes removeAllObjects];
+    }
+}
 
 - (void)selectNodeForTouch:(CGPoint)touchLocation {
     //1
@@ -358,15 +376,16 @@
     if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
         _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
         [_selectedBuilding addSelectedCircle];
+        
+        [self removeSelectedUnits];
+        
     } else if ([[_scene.unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
         unit = (Unit *) [_scene.unitLayer nodeAtPoint:touchLocation];
     }
     
     if (unit) {
-        for (Unit *unit in _selectedNodes) {
-            [unit removeAllChildren];
-        }
-        [_selectedNodes removeAllObjects];
+        [self removeSelectedUnits];
+
         [self.scene.delegate unitUnselected];
         [unit addSelectedCircle];
         [_scene.delegate unitClicked:unit];
