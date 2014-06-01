@@ -239,27 +239,31 @@
 }
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-    
-    CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
-    
-    touchLocation = [_scene convertPointFromView:touchLocation];
-    touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
-    
-    NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
-    
-    CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
+    @try {
         
+        CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
+        
+        touchLocation = [_scene convertPointFromView:touchLocation];
+        touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
+        
+        NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
+        
+        CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
+        
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            
+        }
+        
+        if (recognizer.state == UIGestureRecognizerStateEnded) {
+            [self selectNodeForTouch:touchLocation];
+            
+            [self moveAllUnitsToPos:newPos];
+            
+        }
     }
-    
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [self selectNodeForTouch:touchLocation];
-        
-        [self moveAllUnitsToPos:newPos];
-        
+    @catch (NSException *exception) {
+        NSLog(@"PAN EXCEPTION: %@",exception.reason);
     }
-    
 }
 
 - (void)moveAllUnitsToPos:(CGPoint)positionToMoveTo {
@@ -293,42 +297,48 @@
 }
 
 - (void)handlePanFrom:(UIPanGestureRecognizer *)recognizer {
-    
-    if (recognizer.state == UIGestureRecognizerStateBegan) {
-        [self.delegate panBegun];
+    @try {
         
-        _previousLocation = [recognizer translationInView:_scene.worldNode.scene.view];
-        
-    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        CGPoint translation;
-        
-        translation = [recognizer translationInView:_scene.worldNode.scene.view];
-        
-        translation = CGPointMake(translation.x * 4,
-                                  -translation.y * 4);
-        
-        if (self.isSelecting) {
-            [self selectUnitsWithinBox:translation];
+        if (recognizer.state == UIGestureRecognizerStateBegan) {
+            [self.delegate panBegun];
             
-        } else {
-            [self panForTranslation:translation];
+            _previousLocation = [recognizer translationInView:_scene.worldNode.scene.view];
+            
+        } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+            CGPoint translation;
+            
+            translation = [recognizer translationInView:_scene.worldNode.scene.view];
+            
+            translation = CGPointMake(translation.x * 4,
+                                      -translation.y * 4);
+            
+            if (self.isSelecting) {
+                [self selectUnitsWithinBox:translation];
+                
+            } else {
+                [self panForTranslation:translation];
+            }
+            
+            [recognizer setTranslation:CGPointZero inView:recognizer.view];
         }
         
-        [recognizer setTranslation:CGPointZero inView:recognizer.view];
+        else if (recognizer.state == UIGestureRecognizerStateEnded) {
+            
+            if (_selectedBuilding && !_isSelecting) {
+                _selectedBuilding.placed = YES;
+                
+                [self removeBuildingActions:_selectedBuilding];
+                
+            }
+            
+            [self resetSelectionBox];
+            [self.delegate panEnded];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"PAN EXCEPTION: %@",exception.reason);
     }
     
-    else if (recognizer.state == UIGestureRecognizerStateEnded) {
-        
-        if (_selectedBuilding && !_isSelecting) {
-            _selectedBuilding.placed = YES;
-            
-            [self removeBuildingActions:_selectedBuilding];
-            
-        }
-        
-        [self resetSelectionBox];
-        [self.delegate panEnded];
-    }
 }
 
 - (void)resetSelectionBox {
@@ -348,7 +358,7 @@
         SKAction *returnToNormalSequence = [SKAction sequence:@[
                                                                 returnToRegularColour, returnToRegularRotation]];
         
-        if(node.hasActions)
+        if([node hasActions])
             [node removeAllActions];
         
         [node runAction:returnToNormalSequence];
@@ -369,33 +379,38 @@
 
 - (void)selectNodeForTouch:(CGPoint)touchLocation {
     //1
-    Unit *unit = nil;
-    [_selectedBuilding removeAllChildren];
-    _selectedBuilding = nil;
-    
-    if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
-        _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
-        [_selectedBuilding addSelectedCircle];
+    @try {
         
-        [self removeSelectedUnits];
+        Unit *unit = nil;
+        [_selectedBuilding removeAllChildren];
+        _selectedBuilding = nil;
         
-    } else if ([[_scene.unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
-        unit = (Unit *) [_scene.unitLayer nodeAtPoint:touchLocation];
+        if ([[_scene.buildingLayer nodeAtPoint:touchLocation] isKindOfClass:[Building class]]) {
+            _selectedBuilding = (Building *) [_scene.buildingLayer nodeAtPoint:touchLocation];
+            [_selectedBuilding addSelectedCircle];
+            
+            [self removeSelectedUnits];
+            
+        } else if ([[_scene.unitLayer nodeAtPoint:touchLocation] isKindOfClass:[Unit class]]) {
+            unit = (Unit *) [_scene.unitLayer nodeAtPoint:touchLocation];
+        }
+        
+        if (unit) {
+            [self removeSelectedUnits];
+            
+            [self.scene.delegate unitUnselected];
+            [unit addSelectedCircle];
+            [_scene.delegate unitClicked:unit];
+            [_selectedNodes addObject:unit];
+            
+        } else if (_selectedBuilding) {
+            
+            [_scene.delegate buildingClicked:_selectedBuilding];
+        }
     }
-    
-    if (unit) {
-        [self removeSelectedUnits];
-
-        [self.scene.delegate unitUnselected];
-        [unit addSelectedCircle];
-        [_scene.delegate unitClicked:unit];
-        [_selectedNodes addObject:unit];
-        
-    } else if (_selectedBuilding) {
-        
-        [_scene.delegate buildingClicked:_selectedBuilding];
+    @catch (NSException *exception) {
+        NSLog(@"TOUCH EXCEPTION: %@",exception.reason);
     }
-    
 }
 
 

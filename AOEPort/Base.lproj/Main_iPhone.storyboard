@@ -399,7 +399,7 @@
                     <navigationItem key="navigationItem" id="nwn-ro-z4W"/>
                     <connections>
                         <outlet property="activityIndicator" destination="edH-I4-1mN" id="Wn3-cs-wMl"/>
-                        <outlet property="progressTextView" destination="h3a-Mb-tah" id="Pmn-tT-u0a"/>
+                        <outlet property="progressTextView" destination="h3a-Mb-tah" id="wtA-gs-ByC"/>
                         <segue destination="LVB-YS-i5n" kind="push" identifier="game_has_loaded" id="qvh-ly-z2I"/>
                     </connections>
                 </viewController>

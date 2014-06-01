@@ -23,8 +23,8 @@ static NSString *const tileNodeType = @"Tile";
 @property(nonatomic, strong) NSMutableArray *selectedNodes;
 @property(nonatomic, strong) Building *selectedBuilding;
 @property(nonatomic, strong) DrawSelectionBox *selectionBox;
-@property(nonatomic, weak) MyScene *scene;
-@property (nonatomic, weak) id <TouchProtocol> delegate;
+@property(nonatomic, strong) MyScene *scene;
+@property (nonatomic, strong) id <TouchProtocol> delegate;
 
 - (instancetype)initWithScene:(MyScene *)scene;
 

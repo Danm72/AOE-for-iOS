@@ -11,7 +11,7 @@
 
 @interface Builder : Villager
 //- (void)animateWalk :(NSInteger)direction;
-@property (weak, nonatomic) SKTextureAtlas *atlas;
+@property (strong, nonatomic) SKTextureAtlas *atlas;
 - (SKAction*)createBuilding:(Building *)building;
 
 @end

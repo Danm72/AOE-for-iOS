@@ -10,7 +10,9 @@
 #import "MyScene.h"
 
 @interface GameLoadingViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *progressTextView;
+@property (strong,retain) IBOutlet UITextField *progressTextView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property(weak, nonatomic) MyScene *scene;
+@property(strong, nonatomic) MyScene *scene;
+
+
 @end

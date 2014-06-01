@@ -14,7 +14,7 @@ BOOL flipGraphic;
 #define base_action 1
 #define move_action 2
 @property (readwrite) NSString *movementSpeed;
-@property (weak, readwrite) NSMutableArray *textures;
+@property (strong, readwrite,retain) NSMutableArray *textures;
 
 
 + (NSArray *)getAllPointsFromPoint:(CGPoint)fPoint toPoint:(CGPoint)tPoint;

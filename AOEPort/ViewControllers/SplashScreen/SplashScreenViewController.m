@@ -40,6 +40,9 @@
     SKScene * scene = [SplashScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
+    [scene runAction:[SKAction playSoundFileNamed:@"pew.wav" waitForCompletion:NO]];
+
+    
     // Present the scene.
     [skView presentScene:scene];
   
@@ -47,7 +50,7 @@
         [self moveImage:_leftSword duration:1
                   curve:UIViewAnimationCurveLinear x:0 y:self.view.center.y*2];
         [self performSelector:@selector(moveRightSword) withObject:nil afterDelay:.5];
-        [self playSound];
+//        [self playSound];
         [self performSelector:@selector(attachExplosionAnimation) withObject:nil afterDelay:1];
         [self performSelector:@selector(attachExplosionAnimation) withObject:nil afterDelay:1.2];
         [self performSelector:@selector(attachExplosionAnimation) withObject:nil afterDelay:1.5];
@@ -60,7 +63,6 @@
     }else {
         [self performSelector:@selector(goToNextView) withObject:nil afterDelay:0];
 
-
     }
     // Do any additional setup after loading the view.
 }
@@ -71,6 +73,8 @@
     NSURL *pewPewURL = [NSURL fileURLWithPath:pewPewPath];
     AudioServicesCreateSystemSoundID((__bridge CFURLRef)pewPewURL, &_pewPewSound);
     AudioServicesPlaySystemSound(_pewPewSound);
+    
+
 }
 
 - (void) attachExplosionAnimation {

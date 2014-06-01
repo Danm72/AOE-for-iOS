@@ -36,6 +36,8 @@
 }
 
 - (void)loadSceneAssets {
+    [self.delegate updateProgress:@"Loading Scene Assets"];
+
     [self createPhysicsBody];
     [self createWorld];
     

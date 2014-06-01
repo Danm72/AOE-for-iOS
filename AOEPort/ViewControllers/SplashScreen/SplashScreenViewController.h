@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SplashScreenViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *leftSword;
-@property (weak, nonatomic) IBOutlet UIImageView *rightSword;
-@property (weak, nonatomic) IBOutlet UIImageView *shield;
-@property (weak, nonatomic) IBOutlet UITextField *textBox;
-@property (weak, nonatomic) IBOutlet SKView *skView;
-@property (weak, nonatomic) IBOutlet UIImageView *explosion;
+@property (strong, nonatomic) IBOutlet UIImageView *leftSword;
+@property (strong, nonatomic) IBOutlet UIImageView *rightSword;
+@property (strong, nonatomic) IBOutlet UIImageView *shield;
+@property (strong, nonatomic) IBOutlet UITextField *textBox;
+@property (strong, nonatomic) IBOutlet SKView *skView;
+@property (strong, nonatomic) IBOutlet UIImageView *explosion;
 @end

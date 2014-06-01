@@ -83,6 +83,9 @@
     {
         GameLoadingViewController *viewController = segue.destinationViewController;
         viewController.scene = self.loadedScene;
+    }else if([segue.identifier isEqualToString:@"campaignSegue"])
+    {
+//        GameLoadingViewController *viewController = segue.destinationViewController;
     }
 }
 

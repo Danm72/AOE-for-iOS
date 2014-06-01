@@ -13,10 +13,11 @@
 #import "Building.h"
 
 @interface GameLoadingViewController ()<MYSceneDelegate>
-@property (nonatomic, readwrite, weak) MyScene *loadedScene;
+//@property (nonatomic, readwrite, strong) MyScene *loadedScene;
 @end
 
 @implementation GameLoadingViewController
+@synthesize progressTextView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,11 +44,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    MyScene *scene = [MyScene sceneWithSize:self.view.bounds.size];
+    _scene = [MyScene sceneWithSize:self.view.bounds.size];
     //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    scene.delegate = self;
+    _scene.scaleMode = SKSceneScaleModeAspectFill;
+    _scene.delegate = self;
     
     [self.activityIndicator startAnimating];
     TextureContainer *tx = [TextureContainer getInstance];
@@ -62,8 +63,8 @@
     [SKTextureAtlas preloadTextureAtlases:@[tx.builderBuild, tx.builderIdle, tx.builderWalk, tx.buildings, tx.trees, tx.resources] withCompletionHandler:^{
         
         NSLog(@"DONE DONE DONE");
-        [scene loadSceneAssetsWithCompletionHandler:^{
-            self.loadedScene = scene;
+        [_scene loadSceneAssetsWithCompletionHandler:^{
+//            self.loadedScene = _scene;
             [self.activityIndicator stopAnimating];
             [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
             //        [skView presentScene:scene];
@@ -78,27 +79,13 @@
     if([segue.identifier isEqualToString:@"game_has_loaded"])
     {
         GameViewController *viewController = segue.destinationViewController;
-        viewController.scene = self.loadedScene;
+        viewController.scene = _scene;
     }
 }
 
-- (void)unitClicked:(Unit *)unitNode {
-
-}
-
 - (void)updateProgress:(NSString *)progress {
-    _progressTextView.text = progress;
+    progressTextView.text = progress;
 }
-
-
-- (void)buildingClicked:(Building *)castleNode {
-
-}
-
-- (void)leftSwipe {
-
-}
-
 
 /*
 #pragma mark - Navigation

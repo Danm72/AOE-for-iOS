@@ -17,12 +17,14 @@
         node.position = CGPointMake(self.size.width / 2, self.size.height / 2);
 //        node.size = self.size;
         node.size = CGSizeMake(self.size.width, self.size.height);
-
+        SKEmitterNode *snow = [self newSnow:self.size.width/2  :self.size.height];
+        snow.particlePositionRange = CGVectorMake(self.size.width,self.size.height);
         [self addChild:node];
+        snow.numParticlesToEmit = snow.numParticlesToEmit*4;
 //        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
         [self addChild:[self newExplosion:100 :10]];
         [self addChild:[self newExplosion:self.size.width/3*2 -50 :10]];
-        [self addChild:[self newSnow:self.size.width/2  :self.size.height]];
+        [self addChild:snow];
         //[self addChild:[self wideSmoke:self.size.width/2 :350]];
 
 

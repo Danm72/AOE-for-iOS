@@ -87,11 +87,18 @@
 }
 
 - (void)preloadAndRunAnimation:(SKAction *)_animation:(NSMutableArray*)array {
+    @try{
+        
+    
     [SKTexture preloadTextures:array withCompletionHandler:^(void) {
         SKAction *a2 = [SKAction repeatActionForever:_animation];
 
         [self runAction:a2];
     }];
+    }@catch(NSException *except){
+        NSLog(@"Anim EXCEPTION: %@",except.reason);
+
+    }
 }
 
 - (SKAction*)createBuilding:(Building *)building {
@@ -204,7 +211,8 @@
                                                          action1]];
     
     @try {
-        [self removeAllActions];
+        if([self hasActions])
+            [self removeAllActions];
         
     } @catch (NSException *exception) {
         NSLog(@"exception: %@", exception);

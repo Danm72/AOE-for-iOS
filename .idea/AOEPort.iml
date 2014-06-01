@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="CIDR_MODULE" version="4">
   <component name="NewModuleRootManager">
+    <content url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libz.dylib">
+      <sourceFolder url="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.1.sdk/usr/lib/libz.dylib" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$" />
+    <content url="file://$USER_HOME$/Pictures/photoshop/sword/left_sword.png">
+      <sourceFolder url="file://$USER_HOME$/Pictures/photoshop/sword/left_sword.png" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/Pictures/photoshop/sword/right_sword.png">
+      <sourceFolder url="file://$USER_HOME$/Pictures/photoshop/sword/right_sword.png" isTestSource="false" />
+    </content>
+    <content url="file://$USER_HOME$/Pictures/photoshop/sword/shield.png">
+      <sourceFolder url="file://$USER_HOME$/Pictures/photoshop/sword/shield.png" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -255,10 +255,6 @@
     }
 }
 
-- (void)updateProgress:(NSString *)progress {
-
-}
-
 - (void)setRightViewController:(UIViewController *)vc {
     [[self revealViewController] setRightViewController:vc];
 //    [[self revealViewController] rightRevealToggle:nil];
@@ -290,7 +286,6 @@
 
 - (void)addUnit:(Builder *)villager {
     NSLog(@"Add Unit");
-    CGPoint p =_activeNode.position;
     CGFloat z =_activeNode.zPosition;
 
 
@@ -298,7 +293,6 @@
     CGSize s =_scene.size;
 
     villager.position = CGPointMake(villager.position.x  + _activeNode.size.width /2, villager.position.y+20);
-    int i = _scene.size.height - villager.position.y;
 
     villager.zPosition =_activeNode.zPosition;
     [_scene.unitLayer addChild:villager];
