@@ -69,7 +69,6 @@
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
     [tapGestureRecognizer requireGestureRecognizerToFail:longPressGestureRecognizer];
-    
     [[_scene view] addGestureRecognizer:tapGestureRecognizer];
     
     UIScreenEdgePanGestureRecognizer *leftEdgePanGestureRecognizer = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(handleLeftEdgeGesture:)];
@@ -101,7 +100,7 @@
         
     } else {// cancel, fail, or ended
         
-        [_scene.delegate leftSwipe];
+        [_scene.delegate1 leftSwipe];
         
     }
 }
@@ -170,7 +169,7 @@
         
     } else {// cancel, fail, or ended
         
-        [_scene.delegate rightSwipe];
+        [_scene.delegate1 rightSwipe];
     }
 }
 
@@ -240,14 +239,14 @@
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
     @try {
-        
         CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
         
         touchLocation = [_scene convertPointFromView:touchLocation];
         touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
         
         NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
-        
+        [self showTapAtLocation:(touchLocation)];
+
         CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
         
         if (recognizer.state == UIGestureRecognizerStateBegan) {
@@ -278,7 +277,7 @@
     [self.selectionBox expandSelectionBox:translation];
     
     [_selectedNodes removeAllObjects];
-    [self.scene.delegate unitUnselected];
+    [self.scene.delegate1 unitUnselected];
     
     [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
         Unit *unit = (Unit *) node;
@@ -290,7 +289,7 @@
             if (![_selectedNodes containsObject:unit]) {
                 [unit addSelectedCircle];
                 [_selectedNodes addObject:unit];
-                [_scene.delegate unitClicked:unit];
+                [_scene.delegate1 unitClicked:unit];
             }
         }
     }];
@@ -340,6 +339,30 @@
     }
     
 }
+
+- (void)showTapAtLocation:(CGPoint)point {
+    // 1
+    UIBezierPath *path =
+    [UIBezierPath bezierPathWithOvalInRect:
+     CGRectMake(-3.0f, -3.0f, 6.0f, 6.0f)]; // 2
+    SKShapeNode *shapeNode = [SKShapeNode node];
+    shapeNode.path = path.CGPath;
+    shapeNode.position = point;
+    shapeNode.strokeColor = SKColorWithRGBA(255, 255, 255, 196); shapeNode.lineWidth = 1;
+    shapeNode.antialiased = NO;
+    [_scene.worldNode addChild:shapeNode];
+    // 3
+    const NSTimeInterval Duration = 0.6;
+    SKAction *scaleAction = [SKAction scaleTo:6.0f duration:Duration];
+    scaleAction.timingMode = SKActionTimingEaseOut;
+    [shapeNode runAction:
+     [SKAction sequence:@[scaleAction,
+                          [SKAction removeFromParent]]]];
+    // 4
+    SKAction *fadeAction =
+    [SKAction fadeOutWithDuration:Duration];
+    fadeAction.timingMode = SKActionTimingEaseOut;
+    [shapeNode runAction:fadeAction]; }
 
 - (void)resetSelectionBox {
     self.isSelecting = false;
@@ -398,14 +421,14 @@
         if (unit) {
             [self removeSelectedUnits];
             
-            [self.scene.delegate unitUnselected];
+            [self.scene.delegate1 unitUnselected];
             [unit addSelectedCircle];
-            [_scene.delegate unitClicked:unit];
+            [_scene.delegate1 unitClicked:unit];
             [_selectedNodes addObject:unit];
             
         } else if (_selectedBuilding) {
             
-            [_scene.delegate buildingClicked:_selectedBuilding];
+            [_scene.delegate1 buildingClicked:_selectedBuilding];
         }
     }
     @catch (NSException *exception) {
@@ -445,7 +468,6 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
         CGPoint position = [node position];
         
         [node setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
-        CGFloat previousz = node.zPosition;
         
         CGFloat z = _scene.buildingLayer.layerSize.height - node.position.y;
         

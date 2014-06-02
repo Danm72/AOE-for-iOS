@@ -12,7 +12,7 @@
 #import "Unit.h"
 #import "Building.h"
 
-@interface GameLoadingViewController ()<MYSceneDelegate>
+@interface GameLoadingViewController () <MYSceneDelegate>
 //@property (nonatomic, readwrite, strong) MyScene *loadedScene;
 @end
 
@@ -48,7 +48,7 @@
     //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
     _scene.scaleMode = SKSceneScaleModeAspectFill;
-    _scene.delegate = self;
+    _scene.delegate1 = self;
     
     [self.activityIndicator startAnimating];
     TextureContainer *tx = [TextureContainer getInstance];

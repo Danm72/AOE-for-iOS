@@ -36,32 +36,32 @@
 }
 
 - (void)loadSceneAssets {
-    [self.delegate updateProgress:@"Loading Scene Assets"];
+    [self.delegate1 updateProgress:@"Loading Scene Assets"];
 
     [self createPhysicsBody];
     [self createWorld];
     
-    [self.delegate updateProgress:@"Preparations Complete"];
+    [self.delegate1 updateProgress:@"Preparations Complete"];
 }
 
 - (void)createPhysicsBody {
-    [self.delegate updateProgress:@"Creating Physics Bodies"];
+    [self.delegate1 updateProgress:@"Creating Physics Bodies"];
     self.physicsBody =
     [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
     self.physicsWorld.gravity = CGVectorMake(0, 0);
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
     self.physicsWorld.contactDelegate = self;
-    [self.delegate updateProgress:@"Physics Bodies Created"];
+    [self.delegate1 updateProgress:@"Physics Bodies Created"];
     
 }
 
 - (void)createWorld {
-    [self.delegate updateProgress:@"Creating World"];
+    [self.delegate1 updateProgress:@"Creating World"];
     
     SKNode *background;
     @try {
         if (TILEMAP_MODE) {
-            [self.delegate updateProgress:@"Creating Tile Map"];
+            [self.delegate1 updateProgress:@"Creating Tile Map"];
             //_bgLayer = [self createScenery];
             
             background = [self createSceneryImage];
@@ -83,16 +83,16 @@
     self.worldNode = [SKNode node];
     [self.worldNode setName:@"World Node"];
     if (self.tileMap) {
-        [self.delegate updateProgress:@"Adding Buidings"];
+        [self.delegate1 updateProgress:@"Adding Buidings"];
         [self createBuildingGroup];
-        [self.delegate updateProgress:@"Adding Resources"];
+        [self.delegate1 updateProgress:@"Adding Resources"];
         [self createResourcesGroup];
-        [self.delegate updateProgress:@"Adding Units"];
+        [self.delegate1 updateProgress:@"Adding Units"];
         [self createCharacters];
         
         //        [_worldNode addChild:_buildingLayer];
         if (TILEMAP_MODE) {
-            [self.delegate updateProgress:@"Adjusting Positions of map"];
+            [self.delegate1 updateProgress:@"Adjusting Positions of map"];
             
             //            [_worldNode addChild:_bgLayer];
             //            [background setScale:<#(CGFloat)scale#>];

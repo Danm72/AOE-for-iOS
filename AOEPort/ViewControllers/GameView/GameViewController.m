@@ -44,7 +44,7 @@
 - (void)setScene:(MyScene *)scene {
     _scene = scene;
     SKView *skView = (SKView *) self.view;
-    _scene.delegate = self;
+    _scene.delegate1 = self;
     
     [skView presentScene:_scene];
     _scene.handlers.delegate = self;
