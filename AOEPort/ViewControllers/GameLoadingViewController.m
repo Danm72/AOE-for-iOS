@@ -14,10 +14,12 @@
 
 @interface GameLoadingViewController () <MYSceneDelegate>
 //@property (nonatomic, readwrite, strong) MyScene *loadedScene;
+@property BOOL preloaded;
 @end
 
 @implementation GameLoadingViewController
 @synthesize progressTextView;
+@synthesize scene;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,11 +46,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _scene = [MyScene sceneWithSize:self.view.bounds.size];
+    _preloaded = NO;
+    if(scene == nil){
+        scene = [MyScene sceneWithSize:self.view.bounds.size];
+        scene.scaleMode = SKSceneScaleModeAspectFill;
+        scene.delegate1 = self;
+    }else{
+        _preloaded = YES;
+    }
+    
     //    MyScene *scene = [MyScene sceneWithSize:CGSizeMake(2000, 2000)];
     //  scene.scaleMode = SKSceneScaleModeResizeFill;
-    _scene.scaleMode = SKSceneScaleModeAspectFill;
-    _scene.delegate1 = self;
     
     [self.activityIndicator startAnimating];
     TextureContainer *tx = [TextureContainer getInstance];
@@ -63,23 +71,26 @@
     [SKTextureAtlas preloadTextureAtlases:@[tx.builderBuild, tx.builderIdle, tx.builderWalk, tx.buildings, tx.trees, tx.resources] withCompletionHandler:^{
         
         NSLog(@"DONE DONE DONE");
-        [_scene loadSceneAssetsWithCompletionHandler:^{
-//            self.loadedScene = _scene;
-            [self.activityIndicator stopAnimating];
-            [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
-            //        [skView presentScene:scene];
-            //        [self saveGame:scene :@"SAVE_1"];
-        }];
-
+        if(!_preloaded){
+            [scene loadSceneAssetsWithCompletionHandler:^{
+                //            self.loadedScene = _scene;
+                [self.activityIndicator stopAnimating];
+                [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
+                //        [skView presentScene:scene];
+                //        [self saveGame:scene :@"SAVE_1"];
+            }];
+        }
+        
     }];
-   }
+    
+}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"game_has_loaded"])
     {
         GameViewController *viewController = segue.destinationViewController;
-        viewController.scene = _scene;
+        viewController.scene = scene;
     }
 }
 
@@ -88,14 +99,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

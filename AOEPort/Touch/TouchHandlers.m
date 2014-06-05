@@ -13,10 +13,6 @@
 
 @interface TouchHandlers ()
 
-//@property(nonatomic, strong) SKNode *worldNode;
-//@property(nonatomic, strong) TileMapLayer *bgLayer;
-//@property(nonatomic, strong) TileMapLayer *buildingLayer;
-//@property(nonatomic, strong) SKNode *unitLayer;
 @property(nonatomic) BOOL unitNode;
 @property(nonatomic) BOOL buildingNode;
 @property(nonatomic) CGPoint pointTwo;
@@ -273,6 +269,13 @@
     }
 }
 
+BOOL isInRectangle(double centerX, double centerY, double radius,
+                      double x, double y)
+{
+    return x >= centerX - radius && x <= centerX + radius &&
+    y >= centerY - radius && y <= centerY + radius;
+}
+
 - (void)selectUnitsWithinBox:(CGPoint)translation {
     [self.selectionBox expandSelectionBox:translation];
     
@@ -469,7 +472,7 @@ CGPoint mult(const CGPoint v, const CGFloat s) {
         
         [node setPosition:CGPointMake(position.x + translation.x, position.y + translation.y)];
         
-        CGFloat z = _scene.buildingLayer.layerSize.height - node.position.y;
+        CGFloat z = 3200 - node.position.y;
         
         [node setZPosition:(z)];
         

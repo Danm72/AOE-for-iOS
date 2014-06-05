@@ -19,6 +19,26 @@
 #import "BarracksViewController.h"
 #import "Wall.h"
 #import "SideBarMenuViewController.h"
+#import "Constants.h"
+
+@implementation SKScene (Unarchive)
+
++ (instancetype)unarchiveFromFile:(NSString *)file {
+    /* Retrieve scene file path from the application bundle */
+    NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
+    /* Unarchive the file to an SKScene object */
+    NSData *data = [NSData dataWithContentsOfFile:nodePath
+                                          options:NSDataReadingMappedIfSafe
+                                            error:nil];
+    NSKeyedUnarchiver *arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+    [arch setClass:self forClassName:@"SKScene"];
+    SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
+    [arch finishDecoding];
+    
+    return scene;
+}
+
+@end
 
 @interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol, SideBarProtocol>
 
@@ -46,13 +66,34 @@
     SKView *skView = (SKView *) self.view;
     _scene.delegate1 = self;
     
-    [skView presentScene:_scene];
+    if(DEBUG_MODE){
+        skView.showsFPS = YES;
+        skView.showsNodeCount = YES;
+    }
+    else {
+        skView.showsFPS = NO;
+        skView.showsNodeCount = NO;
+    }
+//        MyScene *newScene = [MyScene unarchiveFromFile:@"Save_layers"];
+//    if(newScene !=nil){
+
+//        [skView presentScene:newScene];
+//    }else{
+        [skView presentScene:_scene];
+//    }
     _scene.handlers.delegate = self;
 }
 
 -(void) saveClicked{
+//    NSError *error;
+
+//    BOOL success = [ [NSKeyedArchiver archivedDataWithRootObject:_scene] writeToFile:[self pathForDataFile] options:0 error:&error];
+//    if (!success) {
+//        NSLog(@"writeToFile failed with error %@", error);
+//    }
     if( [self saveGame:_scene :@"Test"]){
         NSLog(@"Saved");
+//        [NSKeyedArchiver archiveRootObject:_scene toFile:[self pathForDataFile]];
     }else{
         NSLog(@"Save Failed");
     }
@@ -74,7 +115,7 @@
         [fileManager createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
     }
     
-    NSString *fileName = @"Save.taskStore";
+    NSString *fileName = @"SaveME.savedState";
     return [folder stringByAppendingPathComponent: fileName];
 }
 
@@ -91,6 +132,7 @@
         NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
         [archiver encodeObject:scene forKey:saveName];
         [archiver finishEncoding];
+//        [NSKeyedArchiver archiveRootObject:_scene toFile:@"snapshot.sks"];
 
 
 //        BOOL result = [data writeToURL:archiveURL atomically:YES];
@@ -118,7 +160,9 @@
     NSKeyedUnarchiver *unarchiver =
     [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     // Customize the unarchiver.
-    MyScene *scene = [unarchiver decodeObjectForKey:saveName];
+    NSObject *obj =[unarchiver decodeObjectForKey:saveName];
+
+    MyScene *scene = (MyScene*)obj;
     [unarchiver finishDecoding];
 
     [self setScene:scene];

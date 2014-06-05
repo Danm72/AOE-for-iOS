@@ -37,7 +37,7 @@
             self.userData = data;
             self.unitType = @"Builder";
             
-            [self setupPhysics];
+            [self setupPhysics:texture];
             [self animateIdle];
         }
     }

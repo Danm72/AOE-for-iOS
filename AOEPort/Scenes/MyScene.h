@@ -41,12 +41,12 @@ typedef void (^AssetLoadCompletionHandler)(void);
 @property(nonatomic, strong, readwrite) SKNode *unitLayer;
 @property(nonatomic, strong) SKNode *worldNode;
 @property(nonatomic, strong) TileMapLayer *bgLayer;
-@property(nonatomic, strong) TileMapLayer *buildingLayer;
+@property(nonatomic, strong) SKNode *buildingLayer;
 @property(nonatomic, strong) JSTileMap *tileMap;
 @property(nonatomic, strong) TouchHandlers *handlers;
 @property(nonatomic, strong) SKTextureAtlas *atlas;
 @property(nonatomic, strong) SKSpriteNode *node;
-@property(nonatomic, strong) TileMapLayer *resourceLayer;
+@property(nonatomic, strong) SKNode *resourceLayer;
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 
 -(void) loadSceneAssets;

@@ -20,6 +20,7 @@
             [data setValue:@"Church" forKey:@"Type"];
             self.userData = data;
             self.buildType = @"Church";
+            [self setupPhysicsBody];
             self.stone = 90;
             self.wood = 50;
         }

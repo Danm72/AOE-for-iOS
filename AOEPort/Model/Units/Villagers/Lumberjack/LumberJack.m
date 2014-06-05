@@ -30,7 +30,7 @@
             self.userData = data;
             self.unitType = @"LumberJack";
 
-            [self setupPhysics];
+            [self setupPhysics:texture];
             [self animateAction:1 :1];
         }
     }

@@ -10,6 +10,9 @@
 #import "MenuScene.h"
 #import "MyScene.h"
 #import "GameLoadingViewController.h"
+#import "Constants.h"
+#import "SWRevealViewController.h"
+#import "Settings.h"
 
 @interface MainMenuNewViewController ()
 
@@ -18,13 +21,21 @@
 @implementation MainMenuNewViewController
 - (IBAction)newGameButtonPressed:(id)sender {
     NSLog(@"PRESSED");
+    
 
     [self performSelector:@selector(goToNextView) withObject:nil afterDelay:0];
 }
 - (IBAction)loadGameButtonPressed:(id)sender {
     [self loadGame:@"Test"];
+    
+    [self performSelector:@selector(goToNextView) withObject:nil afterDelay:0];
 }
 - (IBAction)settingsButtonPressed:(id)sender {
+    [self performSelector:@selector(goToNextViewSettings) withObject:nil afterDelay:0];
+    
+    Settings *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsView"];
+    [self presentViewController:vc animated:YES completion:nil];
+//    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,8 +54,10 @@
 //    self.titles = @[@"New Game",@"Skirmish",@"Load Game",@"Settings"];
     
     SKView * skView = _skView;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    if(DEBUG_MODE){
+        skView.showsFPS = YES;
+        skView.showsNodeCount = YES;
+    }
     
     // Create and configure the scene.
     SKScene * scene = [MenuScene sceneWithSize:skView.bounds.size];
@@ -77,12 +90,22 @@
     [self performSegueWithIdentifier:@"campaignSegue" sender:self];
 }
 
+- (void)goToNextViewSettings {
+    [self performSegueWithIdentifier:@"settingsSegue" sender:self];
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if([segue.identifier isEqualToString:@"campaignSegue"] && _loadedScene != nil)
     {
-        GameLoadingViewController *viewController = segue.destinationViewController;
-        viewController.scene = self.loadedScene;
+        SWRevealViewController *controller =segue.destinationViewController;
+        GameLoadingViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameLoadController"];
+
+        [controller setFrontViewController:viewController];
+//        [controller frontViewController]
+        viewController.scene = _loadedScene;
+
+
     }else if([segue.identifier isEqualToString:@"campaignSegue"])
     {
 //        GameLoadingViewController *viewController = segue.destinationViewController;
@@ -97,9 +120,12 @@
     NSKeyedUnarchiver *unarchiver =
     [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     // Customize the unarchiver.
-    _loadedScene = [unarchiver decodeObjectForKey:saveName];
+    NSObject *obj =[unarchiver decodeObjectForKey:saveName];
+    
+    MyScene *scene = (MyScene*)obj;
     [unarchiver finishDecoding];
     
+    _loadedScene = scene;
 }
 
 - (NSString *) pathForDataFile
@@ -114,7 +140,8 @@
         [fileManager createDirectoryAtPath:folder withIntermediateDirectories:NO attributes:nil error:nil];
     }
     
-    NSString *fileName = @"Save.taskStore";
+    NSString *fileName = @"SaveME.savedState";
     return [folder stringByAppendingPathComponent: fileName];
 }
+
 @end

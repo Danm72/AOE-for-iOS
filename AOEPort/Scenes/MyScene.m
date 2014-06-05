@@ -11,17 +11,37 @@
 
 -(instancetype) initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
+        NSLog(@"%@",[aDecoder debugDescription]);
+        
         _worldNode =
         [aDecoder decodeObjectForKey:@"MyScene-WorldNode"];
         
-        
+        if(_worldNode == nil){
+           _worldNode = [self.scene childNodeWithName:@"World Node"];
+        }
         _bgLayer= [aDecoder decodeObjectForKey:@"MyScene-BGLayer"];
-        _buildingLayer= [aDecoder decodeObjectForKey:@"MyScene-BuildingLayer"];
+
+        if(_bgLayer == nil){
+//            _bgLayer =(TileMapLayer*) [self.scene childNodeWithName:@"World Node"];
+        }
         _tileMap= [aDecoder decodeObjectForKey:@"MyScene-TileMap"];
+
+        if(_tileMap == nil){
+//            _tileMap = (JSTileMap*)[self.scene childNodeWithName:@"World Node"];
+        }
+        
+        _buildingLayer= [aDecoder decodeObjectForKey:@"MyScene-BuildingLayer"];
+        if(_buildingLayer == nil){
+            SKNode *node = [self.scene childNodeWithName:@"Building Layer"];
+            _buildingLayer =   node;
+        }
 //        _handlers = [aDecoder decodeObjectForKey:@"MyScene-Handler"];
         _atlas = [aDecoder decodeObjectForKey:@"MyScene-Atlas"];
         _node = [aDecoder decodeObjectForKey:@"MyScene-Node"];
         _resourceLayer = [aDecoder decodeObjectForKey:@"MyScene-ResourcesLayer"];
+        if(_resourceLayer == nil){
+            _resourceLayer = [_worldNode childNodeWithName:@"ResourceLayer"];
+        }
         self.handlers = [[TouchHandlers alloc] initWithScene:self];
         //    [self.handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_unitLayer];
         [self.handlers registerTouchEvents];
@@ -159,7 +179,7 @@
     
     [_unitLayer addChild:builder3];
     
-    
+    [_unitLayer setName:@"Unit Layer"];
     [self.worldNode addChild:_unitLayer];
 }
 
@@ -220,6 +240,8 @@
                       tileSize:self.tileMap.tileSize
                       gridSize:self.bgLayer.gridSize];
     
+    [_buildingLayer setName:@"Building Layer"];
+
     [_worldNode addChild:_buildingLayer];
     
 }

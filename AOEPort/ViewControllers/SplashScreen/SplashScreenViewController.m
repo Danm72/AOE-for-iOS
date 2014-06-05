@@ -40,7 +40,7 @@
     SKScene * scene = [SplashScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
-    [scene runAction:[SKAction playSoundFileNamed:@"pew.wav" waitForCompletion:NO]];
+    //[scene runAction:[SKAction playSoundFileNamed:@"pew.wav" waitForCompletion:NO]];
 
     
     // Present the scene.

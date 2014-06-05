@@ -11,9 +11,11 @@
     
     
 }
--(void) setupPhysics{
+-(void) setupPhysics:(SKTexture*)texture{
     self.physicsBody =
-    [SKPhysicsBody bodyWithRectangleOfSize:self.size];
+    [SKPhysicsBody bodyWithRectangleOfSize:texture.size];
+//    self.physicsBody =
+//    [SKPhysicsBody bodyWithTexture:texture size:texture.size];
     self.physicsBody.dynamic =YES;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.allowsRotation= NO;
@@ -59,9 +61,12 @@
                     if([self hasActions]){
                         [self removeAllActions];
                     }
-                    if(completionAction == idle_action)
+                    if(completionAction == idle_action){
 //                        [self animateAction:direction :idle_action];
                         [self animateIdle];
+//                        NSLog(@"Idle");
+                    self.position = self.position;
+                    }
                     else if(completionAction == base_action){
 //                        [self animateAction:direction :base_action];
                         [self animateBuild];

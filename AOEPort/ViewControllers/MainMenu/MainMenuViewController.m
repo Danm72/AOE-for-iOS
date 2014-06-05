@@ -89,6 +89,10 @@
     [self performSegueWithIdentifier:@"campaignSegue" sender:self];
 }
 
+- (void)goToNextViewSettings {
+    [self performSegueWithIdentifier:@"settingsSegue" sender:self];
+}
+
 // This will get called too before the view appears
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

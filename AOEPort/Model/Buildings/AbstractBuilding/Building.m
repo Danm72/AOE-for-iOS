@@ -51,7 +51,7 @@ float degToRad(float degree) {
     self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit | CNPhysicsCategoryBoundary;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryBoundary | CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
     self.physicsBody.dynamic = NO;
-    self.physicsBody.usesPreciseCollisionDetection = YES;
+    self.physicsBody.usesPreciseCollisionDetection = NO;
     self.physicsBody.allowsRotation = NO;
     self.physicsBody.friction = 0;
     self.physicsBody.linearDamping = 0;

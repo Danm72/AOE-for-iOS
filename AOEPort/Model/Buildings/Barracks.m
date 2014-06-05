@@ -22,6 +22,7 @@
             
             self.userData = data;
             self.buildType = @"elitebarracks";
+            [self setupPhysicsBody];
             self.stone = 100;
             self.wood = 50;
         }

@@ -19,17 +19,17 @@
             [data setValue:@"Tree" forKey:@"Type"];
 
             self.userData = data;
-            [self setupPhysicsBody];
+            [self setupPhysicsBody:texture];
 
         }
     }
     return self;
 }
 
-- (void)setupPhysicsBody {
-    CGSize size = CGSizeMake(self.size.width, self.size.height);
+- (void)setupPhysicsBody:(SKTexture *) texture {
+    CGSize size = CGSizeMake(self.size.width/2, self.size.height/2);
     self.physicsBody =
-    [SKPhysicsBody bodyWithRectangleOfSize:size];
+    [SKPhysicsBody bodyWithRectangleOfSize:(texture.size )];
     self.physicsBody.categoryBitMask = CNPhysicsCategoryResource;
     self.physicsBody.collisionBitMask = CNPhysicsCategoryUnit;
     self.physicsBody.contactTestBitMask = CNPhysicsCategoryUnit | CNPhysicsCategoryBuilding;
