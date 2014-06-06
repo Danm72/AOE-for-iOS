@@ -149,6 +149,16 @@
     //    bounds.physicsBody.friction = 0;
     //[self.worldNode addChild:bounds];
 }
+-(void) addTileMap{
+//    self.tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
+
+    _bgLayer = [self createScenery];
+    _bgLayer.zPosition =  -60;
+//    _bgLayer.position = CGPointMake(3200/2,
+//                                      3200/2);
+    [_worldNode addChild:_bgLayer];
+    [[_worldNode childNodeWithName:@"BackgroundImage"] removeFromParent];
+}
 
 - (void)createCharacters {
     TextureContainer *tx = [TextureContainer getInstance];
@@ -209,7 +219,10 @@
     SKSpriteNode *image = [SKSpriteNode spriteNodeWithImageNamed:@"maptest_small"];
     image.size = CGSizeMake(3200, 3200);
     
-    
+    [self.tileMap setName:@"TileMap"];
+    [image setName:@"BackgroundImage"];
+
+
     /*   if ([self.tileMap.imageLayers count] > 0) {
      for (TMXImageLayer *layer in self.tileMap.imageLayers) {
      image = [SKSpriteNode spriteNodeWithImageNamed:layer.imageSource];

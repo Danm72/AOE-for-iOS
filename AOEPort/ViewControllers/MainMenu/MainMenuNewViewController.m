@@ -34,7 +34,7 @@
     [self performSelector:@selector(goToNextViewSettings) withObject:nil afterDelay:0];
     
     Settings *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsView"];
-    [self presentViewController:vc animated:YES completion:nil];
+    [self.navigationController pushViewController:vc animated:NO];
 //    
 }
 
@@ -98,7 +98,7 @@
 {
     if([segue.identifier isEqualToString:@"campaignSegue"] && _loadedScene != nil)
     {
-        SWRevealViewController *controller =segue.destinationViewController;
+        SWRevealViewController *controller = segue.destinationViewController;
         GameLoadingViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameLoadController"];
 
         [controller setFrontViewController:viewController];

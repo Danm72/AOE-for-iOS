@@ -58,9 +58,9 @@
         @try {
             [self runAction:moveTo completion:^{
                 {
-                    if([self hasActions]){
-                        [self removeAllActions];
-                    }
+//                    if([self hasActions]){
+//                        [self removeAllActions];
+//                    }
                     if(completionAction == idle_action){
 //                        [self animateAction:direction :idle_action];
                         [self animateIdle];

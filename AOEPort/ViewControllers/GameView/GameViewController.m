@@ -56,9 +56,9 @@
 - (IBAction)sideBarTouch:(id)sender {
     [[self revealViewController] rightRevealToggle:sender];
     
-//    CastleViewController *vc = [[CastleViewController alloc] init];
-//    [[self revealViewController] setRightViewController:vc];
-//    [[self revealViewController] rightRevealToggle:sender];
+    //    CastleViewController *vc = [[CastleViewController alloc] init];
+    //    [[self revealViewController] setRightViewController:vc];
+    //    [[self revealViewController] rightRevealToggle:sender];
 }
 
 - (void)setScene:(MyScene *)scene {
@@ -74,33 +74,78 @@
         skView.showsFPS = NO;
         skView.showsNodeCount = NO;
     }
-//        MyScene *newScene = [MyScene unarchiveFromFile:@"Save_layers"];
-//    if(newScene !=nil){
-
-//        [skView presentScene:newScene];
-//    }else{
-        [skView presentScene:_scene];
-//    }
+    //        MyScene *newScene = [MyScene unarchiveFromFile:@"Save_layers"];
+    //    if(newScene !=nil){
+    
+    //        [skView presentScene:newScene];
+    //    }else{
     _scene.handlers.delegate = self;
+    [skView presentScene:_scene];
+    //    }
 }
 
 -(void) saveClicked{
-//    NSError *error;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Save" message:@"Are you sure you want to save this.  This action overwrites previous saves" delegate:self cancelButtonTitle:@"Save" otherButtonTitles:@"Cancel", nil];
+    [[self revealViewController] revealToggle:nil];
+    
+    [alert show];
+}
 
-//    BOOL success = [ [NSKeyedArchiver archivedDataWithRootObject:_scene] writeToFile:[self pathForDataFile] options:0 error:&error];
-//    if (!success) {
-//        NSLog(@"writeToFile failed with error %@", error);
-//    }
-    if( [self saveGame:_scene :@"Test"]){
-        NSLog(@"Saved");
-//        [NSKeyedArchiver archiveRootObject:_scene toFile:[self pathForDataFile]];
-    }else{
-        NSLog(@"Save Failed");
+- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"The %@ button was tapped.", [theAlert buttonTitleAtIndex:buttonIndex]);
+    if(buttonIndex == 0){
+        if([[theAlert buttonTitleAtIndex:buttonIndex] isEqualToString:@"Save"]){
+            if( [self saveGame:_scene :@"Test"]){
+                NSLog(@"Saved");
+                //        [NSKeyedArchiver archiveRootObject:_scene toFile:[self pathForDataFile]];
+            }else{
+                NSLog(@"Save Failed");
+            }
+        }else{
+            [self loadGame:@"Test"];
+        }
     }
 }
 
 -(void) loadClicked{
-    [self loadGame:@"Test"];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Load" message:@"Are you sure you want to load this. This action overwrites current progress" delegate:self cancelButtonTitle:@"Load" otherButtonTitles:@"Cancel", nil];
+    
+    [[self revealViewController] revealToggle:nil];
+    
+    [alert show];
+    
+    
+}
+
+-(void) settingsClicked{
+    NSLog(@"Settings Clicked");
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Settings"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:@"Toggle Tiles"
+                                                    otherButtonTitles:@"Toggle Nodes",@"Toggle FPS",nil];
+    [[self revealViewController] revealToggle:nil];
+    
+    [actionSheet showInView:self.view];
+    
+}
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"The %@ button was tapped.", [actionSheet buttonTitleAtIndex:buttonIndex]);
+    
+    if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Toggle Tiles"]){
+        [_scene addTileMap];
+    }
+    if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Toggle Nodes"]){
+        SKView *skView = (SKView *) self.view;
+        skView.showsNodeCount = NO;
+    }
+    if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Toggle FPS"]){
+        SKView *skView = (SKView *) self.view;
+        skView.showsFPS = NO;
+    }
 }
 
 - (NSString *) pathForDataFile
@@ -120,31 +165,31 @@
 }
 
 - (BOOL)saveGame:(MyScene *)scene :(NSString *)saveName {
-//    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
-//    NSString *secondParentPath = [[bundlePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
-
+    //    NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
+    //    NSString *secondParentPath = [[bundlePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+    
     @try {
         // Try something
-
-//        NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+        
+        //        NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
         NSString * path = [self pathForDataFile];
         NSMutableData *data = [NSMutableData data];
         NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
         [archiver encodeObject:scene forKey:saveName];
         [archiver finishEncoding];
-//        [NSKeyedArchiver archiveRootObject:_scene toFile:@"snapshot.sks"];
-
-
-//        BOOL result = [data writeToURL:archiveURL atomically:YES];
+        //        [NSKeyedArchiver archiveRootObject:_scene toFile:@"snapshot.sks"];
+        
+        
+        //        BOOL result = [data writeToURL:archiveURL atomically:YES];
         
         NSError *error;
-      BOOL success = [data writeToFile:path options:0 error:&error];
+        BOOL success = [data writeToFile:path options:0 error:&error];
         if (!success) {
             NSLog(@"writeToFile failed with error %@", error);
         }
-
+        
         return success;
-
+        
     }
     @catch (NSException *e) {
         NSLog(@"Exception: %@", e);
@@ -153,24 +198,23 @@
 }
 
 - (void)loadGame:(NSString *)saveName {
-//    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
+    //    NSURL *archiveURL = [[NSBundle mainBundle] bundleURL];
     NSString *path = [self pathForDataFile];
     NSData *data = [NSData dataWithContentsOfFile:path];
-
+    
     NSKeyedUnarchiver *unarchiver =
     [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
     // Customize the unarchiver.
     NSObject *obj =[unarchiver decodeObjectForKey:saveName];
-
+    
     MyScene *scene = (MyScene*)obj;
     [unarchiver finishDecoding];
-
-    [self setScene:scene];
+    
+    if(scene != nil)
+        [self setScene:scene];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
+- (void)backgroundMusic {
     // Set AVAudioSession
     NSError *sessionError = nil;
     [[AVAudioSession sharedInstance] setDelegate:self];
@@ -188,7 +232,7 @@
     
     self.player = [[AVQueuePlayer alloc] initWithItems:queue];
     self.player.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
-
+    
     [self.player addObserver:self
                   forKeyPath:@"currentItem"
                      options:NSKeyValueObservingOptionNew
@@ -209,12 +253,30 @@
     
     
     [self.player play];
+}
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self backgroundMusic];
+    
+#define NoRevealOverdraw true
+#if NoRevealOverdraw
+    
+    [self revealViewController].rightViewRevealWidth = 20;
+    [self revealViewController].rightViewRevealOverdraw = 120;
+    [self revealViewController].bounceBackOnOverdraw = NO;
+    [self revealViewController].stableDragOnOverdraw = YES;
+#else
+    [self revealViewController].rightViewRevealWidth = 200;
+#endif
+    [self revealViewController].rightViewRevealDisplacement = 0;
+    
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-//    _sidebarButton.target = self.revealViewController;
-//    _sidebarButton.action = @selector(rightRevealToggle:);
-//    _sidebarButton.action = @selector(revealToggle:);
-
+    //    _sidebarButton.target = self.revealViewController;
+    //    _sidebarButton.action = @selector(rightRevealToggle:);
+    //    _sidebarButton.action = @selector(revealToggle:);
+    
     // Set the gesture
 }
 
@@ -243,20 +305,20 @@
 - (void)buildingClicked:(Building *)building {
     _sidebarButton.hidden = false;
     
-//    UIImage *btnImage = [UIImage imageNamed:@"house"];
+    //    UIImage *btnImage = [UIImage imageNamed:@"house"];
     UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"house" ofType: @"png"]];
-
+    
     [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
-
+    
     if ([building isKindOfClass:[TownCenter class]]) {
         TownCenterViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"townCenterTable"];
-
+        
         vc.delegate = self;
         [self setRightViewController:vc];
     }
     if ([building isKindOfClass:[Barracks class]]) {
         BarracksViewController *vc  = [self.storyboard instantiateViewControllerWithIdentifier:@"barracksTable"];
-
+        
         vc.delegate = self;
         [self setRightViewController:vc];
     }
@@ -265,12 +327,12 @@
         vc.delegate = self;
         [self setRightViewController:vc];
     }
-
+    
     _activeNode = building;
-
-//     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
-//     [building runAction:[SKAction repeatActionForever:sequence]];
-
+    
+    //     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
+    //     [building runAction:[SKAction repeatActionForever:sequence]];
+    
 }
 
 - (void)leftSwipe {
@@ -282,26 +344,31 @@
 }
 
 - (void)unitClicked:(Unit *)unitNode {
-    _sidebarButton.hidden = false;
     
-//    UIImage *btnImage = [UIImage imageNamed:@"hammer"];
-    UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"hammer" ofType: @"png"]];
+    //        VillagerViewController *vc = [[VillagerViewController alloc] init];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
+                                             (unsigned long)NULL), ^(void) {
+        
+      
+        if ([unitNode isKindOfClass:[Builder class]]) {
+            
+            VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
+            vc.delegate = self;
+            [self setRightViewController:vc];
+            UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"hammer" ofType: @"png"]];
+            
+            [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
+            _sidebarButton.hidden = false;
 
-    [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
-
-    if ([unitNode isKindOfClass:[Builder class]]) {
-//        VillagerViewController *vc = [[VillagerViewController alloc] init];
-        VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
-        vc.delegate = self;
-        [self setRightViewController:vc];
-
-        _activeNode = unitNode;
-    }
+            _activeNode = unitNode;
+        }
+    });
+    
 }
 
 - (void)setRightViewController:(UIViewController *)vc {
     [[self revealViewController] setRightViewController:vc];
-//    [[self revealViewController] rightRevealToggle:nil];
+    //    [[self revealViewController] rightRevealToggle:nil];
     _currentSideController = vc;
 }
 
@@ -309,18 +376,18 @@
 - (void)addStructure:(Building *)building {
     //[self.scene increaseNumberOfUnitesForSacte]
     NSLog(@"increase number of units");
-
+    
     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED
     [building runAction:[SKAction repeatActionForever:sequence]];
-
+    
     building.position = _activeNode.position;
     building.zPosition = _activeNode.zPosition;
-
-
-//    [self performSelector:@selector(lol) withObject:building afterDelay:1];
-
+    
+    
+    //    [self performSelector:@selector(lol) withObject:building afterDelay:1];
+    
     [_scene.buildingLayer addChild:building];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -331,13 +398,13 @@
 - (void)addUnit:(Builder *)villager {
     NSLog(@"Add Unit");
     CGFloat z =_activeNode.zPosition;
-
-
+    
+    
     villager.position = _activeNode.position;
     CGSize s =_scene.size;
-
+    
     villager.position = CGPointMake(villager.position.x  + _activeNode.size.width /2, villager.position.y+20);
-
+    
     villager.zPosition =_activeNode.zPosition;
     [_scene.unitLayer addChild:villager];
 }
@@ -354,26 +421,26 @@
     
 }
 - (IBAction)updateWood:(id)sender {
-//    _woodResourceCounter+=1;
+    //    _woodResourceCounter+=1;
 }
 - (IBAction)updateStone:(id)sender {
-//    _stoneResourceCounter+=1;
-
+    //    _stoneResourceCounter+=1;
+    
 }
 
 -(void) panEnded{
     NSLog(@"Pan Ended");
-
+    
     _woodIcon.hidden = NO;
     _stoneIcon.hidden = NO;
     
     _stoneResourceCounter.hidden = NO;
     _woodResourceCounter.hidden = NO;
     _settingsButtonIcon.hidden = NO;
-
+    
     if(_activeNode)
         _sidebarButton.hidden = NO;
-
+    
 }
 -(void) panBegun{
     NSLog(@"Pan Begun");
@@ -383,7 +450,7 @@
     _stoneResourceCounter.hidden = YES;
     _woodResourceCounter.hidden = YES;
     _settingsButtonIcon.hidden = YES;
-   _sidebarButton.hidden = YES;
+    _sidebarButton.hidden = YES;
 }
 
 -(void) unitUnselected{
@@ -399,11 +466,11 @@
     }else if (wood - requiredWood < 0){
         return false;
     }
-    _stoneResourceCounter.text = [NSString stringWithFormat:@"%ld",(stone - requiredStone)] ;
-    _woodResourceCounter.text = [NSString stringWithFormat:@"%ld", wood - requiredWood];
-
+    _stoneResourceCounter.text = [NSString stringWithFormat:@"%d",(stone - requiredStone)] ;
+    _woodResourceCounter.text = [NSString stringWithFormat:@"%d", wood - requiredWood];
+    
     return true;
-
+    
 }
 
 @end

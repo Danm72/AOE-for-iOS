@@ -49,7 +49,10 @@
     if(DEBUG_MODE == NO){
         [self moveImage:_leftSword duration:1
                   curve:UIViewAnimationCurveLinear x:0 y:self.view.center.y*2];
-        [self performSelector:@selector(moveRightSword) withObject:nil afterDelay:.5];
+//        [self performSelector:@selector(moveRightSword) withObject:nil afterDelay:.5];
+        [self moveImage:_rightSword duration:1
+                  curve:UIViewAnimationCurveLinear x:0 y:self.view.center.y*2];
+
 //        [self playSound];
         [self performSelector:@selector(attachExplosionAnimation) withObject:nil afterDelay:1];
         [self performSelector:@selector(attachExplosionAnimation) withObject:nil afterDelay:1.2];

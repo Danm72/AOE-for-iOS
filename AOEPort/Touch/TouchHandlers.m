@@ -281,17 +281,17 @@ BOOL isInRectangle(double centerX, double centerY, double radius,
     
     [_selectedNodes removeAllObjects];
     [self.scene.delegate1 unitUnselected];
-    
+    CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
+
     [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
         Unit *unit = (Unit *) node;
         [unit removeAllChildren]; //remove circle
-        
-        CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
         
         if (CGRectContainsPoint(box, unit.position)) {
             if (![_selectedNodes containsObject:unit]) {
                 [unit addSelectedCircle];
                 [_selectedNodes addObject:unit];
+                
                 [_scene.delegate1 unitClicked:unit];
             }
         }

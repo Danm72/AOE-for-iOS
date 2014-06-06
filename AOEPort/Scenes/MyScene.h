@@ -50,5 +50,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
 - (void)loadSceneAssetsWithCompletionHandler:(AssetLoadCompletionHandler)callback;
 
 -(void) loadSceneAssets;
+-(void) addTileMap;
+
 
 @end

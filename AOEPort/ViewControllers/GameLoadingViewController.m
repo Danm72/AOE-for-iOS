@@ -43,7 +43,7 @@
 }
 
 
--(void)viewWillAppear:(BOOL)animated
+-(void)viewDidAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     _preloaded = NO;
@@ -79,6 +79,8 @@
                 //        [skView presentScene:scene];
                 //        [self saveGame:scene :@"SAVE_1"];
             }];
+        }else{
+            [self performSegueWithIdentifier:@"game_has_loaded" sender:self];
         }
         
     }];

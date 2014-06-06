@@ -12,6 +12,7 @@
 
 -(void) saveClicked;
 -(void) loadClicked;
+-(void) settingsClicked;
 
 @end
 @interface SideBarMenuViewController : UITableViewController
