@@ -16,6 +16,7 @@
     [SKPhysicsBody bodyWithRectangleOfSize:texture.size];
 //    self.physicsBody =
 //    [SKPhysicsBody bodyWithTexture:texture size:texture.size];
+    
     self.physicsBody.dynamic =YES;
     self.physicsBody.usesPreciseCollisionDetection = YES;
     self.physicsBody.allowsRotation= NO;
@@ -47,20 +48,25 @@
     [self animateAction:direction:move_action];
     int speed = [TouchUtilities getSpeed:self.position :newPos];
     
-    //    NSArray *points = [self findPointsInPath:newPos];
-    NSArray *points = [TouchUtilities getAllPointsFromPoint:self.position toPoint:newPos];
+        SKAction *moveTo = [SKAction moveTo:newPos duration:speed];
 
-    for( NSValue *val in points){
-        CGPoint p = [val CGPointValue];
-        SKAction *moveTo = [SKAction moveTo:p duration:speed];
-        [moveTo setTimingMode:SKActionTimingEaseOut];
+    
+    //2
+//    CGPoint newPosition = CGPointMake(self.position.x + velocity.x ,
+//                              self.position.y + velocity.y );
+//    self.position = newPosition;
+
+    
+//        [moveTo setTimingMode:SKActionTimingEaseOut];
         
         @try {
             [self runAction:moveTo completion:^{
                 {
-                    if([self hasActions]){
-                        [self removeAllActions];
-                    }
+                    NSLog(@"SECOND %f, %f",self.position.x, self.position.y);
+
+//                    if([self hasActions]){
+//                        [self removeAllActions];
+//                    }
                     if(completionAction == idle_action){
 //                        [self animateAction:direction :idle_action];
                         [self animateIdle];
@@ -79,7 +85,7 @@
         }@catch (NSException *exception) {
             NSLog(@"exception: %@", exception);
         }
-    }
+    //}
 }
 
 - (void)move:(CGPoint)newPos {
@@ -89,23 +95,28 @@
 
 - (int)setDirection:(CGPoint)newPos {
     int direction = -1;
+    
+    CGPoint offset = CGPointMake(newPos.x - self.position.x, newPos.y - self.position.y);
+    CGFloat length = sqrtf(offset.x * offset.x + offset.y * offset.y);
+    CGPoint dir = CGPointMake(offset.x / length, offset.y / length);
 
-    if (newPos.y > self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (dir.y > .25)
         direction = NORTH;
-    if (newPos.y < self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (dir.y < -.25)
         direction = SOUTH;
-    if (newPos.x > self.position.x && [TouchUtilities accuracyOfTouchY:self.position :newPos])
+    if (dir.x > .75)
         direction = EAST;
-    if (newPos.x < self.position.x && [TouchUtilities accuracyOfTouchY:self.position :newPos])
+    if (dir.x < -.75)
         direction = WEST;
-    if (newPos.y > self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (direction == NORTH && dir.x > .25)
         direction = NORTH_EAST;
-    if (newPos.y > self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (direction == NORTH && dir.x < -.25)
         direction = NORTH_WEST;
-    if (newPos.y < self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (direction == SOUTH && dir.x > .25)
         direction = SOUTH_EAST;
-    if (newPos.y < self.position.y && ![TouchUtilities accuracyOfTouchX:self.position :newPos])
+    if (direction == SOUTH && dir.x < -.25)
         direction = SOUTH_WEST;
+
     return direction;
 }
 

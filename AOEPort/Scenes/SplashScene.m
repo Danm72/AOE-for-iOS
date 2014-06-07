@@ -14,8 +14,8 @@
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        self.backgroundColor = [SKColor colorWithRed:0.333 green:0.961 blue:0.780  alpha:1];
-        //        self.backgroundColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:0.0];
+//        self.backgroundColor = [SKColor colorWithRed:0.333 green:0.961 blue:0.780  alpha:1];
+                self.backgroundColor = [SKColor colorWithRed:1 green:1 blue:1 alpha:0.0];
         
         /* Setup your scene here */
         //        SKSpriteNode *node = [[SKSpriteNode alloc] initWithImageNamed:@"fable"];

@@ -122,8 +122,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doW-vm-axc">
-                                <rect key="frame" x="498" y="20" width="50" height="50"/>
+                            <button hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doW-vm-axc">
+                                <rect key="frame" x="498" y="10" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="m1B-pe-InM"/>
                                     <constraint firstAttribute="width" constant="50" id="sKh-cV-djH"/>
@@ -220,7 +220,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btX-cZ-eVz" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3216" y="-435"/>
+            <point key="canvasLocation" x="3984" y="-475"/>
         </scene>
         <!--Side Bar Menu View Controller-->
         <scene sceneID="Ck1-BC-tLl">
@@ -319,6 +319,21 @@
             </objects>
             <point key="canvasLocation" x="1368" y="566"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="txS-hD-gIq">
+            <objects>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="gvS-3k-7fU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kf7-C8-Cp8">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wAJ-op-Kab" kind="relationship" relationship="rootViewController" id="raC-8Z-krw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nDe-sU-asn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1571" y="-459"/>
+        </scene>
         <!--Game Loading View Controller-->
         <scene sceneID="cxF-a4-sST">
             <objects>
@@ -359,7 +374,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gU-ch-xSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2233" y="-435"/>
+            <point key="canvasLocation" x="3001" y="-475"/>
         </scene>
         <!--Main Menu New View Controller - Item-->
         <scene sceneID="FSY-hJ-tly">
@@ -469,7 +484,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="RkV-14-69a" kind="custom" identifier="sw_right" customClass="SWRevealViewControllerSegue" id="ncE-in-uK9"/>
-                        <segue destination="wAJ-op-Kab" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="MJI-Sk-Wxc"/>
+                        <segue destination="do9-b8-Cwx" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="Ldn-ZA-b52"/>
+                        <segue destination="gvS-3k-7fU" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="9KO-kO-gm0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="di7-Qw-iZu" userLabel="First Responder" sceneMemberID="firstResponder"/>

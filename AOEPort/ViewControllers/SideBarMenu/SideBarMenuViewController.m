@@ -106,6 +106,10 @@
         NSLog(@"Did selected Clicked");
         [self.delegate loadClicked];
     }
+    if(indexPath.row == 5){
+        NSLog(@"Did selected Clicked");
+        [self.delegate settingsClicked];
+    }
 }
 
 @end

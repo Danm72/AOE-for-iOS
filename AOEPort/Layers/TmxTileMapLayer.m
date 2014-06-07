@@ -74,7 +74,8 @@
 
     Boolean tileLayer = [layer.layerInfo.name isEqualToString:@"Tiles"];
     if (tileLayer) {
-//        t = [SKTextureAtlas atlasNamed:@"tiles"];
+        tx.tiles = [SKTextureAtlas atlasNamed:@"tiles"];
+
         dirt = [tx.tiles textureNamed:@"dirt1"];
         sand = [tx.tiles  textureNamed:@"sand"];
         grass = [tx.tiles  textureNamed:@"grass"];
