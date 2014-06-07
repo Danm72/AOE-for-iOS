@@ -76,7 +76,6 @@
 		C184BF6D559CEE023A799F74 /* VillagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B52D5F0AFFAF421B38EC /* VillagerViewController.m */; };
 		C184BF94BAE6D95FF236DE31 /* CastleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB92EEEAA93CA211D4BB /* CastleViewController.m */; };
 		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
-		C804397719429E240036A7F8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C804397619429E240036A7F8 /* README.md */; };
 		C8160266191F1FEB0088BBDF /* left_sword.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160263191F1FEB0088BBDF /* left_sword.png */; };
 		C8160267191F1FEB0088BBDF /* right_sword.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160264191F1FEB0088BBDF /* right_sword.png */; };
 		C8160268191F1FEB0088BBDF /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160265191F1FEB0088BBDF /* shield.png */; };
@@ -296,7 +295,6 @@
 		C184BF84AC70C992B418054D /* MinerStand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MinerStand.atlas; sourceTree = "<group>"; };
 		C184BF9F6DF96F76D8F65724 /* CastleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastleViewController.h; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
-		C804397619429E240036A7F8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		C8160263191F1FEB0088BBDF /* left_sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_sword.png; path = ../../../../../../../../../Pictures/photoshop/sword/left_sword.png; sourceTree = "<group>"; };
 		C8160264191F1FEB0088BBDF /* right_sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_sword.png; path = ../../../../../../../../../Pictures/photoshop/sword/right_sword.png; sourceTree = "<group>"; };
 		C8160265191F1FEB0088BBDF /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield.png; path = ../../../../../../../../../Pictures/photoshop/sword/shield.png; sourceTree = "<group>"; };
@@ -892,7 +890,6 @@
 		C8933AEE18A1597500116A26 = {
 			isa = PBXGroup;
 			children = (
-				C804397619429E240036A7F8 /* README.md */,
 				C860896818ABF6D100810C1A /* Images.xcassets */,
 				C8933B0218A1597500116A26 /* AOEPort */,
 				C8933B2918A1597500116A26 /* AOEPortTests */,
@@ -1125,7 +1122,6 @@
 				C81CC980193D2730003A96D6 /* unmount_knight.png in Resources */,
 				C81CC981193D2730003A96D6 /* warrior_old.png in Resources */,
 				C184B4172DD15E35CEE5B216 /* Builder_build.atlas in Resources */,
-				C804397719429E240036A7F8 /* README.md in Resources */,
 				C184B51C77D45EFC417FFA77 /* debugMap.tmx in Resources */,
 				C85F3FA7191FC6FF00130FD9 /* poof_02.png in Resources */,
 				C8D9D9DF1940C99800198617 /* Save12.sks in Resources */,
