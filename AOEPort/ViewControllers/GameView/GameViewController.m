@@ -136,7 +136,13 @@
     NSLog(@"The %@ button was tapped.", [actionSheet buttonTitleAtIndex:buttonIndex]);
     
     if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Toggle Tiles"]){
-        [_scene addTileMap];
+    
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND,
+                                                 (unsigned long)NULL), ^(void) {
+            
+            [_scene addTileMap];
+
+        });
     }
     if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Toggle Nodes"]){
         SKView *skView = (SKView *) self.view;
@@ -346,14 +352,16 @@
 - (void)unitClicked:(Unit *)unitNode {
     
     //        VillagerViewController *vc = [[VillagerViewController alloc] init];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,
-                                             (unsigned long)NULL), ^(void) {
+    if ([unitNode isKindOfClass:[Builder class]]) {
         
+
+        
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,
+//                                             (unsigned long)NULL), ^(void) {
+        VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
+        vc.delegate = self;
       
-        if ([unitNode isKindOfClass:[Builder class]]) {
-            
-            VillagerViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"buildingTable"];
-            vc.delegate = self;
+      
             [self setRightViewController:vc];
             UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"hammer" ofType: @"png"]];
             
@@ -361,9 +369,9 @@
             _sidebarButton.hidden = false;
 
             _activeNode = unitNode;
-        }
-    });
-    
+        
+   // });
+    }
 }
 
 - (void)setRightViewController:(UIViewController *)vc {

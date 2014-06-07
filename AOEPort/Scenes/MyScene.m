@@ -195,15 +195,15 @@
 
 - (TileMapLayer *)createScenery {
     //    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
-    self.tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
+    _tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
     
-    [self.tileMap setName:@"TileMap"];
+    [_tileMap setName:@"TileMap"];
     
     
     TileMapLayer *mapLayer = [[TmxTileMapLayer alloc]
-                              initWithTmxLayer:[self.tileMap layerNamed:@"Tiles"]];
+                              initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
     [mapLayer setName:@"TileMap"];
-    
+    _tileMap = nil;
     
     return mapLayer;
 }

@@ -22,6 +22,8 @@
 @end
 
 @implementation TouchHandlers
+CGPoint test;
+CGPoint test2;
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return YES;
@@ -41,6 +43,9 @@
     if (self) {
         _selectedNodes = [NSMutableArray array];
         _scene = scene;
+        test = CGPointMake(0, 0);
+        test2 = CGPointMake(0, 0);
+
     }
     
     return self;
@@ -243,6 +248,21 @@
         NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
         [self showTapAtLocation:(touchLocation)];
 
+        if(test.x == 0)
+            test = touchLocation;
+        else{
+            test2 = touchLocation;
+          SKPhysicsBody *body =  [_scene.physicsWorld bodyAlongRayStart:test end:test2];
+            if([body.node isKindOfClass:[Unit class]]){
+                Unit *node = (Unit*)body.node;
+                [node removeFromParent];
+            }
+            if([body.node isKindOfClass:[Building class]]){
+                Building *node = (Building*)body.node;
+                [node removeFromParent];
+            }
+            
+        }
         CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
         
         if (recognizer.state == UIGestureRecognizerStateBegan) {
