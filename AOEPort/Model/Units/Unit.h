@@ -29,7 +29,7 @@ BOOL flipGraphic;
 - (void)evaluateMovementDirection:(NSInteger)direction;
 -(void) setupPhysics:(SKTexture*)texture;
 -(void) addSelectedCircle;
-
+- (int)setDirection:(CGPoint)newPos;
 -(void) animateIdle;
 -(void) animateBuild;
 

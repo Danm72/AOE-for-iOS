@@ -62,7 +62,7 @@
         @try {
             [self runAction:moveTo completion:^{
                 {
-                    NSLog(@"SECOND %f, %f",self.position.x, self.position.y);
+//                    NSLog(@"SECOND %f, %f",self.position.x, self.position.y);
 
 //                    if([self hasActions]){
 //                        [self removeAllActions];

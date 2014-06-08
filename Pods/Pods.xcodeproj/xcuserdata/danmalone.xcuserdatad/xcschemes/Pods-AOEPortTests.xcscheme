@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0500"
+   LastUpgradeVersion = "0510"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "188D5D46DBB04E99839A2508"
+               BlueprintIdentifier = "F0CE22434F684C679C19BC75"
                BuildableName = "libPods-AOEPortTests.a"
                BlueprintName = "Pods-AOEPortTests"
                ReferencedContainer = "container:Pods.xcodeproj">

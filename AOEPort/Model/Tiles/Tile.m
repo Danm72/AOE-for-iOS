@@ -10,6 +10,7 @@
 
 @implementation Tile
 - (instancetype)init{
+    _walkable = YES;
     return self;
 }
 @end

@@ -11,7 +11,7 @@ DEPENDENCIES:
   - SWRevealViewController (~> 2.0.0)
 
 SPEC CHECKSUMS:
-  Kiwi: d60d7498b640a16f58b01925fc3c8d7c4d809f66
-  SWRevealViewController: 1d01a647e48cd9c7ff856a6095251718810d0dc7
+  Kiwi: c73667f2b84cbf36f1a3830267c5a4ae8dcbd8ba
+  SWRevealViewController: 1ef1b6a87e67c65491a2c51219f64c678e725d91
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.33.1

@@ -30,6 +30,7 @@
 //            self.physicsBody.collisionBitMask = 0;
         }
     }
+    self.walkable = YES;
     return self;
 }
 

@@ -9,4 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface Tile : SKSpriteNode
+@property ( nonatomic) BOOL walkable;
 @end

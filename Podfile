@@ -18,5 +18,6 @@ target :AOEPortTests, :exclusive => true do
   #pod 'JASidePanels', '~> 1.3.2'
   #pod 'ECSlidingViewController', '~> 2.0.1'
   pod 'SWRevealViewController', '~> 2.0.0'
+  #pod 'HUMAStarPathfinder', '~> 0.1.5'
 
 end

@@ -2,8 +2,10 @@
 #import "Builder.h"
 #import "Constants.h"
 #import "TextureContainer.h"
+#import "HUMAStarPathfinder.h"
+#import "Tile.h"
 
-@interface MyScene () <SKPhysicsContactDelegate>
+@interface MyScene () <SKPhysicsContactDelegate ,HUMAStarPathfinderDelegate>
 
 @end
 
@@ -197,15 +199,41 @@
     //    _tileMap = [JSTileMap mapNamed:@"tile32_256build.tmx"];
     _tileMap = [JSTileMap mapNamed:@"resources_map1.tmx"];
     
-    [_tileMap setName:@"TileMap"];
+    self.pathfinder = [HUMAStarPathfinder pathfinderWithTileMapSize:_tileMap.mapSize
+                                                           tileSize:_tileMap.tileSize
+                                                           delegate:self];
     
+    [_tileMap setName:@"TileMap"];
     
     TileMapLayer *mapLayer = [[TmxTileMapLayer alloc]
                               initWithTmxLayer:[_tileMap layerNamed:@"Tiles"]];
     [mapLayer setName:@"TileMap"];
-    _tileMap = nil;
+    //_tileMap = nil;
     
     return mapLayer;
+}
+
+- (BOOL)pathfinder:(HUMAStarPathfinder *)pathFinder canWalkToNodeAtTileLocation:(CGPoint)tileLocation {
+    TMXLayer *meta = [self.tileMap layerNamed:@"Tiles"];
+    uint8_t gid = [meta tileGidAt:tileLocation];
+    
+    BOOL walkable = YES;
+    
+    if (gid) {
+        NSDictionary *properties = [_tileMap propertiesForGid:gid];
+        walkable = [properties[@"walkable"] boolValue];
+    }
+    
+    SKNode *node = [_bgLayer nodeAtPoint:tileLocation];
+    if(node){
+//        NSLog(@"%@", [node.userData objectForKey:@"Type"]);
+        if([node isKindOfClass:[Tile class]]){
+            Tile *tile = (Tile *) node;
+            walkable = tile.walkable;
+        }
+    }
+    
+    return walkable;
 }
 
 

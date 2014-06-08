@@ -247,6 +247,7 @@ CGPoint test2;
         
         NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
         [self showTapAtLocation:(touchLocation)];
+        //[_scene.pathfinder findPathFromStart:(CGPointMake(0, 0)) toTarget:CGPointMake(touchLocation.x, touchLocation.y)];
 
         if(test.x == 0)
             test = touchLocation;

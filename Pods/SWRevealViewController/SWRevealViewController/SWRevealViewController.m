@@ -914,7 +914,7 @@ static NSString * const SWSegueRightIdentifier = @"sw_right";
 
 - (void)rightRevealToggle:(id)sender
 {    
-[self rightRevealToggleAnimated:YES];
+    [self rightRevealToggleAnimated:YES];
 }
 
 

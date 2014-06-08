@@ -134,6 +134,13 @@
 		C85F3FC819211A5100130FD9 /* buildings256.atlasc in Resources */ = {isa = PBXBuildFile; fileRef = C85F3FC719211A5100130FD9 /* buildings256.atlasc */; };
 		C860896918ABF6D100810C1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C860896818ABF6D100810C1A /* Images.xcassets */; };
 		C87E312318FD7C430034C290 /* miltarybuilds.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C87E312218FD7C430034C290 /* miltarybuilds.atlas */; };
+		C88C48941943488400BD21E7 /* HUMAStarPathfinder.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C48911943488400BD21E7 /* HUMAStarPathfinder.m */; };
+		C88C48951943488400BD21E7 /* HUMAStarPathfinderNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C48931943488400BD21E7 /* HUMAStarPathfinderNode.m */; };
+		C88C48971943728C00BD21E7 /* UnitSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C48961943728C00BD21E7 /* UnitSpec.m */; };
+		C88C48991943775D00BD21E7 /* GameViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C48981943775D00BD21E7 /* GameViewControllerSpec.m */; };
+		C88C489B194483FC00BD21E7 /* TextureContainerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */; };
+		C88C489D194486A900BD21E7 /* BuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489C194486A800BD21E7 /* BuilderSpec.m */; };
+		C88C489F1944BBE800BD21E7 /* BuildingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489E1944BBE800BD21E7 /* BuildingSpec.m */; };
 		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
 		C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFC18A1597500116A26 /* CoreGraphics.framework */; };
 		C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
@@ -144,7 +151,6 @@
 		C8933B2518A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
 		C8933B2618A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
 		C8933B2E18A1597500116A26 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C8933B2C18A1597500116A26 /* InfoPlist.strings */; };
-		C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */; };
 		C89BA6A11940E03A00473189 /* Save_layers.sks in Resources */ = {isa = PBXBuildFile; fileRef = C89BA6A01940E03A00473189 /* Save_layers.sks */; };
 		C89C76E518FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C76E418FB609A003379E6 /* libPods-AOEPortTests-SWRevealViewController.a */; };
 		C8B275C8193EAFE700A363A8 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = C8B275C7193EAFE700A363A8 /* Settings.m */; };
@@ -357,6 +363,15 @@
 		C85F3FC719211A5100130FD9 /* buildings256.atlasc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = buildings256.atlasc; sourceTree = "<group>"; };
 		C860896818ABF6D100810C1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C87E312218FD7C430034C290 /* miltarybuilds.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = miltarybuilds.atlas; sourceTree = "<group>"; };
+		C88C48901943488400BD21E7 /* HUMAStarPathfinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMAStarPathfinder.h; sourceTree = "<group>"; };
+		C88C48911943488400BD21E7 /* HUMAStarPathfinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMAStarPathfinder.m; sourceTree = "<group>"; };
+		C88C48921943488400BD21E7 /* HUMAStarPathfinderNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUMAStarPathfinderNode.h; sourceTree = "<group>"; };
+		C88C48931943488400BD21E7 /* HUMAStarPathfinderNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUMAStarPathfinderNode.m; sourceTree = "<group>"; };
+		C88C48961943728C00BD21E7 /* UnitSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitSpec.m; sourceTree = "<group>"; };
+		C88C48981943775D00BD21E7 /* GameViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewControllerSpec.m; sourceTree = "<group>"; };
+		C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureContainerSpec.m; sourceTree = "<group>"; };
+		C88C489C194486A800BD21E7 /* BuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuilderSpec.m; sourceTree = "<group>"; };
+		C88C489E1944BBE800BD21E7 /* BuildingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingSpec.m; sourceTree = "<group>"; };
 		C8933AF718A1597500116A26 /* AOEPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOEPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8933AFA18A1597500116A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8933AFC18A1597500116A26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -370,7 +385,6 @@
 		C8933B2318A1597500116A26 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		C8933B2B18A1597500116A26 /* AOEPortTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AOEPortTests-Info.plist"; sourceTree = "<group>"; };
 		C8933B2D18A1597500116A26 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Age_of_Empires_PortTests.m; sourceTree = "<group>"; };
 		C89BA6A01940E03A00473189 /* Save_layers.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Save_layers.sks; sourceTree = "<group>"; };
 		C89C76DE18FB3284003379E6 /* libPods-AOEPortTests-ECSlidingViewController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-ECSlidingViewController.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-ECSlidingViewController.a"; sourceTree = "<group>"; };
 		C89C76E018FB35F0003379E6 /* libPods-AOEPortTests-JASidePanels.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AOEPortTests-JASidePanels.a"; path = "Pods/build/Debug-iphoneos/libPods-AOEPortTests-JASidePanels.a"; sourceTree = "<group>"; };
@@ -887,6 +901,17 @@
 			path = Sound;
 			sourceTree = "<group>";
 		};
+		C88C488F1943488400BD21E7 /* HUMAStarPathfinder */ = {
+			isa = PBXGroup;
+			children = (
+				C88C48901943488400BD21E7 /* HUMAStarPathfinder.h */,
+				C88C48911943488400BD21E7 /* HUMAStarPathfinder.m */,
+				C88C48921943488400BD21E7 /* HUMAStarPathfinderNode.h */,
+				C88C48931943488400BD21E7 /* HUMAStarPathfinderNode.m */,
+			);
+			path = HUMAStarPathfinder;
+			sourceTree = "<group>";
+		};
 		C8933AEE18A1597500116A26 = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +957,7 @@
 				C184B44C8FB712024682E62E /* Constants.h */,
 				C184B786F9CB8566B73BC9D4 /* DrawSelectionBox.h */,
 				C184B53E27836BD3CB24C061 /* DrawSelectionBox.m */,
+				C88C488F1943488400BD21E7 /* HUMAStarPathfinder */,
 				C8C3EB5518AE4D9000893AE0 /* Base.lproj */,
 				C8D1786018AC3B9500866DEF /* Layers */,
 				C184B36F60DB186E2430629D /* Model */,
@@ -963,7 +989,11 @@
 		C8933B2918A1597500116A26 /* AOEPortTests */ = {
 			isa = PBXGroup;
 			children = (
-				C8933B2F18A1597500116A26 /* Age_of_Empires_PortTests.m */,
+				C88C48961943728C00BD21E7 /* UnitSpec.m */,
+				C88C48981943775D00BD21E7 /* GameViewControllerSpec.m */,
+				C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */,
+				C88C489C194486A800BD21E7 /* BuilderSpec.m */,
+				C88C489E1944BBE800BD21E7 /* BuildingSpec.m */,
 				C8933B2A18A1597500116A26 /* Supporting Files */,
 			);
 			path = AOEPortTests;
@@ -1259,6 +1289,7 @@
 				C184BDAAD3D569016A34BC66 /* Building.m in Sources */,
 				C184BE0C514048A5E5CAC61F /* SandTile.m in Sources */,
 				C184B9B526515A61529CF74F /* DrawSelectionBox.m in Sources */,
+				C88C48941943488400BD21E7 /* HUMAStarPathfinder.m in Sources */,
 				C184B1DCD13649280B83CF12 /* SplashScreenViewController.m in Sources */,
 				C184B7FDB172C387865587CD /* GameViewController.m in Sources */,
 				C184BAA83363C05FBF705920 /* RootViewController.m in Sources */,
@@ -1279,6 +1310,7 @@
 				C184B520B6B957ACA9963B7A /* BarracksViewController.m in Sources */,
 				C184BCC5E81B67DA694784F3 /* TownCenterViewController.m in Sources */,
 				C184B87C33BAED2BC6AD38E1 /* LumberJack.m in Sources */,
+				C88C48951943488400BD21E7 /* HUMAStarPathfinderNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,7 +1318,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8933B3018A1597500116A26 /* Age_of_Empires_PortTests.m in Sources */,
+				C88C489B194483FC00BD21E7 /* TextureContainerSpec.m in Sources */,
+				C88C48971943728C00BD21E7 /* UnitSpec.m in Sources */,
+				C88C48991943775D00BD21E7 /* GameViewControllerSpec.m in Sources */,
+				C88C489F1944BBE800BD21E7 /* BuildingSpec.m in Sources */,
+				C88C489D194486A900BD21E7 /* BuilderSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

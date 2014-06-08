@@ -31,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
+//    _atlas = [SKTextureAtlas atlasNamed:@"Builder_walk"];
     SWRevealViewController *revealController = self.revealViewController;
 
     [self.view addGestureRecognizer:revealController.panGestureRecognizer];

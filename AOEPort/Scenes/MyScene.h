@@ -14,6 +14,7 @@
 //#import "FireBug.h"
 #import "TmxTileMapLayer.h"
 #import "TouchHandlers.h"
+#import "HUMAStarPathfinder.h"
 
 @class Building;
 @class Unit;
@@ -37,7 +38,7 @@ typedef void (^AssetLoadCompletionHandler)(void);
 }
 
 @property (nonatomic, strong) id <MYSceneDelegate> delegate1;
-
+@property(nonatomic, strong) HUMAStarPathfinder *pathfinder;
 @property(nonatomic, strong, readwrite) SKNode *unitLayer;
 @property(nonatomic, strong) SKNode *worldNode;
 @property(nonatomic, strong) TileMapLayer *bgLayer;
