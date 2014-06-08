@@ -22,6 +22,23 @@ describe(@"Buildings", ^{
         });
     });
     
+    context(@"when not placed", ^{
+        it(@"should not have the placed flag", ^{
+            Wall *wall = [[Wall alloc] initWithTexture:[atlas textureNamed:@"Wall"]];
+            
+            
+            [[theValue(wall.placed) should] equal:theValue(NO)];
+            
+        });
+    });
+    context(@"when placed", ^{
+        it(@"should have the placed flag", ^{
+            Wall *wall = [[Wall alloc] initWithTexture:[atlas textureNamed:@"Wall"]];
+            wall.placed = YES;
+            [[theValue(wall.placed) should] equal:theValue(YES)];
+            
+        });
+    });
     
 });
 

@@ -368,7 +368,7 @@
                     <navigationItem key="navigationItem" id="nwn-ro-z4W"/>
                     <connections>
                         <outlet property="activityIndicator" destination="edH-I4-1mN" id="Wn3-cs-wMl"/>
-                        <outlet property="progressTextView" destination="h3a-Mb-tah" id="wtA-gs-ByC"/>
+                        <outlet property="progressTextView" destination="h3a-Mb-tah" id="jyF-86-4Zc"/>
                         <segue destination="LVB-YS-i5n" kind="push" identifier="game_has_loaded" id="qvh-ly-z2I"/>
                     </connections>
                 </viewController>
@@ -1482,25 +1482,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-RP-KFb">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-RP-KFb">
                                 <rect key="frame" x="445" y="105" width="51" height="31"/>
                                 <connections>
                                     <action selector="DebugPressed:" destination="grf-gf-hSm" eventType="valueChanged" id="8PZ-Wc-aJr"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Debug Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-Rf-eWA">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fa-Rf-eWA">
                                 <rect key="frame" x="60" y="110" width="100" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-AV-eKt">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-AV-eKt">
                                 <rect key="frame" x="445" y="176" width="51" height="31"/>
                                 <connections>
                                     <action selector="tilemapPressed:" destination="grf-gf-hSm" eventType="valueChanged" id="77u-3h-vD4"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tile Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nM5-ck-yjO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tile Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nM5-ck-yjO">
                                 <rect key="frame" x="60" y="186" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1523,6 +1523,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8fa-Rf-eWA" firstAttribute="top" secondItem="Kjf-cp-xYw" secondAttribute="bottom" constant="110" id="CQd-9F-g8p"/>
+                            <constraint firstItem="8fa-Rf-eWA" firstAttribute="leading" secondItem="VSp-bJ-Gxl" secondAttribute="leading" constant="60" id="HT9-rr-XtF"/>
+                            <constraint firstAttribute="trailing" secondItem="bjb-RP-KFb" secondAttribute="trailing" constant="74" id="Kg3-PJ-TrL"/>
+                            <constraint firstItem="nM5-ck-yjO" firstAttribute="top" secondItem="8fa-Rf-eWA" secondAttribute="bottom" constant="55" id="gk8-Lz-QkT"/>
+                            <constraint firstItem="nM5-ck-yjO" firstAttribute="leading" secondItem="VSp-bJ-Gxl" secondAttribute="leading" constant="60" id="nBs-sd-hXT"/>
+                            <constraint firstItem="bjb-RP-KFb" firstAttribute="top" secondItem="Kjf-cp-xYw" secondAttribute="bottom" constant="105" id="qDT-iE-NYU"/>
+                            <constraint firstAttribute="trailing" secondItem="GSK-AV-eKt" secondAttribute="trailing" constant="74" id="qPe-2I-RCz"/>
+                            <constraint firstItem="GSK-AV-eKt" firstAttribute="top" secondItem="bjb-RP-KFb" secondAttribute="bottom" constant="40" id="rEt-ed-xkE"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="TXj-4w-CI4"/>

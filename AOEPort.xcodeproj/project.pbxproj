@@ -141,6 +141,7 @@
 		C88C489B194483FC00BD21E7 /* TextureContainerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */; };
 		C88C489D194486A900BD21E7 /* BuilderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489C194486A800BD21E7 /* BuilderSpec.m */; };
 		C88C489F1944BBE800BD21E7 /* BuildingSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = C88C489E1944BBE800BD21E7 /* BuildingSpec.m */; };
+		C88C48A11944DCBD00BD21E7 /* UIScript.js in Sources */ = {isa = PBXBuildFile; fileRef = C88C48A01944DCBD00BD21E7 /* UIScript.js */; };
 		C8933AFB18A1597500116A26 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFA18A1597500116A26 /* Foundation.framework */; };
 		C8933AFD18A1597500116A26 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFC18A1597500116A26 /* CoreGraphics.framework */; };
 		C8933AFF18A1597500116A26 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8933AFE18A1597500116A26 /* UIKit.framework */; };
@@ -372,6 +373,7 @@
 		C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureContainerSpec.m; sourceTree = "<group>"; };
 		C88C489C194486A800BD21E7 /* BuilderSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuilderSpec.m; sourceTree = "<group>"; };
 		C88C489E1944BBE800BD21E7 /* BuildingSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuildingSpec.m; sourceTree = "<group>"; };
+		C88C48A01944DCBD00BD21E7 /* UIScript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = UIScript.js; sourceTree = "<group>"; };
 		C8933AF718A1597500116A26 /* AOEPort.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AOEPort.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8933AFA18A1597500116A26 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C8933AFC18A1597500116A26 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -989,6 +991,7 @@
 		C8933B2918A1597500116A26 /* AOEPortTests */ = {
 			isa = PBXGroup;
 			children = (
+				C88C48A01944DCBD00BD21E7 /* UIScript.js */,
 				C88C48961943728C00BD21E7 /* UnitSpec.m */,
 				C88C48981943775D00BD21E7 /* GameViewControllerSpec.m */,
 				C88C489A194483FC00BD21E7 /* TextureContainerSpec.m */,
@@ -1319,6 +1322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C88C489B194483FC00BD21E7 /* TextureContainerSpec.m in Sources */,
+				C88C48A11944DCBD00BD21E7 /* UIScript.js in Sources */,
 				C88C48971943728C00BD21E7 /* UnitSpec.m in Sources */,
 				C88C48991943775D00BD21E7 /* GameViewControllerSpec.m in Sources */,
 				C88C489F1944BBE800BD21E7 /* BuildingSpec.m in Sources */,

@@ -149,14 +149,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="wood_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-ui-OUo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="wood_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="d3g-ui-OUo">
                                 <rect key="frame" x="425" y="16" width="25" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="6Nn-iN-TCa"/>
                                     <constraint firstAttribute="width" constant="25" id="ir2-wj-Snq"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9DW-b2-akR">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9DW-b2-akR">
                                 <rect key="frame" x="458" y="16" width="50" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="b7V-SV-vho"/>
@@ -169,7 +169,7 @@
                                     <action selector="updateWood:" destination="DXY-Nx-c91" eventType="editingDidEnd" id="tmf-fs-4b2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcc-0Z-Qo5">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wcc-0Z-Qo5">
                                 <rect key="frame" x="549" y="16" width="50" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="9Gz-xP-FbO"/>
@@ -222,7 +222,6 @@
         <!--Navigation Controller-->
         <scene sceneID="F2C-5X-RUm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="55y-lx-0Dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="StH-E4-lug" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qex-nt-lD0">
                         <autoresizingMask key="autoresizingMask"/>
@@ -231,6 +230,7 @@
                         <segue destination="6Cn-Ny-gaR" kind="relationship" relationship="rootViewController" id="e8T-CR-gPw"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="55y-lx-0Dd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2430" y="-334"/>
         </scene>
@@ -334,7 +334,6 @@
         <!--Game Loading View Controller-->
         <scene sceneID="qDm-rO-Sc8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JId-4B-uBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="gameLoadController" id="6Cn-Ny-gaR" customClass="GameLoadingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AUN-Nu-1TN"/>
@@ -344,10 +343,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="O1s-i9-wTH">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="O1s-i9-wTH">
                                 <rect key="frame" x="502" y="360" width="20" height="24"/>
                             </activityIndicatorView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Progress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-GN-TKh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Progress" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-GN-TKh" userLabel="progressBox">
                                 <rect key="frame" x="236" y="259" width="97" height="30"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -366,10 +365,11 @@
                     <navigationItem key="navigationItem" id="L4N-8R-HvQ"/>
                     <connections>
                         <outlet property="activityIndicator" destination="O1s-i9-wTH" id="DaT-aL-k7O"/>
-                        <outlet property="progressTextView" destination="iVG-GN-TKh" id="QCC-Qv-buF"/>
+                        <outlet property="progressTextView" destination="iVG-GN-TKh" id="fa1-g0-Esg"/>
                         <segue destination="DXY-Nx-c91" kind="push" identifier="game_has_loaded" id="6Qk-i6-z8w"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JId-4B-uBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4113" y="13"/>
         </scene>

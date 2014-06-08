@@ -98,6 +98,9 @@
 
 - (void)updateProgress:(NSString *)progress {
     progressTextView.text = progress;
+    NSLog(@"Text View Value = %@",progressTextView.text);
+
+//    [_progressTextView setNeedsDisplay];
 }
 
 /*

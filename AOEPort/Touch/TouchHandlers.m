@@ -45,7 +45,7 @@ CGPoint test2;
         _scene = scene;
         test = CGPointMake(0, 0);
         test2 = CGPointMake(0, 0);
-
+        
     }
     
     return self;
@@ -143,6 +143,12 @@ CGPoint test2;
             
             //            lastScale = recognizer.scale;
             _scene.size = potentialSize;
+            CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
+            
+            touchLocation = [_scene convertPointFromView:touchLocation];
+            touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
+            
+            [self centerViewOn:touchLocation];
             
         }
     }
@@ -248,12 +254,12 @@ CGPoint test2;
         NSLog(@"touch : %f %f" ,touchLocation.x, touchLocation.y);
         [self showTapAtLocation:(touchLocation)];
         //[_scene.pathfinder findPathFromStart:(CGPointMake(0, 0)) toTarget:CGPointMake(touchLocation.x, touchLocation.y)];
-
+        
         if(test.x == 0)
             test = touchLocation;
         else{
             test2 = touchLocation;
-          SKPhysicsBody *body =  [_scene.physicsWorld bodyAlongRayStart:test end:test2];
+            SKPhysicsBody *body =  [_scene.physicsWorld bodyAlongRayStart:test end:test2];
             if([body.node isKindOfClass:[Unit class]]){
                 Unit *node = (Unit*)body.node;
                 [node removeFromParent];
@@ -291,7 +297,7 @@ CGPoint test2;
 }
 
 BOOL isInRectangle(double centerX, double centerY, double radius,
-                      double x, double y)
+                   double x, double y)
 {
     return x >= centerX - radius && x <= centerX + radius &&
     y >= centerY - radius && y <= centerY + radius;
@@ -303,7 +309,7 @@ BOOL isInRectangle(double centerX, double centerY, double radius,
     [_selectedNodes removeAllObjects];
     [self.scene.delegate1 unitUnselected];
     CGRect box = CGPathGetBoundingBox(self.selectionBox.path);
-
+    
     [_scene.unitLayer enumerateChildNodesWithName:@"Unit" usingBlock:^(SKNode *node, BOOL *stop) {
         Unit *unit = (Unit *) node;
         [unit removeAllChildren]; //remove circle

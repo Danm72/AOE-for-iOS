@@ -10,8 +10,17 @@ SPEC_BEGIN(BuilderSpec)
 describe(@"The Builder", ^{
     
     context(@"when created", ^{
-        TextureContainer *obj=[TextureContainer getInstance];
-        
+   TextureContainer *obj=[TextureContainer getInstance];
+//        TextureContainer *obj = [TextureContainer mock];
+       // [[obj stubAndReturn:theValue(@"")] idleTextures];
+        //[[obj stubAndReturn:theValue(@"")] builderWalk];
+//        [obj stub:@selector(builderWalk) andReturn:theValue([SKTextureAtlas atlasNamed:@"Builder_walk"])];
+//        [obj stub:@selector(builderIdle) andReturn:theValue([SKTextureAtlas atlasNamed:@"builder_idle"])];
+//        [obj stub:@selector(idleTextures) andReturn:theValue([NSMutableArray arrayWithCapacity:15])];
+//        [obj stub:@selector(getInstance) andReturn:theValue(obj)];
+
+//        [obj stub:@selector(builderWalk) andReturn:@"P. tigris"];
+
         obj.builderWalk = [SKTextureAtlas atlasNamed:@"Builder_walk"];
         obj.builderIdle = [SKTextureAtlas atlasNamed:@"builder_idle"];
         
