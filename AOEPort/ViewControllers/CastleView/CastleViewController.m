@@ -7,7 +7,7 @@
 //
 
 #import "CastleViewController.h"
-
+#import "SWRevealViewController.h"
 @interface CastleViewController ()
 
 @end
@@ -26,6 +26,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    SWRevealViewController *revealController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:revealController.panGestureRecognizer];
+
     // Do any additional setup after loading the view from its nib.
 }
 

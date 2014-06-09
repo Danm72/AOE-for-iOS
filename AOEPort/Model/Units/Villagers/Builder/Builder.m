@@ -19,6 +19,10 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
         NSLog(@"Builder Decoded");
+      _animationNames=  [aDecoder decodeObjectForKey:@"Building_animationNames"];
+       _actionAtlasNames= [aDecoder decodeObjectForKey:@"Building_actionAtlas"];
+
+
     }
     return self;
 }
@@ -225,6 +229,10 @@
 
 -(void) encodeWithCoder:(NSCoder *)aCoder{
     [super encodeWithCoder:aCoder];
+    
+    [aCoder encodeObject:_actionAtlasNames forKey:@"Building_actionAtlas"];
+    [aCoder encodeObject:_animationNames forKey:@"Building_animationNames"];
+
 }
 
 

@@ -41,12 +41,14 @@
         _atlas = [aDecoder decodeObjectForKey:@"MyScene-Atlas"];
         _node = [aDecoder decodeObjectForKey:@"MyScene-Node"];
         _resourceLayer = [aDecoder decodeObjectForKey:@"MyScene-ResourcesLayer"];
+        _unitLayer =     [aDecoder decodeObjectForKey:@"MyScene-UnitLayer"];
+
         if(_resourceLayer == nil){
             _resourceLayer = [_worldNode childNodeWithName:@"ResourceLayer"];
         }
-        self.handlers = [[TouchHandlers alloc] initWithScene:self];
+//        self.handlers = [[TouchHandlers alloc] initWithScene:self];
         //    [self.handlers passPointers:_worldNode :_bgLayer :_buildingLayer :_unitLayer];
-        [self.handlers registerTouchEvents];
+//        [self.handlers registerTouchEvents];
     }
     return self;
 }
@@ -371,6 +373,7 @@
 //    [aCoder encodeObject:_handlers forKey:@"MyScene-Handler"];
     [aCoder encodeObject:_atlas forKey:@"MyScene-Atlas"];
     [aCoder encodeObject:_node forKey:@"MyScene-Node"];
+    [aCoder encodeObject:_unitLayer forKey:@"MyScene-UnitLayer"];
     [aCoder encodeObject:_resourceLayer forKey:@"MyScene-ResourcesLayer"];
 }
 

@@ -208,11 +208,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="lblMusicName" destination="2SZ-Js-QkI" id="7xj-Bf-SHg"/>
-                        <outlet property="sidebarButton" destination="NxS-K1-cJj" id="yBV-Ow-HeU"/>
-                        <outlet property="stoneIcon" destination="A9R-7g-syI" id="CDf-KI-Smj"/>
-                        <outlet property="stoneResourceCounter" destination="wcc-0Z-Qo5" id="tjB-Jl-BWs"/>
-                        <outlet property="woodIcon" destination="d3g-ui-OUo" id="r5T-cN-5dY"/>
-                        <outlet property="woodResourceCounter" destination="9DW-b2-akR" id="hEv-Yh-Wku"/>
+                        <outlet property="settingsButtonIcon" destination="diW-oh-H1t" id="viw-e4-YBK"/>
+                        <outlet property="sidebarButton" destination="NxS-K1-cJj" id="Jh7-7s-aFx"/>
+                        <outlet property="stoneIcon" destination="A9R-7g-syI" id="OUr-Pt-Tbd"/>
+                        <outlet property="stoneResourceCounter" destination="wcc-0Z-Qo5" id="o7Q-0E-Ikb"/>
+                        <outlet property="woodIcon" destination="d3g-ui-OUo" id="qa0-dy-xPr"/>
+                        <outlet property="woodResourceCounter" destination="9DW-b2-akR" id="7PA-Nh-3RU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S62-w1-1MF" sceneMemberID="firstResponder"/>

@@ -22,8 +22,6 @@
 @end
 
 @implementation TouchHandlers
-CGPoint test;
-CGPoint test2;
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     return YES;
@@ -43,8 +41,7 @@ CGPoint test2;
     if (self) {
         _selectedNodes = [NSMutableArray array];
         _scene = scene;
-        test = CGPointMake(0, 0);
-        test2 = CGPointMake(0, 0);
+
         
     }
     
@@ -109,14 +106,26 @@ CGPoint test2;
 - (void)handlePinchFrom:(UIPinchGestureRecognizer *)recognizer {
     static CGFloat lastScale = 0;
     //    static CGFloat previousScale = 0;
+    CGPoint anchorPoint = [recognizer locationInView:recognizer.view];
+    anchorPoint = [_scene convertPointFromView:anchorPoint];
     
     if (recognizer.state == UIGestureRecognizerStateBegan) {
-        
+
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged) {
         /*        CGFloat scaleDifference = recognizer.scale - lastScale;
          CGFloat heightDifference = _scene.size.height * scaleDifference;
          CGFloat widthDifference = _scene.size.width * scaleDifference;*/
+//        CGPoint anchorPointInMySkNode = [_scene convertPoint:anchorPoint fromNode:_scene.worldNode];
+//        [_scene.worldNode setScale:(_scene.xScale * recognizer.scale)];
+//        CGPoint mySkNodeAnchorPointInScene = [_scene convertPoint:anchorPointInMySkNode fromNode:_scene.worldNode];
+//        CGPoint translationOfAnchorInScene = CGPointSubtract(anchorPoint, mySkNodeAnchorPointInScene);
+//
+//        _scene.worldNode.position = CGPointAdd(_scene.worldNode.position, translationOfAnchorInScene);
+//
+//        recognizer.scale = 1.0;
+//
+//        
         CGSize potentialSize = CGSizeMake(_scene.size.width * recognizer.scale, _scene.size.height * recognizer.scale);
         
         if (potentialSize.width > 0 && potentialSize.height > 0) {
@@ -143,17 +152,16 @@ CGPoint test2;
             
             //            lastScale = recognizer.scale;
             _scene.size = potentialSize;
-            CGPoint touchLocation = [recognizer locationInView:(_scene.view)];
             
-            touchLocation = [_scene convertPointFromView:touchLocation];
-            touchLocation = [_scene convertPoint:touchLocation toNode:_scene.worldNode];
+            recognizer.scale = 1.0;
             
-            [self centerViewOn:touchLocation];
-            
+        
+
         }
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded) {
         //        previousScale = recognizer.scale;
+               
     }
 }
 
@@ -255,22 +263,7 @@ CGPoint test2;
         [self showTapAtLocation:(touchLocation)];
         //[_scene.pathfinder findPathFromStart:(CGPointMake(0, 0)) toTarget:CGPointMake(touchLocation.x, touchLocation.y)];
         
-        if(test.x == 0)
-            test = touchLocation;
-        else{
-            test2 = touchLocation;
-            SKPhysicsBody *body =  [_scene.physicsWorld bodyAlongRayStart:test end:test2];
-            if([body.node isKindOfClass:[Unit class]]){
-                Unit *node = (Unit*)body.node;
-                [node removeFromParent];
-            }
-            if([body.node isKindOfClass:[Building class]]){
-                Building *node = (Building*)body.node;
-                [node removeFromParent];
-            }
-            
-        }
-        CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
+              CGPoint newPos = CGPointMake(touchLocation.x, touchLocation.y);
         
         if (recognizer.state == UIGestureRecognizerStateBegan) {
             

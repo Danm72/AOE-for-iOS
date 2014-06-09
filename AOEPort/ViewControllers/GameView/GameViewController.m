@@ -21,26 +21,26 @@
 #import "SideBarMenuViewController.h"
 #import "Constants.h"
 
-@implementation SKScene (Unarchive)
+//@implementation SKScene (Unarchive)
+//
+//+ (instancetype)unarchiveFromFile:(NSString *)file {
+//    /* Retrieve scene file path from the application bundle */
+//    NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
+//    /* Unarchive the file to an SKScene object */
+//    NSData *data = [NSData dataWithContentsOfFile:nodePath
+//                                          options:NSDataReadingMappedIfSafe
+//                                            error:nil];
+//    NSKeyedUnarchiver *arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+//    [arch setClass:self forClassName:@"SKScene"];
+//    SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
+//    [arch finishDecoding];
+//    
+//    return scene;
+//}
+//
+//@end
 
-+ (instancetype)unarchiveFromFile:(NSString *)file {
-    /* Retrieve scene file path from the application bundle */
-    NSString *nodePath = [[NSBundle mainBundle] pathForResource:file ofType:@"sks"];
-    /* Unarchive the file to an SKScene object */
-    NSData *data = [NSData dataWithContentsOfFile:nodePath
-                                          options:NSDataReadingMappedIfSafe
-                                            error:nil];
-    NSKeyedUnarchiver *arch = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    [arch setClass:self forClassName:@"SKScene"];
-    SKScene *scene = [arch decodeObjectForKey:NSKeyedArchiveRootObjectKey];
-    [arch finishDecoding];
-    
-    return scene;
-}
-
-@end
-
-@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol, SideBarProtocol>
+@interface GameViewController () <MYSceneDelegate, CastleViewControllerDelegate, VillagerViewControllerDelegate, TownCenterViewControllerDelegate, TouchProtocol, SideBarProtocol, BarracksViewControllerDelegate>
 
 @property (nonatomic, strong) AVQueuePlayer *player;
 @property (nonatomic, strong) id timeObserver;
@@ -79,8 +79,10 @@
     
     //        [skView presentScene:newScene];
     //    }else{
-    _scene.handlers.delegate = self;
     [skView presentScene:_scene];
+    
+    _scene.handlers.delegate = self;
+
     //    }
 }
 
@@ -309,31 +311,42 @@
 }
 
 - (void)buildingClicked:(Building *)building {
-    _sidebarButton.hidden = false;
     
     //    UIImage *btnImage = [UIImage imageNamed:@"house"];
-    UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"house" ofType: @"png"]];
-    
-    [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
-    
+   
     if ([building isKindOfClass:[TownCenter class]]) {
         TownCenterViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"townCenterTable"];
         
         vc.delegate = self;
         [self setRightViewController:vc];
     }
-    if ([building isKindOfClass:[Barracks class]]) {
+    else if ([building isKindOfClass:[Barracks class]]) {
         BarracksViewController *vc  = [self.storyboard instantiateViewControllerWithIdentifier:@"barracksTable"];
         
         vc.delegate = self;
         [self setRightViewController:vc];
     }
-    if ([building isKindOfClass:[Church class]]) {
+    else if ([building isKindOfClass:[Church class]]) {
         CastleViewController *vc= [self.storyboard instantiateViewControllerWithIdentifier:@"castleTable"];
         vc.delegate = self;
         [self setRightViewController:vc];
     }
+//    else if ([building isKindOfClass:[Wall class]]) {
+//
+//    }
+    else{
+        _activeNode = nil;
+
+        _sidebarButton.hidden = true;
+
+        return;
+    }
+    _sidebarButton.hidden = false;
+
+    UIImage* btnImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"house" ofType: @"png"]];
     
+    [_sidebarButton setImage:btnImage forState:UIControlStateNormal];
+
     _activeNode = building;
     
     //     SKAction *sequence = [Building selectedBuildingAction]; //RUN BUILDING SELECTED

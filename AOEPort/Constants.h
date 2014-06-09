@@ -16,6 +16,6 @@ static const int WEST = 6;
 static const int SOUTH_WEST = 7;
 
 static BOOL kDebugDraw = YES;
-static BOOL DEBUG_MODE = YES;
+static BOOL DEBUG_MODE = NO;
 static BOOL TILEMAP_MODE = YES;
 
