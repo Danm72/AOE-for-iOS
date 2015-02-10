@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GDe-vw-fvt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="GDe-vw-fvt">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Splash Screen View Controller-->
@@ -48,7 +49,7 @@
                                     <constraint firstAttribute="height" constant="128" id="U5q-Bw-QeB"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dan Malone Studios" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-m4-OW0">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dan Malone Studios" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-m4-OW0">
                                 <rect key="frame" x="155" y="40" width="259" height="30"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.40000000000000002" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -69,7 +70,6 @@
                             <constraint firstItem="T8y-lP-8O1" firstAttribute="leading" secondItem="HRn-jp-onI" secondAttribute="leading" constant="83" id="fg3-2H-EYp"/>
                             <constraint firstAttribute="centerY" secondItem="mLq-41-rdL" secondAttribute="centerY" id="hzb-9d-YVH"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="j8P-3D-HtR"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -135,7 +135,7 @@
                                     <action selector="sideBarTouch:" destination="LVB-YS-i5n" eventType="touchUpInside" id="m4D-f9-dOI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-5P-pYW">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzw-5P-pYW">
                                 <rect key="frame" x="20" y="20" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="Vcc-jA-mlR"/>
@@ -173,7 +173,7 @@
                                     <action selector="updateWood:" destination="LVB-YS-i5n" eventType="editingDidEnd" id="Y8H-oZ-coS"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUZ-g4-yWN">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BUZ-g4-yWN">
                                 <rect key="frame" x="305" y="0.0" width="50" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Yo3-ZD-jiJ"/>
@@ -203,7 +203,6 @@
                             <constraint firstItem="doW-vm-axc" firstAttribute="top" secondItem="okk-hU-6iK" secondAttribute="bottom" constant="20" id="OgF-0a-pVj"/>
                             <constraint firstItem="m44-5k-W60" firstAttribute="leading" secondItem="5tL-YE-NDw" secondAttribute="trailing" constant="8" id="fGi-Vc-4XV"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="UkR-G3-XlB">
                         <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="7GW-8T-8f6"/>
@@ -245,8 +244,8 @@
                                                 <fragment content="Technology">
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="18" name="CopperplateGothic-Light"/>
-                                                        <font key="NSOriginalFont" size="18" name="CopperplateGothic-Light"/>
+                                                        <font key="NSFont" metaFont="system" size="18"/>
+                                                        <font key="NSOriginalFont" metaFont="system" size="18"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -270,8 +269,8 @@
                                                 <fragment content="Diplomacy">
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="18" name="CopperplateGothic-Light"/>
-                                                        <font key="NSOriginalFont" size="18" name="CopperplateGothic-Light"/>
+                                                        <font key="NSFont" metaFont="system" size="18"/>
+                                                        <font key="NSOriginalFont" metaFont="system" size="18"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -295,8 +294,8 @@
                                                 <fragment content="Settings">
                                                     <attributes>
                                                         <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <font key="NSFont" size="24" name="CopperplateGothic-Light"/>
-                                                        <font key="NSOriginalFont" size="24" name="CopperplateGothic-Light"/>
+                                                        <font key="NSFont" metaFont="system" size="24"/>
+                                                        <font key="NSOriginalFont" metaFont="system" size="24"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                                     </attributes>
                                                 </fragment>
@@ -363,7 +362,6 @@
                             <constraint firstAttribute="centerX" secondItem="edH-I4-1mN" secondAttribute="centerX" id="DQA-0z-O5h"/>
                             <constraint firstItem="h3a-Mb-tah" firstAttribute="centerX" secondItem="edH-I4-1mN" secondAttribute="centerX" constant="0.5" id="Ye2-BG-LYk"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="nwn-ro-z4W"/>
                     <connections>
@@ -376,7 +374,7 @@
             </objects>
             <point key="canvasLocation" x="3001" y="-475"/>
         </scene>
-        <!--Main Menu New View Controller - Item-->
+        <!--Item-->
         <scene sceneID="FSY-hJ-tly">
             <objects>
                 <viewController id="NhJ-vb-hK1" customClass="MainMenuNewViewController" sceneMemberID="viewController">
@@ -449,7 +447,6 @@
                             <constraint firstAttribute="trailing" secondItem="q3D-kw-mRb" secondAttribute="trailing" constant="6" id="vhw-3H-MO5"/>
                             <constraint firstItem="J4i-3c-1q2" firstAttribute="top" secondItem="2HM-Be-k9o" secondAttribute="bottom" id="vi8-cL-Mq0"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="LyV-nN-rwM"/>
                     <navigationItem key="navigationItem" id="wx7-bK-S1O"/>
@@ -478,7 +475,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="HRr-SA-V3l"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -507,7 +503,7 @@
             </objects>
             <point key="canvasLocation" x="1212" y="-1190"/>
         </scene>
-        <!--Villager View Controller - Buildings-->
+        <!--Buildings-->
         <scene sceneID="LzV-ln-8XQ">
             <objects>
                 <tableViewController storyboardIdentifier="buildingTable" id="hg6-EY-aIG" customClass="VillagerViewController" sceneMemberID="viewController">
@@ -748,7 +744,7 @@
             </objects>
             <point key="canvasLocation" x="2357" y="-1108"/>
         </scene>
-        <!--Castle View Controller - Buildings-->
+        <!--Buildings-->
         <scene sceneID="Njy-e3-HCY">
             <objects>
                 <tableViewController storyboardIdentifier="castleTable" id="8km-Cy-mUY" customClass="CastleViewController" sceneMemberID="viewController">
@@ -938,7 +934,7 @@
             </objects>
             <point key="canvasLocation" x="2227" y="-2473"/>
         </scene>
-        <!--Barracks View Controller - Buildings-->
+        <!--Buildings-->
         <scene sceneID="4DE-r9-UAm">
             <objects>
                 <tableViewController storyboardIdentifier="barracksTable" id="SEc-Ny-lfB" customClass="BarracksViewController" sceneMemberID="viewController">
@@ -1229,7 +1225,7 @@
             </objects>
             <point key="canvasLocation" x="3019" y="-1709"/>
         </scene>
-        <!--Town Center View Controller - TownCenter-->
+        <!--TownCenter-->
         <scene sceneID="Zfz-Gy-AC2">
             <objects>
                 <tableViewController storyboardIdentifier="townCenterTable" id="IX5-8e-h21" customClass="TownCenterViewController" sceneMemberID="viewController">
@@ -1533,7 +1529,6 @@
                             <constraint firstAttribute="trailing" secondItem="GSK-AV-eKt" secondAttribute="trailing" constant="74" id="qPe-2I-RCz"/>
                             <constraint firstItem="GSK-AV-eKt" firstAttribute="top" secondItem="bjb-RP-KFb" secondAttribute="bottom" constant="40" id="rEt-ed-xkE"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="TXj-4w-CI4"/>
                     <connections>

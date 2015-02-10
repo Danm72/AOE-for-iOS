@@ -76,9 +76,6 @@
 		C184BF6D559CEE023A799F74 /* VillagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B52D5F0AFFAF421B38EC /* VillagerViewController.m */; };
 		C184BF94BAE6D95FF236DE31 /* CastleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C184BB92EEEAA93CA211D4BB /* CastleViewController.m */; };
 		C184BFB9F939A9EB09DDE05C /* Builder.m in Sources */ = {isa = PBXBuildFile; fileRef = C184B3C2584F81E771A4BFAF /* Builder.m */; };
-		C8160266191F1FEB0088BBDF /* left_sword.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160263191F1FEB0088BBDF /* left_sword.png */; };
-		C8160267191F1FEB0088BBDF /* right_sword.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160264191F1FEB0088BBDF /* right_sword.png */; };
-		C8160268191F1FEB0088BBDF /* shield.png in Resources */ = {isa = PBXBuildFile; fileRef = C8160265191F1FEB0088BBDF /* shield.png */; };
 		C816997A191BDBF600B28403 /* GameLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8169979191BDBF600B28403 /* GameLoadingViewController.m */; };
 		C8169982191C345800B28403 /* MainMenuNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8169981191C345800B28403 /* MainMenuNewViewController.m */; };
 		C81CC968193D1640003A96D6 /* MyParticleSystem.scnp in Resources */ = {isa = PBXBuildFile; fileRef = C81CC966193D1640003A96D6 /* MyParticleSystem.scnp */; };
@@ -302,9 +299,6 @@
 		C184BF84AC70C992B418054D /* MinerStand.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = MinerStand.atlas; sourceTree = "<group>"; };
 		C184BF9F6DF96F76D8F65724 /* CastleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastleViewController.h; sourceTree = "<group>"; };
 		C184BFED6082F63B8E0DD633 /* Builder_walk.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Builder_walk.atlas; sourceTree = "<group>"; };
-		C8160263191F1FEB0088BBDF /* left_sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = left_sword.png; path = ../../../../../../../../../Pictures/photoshop/sword/left_sword.png; sourceTree = "<group>"; };
-		C8160264191F1FEB0088BBDF /* right_sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = right_sword.png; path = ../../../../../../../../../Pictures/photoshop/sword/right_sword.png; sourceTree = "<group>"; };
-		C8160265191F1FEB0088BBDF /* shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shield.png; path = ../../../../../../../../../Pictures/photoshop/sword/shield.png; sourceTree = "<group>"; };
 		C8169978191BDBF600B28403 /* GameLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLoadingViewController.h; sourceTree = "<group>"; };
 		C8169979191BDBF600B28403 /* GameLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLoadingViewController.m; sourceTree = "<group>"; };
 		C8169980191C345800B28403 /* MainMenuNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuNewViewController.h; sourceTree = "<group>"; };
@@ -701,9 +695,6 @@
 				C85F3F94191FBF3D00130FD9 /* left_sword_red.png */,
 				C85F3F95191FBF3D00130FD9 /* right_sword_red.png */,
 				C85F3F96191FBF3D00130FD9 /* shield_red.png */,
-				C8160263191F1FEB0088BBDF /* left_sword.png */,
-				C8160264191F1FEB0088BBDF /* right_sword.png */,
-				C8160265191F1FEB0088BBDF /* shield.png */,
 				C8DBECBC191EC0DF000BE038 /* builderwalking4.png */,
 				C8E1EB38191DBDE500FF6723 /* wall.png */,
 				C8E1EB39191DBDE500FF6723 /* church.png */,
@@ -1120,7 +1111,6 @@
 				C8933B0718A1597500116A26 /* InfoPlist.strings in Resources */,
 				C8E1EB3F191DBDE500FF6723 /* elitetowncenter.png in Resources */,
 				C85F3F98191FBF3D00130FD9 /* right_sword_red.png in Resources */,
-				C8160266191F1FEB0088BBDF /* left_sword.png in Resources */,
 				C184B3054DB28E036A402AF0 /* tile32_256build.png in Resources */,
 				C184BB7DB4E784FEF3A87CB9 /* tile32_256build.tmx in Resources */,
 				C184B16D62084268170F9712 /* logo.png in Resources */,
@@ -1195,11 +1185,9 @@
 				C184B5945E6CDC5ECBDFABCA /* map_image.tmx in Resources */,
 				C184B3CB7248399B80D377E0 /* maptest_small.png in Resources */,
 				C8E9DEC8193D5203009316BE /* MenuScene.sks in Resources */,
-				C8160268191F1FEB0088BBDF /* shield.png in Resources */,
 				C85F3FA9191FC6FF00130FD9 /* poof_04.png in Resources */,
 				C85F3FB91920037C00130FD9 /* soundtrack2.mp3 in Resources */,
 				C81CC97C193D2730003A96D6 /* king.png in Resources */,
-				C8160267191F1FEB0088BBDF /* right_sword.png in Resources */,
 				C85F3FBA1920037C00130FD9 /* soundtrack3.mp3 in Resources */,
 				C184B5D3DC57A8B987006F34 /* maptest.png in Resources */,
 				C8E3C95C1921398E00CF45E0 /* Main_iPad.storyboard in Resources */,
