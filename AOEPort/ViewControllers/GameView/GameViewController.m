@@ -224,14 +224,9 @@
 
 - (void)backgroundMusic {
     // Set AVAudioSession
-    NSError *sessionError = nil;
-    [[AVAudioSession sharedInstance] setDelegate:self];
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&sessionError];
-    
-    // Change the default output audio route
-    UInt32 doChangeDefaultRoute = 1;
-    AudioSessionSetProperty(kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
-                            sizeof(doChangeDefaultRoute), &doChangeDefaultRoute);
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [[AVAudioSession sharedInstance] setActive: YES error: nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
     NSArray *queue = @[
                        [AVPlayerItem playerItemWithURL:[[NSBundle mainBundle] URLForResource:@"soundtrack1" withExtension:@"mp3"]],
@@ -266,7 +261,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self backgroundMusic];
+//    [self backgroundMusic];
     
 #define NoRevealOverdraw true
 #if NoRevealOverdraw
